@@ -8,13 +8,31 @@
 import SwiftUI
 
 struct PostcardsView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+  let images = ["mountainVillage", "catOnFlowers", "grassPark", "dogOnBeach", "mountainVillage", "catOnFlowers", "grassPark", "dogOnBeach", "mountainVillage", "catOnFlowers", "grassPark", "dogOnBeach", "mountainVillage", "catOnFlowers", "grassPark", "dogOnBeach", "mountainVillage", "catOnFlowers", "grassPark", "dogOnBeach"]
+  let columns = [
+          GridItem(.fixed(90)),
+          GridItem(.fixed(90)),
+          GridItem(.fixed(90)),
+          GridItem(.fixed(90))
+      ]
+  
+  var body: some View {
+    NavigationStack {
+      ScrollView(showsIndicators: false) {
+        LazyVGrid(columns: columns, spacing: 2) {
+          ForEach(images.indices, id: \.self) { index in
+            Image(images[index])
+          }
+        }
+      }
+      .navigationTitle("Cartões")
+//      .navigationBarTitleDisplayMode(.inline)
     }
+  }
 }
 
 struct PostcardsView_Previews: PreviewProvider {
-    static var previews: some View {
-        PostcardsView()
-    }
+  static var previews: some View {
+    PostcardsView()
+  }
 }

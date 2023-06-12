@@ -8,19 +8,38 @@
 import SwiftUI
 
 struct StampsView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+  let stampCategories = ["Les mammifères", "Les salutations", "Les couleurs", "Les moyens de transport", "Les lieux de la ville"]
+  @State private var searchText = ""
+  
+  var body: some View {
+    NavigationStack {
+      List {
+        ForEach(searchResults, id: \.self) { result in
+          StampView(subject: result)
+            .listRowSeparator(.hidden)
         }
-        .padding()
+      }
+      .scrollContentBackground(.hidden)
+      .frame(maxWidth: .infinity)
+      .edgesIgnoringSafeArea(.horizontal)
+      .listStyle(GroupedListStyle())
+      .navigationTitle("Selos")
+//      .navigationBarTitleDisplayMode(.inline)
     }
+    .searchable(text: $searchText)
+  }
+  
+  var searchResults: [String] {
+    if searchText.isEmpty {
+      return stampCategories
+    } else {
+      return stampCategories.filter { $0.contains(searchText) }
+    }
+  }
 }
 
 struct StampsView_Previews: PreviewProvider {
-    static var previews: some View {
-        StampsView()
-    }
+  static var previews: some View {
+    StampsView()
+  }
 }
