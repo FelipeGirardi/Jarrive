@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct Station: Hashable {
+  var name: String
+  var postcards: [Postcard]
+}

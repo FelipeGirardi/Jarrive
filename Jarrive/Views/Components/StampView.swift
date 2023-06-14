@@ -14,7 +14,7 @@ struct StampView: View {
   var body: some View {
     ZStack {
       RoundedRectangle(cornerRadius: 13)
-        .fill(Color("stampLightGray"))
+        .fill(Color("defaultLightGray"))
       
       ScrollView(.horizontal, showsIndicators: false) {
         HStack {

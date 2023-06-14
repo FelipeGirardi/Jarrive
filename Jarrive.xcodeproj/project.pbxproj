@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C06EA4202A38DF3C00DF427E /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06EA41F2A38DF3C00DF427E /* RoundedCorner.swift */; };
 		C0B83F6D2A312B340096003B /* JarriveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B83F6C2A312B340096003B /* JarriveApp.swift */; };
 		C0B83F6F2A312B340096003B /* StampsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B83F6E2A312B340096003B /* StampsView.swift */; };
 		C0B83F712A312B370096003B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0B83F702A312B370096003B /* Assets.xcassets */; };
@@ -23,8 +24,12 @@
 		C0B83FAA2A3131E00096003B /* StampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B83FA92A3131E00096003B /* StampView.swift */; };
 		C0B83FAC2A3131FF0096003B /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B83FAB2A3131FF0096003B /* SignInView.swift */; };
 		C0B83FAE2A3132DD0096003B /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B83FAD2A3132DD0096003B /* Route.swift */; };
-		C0B83FB02A3132EB0096003B /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B83FAF2A3132EB0096003B /* Level.swift */; };
+		C0B83FB02A3132EB0096003B /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B83FAF2A3132EB0096003B /* Station.swift */; };
 		C0B83FB22A3133610096003B /* Stamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B83FB12A3133610096003B /* Stamp.swift */; };
+		C0EBBADE2A3A30C800001FCF /* Postcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EBBADD2A3A30C800001FCF /* Postcard.swift */; };
+		C0EBBAE02A3A57F100001FCF /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EBBADF2A3A57F100001FCF /* BackButton.swift */; };
+		C0EBBAE22A3A5E0F00001FCF /* ArrowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EBBAE12A3A5E0F00001FCF /* ArrowButton.swift */; };
+		C0EBBAE42A3A67E800001FCF /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EBBAE32A3A67E800001FCF /* Line.swift */; };
 		C0F9B13C2A379A6D0046A21D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F9B13B2A379A6D0046A21D /* MainView.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C06EA41F2A38DF3C00DF427E /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		C0B83F692A312B340096003B /* Jarrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jarrive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0B83F6C2A312B340096003B /* JarriveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JarriveApp.swift; sourceTree = "<group>"; };
 		C0B83F6E2A312B340096003B /* StampsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampsView.swift; sourceTree = "<group>"; };
@@ -66,8 +72,12 @@
 		C0B83FA92A3131E00096003B /* StampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampView.swift; sourceTree = "<group>"; };
 		C0B83FAB2A3131FF0096003B /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		C0B83FAD2A3132DD0096003B /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
-		C0B83FAF2A3132EB0096003B /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		C0B83FAF2A3132EB0096003B /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		C0B83FB12A3133610096003B /* Stamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stamp.swift; sourceTree = "<group>"; };
+		C0EBBADD2A3A30C800001FCF /* Postcard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Postcard.swift; sourceTree = "<group>"; };
+		C0EBBADF2A3A57F100001FCF /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		C0EBBAE12A3A5E0F00001FCF /* ArrowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowButton.swift; sourceTree = "<group>"; };
+		C0EBBAE32A3A67E800001FCF /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		C0F9B13B2A379A6D0046A21D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,6 +106,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C06EA41E2A38DF2800DF427E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C06EA41F2A38DF3C00DF427E /* RoundedCorner.swift */,
+				C0EBBAE32A3A67E800001FCF /* Line.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		C0B83F602A312B340096003B = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +185,7 @@
 		C0B83F972A312C520096003B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C06EA41E2A38DF2800DF427E /* Helpers */,
 				C0B83FA02A3131130096003B /* Components */,
 				C0B83F9F2A3131050096003B /* Pages */,
 				C0F9B13B2A379A6D0046A21D /* MainView.swift */,
@@ -177,8 +197,9 @@
 			isa = PBXGroup;
 			children = (
 				C0B83FAD2A3132DD0096003B /* Route.swift */,
-				C0B83FAF2A3132EB0096003B /* Level.swift */,
+				C0B83FAF2A3132EB0096003B /* Station.swift */,
 				C0B83FB12A3133610096003B /* Stamp.swift */,
+				C0EBBADD2A3A30C800001FCF /* Postcard.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -209,6 +230,8 @@
 				C0B83FA12A3131230096003B /* TicketView.swift */,
 				C0B83FA72A3131CE0096003B /* PostcardView.swift */,
 				C0B83FA92A3131E00096003B /* StampView.swift */,
+				C0EBBADF2A3A57F100001FCF /* BackButton.swift */,
+				C0EBBAE12A3A5E0F00001FCF /* ArrowButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -349,12 +372,17 @@
 				C0B83FAE2A3132DD0096003B /* Route.swift in Sources */,
 				C0B83F9E2A3130F00096003B /* PostcardsView.swift in Sources */,
 				C0B83FA22A3131230096003B /* TicketView.swift in Sources */,
+				C0EBBAE02A3A57F100001FCF /* BackButton.swift in Sources */,
+				C0EBBAE22A3A5E0F00001FCF /* ArrowButton.swift in Sources */,
 				C0B83FAC2A3131FF0096003B /* SignInView.swift in Sources */,
-				C0B83FB02A3132EB0096003B /* Level.swift in Sources */,
+				C0B83FB02A3132EB0096003B /* Station.swift in Sources */,
 				C0B83F9C2A3130DD0096003B /* TicketsView.swift in Sources */,
+				C0EBBADE2A3A30C800001FCF /* Postcard.swift in Sources */,
 				C0B83FB22A3133610096003B /* Stamp.swift in Sources */,
 				C0B83FAA2A3131E00096003B /* StampView.swift in Sources */,
 				C0B83F6F2A312B340096003B /* StampsView.swift in Sources */,
+				C0EBBAE42A3A67E800001FCF /* Line.swift in Sources */,
+				C06EA4202A38DF3C00DF427E /* RoundedCorner.swift in Sources */,
 				C0B83FA42A3131A30096003B /* LevelIntroView.swift in Sources */,
 				C0B83F6D2A312B340096003B /* JarriveApp.swift in Sources */,
 			);
