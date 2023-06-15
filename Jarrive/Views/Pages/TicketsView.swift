@@ -17,12 +17,26 @@ struct TicketsView: View {
           ForEach(routes.indices, id: \.self) { index in
             TicketView(route: routes[index])
               .listRowSeparator(.hidden)
+              .frame(height: 135)
           }
+          Spacer()
         }
       }
       .scrollContentBackground(.hidden)
       .padding(.horizontal, 50)
       .navigationTitle("Bilhetes")
+      .mask(
+        VStack(spacing: 0) {
+          Rectangle().fill(Color.black)
+          
+          LinearGradient(gradient:
+                          Gradient(
+                            colors: [Color.black, Color.black.opacity(0)]),
+                         startPoint: .top, endPoint: .bottom
+          )
+          .frame(height: 50)
+        }
+      )
     }
   }
 }

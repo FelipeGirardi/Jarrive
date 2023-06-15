@@ -50,7 +50,6 @@ struct TicketView: View {
           .roundedCorner(13, corners: [.topLeft, .topRight])
         }
       }
-      .frame(idealHeight: 135)
     }
   }
 }
