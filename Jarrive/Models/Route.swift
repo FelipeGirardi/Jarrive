@@ -11,4 +11,5 @@ struct Route: Hashable {
   var number: Int
   var origin: String
   var destination: String
+  var isExpanded: Bool
 }

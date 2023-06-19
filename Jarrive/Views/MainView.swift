@@ -23,7 +23,7 @@ struct MainView: View {
   
   var body: some View {
     TabView(selection: $selectedTab) {
-      TicketsView()
+      TicketsView(ticketVM: TicketViewModel())
         .tabItem {
           ZStack {
             Text("Bilhetes")

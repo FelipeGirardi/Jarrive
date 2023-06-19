@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct TicketView: View {
-  var route: Route
+  var route: Binding<Route>
+  @EnvironmentObject var ticketVM: TicketViewModel
   
   func backgroundView() -> some View {
     return Group {
-      route.number == 1 ? AnyView(EmptyView()) :
-      (route.number % 2 != 0 ? AnyView(Color("defaultDarkGray")) : AnyView(Color("defaultLightGray")))
+      route.wrappedValue.number == 1 ? AnyView(EmptyView()) :
+      ticketVM.routes[route.wrappedValue.number-2].isExpanded ? AnyView(EmptyView()) :
+      (route.wrappedValue.number % 2 != 0 ? AnyView(Color("defaultDarkGray")) : AnyView(Color("defaultLightGray")))
     }
   }
   
@@ -24,14 +26,14 @@ struct TicketView: View {
           backgroundView()
           
           RoundedRectangle(cornerRadius: 13)
-            .fill(route.number % 2 != 0 ? Color("defaultLightGray") : Color("defaultDarkGray"))
+            .fill(route.wrappedValue.number % 2 != 0 ? Color("defaultLightGray") : Color("defaultDarkGray"))
           
           VStack {
             Spacer()
             
             VStack(spacing: 0) {
-              Text("Route 0\(route.number)")
-              Text("\(route.origin) - \(route.destination)")
+              Text("Route 0\(route.wrappedValue.number)")
+              Text("\(route.wrappedValue.origin) - \(route.wrappedValue.destination)")
             }
             
             HDashedLine()
@@ -40,14 +42,25 @@ struct TicketView: View {
           }
         }
         .frame(height: 117)
-        
+
         ZStack {
-          backgroundView()
+          route.wrappedValue.isExpanded ?
+          route.wrappedValue.number == 1 ? AnyView(EmptyView()) : AnyView(
+            Rectangle()
+              .fill(route.wrappedValue.number % 2 != 0 ? Color("defaultDarkGray") : Color("defaultLightGray"))
+              .roundedCorner(13, corners: [.bottomLeft, .bottomRight])
+          ) : AnyView(backgroundView())
           
           Group {
-            route.number % 2 != 0 ? Color("defaultLightGray") : Color("defaultDarkGray")
+            route.wrappedValue.number % 2 != 0 ? Color("defaultLightGray") : Color("defaultDarkGray")
           }
           .roundedCorner(13, corners: [.topLeft, .topRight])
+          .roundedCorner(route.wrappedValue.isExpanded ? 13 : 0, corners: [.bottomLeft, .bottomRight])
+        }
+      }
+      .onTapGesture {
+        withAnimation(.easeOut) {
+          ticketVM.animateExpand(route: route)
         }
       }
     }
@@ -56,6 +69,8 @@ struct TicketView: View {
 
 struct TicketView_Previews: PreviewProvider {
   static var previews: some View {
-    TicketView(route: Route(number: 2, origin: "Ville Saint Meow", destination: "Miaun City"))
+    GeometryReader { g in
+      TicketView(route: .constant(Route(number: 2, origin: "Ville Saint Meow", destination: "Miaun City", isExpanded: false))).environmentObject(TicketViewModel())
+    }
   }
 }

@@ -33,6 +33,7 @@
 		C0EBBAE02A3A57F100001FCF /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EBBADF2A3A57F100001FCF /* BackButton.swift */; };
 		C0EBBAE22A3A5E0F00001FCF /* ArrowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EBBAE12A3A5E0F00001FCF /* ArrowButton.swift */; };
 		C0EBBAE42A3A67E800001FCF /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EBBAE32A3A67E800001FCF /* Line.swift */; };
+		C0F0F7542A40DDB7008B4593 /* TicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F0F7532A40DDB7008B4593 /* TicketViewModel.swift */; };
 		C0F9B13C2A379A6D0046A21D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F9B13B2A379A6D0046A21D /* MainView.swift */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		C0EBBADF2A3A57F100001FCF /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		C0EBBAE12A3A5E0F00001FCF /* ArrowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowButton.swift; sourceTree = "<group>"; };
 		C0EBBAE32A3A67E800001FCF /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		C0F0F7532A40DDB7008B4593 /* TicketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TicketViewModel.swift; path = Jarrive/Views/Components/TicketViewModel.swift; sourceTree = SOURCE_ROOT; };
 		C0F9B13B2A379A6D0046A21D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -222,6 +224,7 @@
 		C0B83F992A312C5E0096003B /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				C0F0F7532A40DDB7008B4593 /* TicketViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				C0EBBAE02A3A57F100001FCF /* BackButton.swift in Sources */,
 				C0EBBAE22A3A5E0F00001FCF /* ArrowButton.swift in Sources */,
 				C0B83FAC2A3131FF0096003B /* SignInView.swift in Sources */,
+				C0F0F7542A40DDB7008B4593 /* TicketViewModel.swift in Sources */,
 				C0B83FB02A3132EB0096003B /* Station.swift in Sources */,
 				C0B83F9C2A3130DD0096003B /* TicketsView.swift in Sources */,
 				C0EBBADE2A3A30C800001FCF /* Postcard.swift in Sources */,
