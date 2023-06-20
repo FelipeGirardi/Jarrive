@@ -24,12 +24,12 @@ struct TicketsView: View {
                 
                 r.wrappedValue.isExpanded ? AnyView(Spacer(minLength: 20)) : AnyView(EmptyView())
               }
-//              .onTapGesture { _ in
-//                withAnimation {
-//                  print(r.wrappedValue.number-1)
-//                  scrollView.scrollTo(r.wrappedValue.number-1, anchor: .center)
-//                }
-//              }
+              .onChange(of: r.wrappedValue) { _ in
+                withAnimation {
+                  print(r.wrappedValue.number)
+                  scrollView.scrollTo(r.wrappedValue.number, anchor: .center)
+                }
+              }
             }
             Spacer()
           }

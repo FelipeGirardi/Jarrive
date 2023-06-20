@@ -45,7 +45,8 @@ struct TicketView: View {
 
         ZStack {
           route.wrappedValue.isExpanded ?
-          route.wrappedValue.number == 1 ? AnyView(EmptyView()) : AnyView(
+          (route.wrappedValue.number == 1 ||
+           ticketVM.routes[route.wrappedValue.number-2].isExpanded) ? AnyView(EmptyView()) : AnyView(
             Rectangle()
               .fill(route.wrappedValue.number % 2 != 0 ? Color("defaultDarkGray") : Color("defaultLightGray"))
               .roundedCorner(13, corners: [.bottomLeft, .bottomRight])
