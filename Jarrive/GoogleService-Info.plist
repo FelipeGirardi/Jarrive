@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>92771996377-oe5b1ujlbib4m3i4ss1q4mflqndacl26.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.92771996377-oe5b1ujlbib4m3i4ss1q4mflqndacl26</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDH-d_WokczrXUIn5duLoL0MlqJvQw0TOQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>92771996377</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.Jarrive</string>
+	<key>PROJECT_ID</key>
+	<string>jarrive-fd3b7</string>
+	<key>STORAGE_BUCKET</key>
+	<string>jarrive-fd3b7.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:92771996377:ios:af5e9b69117584cf7fa4c8</string>
+</dict>
+</plist>

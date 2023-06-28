@@ -10,6 +10,7 @@ import SwiftUI
 struct LoginInputView: View {
   @State private var user: String = ""
   @State private var password: String = ""
+  @EnvironmentObject var authViewModel: AuthenticationViewModel
   
   var body: some View {
     GeometryReader { g in
@@ -77,37 +78,28 @@ struct LoginInputView: View {
             .font(.system(size: 14))
             .fontWeight(.regular)
           
-          HStack(spacing: 10) {
-            Button(action: {
-              print("Login")
-            }) {
-              Text("Google")
-                .padding(10)
-                .foregroundColor(.black)
-                .overlay(
-                  RoundedRectangle(
-                    cornerRadius: 5,
-                    style: .continuous
-                  )
-                  .stroke(.gray, lineWidth: 2)
-                )
-            }
-            
-            Button(action: {
-              print("Login")
-            }) {
-              Text("Apple")
-                .padding(10)
-                .foregroundColor(.black)
-                .overlay(
-                  RoundedRectangle(
-                    cornerRadius: 5,
-                    style: .continuous
-                  )
-                  .stroke(.gray, lineWidth: 2)
-                )
-            }
-          }
+//          VStack(spacing: 10) {
+            GoogleSignInButton()
+            .padding(.horizontal, 50)
+              .onTapGesture {
+                authViewModel.signIn()
+              }
+      
+//            Button(action: {
+//              print("Login")
+//            }) {
+//              Text("Apple")
+//                .padding(10)
+//                .foregroundColor(.black)
+//                .overlay(
+//                  RoundedRectangle(
+//                    cornerRadius: 5,
+//                    style: .continuous
+//                  )
+//                  .stroke(.gray, lineWidth: 2)
+//                )
+//            }
+//          }
           
           Spacer()
           

@@ -1,14 +1,22 @@
 //
-//  MainView.swift
+//  MainTabView.swift
 //  Jarrive
 //
 //  Created by Felipe Girardi on 12/06/23.
 //
 
+import Firebase
 import SwiftUI
+import GoogleSignIn
 
-struct MainView: View {
+struct MainTabView: View {
   @State private var selectedTab = 0
+  @EnvironmentObject var authViewModel: AuthenticationViewModel
+  private let user = GIDSignIn.sharedInstance.currentUser
+  // NetworkImage(url: user?.profile?.imageURL(withDimension: 200))
+  // Text(user?.profile?.name ?? "")
+  // Text(user?.profile?.email ?? "")
+
   func setupTabBar() {
     let appearance = UITabBarAppearance()
     appearance.shadowColor = .gray
@@ -50,8 +58,8 @@ struct MainView: View {
   }
 }
 
-struct MainView_Previews: PreviewProvider {
+struct MainTabView_Previews: PreviewProvider {
   static var previews: some View {
-    MainView()
+    MainTabView()
   }
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LoginView: View {  
+struct LoginView: View {
   var body: some View {
     GeometryReader { g in
       HStack {
@@ -20,7 +20,7 @@ struct LoginView: View {
             .resizable()
             .frame(width: 100, height: 100)
           
-          Spacer()
+          Spacer(minLength: 50)
           
           LoginInputView()
         }
