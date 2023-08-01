@@ -18,7 +18,7 @@ struct JarriveApp: App {
 
   var body: some Scene {
     WindowGroup {
-      MainTabView()
+      ContentView()
         .environmentObject(authViewModel)
     }
   }
