@@ -14,11 +14,15 @@ struct LoginView: View {
         Spacer()
         VStack {
           Spacer()
-            .frame(height: g.size.height * 0.2)
+            .frame(height: g.size.height * 0.15)
+          
+//          Text("J'arrive")
+//            .font(.custom("BasicSans-Regular", size: 48))
+//            .foregroundColor(Color("mainBlue"))
           
           Image("ThomasCat")
             .resizable()
-            .frame(width: 100, height: 100)
+            .frame(width: 120, height: 120)
           
           Spacer(minLength: 50)
           

@@ -7,7 +7,17 @@
 
 import SwiftUI
 
+enum ChatPageAnimationState {
+  case name
+  case catOrHuman
+}
+
 struct ChatPage: View {
+  @State var animationState: ChatPageAnimationState = .name
+  @State var goToNewScreen: Bool = false
+  @State var nameInput: String = ""
+  @State var textFieldDisabled: Bool = false
+  
   var suivantButton: some View {
     HStack {
       Spacer()
@@ -15,7 +25,17 @@ struct ChatPage: View {
 
       SuivantButton()
         .onTapGesture {
-          
+          withAnimation {
+            switch animationState {
+            case .name:
+              if (nameInput != "") {
+                animationState = .catOrHuman
+                textFieldDisabled.toggle()
+              }
+            case .catOrHuman:
+              goToNewScreen.toggle()
+            }
+          }
         }
         .padding(.horizontal, 10)
       
@@ -28,9 +48,15 @@ struct ChatPage: View {
   
   var body: some View {
     VStack {
-      Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-      
+      CatChatBubble(chatBubbleText: "Je m'appelle Thomas.\n\nEt toi?")
+        .padding(.top, 20)
+        .opacity(animationState == .catOrHuman ? 0.3 : 1)
+      ChatTextInput(nameInput: $nameInput, textFieldDisabled: $textFieldDisabled)
+      Spacer()
+      Spacer()
+      Spacer()
       suivantButton
+      Spacer()
     }
   }
 }

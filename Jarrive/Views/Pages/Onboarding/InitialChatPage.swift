@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-enum AnimationState {
+enum InitialChatPageAnimationState {
   case bonjour
   case jeMappelle
 }
 
 struct InitialChatPage: View {
-  @State var animationState: AnimationState = .bonjour
+  @State var animationState: InitialChatPageAnimationState = .bonjour
   @State var goToNewScreen: Bool = false
 
   var bonjourText: some View {
@@ -23,6 +23,7 @@ struct InitialChatPage: View {
 
       ZStack {
         Image("chatBubble1")
+          .resizable()
           .frame(width: 170, height: 80)
         Text("Bonjour!")
           .font(.custom("BasicSans-Regular", size: 36))
@@ -45,7 +46,8 @@ struct InitialChatPage: View {
 
       ZStack {
         Image("chatBubble2")
-          .frame(width: 170, height: 80)
+          .resizable()
+          .frame(width: 233, height: 120)
         Text("Je m'appelle Thomas.")
           .font(.custom("BasicSans-Regular", size: 36))
           .foregroundColor(Color("mainBlue"))
@@ -100,6 +102,7 @@ struct InitialChatPage: View {
         }
         
         Image("ThomasCat")
+          .resizable()
           .frame(width: 215, height: 276)
         
         Spacer()

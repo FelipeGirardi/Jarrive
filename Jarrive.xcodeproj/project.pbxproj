@@ -11,6 +11,9 @@
 		C02D09422A3BA23100B5FA54 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D09412A3BA23100B5FA54 /* LoginView.swift */; };
 		C02D09442A3BA87000B5FA54 /* LoginInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D09432A3BA87000B5FA54 /* LoginInputView.swift */; };
 		C06EA4202A38DF3C00DF427E /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06EA41F2A38DF3C00DF427E /* RoundedCorner.swift */; };
+		C0A62CA72A7D810300CDFA0F /* CatChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A62CA62A7D810300CDFA0F /* CatChatBubble.swift */; };
+		C0A62CAA2A7D82B100CDFA0F /* ChatTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A62CA92A7D82B100CDFA0F /* ChatTextInput.swift */; };
+		C0A62CAC2A7D838300CDFA0F /* BasicSans-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = C0A62CAB2A7D838300CDFA0F /* BasicSans-Black.otf */; };
 		C0B83F6D2A312B340096003B /* JarriveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B83F6C2A312B340096003B /* JarriveApp.swift */; };
 		C0B83F6F2A312B340096003B /* StampsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B83F6E2A312B340096003B /* StampsView.swift */; };
 		C0B83F712A312B370096003B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0B83F702A312B370096003B /* Assets.xcassets */; };
@@ -25,7 +28,6 @@
 		C0B83FA62A3131B60096003B /* LevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B83FA52A3131B60096003B /* LevelView.swift */; };
 		C0B83FA82A3131CE0096003B /* PostcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B83FA72A3131CE0096003B /* PostcardView.swift */; };
 		C0B83FAA2A3131E00096003B /* StampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B83FA92A3131E00096003B /* StampView.swift */; };
-		C0B83FAC2A3131FF0096003B /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B83FAB2A3131FF0096003B /* SignInView.swift */; };
 		C0B83FAE2A3132DD0096003B /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B83FAD2A3132DD0096003B /* Route.swift */; };
 		C0B83FB02A3132EB0096003B /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B83FAF2A3132EB0096003B /* Station.swift */; };
 		C0B83FB22A3133610096003B /* Stamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B83FB12A3133610096003B /* Stamp.swift */; };
@@ -74,6 +76,9 @@
 		C02D09412A3BA23100B5FA54 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C02D09432A3BA87000B5FA54 /* LoginInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputView.swift; sourceTree = "<group>"; };
 		C06EA41F2A38DF3C00DF427E /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		C0A62CA62A7D810300CDFA0F /* CatChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatChatBubble.swift; sourceTree = "<group>"; };
+		C0A62CA92A7D82B100CDFA0F /* ChatTextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTextInput.swift; sourceTree = "<group>"; };
+		C0A62CAB2A7D838300CDFA0F /* BasicSans-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BasicSans-Black.otf"; sourceTree = "<group>"; };
 		C0B83F692A312B340096003B /* Jarrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jarrive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0B83F6C2A312B340096003B /* JarriveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JarriveApp.swift; sourceTree = "<group>"; };
 		C0B83F6E2A312B340096003B /* StampsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampsView.swift; sourceTree = "<group>"; };
@@ -92,7 +97,6 @@
 		C0B83FA52A3131B60096003B /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
 		C0B83FA72A3131CE0096003B /* PostcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostcardView.swift; sourceTree = "<group>"; };
 		C0B83FA92A3131E00096003B /* StampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampView.swift; sourceTree = "<group>"; };
-		C0B83FAB2A3131FF0096003B /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		C0B83FAD2A3132DD0096003B /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		C0B83FAF2A3132EB0096003B /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		C0B83FB12A3133610096003B /* Stamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stamp.swift; sourceTree = "<group>"; };
@@ -147,6 +151,7 @@
 			children = (
 				C0DEA4AD2A79886B00C640BD /* BasicSans-Regular.otf */,
 				C02D093D2A3B979200B5FA54 /* Barlow-LightItalic.ttf */,
+				C0A62CAB2A7D838300CDFA0F /* BasicSans-Black.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -158,6 +163,18 @@
 				C0EBBAE32A3A67E800001FCF /* Line.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C0A62CA82A7D826A00CDFA0F /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				C0DEA4B32A799DF100C640BD /* ChatBubble.swift */,
+				C0A62CA62A7D810300CDFA0F /* CatChatBubble.swift */,
+				C0DEA4B12A798E4500C640BD /* SuivantButton.swift */,
+				C0DEA4AF2A798D2200C640BD /* PlayAudioButton.swift */,
+				C0A62CA92A7D82B100CDFA0F /* ChatTextInput.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		C0B83F602A312B340096003B = {
@@ -261,7 +278,6 @@
 				C0B83F9D2A3130F00096003B /* PostcardsView.swift */,
 				C0B83FA32A3131A30096003B /* LevelIntroView.swift */,
 				C0B83FA52A3131B60096003B /* LevelView.swift */,
-				C0B83FAB2A3131FF0096003B /* SignInView.swift */,
 				C02D09412A3BA23100B5FA54 /* LoginView.swift */,
 				C0F9B13B2A379A6D0046A21D /* MainTabView.swift */,
 			);
@@ -271,6 +287,7 @@
 		C0B83FA02A3131130096003B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C0A62CA82A7D826A00CDFA0F /* Onboarding */,
 				C0B83FA12A3131230096003B /* TicketView.swift */,
 				C0B83FA72A3131CE0096003B /* PostcardView.swift */,
 				C0B83FA92A3131E00096003B /* StampView.swift */,
@@ -279,9 +296,6 @@
 				C02D09432A3BA87000B5FA54 /* LoginInputView.swift */,
 				C0D91C4E2A4CD6DD00080072 /* GoogleSignInButton.swift */,
 				C0D91C522A4CD95900080072 /* NetworkImage.swift */,
-				C0DEA4AF2A798D2200C640BD /* PlayAudioButton.swift */,
-				C0DEA4B12A798E4500C640BD /* SuivantButton.swift */,
-				C0DEA4B32A799DF100C640BD /* ChatBubble.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -424,6 +438,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C02D093E2A3B979200B5FA54 /* Barlow-LightItalic.ttf in Resources */,
+				C0A62CAC2A7D838300CDFA0F /* BasicSans-Black.otf in Resources */,
 				C0C1C74A2A4CC5FE00E1A54F /* GoogleService-Info.plist in Resources */,
 				C0B83F742A312B370096003B /* Preview Assets.xcassets in Resources */,
 				C0B83F712A312B370096003B /* Assets.xcassets in Resources */,
@@ -457,6 +472,7 @@
 				C0B83FA82A3131CE0096003B /* PostcardView.swift in Sources */,
 				C0DEA4B42A799DF100C640BD /* ChatBubble.swift in Sources */,
 				C0D91C512A4CD84900080072 /* ContentView.swift in Sources */,
+				C0A62CAA2A7D82B100CDFA0F /* ChatTextInput.swift in Sources */,
 				C0F9B13C2A379A6D0046A21D /* MainTabView.swift in Sources */,
 				C0B83FA62A3131B60096003B /* LevelView.swift in Sources */,
 				C0B83FAE2A3132DD0096003B /* Route.swift in Sources */,
@@ -470,7 +486,6 @@
 				C0EBBAE02A3A57F100001FCF /* BackButton.swift in Sources */,
 				C0D91C482A4CCCA100080072 /* AuthenticationViewModel.swift in Sources */,
 				C0EBBAE22A3A5E0F00001FCF /* ArrowButton.swift in Sources */,
-				C0B83FAC2A3131FF0096003B /* SignInView.swift in Sources */,
 				C0D91C462A4CCC8D00080072 /* TicketViewModel.swift in Sources */,
 				C0B83FB02A3132EB0096003B /* Station.swift in Sources */,
 				C0DEA4AC2A79846800C640BD /* InitialChatPage.swift in Sources */,
@@ -481,6 +496,7 @@
 				C0B83F6F2A312B340096003B /* StampsView.swift in Sources */,
 				C0EBBAE42A3A67E800001FCF /* Line.swift in Sources */,
 				C06EA4202A38DF3C00DF427E /* RoundedCorner.swift in Sources */,
+				C0A62CA72A7D810300CDFA0F /* CatChatBubble.swift in Sources */,
 				C0B83FA42A3131A30096003B /* LevelIntroView.swift in Sources */,
 				C0DEA4B22A798E4500C640BD /* SuivantButton.swift in Sources */,
 				C02D09422A3BA23100B5FA54 /* LoginView.swift in Sources */,

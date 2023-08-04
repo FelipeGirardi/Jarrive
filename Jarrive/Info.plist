@@ -15,6 +15,7 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
+		<string>BasicSans-Black.otf</string>
 		<string>BasicSans-Regular.otf</string>
 		<string>Barlow-LightItalic.ttf</string>
 	</array>
