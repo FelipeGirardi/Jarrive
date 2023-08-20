@@ -12,11 +12,18 @@ enum ChatPageAnimationState {
   case catOrHuman
 }
 
+enum CatOrHuman {
+  case cat
+  case human
+  case none
+}
+
 struct ChatPage: View {
   @State var animationState: ChatPageAnimationState = .name
   @State var goToNewScreen: Bool = false
   @State var nameInput: String = ""
   @State var textFieldDisabled: Bool = false
+  @State var catOrHuman: CatOrHuman = .none
   
   var suivantButton: some View {
     HStack {
@@ -33,7 +40,9 @@ struct ChatPage: View {
                 textFieldDisabled.toggle()
               }
             case .catOrHuman:
-              goToNewScreen.toggle()
+              if (catOrHuman == .cat || catOrHuman == .human) {
+                goToNewScreen.toggle()
+              }
             }
           }
         }
@@ -48,15 +57,30 @@ struct ChatPage: View {
   
   var body: some View {
     VStack {
-      CatChatBubble(chatBubbleText: "Je m'appelle Thomas.\n\nEt toi?")
-        .padding(.top, 20)
-        .opacity(animationState == .catOrHuman ? 0.3 : 1)
-      ChatTextInput(nameInput: $nameInput, textFieldDisabled: $textFieldDisabled)
-      Spacer()
-      Spacer()
-      Spacer()
-      suivantButton
-      Spacer()
+      goToNewScreen ? AnyView(MainTabView()) :
+      AnyView(VStack {
+        animationState == .catOrHuman
+        ? AnyView(EmptyView())
+        : AnyView(CatChatBubble(chatBubbleText: "Je m'appelle Thomas.\n\nEt toi?")
+          .padding(.top, 20))
+        
+        ChatTextInput(nameInput: $nameInput, textFieldDisabled: $textFieldDisabled)
+          .padding(.top, animationState == .catOrHuman ? 20 : 0)
+        
+        CatChatBubble(chatBubbleText: "Super!\n\nJe suis un chat, et toi?")
+          .padding(.top, 20)
+          .opacity(animationState == .catOrHuman ? 1 : 0)
+        
+        CatOrHumanBubble(choice: $catOrHuman)
+          .padding(.top, 20)
+          .opacity(animationState == .catOrHuman ? 1 : 0)
+        
+        Spacer()
+        Spacer()
+        
+        suivantButton
+          .padding(.bottom, 20)
+      })
     }
   }
 }
