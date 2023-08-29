@@ -18,6 +18,9 @@
 		<string>BasicSans-Black.otf</string>
 		<string>BasicSans-Regular.otf</string>
 		<string>Barlow-LightItalic.ttf</string>
+		<string>Barlow-Bold.ttf</string>
+		<string>Barlow-Regular.ttf</string>
+		<string>Barlow-SemiBold.ttf</string>
 	</array>
 	<key>UILaunchScreen</key>
 	<dict/>

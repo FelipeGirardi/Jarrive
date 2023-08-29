@@ -49,6 +49,10 @@
 		C0DEA4B02A798D2200C640BD /* PlayAudioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DEA4AF2A798D2200C640BD /* PlayAudioButton.swift */; };
 		C0DEA4B22A798E4500C640BD /* SuivantButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DEA4B12A798E4500C640BD /* SuivantButton.swift */; };
 		C0DEA4B62A79BA4A00C640BD /* ChatPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DEA4B52A79BA4A00C640BD /* ChatPage.swift */; };
+		C0E8BD982A9D644D008C4F57 /* Barlow-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0E8BD952A9D644C008C4F57 /* Barlow-SemiBold.ttf */; };
+		C0E8BD992A9D644D008C4F57 /* Barlow-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0E8BD962A9D644D008C4F57 /* Barlow-Bold.ttf */; };
+		C0E8BD9A2A9D644D008C4F57 /* Barlow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0E8BD972A9D644D008C4F57 /* Barlow-Regular.ttf */; };
+		C0E8BD9D2A9D7C4C008C4F57 /* GoogleAppleSignInButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E8BD9C2A9D7C4C008C4F57 /* GoogleAppleSignInButtons.swift */; };
 		C0EBBADE2A3A30C800001FCF /* Postcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EBBADD2A3A30C800001FCF /* Postcard.swift */; };
 		C0EBBAE02A3A57F100001FCF /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EBBADF2A3A57F100001FCF /* BackButton.swift */; };
 		C0EBBAE22A3A5E0F00001FCF /* ArrowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EBBAE12A3A5E0F00001FCF /* ArrowButton.swift */; };
@@ -116,6 +120,10 @@
 		C0DEA4AF2A798D2200C640BD /* PlayAudioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayAudioButton.swift; sourceTree = "<group>"; };
 		C0DEA4B12A798E4500C640BD /* SuivantButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuivantButton.swift; sourceTree = "<group>"; };
 		C0DEA4B52A79BA4A00C640BD /* ChatPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPage.swift; sourceTree = "<group>"; };
+		C0E8BD952A9D644C008C4F57 /* Barlow-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-SemiBold.ttf"; sourceTree = "<group>"; };
+		C0E8BD962A9D644D008C4F57 /* Barlow-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Bold.ttf"; sourceTree = "<group>"; };
+		C0E8BD972A9D644D008C4F57 /* Barlow-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Regular.ttf"; sourceTree = "<group>"; };
+		C0E8BD9C2A9D7C4C008C4F57 /* GoogleAppleSignInButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAppleSignInButtons.swift; sourceTree = "<group>"; };
 		C0EBBADD2A3A30C800001FCF /* Postcard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Postcard.swift; sourceTree = "<group>"; };
 		C0EBBADF2A3A57F100001FCF /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		C0EBBAE12A3A5E0F00001FCF /* ArrowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowButton.swift; sourceTree = "<group>"; };
@@ -156,6 +164,9 @@
 				C0DEA4AD2A79886B00C640BD /* BasicSans-Regular.otf */,
 				C02D093D2A3B979200B5FA54 /* Barlow-LightItalic.ttf */,
 				C0A62CAB2A7D838300CDFA0F /* BasicSans-Black.otf */,
+				C0E8BD962A9D644D008C4F57 /* Barlow-Bold.ttf */,
+				C0E8BD972A9D644D008C4F57 /* Barlow-Regular.ttf */,
+				C0E8BD952A9D644C008C4F57 /* Barlow-SemiBold.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -293,13 +304,13 @@
 		C0B83FA02A3131130096003B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C0E8BD9B2A9D7C11008C4F57 /* Login */,
 				C0A62CA82A7D826A00CDFA0F /* Onboarding */,
 				C0B83FA12A3131230096003B /* TicketView.swift */,
 				C0B83FA72A3131CE0096003B /* PostcardView.swift */,
 				C0B83FA92A3131E00096003B /* StampView.swift */,
 				C0EBBADF2A3A57F100001FCF /* BackButton.swift */,
 				C0EBBAE12A3A5E0F00001FCF /* ArrowButton.swift */,
-				C02D09432A3BA87000B5FA54 /* LoginInputView.swift */,
 				C0D91C4E2A4CD6DD00080072 /* GoogleSignInButton.swift */,
 				C0D91C522A4CD95900080072 /* NetworkImage.swift */,
 			);
@@ -329,6 +340,15 @@
 				C0DEA4B52A79BA4A00C640BD /* ChatPage.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		C0E8BD9B2A9D7C11008C4F57 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C02D09432A3BA87000B5FA54 /* LoginInputView.swift */,
+				C0E8BD9C2A9D7C4C008C4F57 /* GoogleAppleSignInButtons.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -445,11 +465,14 @@
 			files = (
 				C02D093E2A3B979200B5FA54 /* Barlow-LightItalic.ttf in Resources */,
 				C0A62CAC2A7D838300CDFA0F /* BasicSans-Black.otf in Resources */,
+				C0E8BD9A2A9D644D008C4F57 /* Barlow-Regular.ttf in Resources */,
+				C0E8BD982A9D644D008C4F57 /* Barlow-SemiBold.ttf in Resources */,
 				C0C1C74A2A4CC5FE00E1A54F /* GoogleService-Info.plist in Resources */,
 				C0B83F742A312B370096003B /* Preview Assets.xcassets in Resources */,
 				C0B5E8D32A92A18F0026FBB1 /* LaunchScreen.storyboard in Resources */,
 				C0B83F712A312B370096003B /* Assets.xcassets in Resources */,
 				C0DEA4AE2A79886B00C640BD /* BasicSans-Regular.otf in Resources */,
+				C0E8BD992A9D644D008C4F57 /* Barlow-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,6 +514,7 @@
 				C0B83FA22A3131230096003B /* TicketView.swift in Sources */,
 				C0EBBAE02A3A57F100001FCF /* BackButton.swift in Sources */,
 				C0D91C482A4CCCA100080072 /* AuthenticationViewModel.swift in Sources */,
+				C0E8BD9D2A9D7C4C008C4F57 /* GoogleAppleSignInButtons.swift in Sources */,
 				C0B5E8D72A92B3FF0026FBB1 /* RoundButton.swift in Sources */,
 				C0B5E8D52A92B1480026FBB1 /* CatOrHumanBubble.swift in Sources */,
 				C0EBBAE22A3A5E0F00001FCF /* ArrowButton.swift in Sources */,

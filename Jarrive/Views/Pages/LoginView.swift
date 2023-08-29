@@ -10,26 +10,24 @@ import SwiftUI
 struct LoginView: View {
   var body: some View {
     GeometryReader { g in
-      HStack {
-        Spacer()
         VStack {
           Spacer()
-            .frame(height: g.size.height * 0.15)
+            .frame(height: g.size.height * 0.1)
           
-//          Text("J'arrive")
-//            .font(.custom("BasicSans-Regular", size: 48))
-//            .foregroundColor(Color("mainBlue"))
-          
-          Image("ThomasCat")
+          Image("JarriveLogo1")
             .resizable()
-            .frame(width: 120, height: 120)
+            .frame(width: 245, height: 95)
           
           Spacer(minLength: 50)
           
-          LoginInputView()
+          ZStack {
+            LoginInputView()
+          }
+          .frame(maxWidth: .infinity, maxHeight: g.size.height * 0.8)
+          .background(Color("mainBlue"))
+          .roundedCorner(30, corners: [.topLeft, .topRight])
+          .offset(y: 35)
         }
-        Spacer()
-      }
     }
   }
 }
