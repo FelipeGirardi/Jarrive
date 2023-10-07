@@ -12,6 +12,9 @@
 		C02D09442A3BA87000B5FA54 /* LoginInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D09432A3BA87000B5FA54 /* LoginInputView.swift */; };
 		C057F88C2ACF2D2400AC0814 /* TitleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C057F88B2ACF2D2400AC0814 /* TitleScreen.swift */; };
 		C06EA4202A38DF3C00DF427E /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06EA41F2A38DF3C00DF427E /* RoundedCorner.swift */; };
+		C0A560522AD1EBD500EF99A9 /* Barlow-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0A560512AD1EBD400EF99A9 /* Barlow-Medium.ttf */; };
+		C0A560552AD1F35800EF99A9 /* MainChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A560542AD1F35800EF99A9 /* MainChatBubble.swift */; };
+		C0A560572AD2005700EF99A9 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A560562AD2005700EF99A9 /* Chat.swift */; };
 		C0A62CA72A7D810300CDFA0F /* CatChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A62CA62A7D810300CDFA0F /* CatChatBubble.swift */; };
 		C0A62CAA2A7D82B100CDFA0F /* ChatTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A62CA92A7D82B100CDFA0F /* ChatTextInput.swift */; };
 		C0A62CAC2A7D838300CDFA0F /* BasicSans-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = C0A62CAB2A7D838300CDFA0F /* BasicSans-Black.otf */; };
@@ -39,6 +42,7 @@
 		C0C1C74A2A4CC5FE00E1A54F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0C1C7492A4CC5FE00E1A54F /* GoogleService-Info.plist */; };
 		C0C1C74B2A4CC5FE00E1A54F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0C1C7492A4CC5FE00E1A54F /* GoogleService-Info.plist */; };
 		C0C1C74C2A4CC5FE00E1A54F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0C1C7492A4CC5FE00E1A54F /* GoogleService-Info.plist */; };
+		C0D8FEF42AD0792A00FE5F41 /* OnboardingMainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D8FEF32AD0792A00FE5F41 /* OnboardingMainPage.swift */; };
 		C0D91C462A4CCC8D00080072 /* TicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D91C452A4CCC8D00080072 /* TicketViewModel.swift */; };
 		C0D91C482A4CCCA100080072 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D91C472A4CCCA100080072 /* AuthenticationViewModel.swift */; };
 		C0D91C4B2A4CCD2000080072 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = C0D91C4A2A4CCD2000080072 /* GoogleSignIn */; };
@@ -84,6 +88,9 @@
 		C02D09432A3BA87000B5FA54 /* LoginInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputView.swift; sourceTree = "<group>"; };
 		C057F88B2ACF2D2400AC0814 /* TitleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleScreen.swift; sourceTree = "<group>"; };
 		C06EA41F2A38DF3C00DF427E /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		C0A560512AD1EBD400EF99A9 /* Barlow-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Medium.ttf"; sourceTree = "<group>"; };
+		C0A560542AD1F35800EF99A9 /* MainChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainChatBubble.swift; sourceTree = "<group>"; };
+		C0A560562AD2005700EF99A9 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		C0A62CA62A7D810300CDFA0F /* CatChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatChatBubble.swift; sourceTree = "<group>"; };
 		C0A62CA92A7D82B100CDFA0F /* ChatTextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTextInput.swift; sourceTree = "<group>"; };
 		C0A62CAB2A7D838300CDFA0F /* BasicSans-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BasicSans-Black.otf"; sourceTree = "<group>"; };
@@ -112,6 +119,7 @@
 		C0B83FAF2A3132EB0096003B /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		C0B83FB12A3133610096003B /* Stamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stamp.swift; sourceTree = "<group>"; };
 		C0C1C7492A4CC5FE00E1A54F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C0D8FEF32AD0792A00FE5F41 /* OnboardingMainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingMainPage.swift; sourceTree = "<group>"; };
 		C0D91C452A4CCC8D00080072 /* TicketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViewModel.swift; sourceTree = "<group>"; };
 		C0D91C472A4CCCA100080072 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		C0D91C4E2A4CD6DD00080072 /* GoogleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
@@ -167,6 +175,7 @@
 				C02D093D2A3B979200B5FA54 /* Barlow-LightItalic.ttf */,
 				C0A62CAB2A7D838300CDFA0F /* BasicSans-Black.otf */,
 				C0E8BD962A9D644D008C4F57 /* Barlow-Bold.ttf */,
+				C0A560512AD1EBD400EF99A9 /* Barlow-Medium.ttf */,
 				C0E8BD972A9D644D008C4F57 /* Barlow-Regular.ttf */,
 				C0E8BD952A9D644C008C4F57 /* Barlow-SemiBold.ttf */,
 			);
@@ -190,7 +199,7 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		C0A62CA82A7D826A00CDFA0F /* Onboarding */ = {
+		C0A560532AD1F25A00EF99A9 /* OldOnboarding */ = {
 			isa = PBXGroup;
 			children = (
 				C0A62CA62A7D810300CDFA0F /* CatChatBubble.swift */,
@@ -199,6 +208,15 @@
 				C0A62CA92A7D82B100CDFA0F /* ChatTextInput.swift */,
 				C0B5E8D42A92B1480026FBB1 /* CatOrHumanBubble.swift */,
 				C0B5E8D62A92B3FF0026FBB1 /* RoundButton.swift */,
+			);
+			path = OldOnboarding;
+			sourceTree = "<group>";
+		};
+		C0A62CA82A7D826A00CDFA0F /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				C0A560532AD1F25A00EF99A9 /* OldOnboarding */,
+				C0A560542AD1F35800EF99A9 /* MainChatBubble.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -291,6 +309,7 @@
 				C0B83FAF2A3132EB0096003B /* Station.swift */,
 				C0B83FB12A3133610096003B /* Stamp.swift */,
 				C0EBBADD2A3A30C800001FCF /* Postcard.swift */,
+				C0A560562AD2005700EF99A9 /* Chat.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -328,6 +347,15 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		C0D8FEF22AD078FC00FE5F41 /* OldOnboarding */ = {
+			isa = PBXGroup;
+			children = (
+				C0DEA4AB2A79846800C640BD /* InitialChatPage.swift */,
+				C0DEA4B52A79BA4A00C640BD /* ChatPage.swift */,
+			);
+			path = OldOnboarding;
+			sourceTree = "<group>";
+		};
 		C0D91C442A4CCC5600080072 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,8 +375,8 @@
 		C0DEA4AA2A7982B800C640BD /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				C0DEA4AB2A79846800C640BD /* InitialChatPage.swift */,
-				C0DEA4B52A79BA4A00C640BD /* ChatPage.swift */,
+				C0D8FEF22AD078FC00FE5F41 /* OldOnboarding */,
+				C0D8FEF32AD0792A00FE5F41 /* OnboardingMainPage.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -478,6 +506,7 @@
 				C0A62CAC2A7D838300CDFA0F /* BasicSans-Black.otf in Resources */,
 				C0E8BD9A2A9D644D008C4F57 /* Barlow-Regular.ttf in Resources */,
 				C0E8BD982A9D644D008C4F57 /* Barlow-SemiBold.ttf in Resources */,
+				C0A560522AD1EBD500EF99A9 /* Barlow-Medium.ttf in Resources */,
 				C0C1C74A2A4CC5FE00E1A54F /* GoogleService-Info.plist in Resources */,
 				C0B83F742A312B370096003B /* Preview Assets.xcassets in Resources */,
 				C0B5E8D32A92A18F0026FBB1 /* LaunchScreen.storyboard in Resources */,
@@ -517,6 +546,7 @@
 				C0B83FA62A3131B60096003B /* LevelView.swift in Sources */,
 				C0B83FAE2A3132DD0096003B /* Route.swift in Sources */,
 				C0D91C4F2A4CD6DD00080072 /* GoogleSignInButton.swift in Sources */,
+				C0A560552AD1F35800EF99A9 /* MainChatBubble.swift in Sources */,
 				C0D91C532A4CD95900080072 /* NetworkImage.swift in Sources */,
 				C0B83F9E2A3130F00096003B /* PostcardsView.swift in Sources */,
 				C0DEA4B62A79BA4A00C640BD /* ChatPage.swift in Sources */,
@@ -526,9 +556,11 @@
 				C0EBBAE02A3A57F100001FCF /* BackButton.swift in Sources */,
 				C057F88C2ACF2D2400AC0814 /* TitleScreen.swift in Sources */,
 				C0D91C482A4CCCA100080072 /* AuthenticationViewModel.swift in Sources */,
+				C0D8FEF42AD0792A00FE5F41 /* OnboardingMainPage.swift in Sources */,
 				C0E8BD9D2A9D7C4C008C4F57 /* GoogleAppleSignInButtons.swift in Sources */,
 				C0B5E8D72A92B3FF0026FBB1 /* RoundButton.swift in Sources */,
 				C0B5E8D52A92B1480026FBB1 /* CatOrHumanBubble.swift in Sources */,
+				C0A560572AD2005700EF99A9 /* Chat.swift in Sources */,
 				C0EBBAE22A3A5E0F00001FCF /* ArrowButton.swift in Sources */,
 				C0D91C462A4CCC8D00080072 /* TicketViewModel.swift in Sources */,
 				C0B83FB02A3132EB0096003B /* Station.swift in Sources */,
@@ -710,7 +742,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -740,7 +772,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
