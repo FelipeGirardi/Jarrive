@@ -17,7 +17,8 @@ struct OnboardingMainPage: View {
           .frame(minWidth: 0, maxWidth: .infinity)
           .edgesIgnoringSafeArea(.all)
         
-        // MessagesView
+        // Messages view
+        MainChatBubbleView(userType: .cat, content: BubbleContent.text(TextBubble(textArray: [BubbleString(text: "Salut? Quis est la?", translation: "Oi? Quem é?")])))
         
         VStack {
           VStack {
