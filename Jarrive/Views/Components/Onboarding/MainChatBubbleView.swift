@@ -21,28 +21,26 @@ struct MainChatBubbleView: View {
       Image("OnboardingBG")
         .resizable()
         .aspectRatio(contentMode: .fill)
+        .ignoresSafeArea()
       
       Group {
         switch content {
         case .text(let textContent):
-          TextBubbleView(content: textContent)
+          TextBubbleView(content: textContent, userType: userType)
         case .option(let optionContent):
-          OptionBubbleView(content: optionContent)
+          OptionBubbleView(content: optionContent, userType: userType)
         case .response(let responseContent):
-          ResponseBubbleView(content: responseContent)
+          ResponseBubbleView(content: responseContent, userType: userType)
         case .audio(let audioContent):
-          AudioBubbleView(content: audioContent)
+          AudioBubbleView(content: audioContent, userType: userType)
         }
       }
-      .background(.white)
-      .roundedCorner(15, corners: userType == .cat ? [.topRight, .bottomLeft, .bottomRight] : [.topLeft, .topRight, .bottomLeft])
-        
     }
   }
 }
 
 struct MainChatBubbleView_Previews: PreviewProvider {
   static var previews: some View {
-    MainChatBubbleView(userType: .cat, content: BubbleContent.text(TextBubble(textArray: [BubbleString(text: "Je m'appelle", translation: "Eu me chamo"), BubbleString(text: "Thomas, e você?", translation: "")])))
+    MainChatBubbleView(userType: .cat, content: BubbleContent.text(TextBubble(textArray: [BubbleString(text: "Je m'appelle", translation: "Eu me chamo"), BubbleString(text: "Thomas, e você?", translation: nil)])))
   }
 }

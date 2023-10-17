@@ -23,16 +23,24 @@ struct TranslationBubbleView: View {
     return fullString
   }
   
+  func nTranslations() -> Int {
+    var nTranslations = 0
+    for _ in translations {
+      nTranslations += 1
+    }
+    return nTranslations
+  }
+  
   var body: some View {
     getTranslationsText
       .font(.custom("Barlow-Medium", size: 16))
       .multilineTextAlignment(.leading)
       .baselineOffset(2)
       .foregroundColor(.black)
-      .frame(maxWidth: 200, maxHeight: 50)
-      .minimumScaleFactor(0.1)
-      .padding(.top, 10)
-      .padding(.horizontal, 10)
+      .padding(.horizontal, 25)
+      .frame(maxHeight: 30.0 * Double(nTranslations()))
+      .minimumScaleFactor(0.5)
+      .padding(.top, 15)
       .background(Color("mainGreen"))
       .cornerRadius(30)
   }

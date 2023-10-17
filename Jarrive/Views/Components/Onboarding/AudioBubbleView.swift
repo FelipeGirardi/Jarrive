@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AudioBubbleView: View {
   var content: AudioBubble
+  var userType: BubbleUser
 
   var body: some View {
     Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
@@ -17,6 +18,6 @@ struct AudioBubbleView: View {
 
 struct AudioBubbleView_Previews: PreviewProvider {
   static var previews: some View {
-    AudioBubbleView(content: AudioBubble(audio: "Salut? Quis est la?"))
+    AudioBubbleView(content: AudioBubble(audio: "Salut? Quis est la?"), userType: BubbleUser.cat)
   }
 }

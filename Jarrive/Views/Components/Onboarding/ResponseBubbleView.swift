@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ResponseBubbleView: View {
   var content: ResponseBubble
+  var userType: BubbleUser
   
   var body: some View {
     Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
@@ -17,6 +18,6 @@ struct ResponseBubbleView: View {
 
 struct ResponseBubbleView_Previews: PreviewProvider {
   static var previews: some View {
-    ResponseBubbleView(content: ResponseBubble(textArray: [BubbleString(text: "Salut? Quis est la?", translation: "Oi? Quem é?")], respondedText: "Salut!"))
+    ResponseBubbleView(content: ResponseBubble(textArray: [BubbleString(text: "Salut? Quis est la?", translation: "Oi? Quem é?")], respondedText: "Salut!"), userType: BubbleUser.cat)
   }
 }
