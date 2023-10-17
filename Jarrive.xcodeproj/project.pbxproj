@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C02AC4302AD88E61006C4422 /* OnboardingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02AC42F2AD88E61006C4422 /* OnboardingData.swift */; };
 		C02D093E2A3B979200B5FA54 /* Barlow-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C02D093D2A3B979200B5FA54 /* Barlow-LightItalic.ttf */; };
 		C02D09422A3BA23100B5FA54 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D09412A3BA23100B5FA54 /* LoginView.swift */; };
 		C02D09442A3BA87000B5FA54 /* LoginInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D09432A3BA87000B5FA54 /* LoginInputView.swift */; };
@@ -16,6 +17,7 @@
 		C04274C22AD475C700261C74 /* AudioBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04274C12AD475C700261C74 /* AudioBubbleView.swift */; };
 		C057F88C2ACF2D2400AC0814 /* TitleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C057F88B2ACF2D2400AC0814 /* TitleScreen.swift */; };
 		C06EA4202A38DF3C00DF427E /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06EA41F2A38DF3C00DF427E /* RoundedCorner.swift */; };
+		C08AE7352ADE01DF0009B42F /* TranslationBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08AE7342ADE01DF0009B42F /* TranslationBubbleView.swift */; };
 		C0A560522AD1EBD500EF99A9 /* Barlow-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0A560512AD1EBD400EF99A9 /* Barlow-Medium.ttf */; };
 		C0A560552AD1F35800EF99A9 /* MainChatBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A560542AD1F35800EF99A9 /* MainChatBubbleView.swift */; };
 		C0A560572AD2005700EF99A9 /* BubbleContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A560562AD2005700EF99A9 /* BubbleContent.swift */; };
@@ -87,6 +89,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C02AC42F2AD88E61006C4422 /* OnboardingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingData.swift; sourceTree = "<group>"; };
 		C02D093D2A3B979200B5FA54 /* Barlow-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-LightItalic.ttf"; sourceTree = "<group>"; };
 		C02D09412A3BA23100B5FA54 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C02D09432A3BA87000B5FA54 /* LoginInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputView.swift; sourceTree = "<group>"; };
@@ -96,6 +99,7 @@
 		C04274C12AD475C700261C74 /* AudioBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioBubbleView.swift; sourceTree = "<group>"; };
 		C057F88B2ACF2D2400AC0814 /* TitleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleScreen.swift; sourceTree = "<group>"; };
 		C06EA41F2A38DF3C00DF427E /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		C08AE7342ADE01DF0009B42F /* TranslationBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationBubbleView.swift; sourceTree = "<group>"; };
 		C0A560512AD1EBD400EF99A9 /* Barlow-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Medium.ttf"; sourceTree = "<group>"; };
 		C0A560542AD1F35800EF99A9 /* MainChatBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainChatBubbleView.swift; sourceTree = "<group>"; };
 		C0A560562AD2005700EF99A9 /* BubbleContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleContent.swift; sourceTree = "<group>"; };
@@ -229,6 +233,7 @@
 				C04274BD2AD475A900261C74 /* OptionBubbleView.swift */,
 				C04274BF2AD475B700261C74 /* ResponseBubbleView.swift */,
 				C04274C12AD475C700261C74 /* AudioBubbleView.swift */,
+				C08AE7342ADE01DF0009B42F /* TranslationBubbleView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -322,6 +327,7 @@
 				C0B83FB12A3133610096003B /* Stamp.swift */,
 				C0EBBADD2A3A30C800001FCF /* Postcard.swift */,
 				C0A560562AD2005700EF99A9 /* BubbleContent.swift */,
+				C02AC42F2AD88E61006C4422 /* OnboardingData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -580,12 +586,14 @@
 				C0B83FB02A3132EB0096003B /* Station.swift in Sources */,
 				C04274BE2AD475A900261C74 /* OptionBubbleView.swift in Sources */,
 				C04274BC2AD4759000261C74 /* TextBubbleView.swift in Sources */,
+				C02AC4302AD88E61006C4422 /* OnboardingData.swift in Sources */,
 				C0DEA4AC2A79846800C640BD /* InitialChatPage.swift in Sources */,
 				C0B83F9C2A3130DD0096003B /* TicketsView.swift in Sources */,
 				C0EBBADE2A3A30C800001FCF /* Postcard.swift in Sources */,
 				C0B83FB22A3133610096003B /* Stamp.swift in Sources */,
 				C0B83FAA2A3131E00096003B /* StampView.swift in Sources */,
 				C0B83F6F2A312B340096003B /* StampsView.swift in Sources */,
+				C08AE7352ADE01DF0009B42F /* TranslationBubbleView.swift in Sources */,
 				C0EBBAE42A3A67E800001FCF /* Line.swift in Sources */,
 				C06EA4202A38DF3C00DF427E /* RoundedCorner.swift in Sources */,
 				C0A62CA72A7D810300CDFA0F /* CatChatBubble.swift in Sources */,

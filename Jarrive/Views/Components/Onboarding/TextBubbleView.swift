@@ -9,15 +9,15 @@ import SwiftUI
 
 struct TextBubbleView: View {
   var content: TextBubble
+  @State var showTranslations: Bool = false
   
   var getBubbleText: some View {
     var fullString = Text("")
     
-    for (idx, str) in content.textArray.enumerated() {
+    for str in content.textArray {
       fullString = fullString +
-      Text("[\(str.text)](myappurl://action\(idx))")
+      Text(str.text)
         .underline(str.translation != nil)
-        .baselineOffset(str.translation != nil ? 2 : 0)
       fullString = fullString + Text(" ")
     }
     
@@ -25,22 +25,29 @@ struct TextBubbleView: View {
   }
   
   var body: some View {
-    Group {
+    VStack(spacing: 0) {
+      TranslationBubbleView(translations: content.textArray.filter({$0.translation != nil}))
+        .opacity(showTranslations ? 1 : 0)
+      
       getBubbleText
         .font(.custom("Barlow-Medium", size: 16))
+        .minimumScaleFactor(0.1)
         .multilineTextAlignment(.leading)
+        .baselineOffset(2)
         .foregroundColor(Color("mainDarkBlue"))
-        .frame(maxWidth: 300, idealHeight: 36, maxHeight: .infinity)
+        .frame(maxWidth: 200, maxHeight: 50)
+        .minimumScaleFactor(0.1)
         .padding(.all, 10)
+        .cornerRadius(10)
+        .onTapGesture {
+          showTranslations.toggle()
+        }
     }
-//    .onOpenURL { link in
-//      print(link)
-//    }
   }
 }
 
 struct TextBubbleView_Previews: PreviewProvider {
   static var previews: some View {
-    TextBubbleView(content: TextBubble(textArray: [BubbleString(text: "Salut? Quis est la?", translation: "Oi? Quem é?"), BubbleString(text: "Salut? Quis est la?", translation: "Oi? Quem é?"), BubbleString(text: "Salut? Quis est la?", translation: "Oi? Quem é?")]))
+    TextBubbleView(content: TextBubble(textArray: [BubbleString(text: "Salut? Quis est la?", translation: "Oi? Quem é?"), BubbleString(text: "Lalala", translation: nil)]))
   }
 }

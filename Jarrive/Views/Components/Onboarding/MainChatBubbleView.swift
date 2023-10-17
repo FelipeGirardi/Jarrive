@@ -43,6 +43,6 @@ struct MainChatBubbleView: View {
 
 struct MainChatBubbleView_Previews: PreviewProvider {
   static var previews: some View {
-    MainChatBubbleView(userType: .cat, content: BubbleContent.text(TextBubble(textArray: [BubbleString(text: "Salut? Quis est la?", translation: "Oi? Quem é?")])))
+    MainChatBubbleView(userType: .cat, content: BubbleContent.text(TextBubble(textArray: [BubbleString(text: "Je m'appelle", translation: "Eu me chamo"), BubbleString(text: "Thomas, e você?", translation: "")])))
   }
 }
