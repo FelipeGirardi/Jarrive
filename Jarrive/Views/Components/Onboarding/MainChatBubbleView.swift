@@ -28,11 +28,11 @@ struct MainChatBubbleView: View {
         case .text(let textContent):
           TextBubbleView(content: textContent, userType: userType)
         case .option(let optionContent):
-          OptionBubbleView(content: optionContent, userType: userType)
+          OptionBubbleView(content: optionContent)
         case .response(let responseContent):
-          ResponseBubbleView(content: responseContent, userType: userType)
+          ResponseBubbleView(content: responseContent)
         case .audio(let audioContent):
-          AudioBubbleView(content: audioContent, userType: userType)
+          AudioBubbleView(content: audioContent)
         }
       }
     }
@@ -41,6 +41,6 @@ struct MainChatBubbleView: View {
 
 struct MainChatBubbleView_Previews: PreviewProvider {
   static var previews: some View {
-    MainChatBubbleView(userType: .cat, content: BubbleContent.text(TextBubble(textArray: [BubbleString(text: "Je m'appelle", translation: "Eu me chamo"), BubbleString(text: "Thomas, e você?", translation: nil)])))
+    MainChatBubbleView(userType: .cat, content: BubbleContent.response(ResponseBubble(textArray: [BubbleString(text: "Salut? Quis est la?", translation: nil)], respondedText: "bonjour ☀️ ? ou bonsoir 🌙 ?")))
   }
 }

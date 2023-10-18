@@ -51,13 +51,12 @@ struct TextBubbleView: View {
           .multilineTextAlignment(.leading)
           .baselineOffset(2)
           .foregroundColor(Color("mainDarkBlue"))
-          .frame(maxHeight: 30.0 * ceil(Double(nTextCharacters())/40.0))
-          .minimumScaleFactor(0.1)
+          .frame(maxWidth: nTextCharacters() <= 40 ? 7.0 * Double(nTextCharacters()) : 250, maxHeight: 30.0 + (15.0 * floor(Double(nTextCharacters())/40.0)))
           .padding(.all, 10)
           .background(.white)
-          .roundedCorner(15, corners: userType == .cat ? [.topRight, .bottomLeft, .bottomRight] : [.topLeft, .topRight, .bottomLeft])
+          .roundedCorner(20, corners: userType == .cat ? [.topRight, .bottomLeft, .bottomRight] : [.topLeft, .topRight, .bottomLeft])
           .padding(.leading, 10)
-          .padding(.trailing, 100)
+          .padding(.trailing, 50)
           .onTapGesture {
             showTranslations.toggle()
           }
