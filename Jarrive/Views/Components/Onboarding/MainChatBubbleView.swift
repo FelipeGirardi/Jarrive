@@ -33,6 +33,8 @@ struct MainChatBubbleView: View {
           ResponseBubbleView(content: responseContent)
         case .audio(let audioContent):
           AudioBubbleView(content: audioContent)
+        case .image(let imageContent):
+          ImageBubbleView(content: imageContent)
         }
       }
     }

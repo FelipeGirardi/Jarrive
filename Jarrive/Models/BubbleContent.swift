@@ -30,9 +30,14 @@ struct AudioBubble: Hashable {
   var audio: String
 }
 
+struct ImageBubble: Hashable {
+  var image: String
+}
+
 enum BubbleContent {
   case text(TextBubble)
   case option(OptionBubble)
   case response(ResponseBubble)
   case audio(AudioBubble)
+  case image(ImageBubble)
 }
