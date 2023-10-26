@@ -57,9 +57,13 @@ struct OnboardingMainPage: View {
             Spacer()
           }
         }
+        .brightness(isBlurViewOn ? -0.2 : 0)
         .blur(radius: isBlurViewOn ? 20 : 0)
         
-        UnderlinedWordsBlurView(isBlurViewOn: $isBlurViewOn)
+        if isBlurViewOn {
+          UnderlinedWordsBlurView(isBlurViewOn: $isBlurViewOn)
+        }
+        
       }
     }
   }

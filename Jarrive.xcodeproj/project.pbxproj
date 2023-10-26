@@ -16,6 +16,9 @@
 		C04274C02AD475B700261C74 /* ResponseBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04274BF2AD475B700261C74 /* ResponseBubbleView.swift */; };
 		C04274C22AD475C700261C74 /* AudioBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04274C12AD475C700261C74 /* AudioBubbleView.swift */; };
 		C057F88C2ACF2D2400AC0814 /* TitleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C057F88B2ACF2D2400AC0814 /* TitleScreen.swift */; };
+		C05C76BB2AE890DA00698C4F /* ImageBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C76BA2AE890DA00698C4F /* ImageBubbleView.swift */; };
+		C05C76BD2AE8989400698C4F /* UnderlinedWordsBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C76BC2AE8989400698C4F /* UnderlinedWordsBlurView.swift */; };
+		C05C76BF2AE89AD900698C4F /* Barlow-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C05C76BE2AE89AD900698C4F /* Barlow-SemiBoldItalic.ttf */; };
 		C06EA4202A38DF3C00DF427E /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06EA41F2A38DF3C00DF427E /* RoundedCorner.swift */; };
 		C08AE7352ADE01DF0009B42F /* TranslationBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08AE7342ADE01DF0009B42F /* TranslationBubbleView.swift */; };
 		C0A560522AD1EBD500EF99A9 /* Barlow-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0A560512AD1EBD400EF99A9 /* Barlow-Medium.ttf */; };
@@ -98,6 +101,9 @@
 		C04274BF2AD475B700261C74 /* ResponseBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBubbleView.swift; sourceTree = "<group>"; };
 		C04274C12AD475C700261C74 /* AudioBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioBubbleView.swift; sourceTree = "<group>"; };
 		C057F88B2ACF2D2400AC0814 /* TitleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleScreen.swift; sourceTree = "<group>"; };
+		C05C76BA2AE890DA00698C4F /* ImageBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBubbleView.swift; sourceTree = "<group>"; };
+		C05C76BC2AE8989400698C4F /* UnderlinedWordsBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedWordsBlurView.swift; sourceTree = "<group>"; };
+		C05C76BE2AE89AD900698C4F /* Barlow-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		C06EA41F2A38DF3C00DF427E /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		C08AE7342ADE01DF0009B42F /* TranslationBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationBubbleView.swift; sourceTree = "<group>"; };
 		C0A560512AD1EBD400EF99A9 /* Barlow-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Medium.ttf"; sourceTree = "<group>"; };
@@ -190,6 +196,7 @@
 				C0A560512AD1EBD400EF99A9 /* Barlow-Medium.ttf */,
 				C0E8BD972A9D644D008C4F57 /* Barlow-Regular.ttf */,
 				C0E8BD952A9D644C008C4F57 /* Barlow-SemiBold.ttf */,
+				C05C76BE2AE89AD900698C4F /* Barlow-SemiBoldItalic.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -220,6 +227,7 @@
 				C0A62CA92A7D82B100CDFA0F /* ChatTextInput.swift */,
 				C0B5E8D42A92B1480026FBB1 /* CatOrHumanBubble.swift */,
 				C0B5E8D62A92B3FF0026FBB1 /* RoundButton.swift */,
+				C05C76BA2AE890DA00698C4F /* ImageBubbleView.swift */,
 			);
 			path = OldOnboarding;
 			sourceTree = "<group>";
@@ -234,6 +242,7 @@
 				C04274BF2AD475B700261C74 /* ResponseBubbleView.swift */,
 				C04274C12AD475C700261C74 /* AudioBubbleView.swift */,
 				C08AE7342ADE01DF0009B42F /* TranslationBubbleView.swift */,
+				C05C76BC2AE8989400698C4F /* UnderlinedWordsBlurView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -530,6 +539,7 @@
 				C0B5E8D32A92A18F0026FBB1 /* LaunchScreen.storyboard in Resources */,
 				C0B83F712A312B370096003B /* Assets.xcassets in Resources */,
 				C0DEA4AE2A79886B00C640BD /* BasicSans-Regular.otf in Resources */,
+				C05C76BF2AE89AD900698C4F /* Barlow-SemiBoldItalic.ttf in Resources */,
 				C0E8BD992A9D644D008C4F57 /* Barlow-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -564,6 +574,7 @@
 				C0B83FA62A3131B60096003B /* LevelView.swift in Sources */,
 				C0B83FAE2A3132DD0096003B /* Route.swift in Sources */,
 				C0D91C4F2A4CD6DD00080072 /* GoogleSignInButton.swift in Sources */,
+				C05C76BB2AE890DA00698C4F /* ImageBubbleView.swift in Sources */,
 				C0A560552AD1F35800EF99A9 /* MainChatBubbleView.swift in Sources */,
 				C0D91C532A4CD95900080072 /* NetworkImage.swift in Sources */,
 				C04274C22AD475C700261C74 /* AudioBubbleView.swift in Sources */,
@@ -583,6 +594,7 @@
 				C0A560572AD2005700EF99A9 /* BubbleContent.swift in Sources */,
 				C0EBBAE22A3A5E0F00001FCF /* ArrowButton.swift in Sources */,
 				C0D91C462A4CCC8D00080072 /* TicketViewModel.swift in Sources */,
+				C05C76BD2AE8989400698C4F /* UnderlinedWordsBlurView.swift in Sources */,
 				C0B83FB02A3132EB0096003B /* Station.swift in Sources */,
 				C04274BE2AD475A900261C74 /* OptionBubbleView.swift in Sources */,
 				C04274BC2AD4759000261C74 /* TextBubbleView.swift in Sources */,

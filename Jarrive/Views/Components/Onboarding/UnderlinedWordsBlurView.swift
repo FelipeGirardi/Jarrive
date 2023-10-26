@@ -14,13 +14,17 @@ struct UnderlinedWordsBlurView: View {
     VStack {
       Spacer()
       
-      HStack {
-        VStack {
+      HStack(spacing: 40) {
+        VStack(alignment: .leading, spacing: 20) {
           Text("Palavras sublinhadas\nindicam novas palavras!")
             .font(.custom("Barlow-SemiBoldItalic", size: 15))
+            .foregroundColor(.white)
           
           Text("Pressione para\naparecer a tradução.")
             .font(.custom("Barlow-SemiBoldItalic", size: 15))
+            .foregroundColor(.white)
+          
+          Spacer()
         }
         
         VStack {
@@ -28,8 +32,8 @@ struct UnderlinedWordsBlurView: View {
             .font(.custom("Barlow-SemiBold", size: 16))
             .multilineTextAlignment(.leading)
             .foregroundColor(.black)
-            .frame(maxHeight: 30)
-            .padding(.horizontal, 10)
+            .frame(maxHeight: 40)
+            .padding(.horizontal, 20)
             .background(.white)
             .cornerRadius(30)
           
@@ -37,14 +41,18 @@ struct UnderlinedWordsBlurView: View {
             .font(.custom("Barlow-SemiBold", size: 16))
             .underline()
             .multilineTextAlignment(.leading)
-            .foregroundColor(.black)
+            .foregroundColor(.white)
             .frame(maxHeight: 30)
           
           Image("WhitePaw")
             .resizable()
-            .frame(width: 40, height: 60)
+            .frame(width: 60, height: 60)
+            .offset(x: 20, y: -20)
+          
+          Spacer()
         }
       }
+      .frame(height: 150)
       
       Spacer()
       
@@ -52,7 +60,7 @@ struct UnderlinedWordsBlurView: View {
         .font(.custom("Barlow-SemiBold", size: 16))
         .multilineTextAlignment(.leading)
         .foregroundColor(.black)
-        .frame(maxHeight: 30)
+        .frame(maxHeight: 40)
         .padding(.horizontal, 30)
         .background(.white)
         .cornerRadius(30)
