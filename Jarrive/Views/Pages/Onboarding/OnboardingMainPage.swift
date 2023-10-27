@@ -9,11 +9,12 @@ import SwiftUI
 
 struct OnboardingMainPage: View {
   @State var isBlurViewOn: Bool = false
-  @State var currentMessage: Int = 4
-  @State var messagesTimer: Int = 3
-  let onboardingData = OnboardingData()
+  @State var currentMessage: Int = 0
+  @State var messagesTimer: Int = 2
+  @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+  @State var onboardingData = OnboardingData()
   
-  func navigationBarView(g: GeometryProxy) -> some View {
+  func navigationBarView() -> some View {
     VStack {
       VStack {
         Spacer()
@@ -38,7 +39,7 @@ struct OnboardingMainPage: View {
           Spacer()
         }
       }
-      .frame(maxWidth: .infinity, maxHeight: g.size.height * 0.1)
+      .frame(maxWidth: .infinity, maxHeight: 100)
       .padding(.leading, 25)
       .padding(.bottom, 10)
       .background(.white)
@@ -50,7 +51,7 @@ struct OnboardingMainPage: View {
   }
   
   var body: some View {
-    GeometryReader { g in
+//    GeometryReader { g in
       ZStack {
         Group {
           Image("OnboardingBG")
@@ -60,20 +61,29 @@ struct OnboardingMainPage: View {
             .edgesIgnoringSafeArea(.all)
           
           // Messages view
-          VStack {
-            Spacer()
-            
-            VStack(spacing: 10) {
-              ForEach(0...currentMessage, id: \.self) { i in
-                MainChatBubbleView(userType: .cat, content: onboardingData.catChatMessages[i])
+//          ScrollView {
+              VStack {
+                Spacer()
+                
+                VStack(spacing: 10) {
+                  ForEach(0...currentMessage, id: \.self) { i in
+                    withAnimation {
+                      MainChatBubbleView(content: onboardingData.catChatMessages[i])
+                    }
+                  }
+                }
+                
+                // Text Field for sending messages
               }
-            }
-            
-            // Text Field for sending messages
-          }
-          .padding(.bottom, g.size.height * 0.15)
+              .padding(.bottom, 100)
+//              .frame(maxHeight: .infinity)
+//              .edgesIgnoringSafeArea(.top)
+//              .frame(minHeight: UIScreen.main.bounds.height)
+//          }
+//          .frame(width: UIScreen.main.bounds.width)
+//          .edgesIgnoringSafeArea(.all)
           
-          navigationBarView(g: g)
+          navigationBarView()
         }
         .brightness(isBlurViewOn ? -0.2 : 0)
         .blur(radius: isBlurViewOn ? 20 : 0)
@@ -83,7 +93,24 @@ struct OnboardingMainPage: View {
         }
         
       }
-    }
+      .onReceive(timer) { _ in
+        if messagesTimer > 0 {
+          messagesTimer -= 1
+        } else {
+          messagesTimer = 3
+          currentMessage += 1
+          
+          if currentMessage == 1 {
+            isBlurViewOn.toggle()
+          }
+          
+          if onboardingData.pauseMessageFluxIndexes.contains(currentMessage) {
+            timer.upstream.connect().cancel()
+//            onboardingData.catChatMessages[currentMessage+1] = BubbleContent.response(ResponseBubble(textArray: [BubbleString(text: "Bonjour", translation: nil)], respondedText: "Bonjour ☀️ ? ou bonsoir 🌙 ?"))
+          }
+        }
+      }
+//    }
   }
 }
 

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct TextBubbleView: View {
   var content: TextBubble
-  var userType: BubbleUser
   @State var showTranslations: Bool = false
   @State var bubbleHeight: Double = 0.0
   
@@ -37,8 +36,8 @@ struct TextBubbleView: View {
             .baselineOffset(2)
             .foregroundColor(Color("mainDarkBlue"))
             .padding(.all, 10)
-            .background(.blue)
-            .roundedCorner(20, corners: userType == .cat ? [.topRight, .bottomLeft, .bottomRight] : [.topLeft, .topRight, .bottomLeft])
+            .background(.white)
+            .roundedCorner(20, corners: content.type == .cat ? [.topRight, .bottomLeft, .bottomRight] : [.topLeft, .topRight, .bottomLeft])
             .padding(.leading, 10)
             .padding(.trailing, 50)
             .onTapGesture {
@@ -67,6 +66,6 @@ struct TextBubbleView: View {
 
 struct TextBubbleView_Previews: PreviewProvider {
   static var previews: some View {
-    TextBubbleView(content: TextBubble(textArray: [BubbleString(text: "Salut? Quis est la?", translation: "Oi? Quem é?")]), userType: BubbleUser.cat)
+    TextBubbleView(content: TextBubble(textArray: [BubbleString(text: "Salut? Quis est la?", translation: "Oi? Quem é?")], type: .cat))
   }
 }

@@ -58,9 +58,9 @@ struct OptionBubbleView: View {
                 Text(option)
                   .font(.custom("Barlow-Medium", size: 16))
                   .multilineTextAlignment(.leading)
-//                  .minimumScaleFactor(0.5)
+                  .minimumScaleFactor(0.5)
                   .foregroundColor(Color("mainDarkBlue"))
-//                  .frame(maxHeight: 25)
+                  .frame(maxHeight: 30)
                   .padding(.all, 10)
                   .background(Color("mainLightBlue"))
                   .cornerRadius(20)
@@ -72,9 +72,9 @@ struct OptionBubbleView: View {
               Spacer()
             }
           }
-          .frame(maxWidth: Double(content.options.count) * 110.0)
+          .frame(maxWidth: Double(content.options.count) * 120.0)
           .padding(.all, 10)
-          .background(.blue)
+          .background(.white)
           .roundedCorner(20, corners: [.topRight, .bottomLeft, .bottomRight])
           .padding(.leading, 10)
           .padding(.trailing, 50)
@@ -104,6 +104,6 @@ struct OptionBubbleView: View {
 
 struct OptionBubbleView_Previews: PreviewProvider {
   static var previews: some View {
-    OptionBubbleView(content: OptionBubble(textArray: [BubbleString(text: "Salut? Quis est la?", translation: "Oi? Quem é?")], options: ["Train 🚂", "Croissant 🥐"]))
+    OptionBubbleView(content: OptionBubble(textArray: [BubbleString(text: "Salut? Quis est la?", translation: "Oi? Quem é?")], options: ["Train 🚂", "Croissant 🥐", "Carte postale ✉️"]))
   }
 }

@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum BubbleUser {
+  case cat
+  case user
+}
+
 struct BubbleString: Hashable {
   var text: String
   var translation: String?
@@ -14,6 +19,7 @@ struct BubbleString: Hashable {
 
 struct TextBubble: Hashable {
   var textArray: [BubbleString]
+  var type: BubbleUser
 }
 
 struct OptionBubble: Hashable {
@@ -35,9 +41,9 @@ struct ImageBubble: Hashable {
 }
 
 enum BubbleContent {
-  case text(TextBubble)
-  case option(OptionBubble)
-  case response(ResponseBubble)
-  case audio(AudioBubble)
-  case image(ImageBubble)
+  case text(TextBubble?)
+  case option(OptionBubble?)
+  case response(ResponseBubble?)
+  case audio(AudioBubble?)
+  case image(ImageBubble?)
 }

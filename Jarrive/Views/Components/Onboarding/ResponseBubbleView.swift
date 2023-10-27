@@ -42,9 +42,10 @@ struct ResponseBubbleView: View {
           Text(content.respondedText)
             .font(.custom("Barlow-Medium", size: 16))
             .multilineTextAlignment(.leading)
-            .minimumScaleFactor(0.1)
+            .minimumScaleFactor(0.5)
             .foregroundColor(Color("defaultDarkerGray"))
-            .frame(maxHeight: 40.0 * ceil(Double(content.respondedText.count)/40.0))
+//            .frame(maxWidth: 200)
+//            .frame(maxHeight: 20.0 * ceil(Double(content.respondedText.count)/20.0))
             .padding(.all, 10)
             .background(Color("defaultLightGray"))
             .cornerRadius(20)
@@ -56,13 +57,15 @@ struct ResponseBubbleView: View {
           getBubbleText
             .font(.custom("Barlow-Medium", size: 16))
             .multilineTextAlignment(.leading)
-            .minimumScaleFactor(0.1)
-            .baselineOffset(2)
+//            .minimumScaleFactor(0.1)
+//            .baselineOffset(2)
             .foregroundColor(Color("mainDarkBlue"))
         }
       }
-      .frame(maxWidth: content.respondedText.count <= 40 ? 7.0 * Double(content.respondedText.count) : 250, maxHeight: 80.0 + (40.0 * floor(Double(nTextCharacters())/40.0)))
+//      .frame(maxWidth: Double(content.respondedText.count * 120))
+//      .frame(maxWidth: content.respondedText.count <= 40 ? 10.0 * Double(content.respondedText.count) : 250)
       .padding(.all, 10)
+      .frame(maxWidth: 200)
       .background(.white)
       .roundedCorner(20, corners: [.topLeft, .topRight, .bottomLeft])
       .padding(.trailing, 10)
@@ -73,6 +76,6 @@ struct ResponseBubbleView: View {
 
 struct ResponseBubbleView_Previews: PreviewProvider {
   static var previews: some View {
-    ResponseBubbleView(content: ResponseBubble(textArray: [BubbleString(text: "Salut? Quis est la?", translation: nil)], respondedText: "bonjour ☀️ ? ou bonsoir 🌙 ?"))
+    ResponseBubbleView(content: ResponseBubble(textArray: [BubbleString(text: "Chat 😸", translation: nil)], respondedText: "Human ou chat? "))
   }
 }

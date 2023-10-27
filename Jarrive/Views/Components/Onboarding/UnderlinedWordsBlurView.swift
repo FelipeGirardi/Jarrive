@@ -15,7 +15,7 @@ struct UnderlinedWordsBlurView: View {
       Spacer()
       
       HStack(spacing: 40) {
-        VStack(alignment: .leading, spacing: 20) {
+        VStack(alignment: .leading, spacing: 40) {
           Text("Palavras sublinhadas\nindicam novas palavras!")
             .font(.custom("Barlow-SemiBoldItalic", size: 15))
             .foregroundColor(.white)
@@ -52,7 +52,7 @@ struct UnderlinedWordsBlurView: View {
           Spacer()
         }
       }
-      .frame(height: 150)
+      .frame(height: 200)
       
       Spacer()
       
