@@ -17,26 +17,17 @@ struct MainChatBubbleView: View {
   var content: BubbleContent
   
   var body: some View {
-    ZStack {
-      Image("OnboardingBG")
-        .resizable()
-        .aspectRatio(contentMode: .fill)
-        .ignoresSafeArea()
-      
-      Group {
-        switch content {
-        case .text(let textContent):
-          TextBubbleView(content: textContent, userType: userType)
-        case .option(let optionContent):
-          OptionBubbleView(content: optionContent)
-        case .response(let responseContent):
-          ResponseBubbleView(content: responseContent)
-        case .audio(let audioContent):
-          AudioBubbleView(content: audioContent)
-        case .image(let imageContent):
-          ImageBubbleView(content: imageContent)
-        }
-      }
+    switch content {
+    case .text(let textContent):
+      TextBubbleView(content: textContent, userType: userType)
+    case .option(let optionContent):
+      OptionBubbleView(content: optionContent)
+    case .response(let responseContent):
+      ResponseBubbleView(content: responseContent)
+    case .audio(let audioContent):
+      AudioBubbleView(content: audioContent)
+    case .image(let imageContent):
+      ImageBubbleView(content: imageContent)
     }
   }
 }

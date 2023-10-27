@@ -14,10 +14,11 @@ struct TranslationBubbleView: View {
     var fullString = Text("")
     
     for str in translations {
-      fullString = fullString +
-      Text(str.text).underline()
-      fullString = fullString +
-        Text(": " + str.translation! + "\n")
+      fullString = fullString + Text(str.text).underline()
+      fullString = fullString + Text(": " + str.translation!)
+      if translations.last != str {
+        fullString = fullString + Text("\n")
+      }
     }
     
     return fullString
@@ -34,15 +35,16 @@ struct TranslationBubbleView: View {
   var body: some View {
     getTranslationsText
       .font(.custom("Barlow-Medium", size: 16))
+      .minimumScaleFactor(0.1)
       .multilineTextAlignment(.leading)
       .baselineOffset(2)
       .foregroundColor(.black)
-      .padding(.horizontal, 25)
-      .frame(maxHeight: 30.0 * Double(nTranslations()))
-      .minimumScaleFactor(0.5)
-      .padding(.top, 15)
+      .padding(.all, 10)
+//      .padding(.top, 10)
       .background(Color("mainGreen"))
       .cornerRadius(30)
+//      .frame(maxHeight: 30.0 * Double(nTranslations()))
+      
   }
 }
 
