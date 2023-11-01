@@ -11,6 +11,8 @@ struct OptionBubbleView: View {
   var content: OptionBubble
   @State var showTranslations: Bool = false
   @State var bubbleHeight: Double = 0.0
+  @Binding var onboardingData: OnboardingData
+  @Binding var currentMessage: Int
   
   var getBubbleText: some View {
     var fullString = Text("")
@@ -22,6 +24,15 @@ struct OptionBubbleView: View {
       fullString = fullString + Text(" ")
     }
     
+    return fullString
+  }
+  
+  func getBubbleTextString() -> String {
+    var fullString = ""
+    for str in content.textArray {
+      fullString = fullString + str.text
+      fullString = fullString + (str == content.textArray.last ? "" : " ")
+    }
     return fullString
   }
   
@@ -60,20 +71,21 @@ struct OptionBubbleView: View {
                   .multilineTextAlignment(.leading)
                   .minimumScaleFactor(0.5)
                   .foregroundColor(Color("mainDarkBlue"))
-                  .frame(maxHeight: 30)
-                  .padding(.all, 10)
+                  .frame(maxHeight: 25)
+                  .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                   .background(Color("mainLightBlue"))
                   .cornerRadius(20)
                   .onTapGesture {
-                    print("option")
+                    onboardingData.catChatMessages[currentMessage+1] = BubbleContent.response(ResponseBubble(textArray: [BubbleString(text: option, translation: nil)], respondedText: getBubbleTextString()))
+//                    onboardingData.catChatMessages[currentMessage+2] = BubbleContent.text(TextBubble(textArray: [BubbleString(text: "\(option), allors!", translation: (option == "Bonjour" ? "Bom dia" : "Boa noite") + ", então!")], type: .cat))
                   }
               }
               
               Spacer()
             }
           }
-          .frame(maxWidth: Double(content.options.count) * 120.0)
-          .padding(.all, 10)
+          .frame(maxWidth: Double(content.options.count) * 110.0)
+          .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 0))
           .background(.white)
           .roundedCorner(20, corners: [.topRight, .bottomLeft, .bottomRight])
           .padding(.leading, 10)
@@ -104,6 +116,6 @@ struct OptionBubbleView: View {
 
 struct OptionBubbleView_Previews: PreviewProvider {
   static var previews: some View {
-    OptionBubbleView(content: OptionBubble(textArray: [BubbleString(text: "Salut? Quis est la?", translation: "Oi? Quem é?")], options: ["Train 🚂", "Croissant 🥐", "Carte postale ✉️"]))
+    OptionBubbleView(content: OptionBubble(textArray: [BubbleString(text: "Salut? Quis est la?", translation: "Oi? Quem é?")], options: ["Train 🚂", "Croissant 🥐", "Carte postale ✉️"]), onboardingData: .constant(OnboardingData()), currentMessage: .constant(1))
   }
 }

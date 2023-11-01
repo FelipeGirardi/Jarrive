@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct OnboardingData {
+struct OnboardingData: Equatable {
+  static func == (lhs: OnboardingData, rhs: OnboardingData) -> Bool {
+    return lhs.catChatMessages == rhs.catChatMessages
+  }
+  
   var catChatMessages = [
     BubbleContent.text(TextBubble(textArray: [BubbleString(text: "Salut? Quis est la?", translation: "Oi? Quem é?")], type: .cat)),
     BubbleContent.option(OptionBubble(textArray: [BubbleString(text: "Bonjour", translation: "Bom dia"),  BubbleString(text: "☀️ ou ", translation: nil), BubbleString(text: "bonsoir", translation: "Boa noite"), BubbleString(text: "🌙 ?", translation: nil)], options: ["Bonjour", "Bonsoir"])),

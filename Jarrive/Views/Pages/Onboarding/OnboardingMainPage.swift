@@ -25,12 +25,12 @@ struct OnboardingMainPage: View {
             .padding(.horizontal, 7)
           
           VStack {
-            Text("Issa - Le tuteur de Thomas")
+            Text("Tutor do Thomas")
               .font(.custom("Barlow-Medium", size: 16))
               .foregroundColor(Color("mainDarkBlue"))
               .frame(maxWidth: .infinity, alignment: .leading)
             
-            Text("en écrivant...")
+            Text("escrevendo...")
               .font(.custom("Barlow-Medium", size: 12))
               .foregroundColor(Color("mainDarkBlue"))
               .frame(maxWidth: .infinity, alignment: .leading)
@@ -68,7 +68,7 @@ struct OnboardingMainPage: View {
                 VStack(spacing: 10) {
                   ForEach(0...currentMessage, id: \.self) { i in
                     withAnimation {
-                      MainChatBubbleView(content: onboardingData.catChatMessages[i])
+                      MainChatBubbleView(content: onboardingData.catChatMessages[i], onboardingData: $onboardingData, currentMessage: $currentMessage)
                     }
                   }
                 }
@@ -109,6 +109,9 @@ struct OnboardingMainPage: View {
 //            onboardingData.catChatMessages[currentMessage+1] = BubbleContent.response(ResponseBubble(textArray: [BubbleString(text: "Bonjour", translation: nil)], respondedText: "Bonjour ☀️ ? ou bonsoir 🌙 ?"))
           }
         }
+      }
+      .onChange(of: onboardingData) { _ in
+        timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
       }
 //    }
   }

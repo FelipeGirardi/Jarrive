@@ -44,9 +44,9 @@ struct ResponseBubbleView: View {
             .multilineTextAlignment(.leading)
             .minimumScaleFactor(0.5)
             .foregroundColor(Color("defaultDarkerGray"))
-//            .frame(maxWidth: 200)
+            .frame(maxHeight: 25)
 //            .frame(maxHeight: 20.0 * ceil(Double(content.respondedText.count)/20.0))
-            .padding(.all, 10)
+            .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
             .background(Color("defaultLightGray"))
             .cornerRadius(20)
         }
@@ -64,8 +64,8 @@ struct ResponseBubbleView: View {
       }
 //      .frame(maxWidth: Double(content.respondedText.count * 120))
 //      .frame(maxWidth: content.respondedText.count <= 40 ? 10.0 * Double(content.respondedText.count) : 250)
-      .padding(.all, 10)
-      .frame(maxWidth: 200)
+      .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 10))
+      .frame(maxWidth: 180)
       .background(.white)
       .roundedCorner(20, corners: [.topLeft, .topRight, .bottomLeft])
       .padding(.trailing, 10)
