@@ -13,6 +13,7 @@ struct OnboardingMainPage: View {
   @State var messagesTimer: Int = 2
   @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
   @State var onboardingData = OnboardingData()
+  @State var textFieldText = ""
   
   func navigationBarView() -> some View {
     VStack {
@@ -30,10 +31,12 @@ struct OnboardingMainPage: View {
               .foregroundColor(Color("mainDarkBlue"))
               .frame(maxWidth: .infinity, alignment: .leading)
             
-            Text("escrevendo...")
-              .font(.custom("Barlow-Medium", size: 12))
-              .foregroundColor(Color("mainDarkBlue"))
-              .frame(maxWidth: .infinity, alignment: .leading)
+            if !isChatFlowStopped() {
+              Text("escrevendo...")
+                .font(.custom("Barlow-Medium", size: 12))
+                .foregroundColor(Color("mainDarkBlue"))
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
           }
           
           Spacer()
@@ -48,6 +51,41 @@ struct OnboardingMainPage: View {
       
       Spacer()
     }
+  }
+  
+  func isChatFlowStopped() -> Bool {
+    return onboardingData.pauseMessageFluxIndexes.contains(currentMessage)
+  }
+  
+  func isTextFieldActive() -> Bool {
+    return onboardingData.userTextFieldPauses.contains(currentMessage)
+  }
+  
+  var userTextField: some View {
+    HStack {
+      TextField(isTextFieldActive() ? "Digite..." : "", text: $textFieldText)
+        .disabled(!isTextFieldActive())
+      
+      ZStack {
+        RoundedRectangle(cornerRadius: 30)
+          .frame(width: 45, height: 45)
+          .foregroundColor(Color("mainLightBlue"))
+
+        Image(systemName: "arrowtriangle.right.fill")
+          .foregroundColor(.white)
+          .onTapGesture {
+            if isTextFieldActive() {
+              onboardingData.catChatMessages[currentMessage+1] = BubbleContent.text(TextBubble(textArray: [BubbleString(text: textFieldText)], type: .user))
+              textFieldText = ""
+              currentMessage += 1
+              timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+            }
+          }
+      }
+      
+    }
+    .textFieldStyle(OvalTextFieldStyle())
+    .padding(.horizontal, 10)
   }
   
   var body: some View {
@@ -65,21 +103,31 @@ struct OnboardingMainPage: View {
               VStack {
                 Spacer()
                 
-                VStack(spacing: 10) {
-                  ForEach(0...currentMessage, id: \.self) { i in
-                    withAnimation {
-                      MainChatBubbleView(content: onboardingData.catChatMessages[i], onboardingData: $onboardingData, currentMessage: $currentMessage)
+                ScrollView {
+                  VStack(spacing: 10) {
+                    ForEach(onboardingData.catChatMessages[0 ... currentMessage].reversed(), id: \.self) { message in
+                      withAnimation {
+                        MainChatBubbleView(content: message, onboardingData: $onboardingData, currentMessage: $currentMessage)
+                          .rotationEffect(Angle(radians: .pi)) // rotate each item
+                          .scaleEffect(x: -1, y: 1, anchor: .center)
+                          .fixedSize(horizontal: false, vertical: true)
+                      }
                     }
                   }
                 }
+                .rotationEffect(Angle(radians: .pi)) // rotate the whole ScrollView 180º
+                .scaleEffect(x: -1, y: 1, anchor: .center)
+                .padding(.bottom, 15)
+                .padding(.top, 80)
                 
-                // Text Field for sending messages
+                userTextField
               }
-              .padding(.bottom, 100)
+              .padding(.bottom, 50)
 //              .frame(maxHeight: .infinity)
 //              .edgesIgnoringSafeArea(.top)
 //              .frame(minHeight: UIScreen.main.bounds.height)
 //          }
+//          .frame(maxHeight: .infinity)
 //          .frame(width: UIScreen.main.bounds.width)
 //          .edgesIgnoringSafeArea(.all)
           
@@ -104,9 +152,8 @@ struct OnboardingMainPage: View {
             isBlurViewOn.toggle()
           }
           
-          if onboardingData.pauseMessageFluxIndexes.contains(currentMessage) {
+          if isChatFlowStopped() {
             timer.upstream.connect().cancel()
-//            onboardingData.catChatMessages[currentMessage+1] = BubbleContent.response(ResponseBubble(textArray: [BubbleString(text: "Bonjour", translation: nil)], respondedText: "Bonjour ☀️ ? ou bonsoir 🌙 ?"))
           }
         }
       }

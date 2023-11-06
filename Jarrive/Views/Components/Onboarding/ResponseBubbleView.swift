@@ -66,6 +66,7 @@ struct ResponseBubbleView: View {
 //      .frame(maxWidth: content.respondedText.count <= 40 ? 10.0 * Double(content.respondedText.count) : 250)
       .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 10))
       .frame(maxWidth: 180)
+      .frame(minHeight: 25)
       .background(.white)
       .roundedCorner(20, corners: [.topLeft, .topRight, .bottomLeft])
       .padding(.trailing, 10)

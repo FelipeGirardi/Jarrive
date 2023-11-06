@@ -27,6 +27,7 @@
 		C0A62CA72A7D810300CDFA0F /* CatChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A62CA62A7D810300CDFA0F /* CatChatBubble.swift */; };
 		C0A62CAA2A7D82B100CDFA0F /* ChatTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A62CA92A7D82B100CDFA0F /* ChatTextInput.swift */; };
 		C0A62CAC2A7D838300CDFA0F /* BasicSans-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = C0A62CAB2A7D838300CDFA0F /* BasicSans-Black.otf */; };
+		C0B0BD462AF96E4B007CF121 /* OvalTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B0BD452AF96E4B007CF121 /* OvalTextFieldStyle.swift */; };
 		C0B5E8D32A92A18F0026FBB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0B5E8D22A92A18F0026FBB1 /* LaunchScreen.storyboard */; };
 		C0B5E8D52A92B1480026FBB1 /* CatOrHumanBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B5E8D42A92B1480026FBB1 /* CatOrHumanBubble.swift */; };
 		C0B5E8D72A92B3FF0026FBB1 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B5E8D62A92B3FF0026FBB1 /* RoundButton.swift */; };
@@ -112,6 +113,7 @@
 		C0A62CA62A7D810300CDFA0F /* CatChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatChatBubble.swift; sourceTree = "<group>"; };
 		C0A62CA92A7D82B100CDFA0F /* ChatTextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTextInput.swift; sourceTree = "<group>"; };
 		C0A62CAB2A7D838300CDFA0F /* BasicSans-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BasicSans-Black.otf"; sourceTree = "<group>"; };
+		C0B0BD452AF96E4B007CF121 /* OvalTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvalTextFieldStyle.swift; sourceTree = "<group>"; };
 		C0B5E8D22A92A18F0026FBB1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C0B5E8D42A92B1480026FBB1 /* CatOrHumanBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatOrHumanBubble.swift; sourceTree = "<group>"; };
 		C0B5E8D62A92B3FF0026FBB1 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
@@ -227,7 +229,6 @@
 				C0A62CA92A7D82B100CDFA0F /* ChatTextInput.swift */,
 				C0B5E8D42A92B1480026FBB1 /* CatOrHumanBubble.swift */,
 				C0B5E8D62A92B3FF0026FBB1 /* RoundButton.swift */,
-				C05C76BA2AE890DA00698C4F /* ImageBubbleView.swift */,
 			);
 			path = OldOnboarding;
 			sourceTree = "<group>";
@@ -241,8 +242,10 @@
 				C04274BD2AD475A900261C74 /* OptionBubbleView.swift */,
 				C04274BF2AD475B700261C74 /* ResponseBubbleView.swift */,
 				C04274C12AD475C700261C74 /* AudioBubbleView.swift */,
+				C05C76BA2AE890DA00698C4F /* ImageBubbleView.swift */,
 				C08AE7342ADE01DF0009B42F /* TranslationBubbleView.swift */,
 				C05C76BC2AE8989400698C4F /* UnderlinedWordsBlurView.swift */,
+				C0B0BD452AF96E4B007CF121 /* OvalTextFieldStyle.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -588,6 +591,7 @@
 				C057F88C2ACF2D2400AC0814 /* TitleScreen.swift in Sources */,
 				C0D91C482A4CCCA100080072 /* AuthenticationViewModel.swift in Sources */,
 				C0D8FEF42AD0792A00FE5F41 /* OnboardingMainPage.swift in Sources */,
+				C0B0BD462AF96E4B007CF121 /* OvalTextFieldStyle.swift in Sources */,
 				C0E8BD9D2A9D7C4C008C4F57 /* GoogleAppleSignInButtons.swift in Sources */,
 				C0B5E8D72A92B3FF0026FBB1 /* RoundButton.swift in Sources */,
 				C0B5E8D52A92B1480026FBB1 /* CatOrHumanBubble.swift in Sources */,

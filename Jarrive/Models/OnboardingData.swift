@@ -34,7 +34,7 @@ struct OnboardingData: Equatable {
     BubbleContent.text(nil),
     BubbleContent.text(TextBubble(textArray: [BubbleString(text: "Você não entendeu?\n", translation: nil), BubbleString(text: "Alors", translation: "Então"), BubbleString(text: ", je suis un chat, mas você não 😑", translation: nil)], type: .cat)),
     BubbleContent.text(TextBubble(textArray: [BubbleString(text: "Além de chat, ", translation: nil), BubbleString(text: "je suis", translation: "eu sou"), BubbleString(text: " carteiro e preciso entregar isso aqui, me ajuda?", translation: nil)], type: .cat)),
-    BubbleContent.image(ImageBubble(image: "")),
+    BubbleContent.image(ImageBubble(image: "CatPostcard")),
     BubbleContent.option(OptionBubble(textArray: [BubbleString(text: "Você sabe o que é isso?", translation: nil)], options: ["Train 🚂", "Croissant 🥐", "Carte Postale ✉️"])),
 //    User message
 //    BubbleContent.response(ResponseBubble(textArray: [BubbleString(text: "", translation: nil)], respondedText: "Você sabe o que é isso?")),
@@ -47,4 +47,5 @@ struct OnboardingData: Equatable {
     BubbleContent.text(TextBubble(textArray: [BubbleString(text: "Je suis ", translation: nil), BubbleString(text: "curieux", translation: "curioso"), BubbleString(text: "! 😹", translation: nil)], type: .cat))
   ]
   var pauseMessageFluxIndexes = [1, 4, 7, 9, 14, 17]
+  var userTextFieldPauses = [4, 9]
 }

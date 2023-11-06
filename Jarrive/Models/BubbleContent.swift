@@ -40,7 +40,7 @@ struct ImageBubble: Hashable {
   var image: String
 }
 
-enum BubbleContent: Equatable {
+enum BubbleContent: Equatable, Hashable {
   case text(TextBubble?)
   case option(OptionBubble?)
   case response(ResponseBubble?)

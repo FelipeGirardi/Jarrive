@@ -10,15 +10,17 @@ import SwiftUI
 struct ImageBubbleView: View {
   var content: ImageBubble
   
-    var body: some View {
-      HStack {
-        Image(content.image)
-          .resizable()
-          .frame(width: 145, height: 145)
-      }
+  var body: some View {
+    HStack {
+      Image(content.image)
+        .resizable()
+        .frame(maxWidth: 145, maxHeight: 145)
+        .padding(.leading, 10)
       
       Spacer()
+      
     }
+  }
 }
 
 struct ImageBubbleView_Previews: PreviewProvider {

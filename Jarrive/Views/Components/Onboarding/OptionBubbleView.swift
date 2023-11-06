@@ -68,16 +68,16 @@ struct OptionBubbleView: View {
               ForEach(content.options, id: \.self) { option in
                 Text(option)
                   .font(.custom("Barlow-Medium", size: 16))
-                  .multilineTextAlignment(.leading)
+                  .multilineTextAlignment(.center)
                   .minimumScaleFactor(0.5)
                   .foregroundColor(Color("mainDarkBlue"))
-                  .frame(maxHeight: 25)
+                  .frame(maxHeight: 30)
                   .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                   .background(Color("mainLightBlue"))
                   .cornerRadius(20)
                   .onTapGesture {
                     onboardingData.catChatMessages[currentMessage+1] = BubbleContent.response(ResponseBubble(textArray: [BubbleString(text: option, translation: nil)], respondedText: getBubbleTextString()))
-//                    onboardingData.catChatMessages[currentMessage+2] = BubbleContent.text(TextBubble(textArray: [BubbleString(text: "\(option), allors!", translation: (option == "Bonjour" ? "Bom dia" : "Boa noite") + ", então!")], type: .cat))
+                    currentMessage += 1
                   }
               }
               
@@ -85,6 +85,7 @@ struct OptionBubbleView: View {
             }
           }
           .frame(maxWidth: Double(content.options.count) * 110.0)
+          .frame(minHeight: 25)
           .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 0))
           .background(.white)
           .roundedCorner(20, corners: [.topRight, .bottomLeft, .bottomRight])
