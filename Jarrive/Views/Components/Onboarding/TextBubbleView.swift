@@ -26,8 +26,7 @@ struct TextBubbleView: View {
   }
   
   var body: some View {
-    ZStack(alignment: .bottom) {
-//      GeometryReader { g in
+    HStack(alignment: .center) {
         HStack {
           if content.type == .user {
             Spacer()
@@ -40,30 +39,35 @@ struct TextBubbleView: View {
             .baselineOffset(2)
             .foregroundColor(Color("mainDarkBlue"))
             .frame(minHeight: 25)
-            .padding(.all, 10)
+            .padding(.all, 8)
             .background(.white)
             .roundedCorner(20, corners: content.type == .cat ? [.topRight, .bottomLeft, .bottomRight] : [.topLeft, .topRight, .bottomLeft])
             .padding(.leading, content.type == .cat ? 10 : 50)
-            .padding(.trailing, content.type == .cat ? 50 : 10)
+            .padding(.trailing, content.type == .cat ? 0 : 10)
             .onTapGesture {
               showTranslations.toggle()
               bubbleHeight = 40
             }
           
-          if content.type == .cat {
-            Spacer()
-          }
+//          if content.type == .cat {
+//            Spacer()
+//          }
         }
       
-      HStack {
+//      HStack {
+      if showTranslations {
         TranslationBubbleView(translations: content.textArray.filter({$0.translation != nil}))
-          .opacity(showTranslations ? 1 : 0)
-          .padding(.leading, 10)
-          .padding(.trailing, 150)
+        //          .opacity(showTranslations ? 1 : 0)
+          .padding(.trailing, 10)
+      }
+//          .padding(.trailing, 150)
         
+//        Spacer()
+//      }
+//      .offset(y: -bubbleHeight - 2)
+      if content.type == .cat {
         Spacer()
       }
-      .offset(y: -bubbleHeight - 2)
     }
   }
 }

@@ -14,10 +14,12 @@ struct TranslationBubbleView: View {
     var fullString = Text("")
     
     for str in translations {
-      fullString = fullString + Text(str.text).underline()
-      fullString = fullString + Text(": " + str.translation!)
-      if translations.last != str {
-        fullString = fullString + Text("\n")
+      if str.translation != nil {
+        fullString = fullString + Text(str.text).underline()
+        fullString = fullString + Text(": " + str.translation!)
+        if translations.last != str {
+          fullString = fullString + Text("\n")
+        }
       }
     }
     
@@ -26,8 +28,10 @@ struct TranslationBubbleView: View {
   
   func nTranslations() -> Int {
     var nTranslations = 0
-    for _ in translations {
-      nTranslations += 1
+    for t in translations {
+      if t.translation != nil {
+        nTranslations += 1
+      }
     }
     return nTranslations
   }
@@ -40,16 +44,14 @@ struct TranslationBubbleView: View {
       .baselineOffset(2)
       .foregroundColor(.black)
       .padding(.all, 10)
-//      .padding(.top, 10)
       .background(Color("mainGreen"))
       .cornerRadius(30)
-//      .frame(maxHeight: 30.0 * Double(nTranslations()))
-      
+      .opacity(nTranslations() <= 0 ? 0 : 1)
   }
 }
 
 struct TranslationBubbleView_Previews: PreviewProvider {
   static var previews: some View {
-    TranslationBubbleView(translations: [BubbleString(text: "Salut? Quis est la?", translation: "Oi? Quem é?"), BubbleString(text: "Lalala", translation: "Lalala")])
+    TranslationBubbleView(translations: [BubbleString(text: "Salut? Quis est la?", translation: "Ola quem e"), BubbleString(text: "Lalala", translation: "Lalala")])
   }
 }

@@ -13,6 +13,8 @@ struct OptionBubbleView: View {
   @State var bubbleHeight: Double = 0.0
   @Binding var onboardingData: OnboardingData
   @Binding var currentMessage: Int
+  @Binding var optionsClickedIndexes: [Int]
+  var currentIndex: Int
   
   var getBubbleText: some View {
     var fullString = Text("")
@@ -49,9 +51,8 @@ struct OptionBubbleView: View {
   }
   
   var body: some View {
-    ZStack(alignment: .bottom) {
-//      GeometryReader { g in
-        HStack {
+    HStack(alignment: .center) {
+//        HStack {
           VStack {
             HStack {
               getBubbleText
@@ -65,8 +66,8 @@ struct OptionBubbleView: View {
             }
             
             HStack(spacing: 10) {
-              ForEach(content.options, id: \.self) { option in
-                Text(option)
+              ForEach(content.options.indices, id: \.self) { index in
+                Text(content.options[index])
                   .font(.custom("Barlow-Medium", size: 16))
                   .multilineTextAlignment(.center)
                   .minimumScaleFactor(0.5)
@@ -76,47 +77,51 @@ struct OptionBubbleView: View {
                   .background(Color("mainLightBlue"))
                   .cornerRadius(20)
                   .onTapGesture {
-                    onboardingData.catChatMessages[currentMessage+1] = BubbleContent.response(ResponseBubble(textArray: [BubbleString(text: option, translation: nil)], respondedText: getBubbleTextString()))
-                    currentMessage += 1
+                    
+                    if onboardingData.optionPauseIndexes.contains(currentMessage) && !optionsClickedIndexes.contains(currentIndex)
+                    {
+                      onboardingData.catChatMessages[currentMessage+1] = BubbleContent.response(ResponseBubble(textArray: [BubbleString(text: content.options[index], translation: nil)], respondedText: getBubbleTextString()))
+                      if onboardingData.variableOptionMessageIndexes.contains(currentMessage) {
+                        onboardingData.catChatMessages[currentMessage+2] = onboardingData.variableOptionFollowingMessages[onboardingData.variableOptionMessageIndexes.firstIndex(of: currentMessage)!][index]
+                      }
+                      optionsClickedIndexes.append(currentMessage)
+                      currentMessage += 1
+                    }
                   }
               }
               
               Spacer()
             }
           }
-          .frame(maxWidth: Double(content.options.count) * 110.0)
+          .frame(maxWidth: Double(content.options.count) * 115.0)
           .frame(minHeight: 25)
           .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 0))
           .background(.white)
           .roundedCorner(20, corners: [.topRight, .bottomLeft, .bottomRight])
           .padding(.leading, 10)
-          .padding(.trailing, 50)
           .onTapGesture {
             showTranslations.toggle()
             bubbleHeight = 90
           }
           
-          Spacer()
-        }
-//        .fixedSize()
-//      }
-//      .fixedSize(horizontal: false, vertical: true)
+//          Spacer()
+//        }
       
-      HStack {
+//      HStack {
+      if showTranslations {
         TranslationBubbleView(translations: content.textArray.filter({$0.translation != nil}))
-          .opacity(showTranslations ? 1 : 0)
           .padding(.leading, 10)
-          .padding(.trailing, 150)
+      }
         
         Spacer()
-      }
-      .offset(y: -bubbleHeight - 2)
+//      }
+//      .offset(y: -bubbleHeight - 2)
     }
   }
 }
 
 struct OptionBubbleView_Previews: PreviewProvider {
   static var previews: some View {
-    OptionBubbleView(content: OptionBubble(textArray: [BubbleString(text: "Salut? Quis est la?", translation: "Oi? Quem é?")], options: ["Train 🚂", "Croissant 🥐", "Carte postale ✉️"]), onboardingData: .constant(OnboardingData()), currentMessage: .constant(1))
+    OptionBubbleView(content: OptionBubble(textArray: [BubbleString(text: "Salut? Quis est la?", translation: "Oi? Quem é?")], options: ["Train 🚂", "Croissant 🥐", "Carte postale ✉️"]), onboardingData: .constant(OnboardingData()), currentMessage: .constant(1), optionsClickedIndexes: .constant([]), currentIndex: 1)
   }
 }

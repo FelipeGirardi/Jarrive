@@ -14,6 +14,16 @@ struct OnboardingMainPage: View {
   @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
   @State var onboardingData = OnboardingData()
   @State var textFieldText = ""
+  @State var optionsClickedIndexes: [Int] = []
+  
+  func isChatFlowStopped() -> Bool {
+    return onboardingData.pauseMessageFluxIndexes.contains(currentMessage) ||
+    currentMessage == onboardingData.catChatMessages.count - 1
+  }
+  
+  func isTextFieldActive() -> Bool {
+    return onboardingData.userTextFieldPauseIndexes.contains(currentMessage)
+  }
   
   func navigationBarView() -> some View {
     VStack {
@@ -24,6 +34,7 @@ struct OnboardingMainPage: View {
             .resizable()
             .frame(width: 40, height: 40)
             .padding(.horizontal, 7)
+
           
           VStack {
             Text("Tutor do Thomas")
@@ -51,14 +62,6 @@ struct OnboardingMainPage: View {
       
       Spacer()
     }
-  }
-  
-  func isChatFlowStopped() -> Bool {
-    return onboardingData.pauseMessageFluxIndexes.contains(currentMessage)
-  }
-  
-  func isTextFieldActive() -> Bool {
-    return onboardingData.userTextFieldPauses.contains(currentMessage)
   }
   
   var userTextField: some View {
@@ -89,7 +92,6 @@ struct OnboardingMainPage: View {
   }
   
   var body: some View {
-//    GeometryReader { g in
       ZStack {
         Group {
           Image("OnboardingBG")
@@ -98,16 +100,14 @@ struct OnboardingMainPage: View {
             .frame(minWidth: 0, maxWidth: .infinity)
             .edgesIgnoringSafeArea(.all)
           
-          // Messages view
-//          ScrollView {
               VStack {
                 Spacer()
                 
                 ScrollView {
                   VStack(spacing: 10) {
-                    ForEach(onboardingData.catChatMessages[0 ... currentMessage].reversed(), id: \.self) { message in
+                    ForEach(onboardingData.catChatMessages[0 ... currentMessage].indices.reversed(), id: \.self) { index in
                       withAnimation {
-                        MainChatBubbleView(content: message, onboardingData: $onboardingData, currentMessage: $currentMessage)
+                        MainChatBubbleView(content: onboardingData.catChatMessages[0 ... currentMessage][index], onboardingData: $onboardingData, currentMessage: $currentMessage, optionsClickedIndexes: $optionsClickedIndexes, currentIndex: index)
                           .rotationEffect(Angle(radians: .pi)) // rotate each item
                           .scaleEffect(x: -1, y: 1, anchor: .center)
                           .fixedSize(horizontal: false, vertical: true)
@@ -123,13 +123,6 @@ struct OnboardingMainPage: View {
                 userTextField
               }
               .padding(.bottom, 50)
-//              .frame(maxHeight: .infinity)
-//              .edgesIgnoringSafeArea(.top)
-//              .frame(minHeight: UIScreen.main.bounds.height)
-//          }
-//          .frame(maxHeight: .infinity)
-//          .frame(width: UIScreen.main.bounds.width)
-//          .edgesIgnoringSafeArea(.all)
           
           navigationBarView()
         }
@@ -160,7 +153,6 @@ struct OnboardingMainPage: View {
       .onChange(of: onboardingData) { _ in
         timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
       }
-//    }
   }
 }
 
