@@ -107,7 +107,11 @@ struct OnboardingMainPage: View {
                   VStack(spacing: 10) {
                     ForEach(onboardingData.catChatMessages[0 ... currentMessage].indices.reversed(), id: \.self) { index in
                       withAnimation {
-                        MainChatBubbleView(content: onboardingData.catChatMessages[0 ... currentMessage][index], onboardingData: $onboardingData, currentMessage: $currentMessage, optionsClickedIndexes: $optionsClickedIndexes, currentIndex: index)
+                        MainChatBubbleView(content: onboardingData.catChatMessages[0 ... currentMessage][index],
+                                           onboardingData: $onboardingData,
+                                           currentMessage: $currentMessage,
+                                           optionsClickedIndexes: $optionsClickedIndexes, 
+                                           currentIndex: index)
                           .rotationEffect(Angle(radians: .pi)) // rotate each item
                           .scaleEffect(x: -1, y: 1, anchor: .center)
                           .fixedSize(horizontal: false, vertical: true)
