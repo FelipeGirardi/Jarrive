@@ -1,5 +1,5 @@
 //
-//  OnboardingMainPage.swift
+//  OnboardingMainScreen.swift
 //  Jarrive
 //
 //  Created by Felipe Girardi on 06/10/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OnboardingMainPage: View {
+struct OnboardingMainScreen: View {
   @State var isBlurViewOn: Bool = false
   @State var currentMessage: Int = 0
   @State var messagesTimer: Int = 2
@@ -156,8 +156,8 @@ struct OnboardingMainPage: View {
   }
 }
 
-struct OnboardingMainPage_Previews: PreviewProvider {
+struct OnboardingMainScreen_Previews: PreviewProvider {
   static var previews: some View {
-    OnboardingMainPage()
+    OnboardingMainScreen()
   }
 }

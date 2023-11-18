@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		C02AC4302AD88E61006C4422 /* OnboardingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02AC42F2AD88E61006C4422 /* OnboardingData.swift */; };
 		C02D093E2A3B979200B5FA54 /* Barlow-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C02D093D2A3B979200B5FA54 /* Barlow-LightItalic.ttf */; };
-		C02D09422A3BA23100B5FA54 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D09412A3BA23100B5FA54 /* LoginView.swift */; };
+		C02D09422A3BA23100B5FA54 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D09412A3BA23100B5FA54 /* LoginScreen.swift */; };
 		C02D09442A3BA87000B5FA54 /* LoginInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D09432A3BA87000B5FA54 /* LoginInputView.swift */; };
 		C04274BC2AD4759000261C74 /* TextBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04274BB2AD4759000261C74 /* TextBubbleView.swift */; };
 		C04274BE2AD475A900261C74 /* OptionBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04274BD2AD475A900261C74 /* OptionBubbleView.swift */; };
@@ -58,7 +58,7 @@
 		C0D834D22B093F2900A43175 /* Stamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D834CF2B093F2900A43175 /* Stamp.swift */; };
 		C0D834D32B093F2900A43175 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D834D02B093F2900A43175 /* Station.swift */; };
 		C0D834D42B093F2900A43175 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D834D12B093F2900A43175 /* Route.swift */; };
-		C0D8FEF42AD0792A00FE5F41 /* OnboardingMainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D8FEF32AD0792A00FE5F41 /* OnboardingMainPage.swift */; };
+		C0D8FEF42AD0792A00FE5F41 /* OnboardingMainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D8FEF32AD0792A00FE5F41 /* OnboardingMainScreen.swift */; };
 		C0D91C462A4CCC8D00080072 /* TicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D91C452A4CCC8D00080072 /* TicketViewModel.swift */; };
 		C0D91C482A4CCCA100080072 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D91C472A4CCCA100080072 /* AuthenticationViewModel.swift */; };
 		C0D91C4B2A4CCD2000080072 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = C0D91C4A2A4CCD2000080072 /* GoogleSignIn */; };
@@ -100,7 +100,7 @@
 /* Begin PBXFileReference section */
 		C02AC42F2AD88E61006C4422 /* OnboardingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingData.swift; sourceTree = "<group>"; };
 		C02D093D2A3B979200B5FA54 /* Barlow-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-LightItalic.ttf"; sourceTree = "<group>"; };
-		C02D09412A3BA23100B5FA54 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		C02D09412A3BA23100B5FA54 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		C02D09432A3BA87000B5FA54 /* LoginInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputView.swift; sourceTree = "<group>"; };
 		C04274BB2AD4759000261C74 /* TextBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBubbleView.swift; sourceTree = "<group>"; };
 		C04274BD2AD475A900261C74 /* OptionBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionBubbleView.swift; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 		C0D834CF2B093F2900A43175 /* Stamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stamp.swift; sourceTree = "<group>"; };
 		C0D834D02B093F2900A43175 /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		C0D834D12B093F2900A43175 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
-		C0D8FEF32AD0792A00FE5F41 /* OnboardingMainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingMainPage.swift; sourceTree = "<group>"; };
+		C0D8FEF32AD0792A00FE5F41 /* OnboardingMainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingMainScreen.swift; sourceTree = "<group>"; };
 		C0D91C452A4CCC8D00080072 /* TicketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViewModel.swift; sourceTree = "<group>"; };
 		C0D91C472A4CCCA100080072 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		C0D91C4E2A4CD6DD00080072 /* GoogleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
@@ -233,9 +233,19 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		C0763B312B0954E900575CBC /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C02D09412A3BA23100B5FA54 /* LoginScreen.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		C0A560532AD1F25A00EF99A9 /* OldOnboarding */ = {
 			isa = PBXGroup;
 			children = (
+				C0DEA4AB2A79846800C640BD /* InitialChatPage.swift */,
+				C0DEA4B52A79BA4A00C640BD /* ChatPage.swift */,
 				C0A62CA62A7D810300CDFA0F /* CatChatBubble.swift */,
 				C0DEA4B12A798E4500C640BD /* SuivantButton.swift */,
 				C0DEA4AF2A798D2200C640BD /* PlayAudioButton.swift */,
@@ -249,7 +259,6 @@
 		C0A62CA82A7D826A00CDFA0F /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				C0A560532AD1F25A00EF99A9 /* OldOnboarding */,
 				C0A560542AD1F35800EF99A9 /* MainChatBubbleView.swift */,
 				C04274BB2AD4759000261C74 /* TextBubbleView.swift */,
 				C04274BD2AD475A900261C74 /* OptionBubbleView.swift */,
@@ -286,9 +295,10 @@
 		C0B83F6B2A312B340096003B /* Jarrive */ = {
 			isa = PBXGroup;
 			children = (
-				C02D093C2A3B974F00B5FA54 /* Fonts */,
 				C0B83F9A2A312F410096003B /* Info.plist */,
 				C0C1C7492A4CC5FE00E1A54F /* GoogleService-Info.plist */,
+				C0D834D92B09538A00A43175 /* Old */,
+				C02D093C2A3B974F00B5FA54 /* Fonts */,
 				C0B83F962A312C300096003B /* Lifecycle */,
 				C0B83F982A312C590096003B /* Models */,
 				C0D91C442A4CCC5600080072 /* ViewModels */,
@@ -346,10 +356,6 @@
 		C0B83F982A312C590096003B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C0D834CB2B0931D600A43175 /* Postcard.swift */,
-				C0D834D12B093F2900A43175 /* Route.swift */,
-				C0D834CF2B093F2900A43175 /* Stamp.swift */,
-				C0D834D02B093F2900A43175 /* Station.swift */,
 				C0A560562AD2005700EF99A9 /* BubbleContent.swift */,
 				C02AC42F2AD88E61006C4422 /* OnboardingData.swift */,
 				C0D834C72B092C9D00A43175 /* PostcardData.swift */,
@@ -361,15 +367,9 @@
 		C0B83F9F2A3131050096003B /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				C0763B312B0954E900575CBC /* Login */,
 				C057F8892ACF2CC000AC0814 /* Title */,
 				C0DEA4AA2A7982B800C640BD /* Onboarding */,
-				C0B83F6E2A312B340096003B /* StampsView.swift */,
-				C0B83F9B2A3130DD0096003B /* TicketsView.swift */,
-				C0B83F9D2A3130F00096003B /* PostcardsView.swift */,
-				C0B83FA32A3131A30096003B /* LevelIntroView.swift */,
-				C0B83FA52A3131B60096003B /* LevelView.swift */,
-				C02D09412A3BA23100B5FA54 /* LoginView.swift */,
-				C0F9B13B2A379A6D0046A21D /* MainTabView.swift */,
 				C0B5E8D22A92A18F0026FBB1 /* LaunchScreen.storyboard */,
 			);
 			path = Pages;
@@ -380,30 +380,54 @@
 			children = (
 				C0E8BD9B2A9D7C11008C4F57 /* Login */,
 				C0A62CA82A7D826A00CDFA0F /* Onboarding */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		C0D834D92B09538A00A43175 /* Old */ = {
+			isa = PBXGroup;
+			children = (
+				C0D834DB2B0953A800A43175 /* OldViews */,
+				C0D834DA2B09539700A43175 /* OldModels */,
+			);
+			path = Old;
+			sourceTree = "<group>";
+		};
+		C0D834DA2B09539700A43175 /* OldModels */ = {
+			isa = PBXGroup;
+			children = (
+				C0D91C452A4CCC8D00080072 /* TicketViewModel.swift */,
+				C0D834CB2B0931D600A43175 /* Postcard.swift */,
+				C0D834D12B093F2900A43175 /* Route.swift */,
+				C0D834CF2B093F2900A43175 /* Stamp.swift */,
+				C0D834D02B093F2900A43175 /* Station.swift */,
+			);
+			path = OldModels;
+			sourceTree = "<group>";
+		};
+		C0D834DB2B0953A800A43175 /* OldViews */ = {
+			isa = PBXGroup;
+			children = (
+				C0A560532AD1F25A00EF99A9 /* OldOnboarding */,
+				C0B83F6E2A312B340096003B /* StampsView.swift */,
+				C0B83F9B2A3130DD0096003B /* TicketsView.swift */,
+				C0B83F9D2A3130F00096003B /* PostcardsView.swift */,
+				C0B83FA32A3131A30096003B /* LevelIntroView.swift */,
+				C0B83FA52A3131B60096003B /* LevelView.swift */,
+				C0F9B13B2A379A6D0046A21D /* MainTabView.swift */,
 				C0B83FA12A3131230096003B /* TicketView.swift */,
 				C0B83FA72A3131CE0096003B /* PostcardView.swift */,
 				C0B83FA92A3131E00096003B /* StampView.swift */,
 				C0EBBADF2A3A57F100001FCF /* BackButton.swift */,
 				C0EBBAE12A3A5E0F00001FCF /* ArrowButton.swift */,
-				C0D91C4E2A4CD6DD00080072 /* GoogleSignInButton.swift */,
 				C0D91C522A4CD95900080072 /* NetworkImage.swift */,
 			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		C0D8FEF22AD078FC00FE5F41 /* OldOnboarding */ = {
-			isa = PBXGroup;
-			children = (
-				C0DEA4AB2A79846800C640BD /* InitialChatPage.swift */,
-				C0DEA4B52A79BA4A00C640BD /* ChatPage.swift */,
-			);
-			path = OldOnboarding;
+			path = OldViews;
 			sourceTree = "<group>";
 		};
 		C0D91C442A4CCC5600080072 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				C0D91C452A4CCC8D00080072 /* TicketViewModel.swift */,
 				C0D91C472A4CCCA100080072 /* AuthenticationViewModel.swift */,
 			);
 			path = ViewModels;
@@ -419,8 +443,7 @@
 		C0DEA4AA2A7982B800C640BD /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				C0D8FEF22AD078FC00FE5F41 /* OldOnboarding */,
-				C0D8FEF32AD0792A00FE5F41 /* OnboardingMainPage.swift */,
+				C0D8FEF32AD0792A00FE5F41 /* OnboardingMainScreen.swift */,
 				C0D834C32B0927F000A43175 /* PostcardScreen.swift */,
 			);
 			path = Onboarding;
@@ -429,8 +452,9 @@
 		C0E8BD9B2A9D7C11008C4F57 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				C02D09432A3BA87000B5FA54 /* LoginInputView.swift */,
 				C0E8BD9C2A9D7C4C008C4F57 /* GoogleAppleSignInButtons.swift */,
+				C0D91C4E2A4CD6DD00080072 /* GoogleSignInButton.swift */,
+				C02D09432A3BA87000B5FA54 /* LoginInputView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -608,7 +632,7 @@
 				C0EBBAE02A3A57F100001FCF /* BackButton.swift in Sources */,
 				C057F88C2ACF2D2400AC0814 /* TitleScreen.swift in Sources */,
 				C0D91C482A4CCCA100080072 /* AuthenticationViewModel.swift in Sources */,
-				C0D8FEF42AD0792A00FE5F41 /* OnboardingMainPage.swift in Sources */,
+				C0D8FEF42AD0792A00FE5F41 /* OnboardingMainScreen.swift in Sources */,
 				C0B0BD462AF96E4B007CF121 /* OvalTextFieldStyle.swift in Sources */,
 				C0D834D42B093F2900A43175 /* Route.swift in Sources */,
 				C0E8BD9D2A9D7C4C008C4F57 /* GoogleAppleSignInButtons.swift in Sources */,
@@ -633,7 +657,7 @@
 				C0A62CA72A7D810300CDFA0F /* CatChatBubble.swift in Sources */,
 				C0B83FA42A3131A30096003B /* LevelIntroView.swift in Sources */,
 				C0DEA4B22A798E4500C640BD /* SuivantButton.swift in Sources */,
-				C02D09422A3BA23100B5FA54 /* LoginView.swift in Sources */,
+				C02D09422A3BA23100B5FA54 /* LoginScreen.swift in Sources */,
 				C0B83F6D2A312B340096003B /* JarriveApp.swift in Sources */,
 				C0D834CC2B0931D600A43175 /* Postcard.swift in Sources */,
 				C0D834D32B093F2900A43175 /* Station.swift in Sources */,
