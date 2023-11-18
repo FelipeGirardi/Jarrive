@@ -33,6 +33,8 @@
 		<string>Barlow-SemiBold.ttf</string>
 		<string>Barlow-Medium.ttf</string>
 		<string>Barlow-SemiBoldItalic.ttf</string>
+		<string>Bilbo-Regular.ttf</string>
+		<string>Barlow-Italic.ttf</string>
 	</array>
 	<key>UILaunchScreen</key>
 	<dict/>
