@@ -9,141 +9,29 @@ import SwiftUI
 
 struct StampExerciseView: View {
     var body: some View {
-        VStack {
+        GeometryReader { geometry in
             VStack {
                 ZStack {
                     Image("OnboardingBG")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(minWidth: 0, maxWidth: .infinity)
-                    
-                    HStack(spacing: 50) {
-                        Image("stamp")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 150, height: 120)
-                        
-                        
-                        VStack(alignment: .leading) {
-                            Button {
-                                print("show point")
-                            } label: {
-                                Text("Point Explicatif")
-                                    .font(.system(size: 18))
-                                    .padding()
-                                    .foregroundColor(Color("mainDarkBlue"))
-                            }
-                            .clipShape(Capsule())
-                            .background(.white)
-                            
-                            
-                            Button {
-                                print("show exercicies")
-                            } label: {
-                                Text("Exercicies")
-                                    .frame(minWidth: 0, maxWidth: 120)
-                                    .font(.system(size: 18))
-                                    .padding()
-                                    .foregroundColor(.white)
-                                
-                            }
-                            .overlay(RoundedRectangle(cornerRadius: 25.0)
-                                .stroke(style: StrokeStyle()))
-                            .background(Color("mainDarkBlue"))
-                        }
-                        
-                    }
-                    
-                }
-                .frame(height: 270)
-                .mask(CustomShape(radius: 25))
-                .edgesIgnoringSafeArea(.top)
 
-            }
-            
-            VStack {
-                VStack(alignment: .leading) {
-                    
-                    Text("POINT EXPLICATIF")
-                        .font(.custom("Barlow-Bold", size: 20))
-                    
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Text("O verbo")
-                            Text("ÊTRE:")
-                                .font(.custom("Barlow-Bold", size: 20))
-                                .foregroundStyle(.white)
-                        }
-                        
-                        HStack {
-                            Text("é o verbo")
-                            
-                            Text("SER e ESTAR")
-                                .font(.custom("Barlow-Bold", size: 20))
-                                .foregroundStyle(.white)
-                            
-                            Text("em português.")
-                        }
-                        
-                        Text("A sua conjugação é: ")
-                    }
-                    
-                        HStack(alignment: .center) {
-                            Spacer()
-                            VStack(alignment: .trailing) {
-                                Text("Je")
-                                Text("Tu")
-                                Text("Il")
-                                Text("Elle")
-                                Text("Nous")
-                                Text("Vous")
-                                Text("Ils")
-                                Text("Elles")
-                            }
-                            .font(.custom("BasicSans-Regular", size: 19))
-                            
-                            VStack(alignment: .leading) {
-                                Text("suis")
-                                Text("es")
-                                Text("est")
-                                Text("est")
-                                Text("sommes")
-                                Text("êtes")
-                                Text("sont")
-                                Text("sont")
-                            }
-                            .font(.custom("Barlow-Bold", size: 19))
-                            
-                            Spacer()
-                        }
-                    
-                    Text("Par exemple:")
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Text("Je suis")                            .font(.custom("Barlow-Bold", size: 19))
-                            
-                            Text("un chat.")
-                        }
-                        
-                        HStack {
-                            Text("Tu es")                            .font(.custom("Barlow-Bold", size: 19))
-                            
-                            Text("un human.")
-                        }
-                        
-                        HStack {
-                            Text("Nous sommes")                            .font(.custom("Barlow-Bold", size: 19))
-                            
-                            Text("amis.")
-                        }
-                    }
+                    HeaderContent()
                 }
-                Spacer()
+                .frame(maxWidth: .infinity,
+                       maxHeight: geometry.size.height*0.3)
+                .roundedCorner(30, corners: [.bottomLeft, .bottomRight])
+                .shadow(color: Color.black, radius: 1, x: 0, y: 1)
+
+                
+                // logic showing views
+                ExplicatifView()            
+
+                
             }
-            .foregroundColor(.white)
+            //.background(.white)
+            .background(Color("mainDarkBlue"))
         }
-        .padding()
-        .background(Color("mainDarkBlue"))
     }
 }
 
@@ -177,5 +65,134 @@ struct CustomShape: Shape {
 struct StampExerciseViewPreview: PreviewProvider {
     static var previews: some View {
         StampExerciseView()
+    }
+}
+
+struct HeaderContent: View {
+    var body: some View {
+        
+        HStack(spacing: 50) {
+            Image("stamp")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 150, height: 120)
+            
+            
+            VStack(alignment: .leading) {
+                Button {
+                    print("show point")
+                } label: {
+                    Text("Point Explicatif")
+                        .font(.system(size: 18))
+                        .padding()
+                        .foregroundColor(Color("mainDarkBlue"))
+                }
+                .clipShape(Capsule())
+                .background(.white)
+                
+                Button {
+                    print("show exercicies")
+                } label: {
+                    Text("Exercicies")
+                        .frame(minWidth: 0, maxWidth: 120)
+                        .font(.system(size: 18))
+                        .padding()
+                        .foregroundColor(.white)
+                    
+                }
+                .overlay(RoundedRectangle(cornerRadius: 25.0)
+                    .stroke(style: StrokeStyle()))
+                .background(Color("mainDarkBlue"))
+            }
+        }
+    }
+}
+
+struct ExplicatifView: View {
+    var body: some View {
+        VStack {
+
+            VStack {
+                VStack(alignment: .leading) {
+                    
+                    Text("POINT EXPLICATIF")
+                        .font(.custom("Barlow-Bold", size: 20))
+                    
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text("O verbo")
+                            Text("ÊTRE:")
+                                .font(.custom("Barlow-Bold", size: 20))
+                                .foregroundStyle(.white)
+                        }
+                        
+                        HStack {
+                            Text("é o verbo")
+                            
+                            Text("SER e ESTAR")
+                                .font(.custom("Barlow-Bold", size: 20))
+                                .foregroundStyle(.white)
+                            
+                            Text("em português.")
+                        }
+                        
+                        Text("A sua conjugação é: ")
+                    }
+                    
+                    HStack(alignment: .center) {
+                        Spacer()
+                        VStack(alignment: .trailing) {
+                            Text("Je")
+                            Text("Tu")
+                            Text("Il")
+                            Text("Elle")
+                            Text("Nous")
+                            Text("Vous")
+                            Text("Ils")
+                            Text("Elles")
+                        }
+                        .font(.custom("BasicSans-Regular", size: 19))
+                        
+                        VStack(alignment: .leading) {
+                            Text("suis")
+                            Text("es")
+                            Text("est")
+                            Text("est")
+                            Text("sommes")
+                            Text("êtes")
+                            Text("sont")
+                            Text("sont")
+                        }
+                        .font(.custom("Barlow-Bold", size: 19))
+                        
+                        Spacer()
+                    }
+                    
+                    Text("Par exemple:")
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text("Je suis")                            .font(.custom("Barlow-Bold", size: 19))
+                            
+                            Text("un chat.")
+                        }
+                        
+                        HStack {
+                            Text("Tu es")                            .font(.custom("Barlow-Bold", size: 19))
+                            
+                            Text("un human.")
+                        }
+                        
+                        HStack {
+                            Text("Nous sommes")                            .font(.custom("Barlow-Bold", size: 19))
+                            
+                            Text("amis.")
+                        }
+                    }
+                }
+                Spacer()
+            }
+            .foregroundColor(.white)
+        }
+        .padding()
     }
 }
