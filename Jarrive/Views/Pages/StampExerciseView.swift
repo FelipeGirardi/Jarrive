@@ -9,6 +9,8 @@ import SwiftUI
 
 struct StampExerciseView: View {
     
+    @State var shouldShowExplicatifView: Bool = true
+    
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -18,7 +20,7 @@ struct StampExerciseView: View {
                         .aspectRatio(contentMode: .fill)
                     
                     VStack {
-                        HeaderContent()
+                        HeaderContent(shouldShowExplicatifView: $shouldShowExplicatifView)
                     }
                     .offset(y: 30)
                 }
@@ -29,7 +31,14 @@ struct StampExerciseView: View {
                 // logic showing views
                 
                 VStack {
-                    ExplicatifView()
+                    if shouldShowExplicatifView {
+                        ExplicatifView()
+                    } else {
+                        Text("hello")
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .padding(.all)
+                    }
                 }
             }
         }
@@ -45,6 +54,8 @@ struct StampExerciseViewPreview: PreviewProvider {
 }
 
 struct HeaderContent: View {
+    @Binding var shouldShowExplicatifView: Bool
+    
     var body: some View {
         
         HStack(spacing: 50) {
@@ -56,35 +67,41 @@ struct HeaderContent: View {
             
             VStack(spacing: 5) {
                 Button {
-                    print("show point")
+                    if !shouldShowExplicatifView {
+                        shouldShowExplicatifView.toggle()
+                        print("show point explicatif")
+                    }
                 } label: {
                     Text("Point Explicatif")
                         .font(.custom("Barlow-Bold", size: 12))
                         .padding()
-                        .foregroundColor(Color("mainDarkBlue"))
+                        .foregroundColor( shouldShowExplicatifView ? Color("mainDarkBlue") : .white )
                 }
                 .frame(width: 115, height: 30)
                 .clipShape(Capsule())
                 .background(
                     Capsule()
-                        .foregroundColor(.white)
-                        .shadow(color: .black, radius: 1, x: 0, y: 1.5) )
+                        .foregroundColor( shouldShowExplicatifView ? .white : Color("mainDarkBlue") )
+                        .shadow(color: .black, radius: 2, x: 0, y: 2) )
                 
                 
                 Button {
-                    print("show exercicies")
+                    if shouldShowExplicatifView {
+                        shouldShowExplicatifView.toggle()
+                        print("show point explicatif")
+                    }
                 } label: {
-                    Text("Exercicies")
+                    Text("Exercices")
                         .font(.custom("Barlow-Bold", size: 12))
                         .padding()
-                        .foregroundColor(.white)
+                        .foregroundColor( shouldShowExplicatifView ? .white : Color("mainDarkBlue"))
                 }
                 .clipShape(Capsule())
                 .background(
                     Capsule()
                         .frame(width: 115, height: 30)
-                        .foregroundColor(Color("mainDarkBlue"))
-                        .shadow(color: .black, radius: 1, x: 0, y: 1) )
+                        .foregroundColor( shouldShowExplicatifView ? Color("mainDarkBlue") : .white)
+                        .shadow(color: .black, radius: 1, x: 0, y: 2) )
             }
         }
     }
