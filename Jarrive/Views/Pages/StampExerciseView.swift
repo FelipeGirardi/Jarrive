@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StampExerciseView: View {
     
-    @State var shouldShowExplicatifView: Bool = true
+    @State var shouldShowExplicatifView: Bool = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -34,10 +34,7 @@ struct StampExerciseView: View {
                     if shouldShowExplicatifView {
                         ExplicatifView()
                     } else {
-                        Text("hello")
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .padding(.all)
+                        ExercicesView()
                     }
                 }
             }
@@ -101,7 +98,7 @@ struct HeaderContent: View {
                     Capsule()
                         .frame(width: 115, height: 30)
                         .foregroundColor( shouldShowExplicatifView ? Color("mainDarkBlue") : .white)
-                        .shadow(color: .black, radius: 1, x: 0, y: 2) )
+                        .shadow(color: .black, radius: 2, x: 0, y: 2) )
             }
         }
     }
@@ -195,7 +192,8 @@ struct ExplicatifView: View {
                     }
                     
                     HStack {
-                        Text("Nous sommes")                            .font(.custom("Barlow-Bold", size: 18))
+                        Text("Nous sommes")                            
+                            .font(.custom("Barlow-Bold", size: 18))
                         
                         Text("amis.")
                             .font(.custom("Barlow-Regular", size: 18))
@@ -207,4 +205,13 @@ struct ExplicatifView: View {
     }
     
     
+}
+
+struct ExercicesView: View {
+    var body: some View {
+        Text("hello")
+            .font(.title)
+            .fontWeight(.bold)
+            .padding(.all)
+    }
 }
