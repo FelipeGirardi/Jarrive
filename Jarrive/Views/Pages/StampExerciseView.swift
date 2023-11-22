@@ -28,8 +28,6 @@ struct StampExerciseView: View {
                 .roundedCorner(30, corners: [.bottomLeft, .bottomRight])
                 .shadow(color: .black, radius: 1, x: 0, y: 1)
                 
-                // logic showing views
-                
                 VStack {
                     if shouldShowExplicatifView {
                         ExplicatifView()
@@ -66,7 +64,6 @@ struct HeaderContent: View {
                 Button {
                     if !shouldShowExplicatifView {
                         shouldShowExplicatifView.toggle()
-                        print("show point explicatif")
                     }
                 } label: {
                     Text("Point Explicatif")
@@ -85,7 +82,6 @@ struct HeaderContent: View {
                 Button {
                     if shouldShowExplicatifView {
                         shouldShowExplicatifView.toggle()
-                        print("show point explicatif")
                     }
                 } label: {
                     Text("Exercices")
@@ -107,7 +103,7 @@ struct HeaderContent: View {
 struct ExplicatifView: View {
     var body: some View {
         VStack(alignment: .leading) {
-            
+        
             VStack(alignment: .leading) {
                 Text("POINT EXPLICATIF")
                     .font(.custom("Barlow-Bold", size: 20))
@@ -174,7 +170,6 @@ struct ExplicatifView: View {
                         .padding(.top)
                         .padding(.bottom, 8)
                 
-                
                     HStack {
                         Text("Je suis")
                             .font(.custom("Barlow-Bold", size: 18))
@@ -203,15 +198,24 @@ struct ExplicatifView: View {
         .foregroundColor(.white)
         .padding()
     }
-    
-    
 }
 
 struct ExercicesView: View {
     var body: some View {
-        Text("hello")
-            .font(.title)
-            .fontWeight(.bold)
-            .padding(.all)
+        HStack {
+            VStack(alignment: .leading) {
+                    Text("EXERCICE")
+                        .padding(.top)
+                        .padding(.bottom)
+                
+                    Text("Complete as frases")
+                    Text("com a conjugação correta:")
+            }                        
+            .font(.custom("Barlow-Bold", size: 20))
+            .foregroundColor(.white)
+            
+            Spacer()
+        }
+        .padding(.all)
     }
 }
