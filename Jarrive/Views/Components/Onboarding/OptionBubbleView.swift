@@ -46,13 +46,13 @@ struct OptionBubbleView: View {
     return nChars
   }
   
-  func maxBubbleHeight() -> Double {
-    return 60.0 + (30.0 * floor(Double(nTextCharacters())/40.0))
-  }
+//  func maxBubbleHeight() -> Double {
+//    return 60.0 + (30.0 * floor(Double(nTextCharacters())/40.0))
+//  }
   
   var body: some View {
-    HStack(alignment: .center) {
-//        HStack {
+    ZStack(alignment: .center) {
+        HStack {
           VStack {
             HStack {
               getBubbleText
@@ -77,7 +77,6 @@ struct OptionBubbleView: View {
                   .background(Color("mainLightBlue"))
                   .cornerRadius(20)
                   .onTapGesture {
-                    
                     if onboardingData.optionPauseIndexes.contains(currentMessage) && !optionsClickedIndexes.contains(currentIndex)
                     {
                       onboardingData.catChatMessages[currentMessage+1] = BubbleContent.response(ResponseBubble(textArray: [BubbleString(text: content.options[index], translation: nil)], respondedText: getBubbleTextString()))
@@ -85,7 +84,9 @@ struct OptionBubbleView: View {
                         onboardingData.catChatMessages[currentMessage+2] = onboardingData.variableOptionFollowingMessages[onboardingData.variableOptionMessageIndexes.firstIndex(of: currentMessage)!][index]
                       }
                       optionsClickedIndexes.append(currentMessage)
-                      currentMessage += 1
+                      withAnimation(.easeInOut(duration: 0.1)) {
+                        currentMessage += 1
+                      }
                     }
                   }
               }
@@ -101,21 +102,24 @@ struct OptionBubbleView: View {
           .padding(.leading, 10)
           .onTapGesture {
             showTranslations.toggle()
-            bubbleHeight = 90
+            bubbleHeight = 70
           }
           
-//          Spacer()
-//        }
+          Spacer()
+        }
       
-//      HStack {
+      HStack {
       if showTranslations {
         TranslationBubbleView(translations: content.textArray.filter({$0.translation != nil}))
           .padding(.leading, 10)
+          .onTapGesture {
+              showTranslations.toggle()
+          }
       }
         
         Spacer()
-//      }
-//      .offset(y: -bubbleHeight - 2)
+      }
+      .offset(y: -bubbleHeight + 5)
     }
   }
 }

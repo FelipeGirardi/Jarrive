@@ -15,6 +15,7 @@ struct OnboardingMainScreen: View {
   @State var onboardingData = OnboardingData()
   @State var textFieldText = ""
   @State var optionsClickedIndexes: [Int] = []
+  @State var changeScreenToPostcard = false
   
   func isChatFlowStopped() -> Bool {
     return onboardingData.pauseMessageFluxIndexes.contains(currentMessage) ||
@@ -23,6 +24,10 @@ struct OnboardingMainScreen: View {
   
   func isTextFieldActive() -> Bool {
     return onboardingData.userTextFieldPauseIndexes.contains(currentMessage)
+  }
+  
+  func shouldChangeScreenToPostcard() -> Bool {
+    return currentMessage == onboardingData.catChatMessages.count - 1
   }
   
   func navigationBarView() -> some View {
@@ -80,7 +85,9 @@ struct OnboardingMainScreen: View {
             if isTextFieldActive() {
               onboardingData.catChatMessages[currentMessage+1] = BubbleContent.text(TextBubble(textArray: [BubbleString(text: textFieldText)], type: .user))
               textFieldText = ""
-              currentMessage += 1
+              withAnimation(.easeInOut(duration: 0.1)) {
+                currentMessage += 1
+              }
               timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
             }
           }
@@ -106,12 +113,11 @@ struct OnboardingMainScreen: View {
                 ScrollView {
                   VStack(spacing: 10) {
                     ForEach(onboardingData.catChatMessages[0 ... currentMessage].indices.reversed(), id: \.self) { index in
-                      withAnimation {
-                        MainChatBubbleView(content: onboardingData.catChatMessages[0 ... currentMessage][index], onboardingData: $onboardingData, currentMessage: $currentMessage, optionsClickedIndexes: $optionsClickedIndexes, currentIndex: index)
-                          .rotationEffect(Angle(radians: .pi)) // rotate each item
-                          .scaleEffect(x: -1, y: 1, anchor: .center)
-                          .fixedSize(horizontal: false, vertical: true)
-                      }
+                      MainChatBubbleView(content: onboardingData.catChatMessages[0 ... currentMessage][index], onboardingData: $onboardingData, currentMessage: $currentMessage, optionsClickedIndexes: $optionsClickedIndexes, currentIndex: index)
+                        .rotationEffect(Angle(radians: .pi)) // rotate each item
+                        .scaleEffect(x: -1, y: 1, anchor: .center)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .zIndex(Double(index))
                     }
                   }
                 }
@@ -139,7 +145,9 @@ struct OnboardingMainScreen: View {
           messagesTimer -= 1
         } else {
           messagesTimer = 3
-          currentMessage += 1
+          withAnimation(.easeInOut(duration: 0.1)) {
+            currentMessage += 1
+          }
           
           if currentMessage == 1 {
             isBlurViewOn.toggle()
@@ -148,11 +156,18 @@ struct OnboardingMainScreen: View {
           if isChatFlowStopped() {
             timer.upstream.connect().cancel()
           }
+          
+          if shouldChangeScreenToPostcard() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+              changeScreenToPostcard.toggle()
+            }
+          }
         }
       }
       .onChange(of: onboardingData) { _ in
         timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
       }
+      .navigate(to: PostcardScreen(postcardData: onboardingData.postcardData), when: $changeScreenToPostcard)
   }
 }
 

@@ -166,6 +166,6 @@ struct PostcardScreen: View {
 
 struct PostcardScreen_Previews: PreviewProvider {
   static var previews: some View {
-    PostcardScreen(postcardData: PostcardData(author: "Thierry", image: "CatsAndTrain", text: "Bonsoir! Je voyage à Francosphère la semaine prochaine! Je suis content!\n\nBises", translation: "Boa noite! Eu viajo para Francosphère na semana que vem! Eu estou contente!\n\nBeijos", stamps: [StampData(group: "verbos", number: 1, title: "Appeler"), StampData(group: "verbos", number: 2, title: "Être"), StampData(group: "substantivos", number: 1, title: "Pessoas"), StampData(group: "números", number: 1, title: "1 a 10")]))
+    PostcardScreen(postcardData: OnboardingData().postcardData)
   }
 }
