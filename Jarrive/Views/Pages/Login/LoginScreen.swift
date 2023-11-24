@@ -1,5 +1,5 @@
 //
-//  LoginView.swift
+//  LoginScreen.swift
 //  Jarrive
 //
 //  Created by Felipe Girardi on 15/06/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LoginView: View {
+struct LoginScreen: View {
   var body: some View {
     GeometryReader { g in
         VStack {
@@ -32,8 +32,8 @@ struct LoginView: View {
   }
 }
 
-struct LoginView_Previews: PreviewProvider {
+struct LoginScreen_Previews: PreviewProvider {
   static var previews: some View {
-    LoginView()
+    LoginScreen()
   }
 }

@@ -57,8 +57,6 @@ struct ResponseBubbleView: View {
           getBubbleText
             .font(.custom("Barlow-Medium", size: 16))
             .multilineTextAlignment(.leading)
-//            .minimumScaleFactor(0.1)
-//            .baselineOffset(2)
             .foregroundColor(Color("mainDarkBlue"))
         }
       }

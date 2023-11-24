@@ -14,7 +14,7 @@ struct ContentView: View {
     TitleScreen()
 //    switch viewModel.authState {
 //      case .signedIn: MainTabView()
-//      case .signedOut: LoginView()
+//      case .signedOut: LoginScreen()
 //    }
   }
 }
