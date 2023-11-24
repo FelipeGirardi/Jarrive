@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StampExerciseView: View {
     
-    @State var shouldShowExplicatifView: Bool = false
+    @State var shouldShowExplicatifView: Bool = true
     
     var body: some View {
         GeometryReader { geometry in
