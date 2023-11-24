@@ -26,7 +26,7 @@ struct TextBubbleView: View {
   }
   
   var body: some View {
-    HStack(alignment: .center) {
+    ZStack(alignment: .center) {
         HStack {
           if content.type == .user {
             Spacer()
@@ -45,28 +45,36 @@ struct TextBubbleView: View {
             .padding(.leading, content.type == .cat ? 10 : 50)
             .padding(.trailing, content.type == .cat ? 0 : 10)
             .onTapGesture {
-              showTranslations.toggle()
+              withAnimation(.easeOut(duration: 0.1)) {
+                showTranslations.toggle()
+              }
               bubbleHeight = 40
             }
           
-//          if content.type == .cat {
-//            Spacer()
-//          }
+          if content.type == .cat {
+            Spacer()
+          }
         }
       
-//      HStack {
-      if showTranslations {
-        TranslationBubbleView(translations: content.textArray.filter({$0.translation != nil}))
-        //          .opacity(showTranslations ? 1 : 0)
-          .padding(.trailing, 10)
-      }
-//          .padding(.trailing, 150)
+      HStack {
+        if content.type == .user {
+          Spacer()
+        }
         
-//        Spacer()
-//      }
-//      .offset(y: -bubbleHeight - 2)
-      if content.type == .cat {
-        Spacer()
+        TranslationBubbleView(translations: content.textArray.filter({$0.translation != nil}))
+          .opacity(showTranslations ? 1 : 0)
+          .padding(.leading, content.type == .cat ? 10 : 50)
+          .padding(.trailing, content.type == .cat ? 0 : 10)
+          .offset(y: -bubbleHeight + 5)
+          .onTapGesture {
+            withAnimation(.easeOut(duration: 0.1)) {
+              showTranslations.toggle()
+            }
+          }
+        
+        if content.type == .cat {
+          Spacer()
+        }
       }
     }
   }
