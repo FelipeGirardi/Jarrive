@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		96939EB92B1179A800D06BFC /* StampExerciseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96939EB82B1179A800D06BFC /* StampExerciseScreen.swift */; };
 		C02AC4302AD88E61006C4422 /* OnboardingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02AC42F2AD88E61006C4422 /* OnboardingData.swift */; };
 		C02D093E2A3B979200B5FA54 /* Barlow-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C02D093D2A3B979200B5FA54 /* Barlow-LightItalic.ttf */; };
 		C02D09422A3BA23100B5FA54 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D09412A3BA23100B5FA54 /* LoginScreen.swift */; };
@@ -99,6 +100,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		96939EB82B1179A800D06BFC /* StampExerciseScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampExerciseScreen.swift; sourceTree = "<group>"; };
 		C02AC42F2AD88E61006C4422 /* OnboardingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingData.swift; sourceTree = "<group>"; };
 		C02D093D2A3B979200B5FA54 /* Barlow-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-LightItalic.ttf"; sourceTree = "<group>"; };
 		C02D09412A3BA23100B5FA54 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 			children = (
 				C0D8FEF32AD0792A00FE5F41 /* OnboardingMainScreen.swift */,
 				C0D834C32B0927F000A43175 /* PostcardScreen.swift */,
+				96939EB82B1179A800D06BFC /* StampExerciseScreen.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -655,6 +658,7 @@
 				C04896112B0D7AAC00C26E39 /* NavigateExtension.swift in Sources */,
 				C0B83F6F2A312B340096003B /* StampsView.swift in Sources */,
 				C08AE7352ADE01DF0009B42F /* TranslationBubbleView.swift in Sources */,
+				96939EB92B1179A800D06BFC /* StampExerciseScreen.swift in Sources */,
 				C0EBBAE42A3A67E800001FCF /* Line.swift in Sources */,
 				C0D834C82B092C9D00A43175 /* PostcardData.swift in Sources */,
 				C06EA4202A38DF3C00DF427E /* RoundedCorner.swift in Sources */,
