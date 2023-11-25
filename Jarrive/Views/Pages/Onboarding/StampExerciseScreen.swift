@@ -1,5 +1,5 @@
 //
-//  StampExerciseView.swift
+//  StampExerciseScreen.swift
 //  Jarrive
 //
 //  Created by Ronald on 18/11/23.
@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-struct StampExerciseView: View {
+struct StampExerciseScreen: View {
     
-    @State var shouldShowExplicatifView: Bool = false
+    @State var shouldShowExplicatifView: Bool = true
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         GeometryReader { geometry in
@@ -38,13 +39,25 @@ struct StampExerciseView: View {
             }
         }
         .background(Color("mainDarkBlue"))
-        
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    HStack {
+                        Image(systemName: "chevron.backward")
+                        Text("Selos")
+                    }
+                }
+            }
+        }
     }
 }
 
 struct StampExerciseViewPreview: PreviewProvider {
     static var previews: some View {
-        StampExerciseView()
+        StampExerciseScreen()
     }
 }
 
@@ -103,7 +116,7 @@ struct HeaderContent: View {
 struct ExplicatifView: View {
     var body: some View {
         VStack(alignment: .leading) {
-        
+            
             VStack(alignment: .leading) {
                 Text("POINT EXPLICATIF")
                     .font(.custom("Barlow-Bold", size: 20))
@@ -166,33 +179,33 @@ struct ExplicatifView: View {
             
             VStack(alignment: .leading) {
                 Text("Par exemple:")
-                        .font(.custom("Barlow-Regular", size: 18))
-                        .padding(.top)
-                        .padding(.bottom, 8)
+                    .font(.custom("Barlow-Regular", size: 18))
+                    .padding(.top)
+                    .padding(.bottom, 8)
                 
-                    HStack {
-                        Text("Je suis")
-                            .font(.custom("Barlow-Bold", size: 18))
-                        
-                        Text("un chat.")
-                            .font(.custom("Barlow-Regular", size: 18))
-                    }
+                HStack {
+                    Text("Je suis")
+                        .font(.custom("Barlow-Bold", size: 18))
                     
-                    HStack {
-                        Text("Tu es")
-                            .font(.custom("Barlow-Bold", size: 18))
-                        
-                        Text("un human.")
-                            .font(.custom("Barlow-Regular", size: 18))
-                    }
+                    Text("un chat.")
+                        .font(.custom("Barlow-Regular", size: 18))
+                }
+                
+                HStack {
+                    Text("Tu es")
+                        .font(.custom("Barlow-Bold", size: 18))
                     
-                    HStack {
-                        Text("Nous sommes")                            
-                            .font(.custom("Barlow-Bold", size: 18))
-                        
-                        Text("amis.")
-                            .font(.custom("Barlow-Regular", size: 18))
-                    }
+                    Text("un human.")
+                        .font(.custom("Barlow-Regular", size: 18))
+                }
+                
+                HStack {
+                    Text("Nous sommes")
+                        .font(.custom("Barlow-Bold", size: 18))
+                    
+                    Text("amis.")
+                        .font(.custom("Barlow-Regular", size: 18))
+                }
             }
         }
         .foregroundColor(.white)
@@ -204,13 +217,13 @@ struct ExercicesView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                    Text("EXERCICE")
-                        .padding(.top)
-                        .padding(.bottom)
+                Text("EXERCICE")
+                    .padding(.top)
+                    .padding(.bottom)
                 
-                    Text("Complete as frases")
-                    Text("com a conjugação correta:")
-            }                        
+                Text("Complete as frases")
+                Text("com a conjugação correta:")
+            }
             .font(.custom("Barlow-Bold", size: 20))
             .foregroundColor(.white)
             
