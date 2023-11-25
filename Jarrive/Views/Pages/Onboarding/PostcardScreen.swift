@@ -73,7 +73,7 @@ struct PostcardScreen: View {
                                     Button {
                                         print("go to exercice about verbs 1")
                                     } label: {
-                                        NavigationLink(destination: StampExerciseView()) {
+                                        NavigationLink(destination: StampExerciseScreen()) {
                                             Image("stamp")
                                                 .resizable()
                                                 .frame(width: 36, height: 30)

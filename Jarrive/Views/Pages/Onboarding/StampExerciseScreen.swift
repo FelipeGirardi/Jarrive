@@ -1,5 +1,5 @@
 //
-//  StampExerciseView.swift
+//  StampExerciseScreen.swift
 //  Jarrive
 //
 //  Created by Ronald on 18/11/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct StampExerciseView: View {
+struct StampExerciseScreen: View {
     
     @State var shouldShowExplicatifView: Bool = true
     @Environment(\.dismiss) var dismiss
@@ -57,7 +57,7 @@ struct StampExerciseView: View {
 
 struct StampExerciseViewPreview: PreviewProvider {
     static var previews: some View {
-        StampExerciseView()
+        StampExerciseScreen()
     }
 }
 
