@@ -167,7 +167,7 @@ struct OnboardingMainScreen: View {
       .onChange(of: onboardingData) { _ in
         timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
       }
-      .navigate(to: PostcardScreen(postcardData: onboardingData.postcardData), when: $changeScreenToPostcard)
+      .navigate(to: PostcardScreen(postcardData: onboardingData.postcardData), when: $changeScreenToPostcard, navBarHidden: true)
   }
 }
 

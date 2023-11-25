@@ -13,19 +13,19 @@ extension View {
     /// - Parameters:
     ///   - view: View to navigate to.
     ///   - binding: Only navigates when this condition is `true`.
-    func navigate<NewView: View>(to view: NewView, when binding: Binding<Bool>) -> some View {
+    func navigate<NewView: View>(to view: NewView, when binding: Binding<Bool>, navBarHidden: Bool) -> some View {
         NavigationStack {
             ZStack {
                 self
                     .navigationBarTitle("")
-                    .navigationBarHidden(true)
+                    .navigationBarHidden(navBarHidden)
 
             }
             .navigationDestination(
               isPresented: binding) {
               view
                   .navigationBarTitle("")
-                  .navigationBarHidden(true)
+                  .navigationBarHidden(navBarHidden)
               }
         }
     }
