@@ -5,10 +5,37 @@
 //  Created by Felipe Girardi on 09/10/23.
 //
 
+import AVFoundation
 import SwiftUI
 
 struct AudioBubbleView: View {
   var content: AudioBubble
+  @State var audioPlayer: AVAudioPlayer?
+  @State var isPlayingAudio: Bool = false
+  
+  func createAudioPlayer() {
+    if let sound = Bundle.main.path(forResource: "CatMeow", ofType: "mp3") {
+      do {
+        self.audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound))
+      } catch {
+        print("AVAudioPlayer could not be instantiated.")
+      }
+    } else {
+      print("Audio file could not be found.")
+    }
+  }
+  
+  func playOrPause() {
+    guard let player = audioPlayer else { return }
+
+    if player.isPlaying {
+      player.pause()
+      isPlayingAudio = false
+    } else {
+      player.play()
+      isPlayingAudio = true
+    }
+  }
   
   var body: some View {
     HStack {
@@ -17,7 +44,7 @@ struct AudioBubbleView: View {
           .resizable()
           .frame(width: 30, height: 30)
           .onTapGesture {
-            print("Play audio")
+            playOrPause()
           }
         
         Image("audioWaves")
@@ -32,11 +59,14 @@ struct AudioBubbleView: View {
       
       Spacer()
     }
+    .onAppear {
+      createAudioPlayer()
+    }
   }
   
   struct AudioBubbleView_Previews: PreviewProvider {
     static var previews: some View {
-      AudioBubbleView(content: AudioBubble(audio: "Salut? Quis est la?"))
+      AudioBubbleView(content: AudioBubble(audio: "CatMeow"))
     }
   }
 }

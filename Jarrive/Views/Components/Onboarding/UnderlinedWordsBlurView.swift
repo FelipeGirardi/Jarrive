@@ -9,6 +9,7 @@ import SwiftUI
 
 struct UnderlinedWordsBlurView: View {
   @Binding var isBlurViewOn: Bool
+  let onboardingData = OnboardingData()
   
   var body: some View {
     VStack {
@@ -56,17 +57,28 @@ struct UnderlinedWordsBlurView: View {
       
       Spacer()
       
-      Text("Ok")
-        .font(.custom("Barlow-SemiBold", size: 16))
-        .multilineTextAlignment(.leading)
-        .foregroundColor(.black)
-        .frame(maxHeight: 40)
-        .padding(.horizontal, 30)
-        .background(.white)
-        .cornerRadius(30)
-        .onTapGesture {
-          isBlurViewOn = false
+      VStack {
+        MainChatBubbleView(content: onboardingData.catChatMessages[0], onboardingData: .constant(onboardingData), currentMessage: .constant(0), optionsClickedIndexes: .constant([]), currentIndex: 0)
+          .offset(y: 20)
+        
+        HStack {
+          Spacer()
+          
+          Text("Ok")
+            .font(.custom("Barlow-SemiBold", size: 16))
+            .multilineTextAlignment(.leading)
+            .foregroundColor(.black)
+            .frame(maxHeight: 40)
+            .padding(.horizontal, 30)
+            .background(.white)
+            .cornerRadius(30)
+            .padding(.trailing, 30)
+            .offset(y: 50)
+            .onTapGesture {
+              isBlurViewOn = false
+            }
         }
+      }
       
       Spacer()
     }

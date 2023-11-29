@@ -43,15 +43,22 @@ struct TranslationBubbleView: View {
       .multilineTextAlignment(.leading)
       .baselineOffset(2)
       .foregroundColor(.black)
-      .padding(.all, 10)
+      .padding(.all, 15)
       .background(Color("mainGreen"))
       .cornerRadius(30)
       .opacity(nTranslations() <= 0 ? 0 : 1)
+      .overlay(alignment: .bottom) {
+        Image(systemName: "arrowtriangle.down.fill")
+          .font(.title)
+          .offset(x: -20, y: 20)
+          .foregroundColor(Color("mainGreen"))
+      }
+      .offset(y: -15)
   }
 }
 
 struct TranslationBubbleView_Previews: PreviewProvider {
   static var previews: some View {
-    TranslationBubbleView(translations: [BubbleString(text: "Salut? Quis est la?", translation: "Ola quem e"), BubbleString(text: "Lalala", translation: "Lalala")])
+    TranslationBubbleView(translations: [BubbleString(text: "Salut?", translation: "Ola")])
   }
 }
