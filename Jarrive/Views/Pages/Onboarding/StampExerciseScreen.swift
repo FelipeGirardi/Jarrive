@@ -9,36 +9,34 @@ import SwiftUI
 
 struct StampExerciseScreen: View {
     
-    @State var shouldShowExplicatifView: Bool = true
+    @State var shouldShowExplicatifView: Bool = false
+    @State var shouldShowExerciceStack: Bool = false
+    
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
         GeometryReader { geometry in
             VStack {
                 ZStack {
-                    Image("OnboardingBG")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
+                    Image("headerExercice")
+                        .aspectRatio(contentMode: .fit)
+                        .edgesIgnoringSafeArea(.all)
                     
-                    VStack {
-                        HeaderContent(shouldShowExplicatifView: $shouldShowExplicatifView)
-                    }
-                    .offset(y: 30)
+                    HeaderContent(shouldShowExplicatifView: $shouldShowExplicatifView)
                 }
-                .frame(maxWidth: .infinity, maxHeight: 270)
-                .roundedCorner(30, corners: [.bottomLeft, .bottomRight])
-                .shadow(color: .black, radius: 1, x: 0, y: 1)
+                .frame(maxWidth: geometry.size.width, maxHeight: 240)
                 
-                VStack {
+                //if shouldShowExerciceStack {
+                //    ExerciceStack()
+                //}
                     if shouldShowExplicatifView {
                         ExplicatifView()
                     } else {
                         ExercicesView()
                     }
-                }
             }
         }
-        .background(Color("mainDarkBlue"))
+        .background(Color("darkBlue"))
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
@@ -66,30 +64,30 @@ struct HeaderContent: View {
     
     var body: some View {
         
-        HStack(spacing: 50) {
-            Image("stampVerbEtre2")
+        HStack(spacing: 20) {
+            Image("stampVerbEtre1")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 160, height: 160)
             
             
-            VStack(spacing: 5) {
+            VStack(spacing: 20) {
                 Button {
                     if !shouldShowExplicatifView {
                         shouldShowExplicatifView.toggle()
                     }
                 } label: {
                     Text("Point Explicatif")
-                        .font(.custom("Barlow-Bold", size: 12))
+                        .font(.custom("Barlow-Bold", size: 16))
                         .padding()
-                        .foregroundColor( shouldShowExplicatifView ? Color("mainDarkBlue") : .white )
+                        .foregroundColor(.white)
                 }
-                .frame(width: 115, height: 30)
+                .frame(width: 165, height: 42)
                 .clipShape(Capsule())
                 .background(
                     Capsule()
-                        .foregroundColor( shouldShowExplicatifView ? .white : Color("mainDarkBlue") )
-                        .shadow(color: .black, radius: 2, x: 0, y: 2) )
+                        .foregroundColor( shouldShowExplicatifView ? Color("mainDarkBlue") : Color("darkPurple") ))
+                .shadow(color: .black, radius: 1, x: 0, y: 1.5)
                 
                 
                 Button {
@@ -98,16 +96,17 @@ struct HeaderContent: View {
                     }
                 } label: {
                     Text("Exercices")
-                        .font(.custom("Barlow-Bold", size: 12))
+                        .font(.custom("Barlow-Bold", size: 16))
                         .padding()
-                        .foregroundColor( shouldShowExplicatifView ? .white : Color("mainDarkBlue"))
+                        .foregroundColor(.white)
                 }
+                .frame(width: 165, height: 42)
                 .clipShape(Capsule())
                 .background(
                     Capsule()
-                        .frame(width: 115, height: 30)
-                        .foregroundColor( shouldShowExplicatifView ? Color("mainDarkBlue") : .white)
-                        .shadow(color: .black, radius: 2, x: 0, y: 2) )
+                        .foregroundColor( shouldShowExplicatifView ? Color("darkPurple") : Color("mainDarkBlue") ))
+                .shadow(color: .black, radius: 1, x: 0, y: 1.5)
+                
             }
         }
     }
@@ -115,120 +114,172 @@ struct HeaderContent: View {
 
 struct ExplicatifView: View {
     var body: some View {
-        VStack(alignment: .leading) {
-            
+        ScrollView {
             VStack(alignment: .leading) {
-                Text("POINT EXPLICATIF")
-                    .font(.custom("Barlow-Bold", size: 20))
-                    .padding(.top)
-                    .padding(.bottom)
-                
-                HStack {
-                    Text("O verbo")
-                        .font(.custom("Barlow-Regular", size: 18))
-                    
-                    Text("ÊTRE:")
-                        .font(.custom("Barlow-Bold", size: 18))
-                }
-                
-                HStack(spacing: 6) {
-                    Text("é o verbo")
-                        .font(.custom("Barlow-Regular", size: 18))
-                    
-                    Text("SER e ESTAR")
-                        .font(.custom("Barlow-Bold", size: 18))
-                    
-                    Text("em português.")
-                        .font(.custom("Barlow-Regular", size: 18))
-                }
-                
-                Text("A sua conjugação é: ")
-                    .font(.custom("Barlow-Regular", size: 18))
-                    .padding(.top)
-                    .padding(.bottom)
-            }
-            
-            HStack(alignment: .center) {
-                Spacer()
-                VStack(alignment: .trailing) {
-                    Text("Je")
-                    Text("Tu")
-                    Text("Il")
-                    Text("Elle")
-                    Text("Nous")
-                    Text("Vous")
-                    Text("Ils")
-                    Text("Elles")
-                }
-                .font(.custom("Barlow-Regular", size: 20))
-                
                 VStack(alignment: .leading) {
-                    Text("suis")
-                    Text("es")
-                    Text("est")
-                    Text("est")
-                    Text("sommes")
-                    Text("êtes")
-                    Text("sont")
-                    Text("sont")
+                    Text("POINT EXPLICATIF")
+                        .font(.custom("Barlow-Bold", size: 20))
+                        .padding(.top)
+                        .padding(.bottom)
+                    
+                    HStack {
+                        Text("O verbo")
+                            .font(.custom("Barlow-Regular", size: 18))
+                        
+                        Text("ÊTRE:")
+                            .font(.custom("Barlow-SemiBoldItalic", size: 18))
+                    }
+                    
+                    HStack(spacing: 6) {
+                        Text("é o verbo")
+                            .font(.custom("Barlow-Regular", size: 18))
+                        
+                        Text("SER e ESTAR")
+                            .font(.custom("Barlow-SemiBoldItalic", size: 18))
+                        
+                        Text("em português.")
+                            .font(.custom("Barlow-Regular", size: 18))
+                    }
+                    
+                    Text("A sua conjugação é: ")
+                        .font(.custom("Barlow-Regular", size: 18))
+                        .padding(.top)
+                        .padding(.bottom)
                 }
-                .font(.custom("Barlow-Bold", size: 20))
                 
-                Spacer()
+                HStack(alignment: .center) {
+                    Spacer()
+                    VStack(alignment: .trailing) {
+                        Text("Je")
+                        Text("Tu")
+                        Text("Il")
+                        Text("Elle")
+                        Text("Nous")
+                        Text("Vous")
+                        Text("Ils")
+                        Text("Elles")
+                    }
+                    .font(.custom("Barlow-Regular", size: 20))
+                    
+                    VStack(alignment: .leading) {
+                        Text("suis")
+                        Text("es")
+                        Text("est")
+                        Text("est")
+                        Text("sommes")
+                        Text("êtes")
+                        Text("sont")
+                        Text("sont")
+                    }
+                    .font(.custom("Barlow-SemiBoldItalic", size: 20))
+                    
+                    Spacer()
+                }
+                
+                VStack {
+                    VStack(alignment: .leading) {
+                        Text("Par exemple:")
+                            .font(.custom("Barlow-Regular", size: 18))
+                            .padding(.top)
+                            .padding(.bottom, 8)
+                        
+                        HStack {
+                            Text("Je suis")
+                                .font(.custom("Barlow-SemiBoldItalic", size: 18))
+                            
+                            Text("un chat.")
+                                .font(.custom("Barlow-Regular", size: 18))
+                        }
+                        
+                        HStack {
+                            Text("Tu es")
+                                .font(.custom("Barlow-SemiBoldItalic", size: 18))
+                            
+                            Text("un human.")
+                                .font(.custom("Barlow-Regular", size: 18))
+                        }
+                        
+                        HStack {
+                            Text("Nous sommes")
+                                .font(.custom("Barlow-SemiBoldItalic", size: 18))
+                            
+                            Text("amis.")
+                                .font(.custom("Barlow-Regular", size: 18))
+                        }
+                    }
+                }
             }
-            
-            VStack(alignment: .leading) {
-                Text("Par exemple:")
-                    .font(.custom("Barlow-Regular", size: 18))
-                    .padding(.top)
-                    .padding(.bottom, 8)
-                
-                HStack {
-                    Text("Je suis")
-                        .font(.custom("Barlow-Bold", size: 18))
-                    
-                    Text("un chat.")
-                        .font(.custom("Barlow-Regular", size: 18))
-                }
-                
-                HStack {
-                    Text("Tu es")
-                        .font(.custom("Barlow-Bold", size: 18))
-                    
-                    Text("un human.")
-                        .font(.custom("Barlow-Regular", size: 18))
-                }
-                
-                HStack {
-                    Text("Nous sommes")
-                        .font(.custom("Barlow-Bold", size: 18))
-                    
-                    Text("amis.")
-                        .font(.custom("Barlow-Regular", size: 18))
-                }
-            }
+            .foregroundColor(.white)
+        .padding(.leading)
         }
-        .foregroundColor(.white)
-        .padding()
     }
+    
 }
 
 struct ExercicesView: View {
     var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text("EXERCICE")
-                    .padding(.top)
-                    .padding(.bottom)
+        VStack {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text("EXERCICE")
+                        .padding(.top)
+                        .padding(.bottom)
+                    
+                    Text("Complete as frases")
+                    Text("com a conjugação correta:")
+                }
+                .font(.custom("Barlow-Bold", size: 20))
+                .foregroundColor(.white)
                 
-                Text("Complete as frases")
-                Text("com a conjugação correta:")
+                Spacer()
             }
-            .font(.custom("Barlow-Bold", size: 20))
-            .foregroundColor(.white)
+            .padding(.leading)
+            
             
             Spacer()
+            
+            
+            
+            Button {
+                // if every word is filled
+                //    allow button corrigir
+                
+            } label: {
+                Text("CORRIGIR")//Text(isExerciceCorrect ? "CONTINUAR" : "CORRIGIR")
+                    .font(.custom("Barlow-SemiBold", size: 20))
+                    .foregroundColor(Color("darkBlue"))
+            }
+            .frame(width: 330, height:50)
+            .clipShape(Capsule())
+            .background(
+                Capsule()
+                    .foregroundColor(Color("mainGreen") ))
+            
         }
-        .padding(.all)
+    }
+}
+
+struct ExerciceStack: View {
+    var body: some View {
+        ScrollView(.horizontal) {
+            HStack {
+                ForEach(0..<4, id: \.self) { index in
+                    Button {
+                        //
+                    } label: {
+                        Text("Exercice \(index+1)")
+                            .font(.custom("Barlow-SemiBold", size: 14))
+                            .padding()
+                            .foregroundColor(.white)
+                    }
+                    .frame(width: 100, height: 30)
+                    .clipShape(Capsule())
+                    .background(
+                        Capsule()
+                            .foregroundColor( Color("mainDarkBlue") ))
+                    .shadow(color: .black, radius: 1, x: 0, y: 1.5)
+                }
+            }.padding()
+        }
     }
 }
