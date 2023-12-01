@@ -11,6 +11,7 @@ struct StampExerciseScreen: View {
     
     @State var shouldShowExplicatifView: Bool = false
     @State var shouldShowExerciceStack: Bool = false
+    @State var shouldReviseExercice: Bool = false
     
     @Environment(\.dismiss) var dismiss
     
@@ -26,14 +27,15 @@ struct StampExerciseScreen: View {
                 }
                 .frame(maxWidth: geometry.size.width, maxHeight: 240)
                 
-                //if shouldShowExerciceStack {
-                //    ExerciceStack()
-                //}
-                    if shouldShowExplicatifView {
-                        ExplicatifView()
-                    } else {
-                        ExercicesView()
-                    }
+                // if shouldShowExerciceStack {
+                //     ExerciceStack()
+                // }
+                
+                if shouldShowExplicatifView {
+                    ExplicatifView()
+                } else {
+                    ExercicesView(shouldReviseExercice: $shouldReviseExercice)
+                }
             }
         }
         .background(Color("darkBlue"))
@@ -210,13 +212,15 @@ struct ExplicatifView: View {
                 }
             }
             .foregroundColor(.white)
-        .padding(.leading)
+            .padding(.leading)
         }
     }
     
 }
 
 struct ExercicesView: View {
+    @Binding var shouldReviseExercice: Bool
+    
     var body: some View {
         VStack {
             HStack {
@@ -239,21 +243,21 @@ struct ExercicesView: View {
             Spacer()
             
             
-            
             Button {
-                // if every word is filled
-                //    allow button corrigir
                 
             } label: {
-                Text("CORRIGIR")//Text(isExerciceCorrect ? "CONTINUAR" : "CORRIGIR")
+                Text(shouldReviseExercice ? "CONTINUAR" : "CORRIGIR")
                     .font(.custom("Barlow-SemiBold", size: 20))
-                    .foregroundColor(Color("darkBlue"))
+                    .foregroundColor(shouldReviseExercice ? Color("darkBlue") : .white )
             }
+            .disabled(shouldReviseExercice)
             .frame(width: 330, height:50)
             .clipShape(Capsule())
             .background(
                 Capsule()
-                    .foregroundColor(Color("mainGreen") ))
+                    .foregroundColor(shouldReviseExercice ? Color("mainGreen") :  Color("darkPurple") ) )
+            .shadow(color: .black, radius: 1, x: 0, y: 1.5)
+        
             
         }
     }
