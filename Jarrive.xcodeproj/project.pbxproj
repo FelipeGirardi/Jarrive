@@ -60,6 +60,8 @@
 		C0D834D22B093F2900A43175 /* Stamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D834CF2B093F2900A43175 /* Stamp.swift */; };
 		C0D834D32B093F2900A43175 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D834D02B093F2900A43175 /* Station.swift */; };
 		C0D834D42B093F2900A43175 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D834D12B093F2900A43175 /* Route.swift */; };
+		C0D8D8992B1963AE00A5CC20 /* HechoAMano-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0D8D8982B1963AE00A5CC20 /* HechoAMano-Regular.ttf */; };
+		C0D8D89B2B19645400A5CC20 /* Barlow-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0D8D89A2B19645400A5CC20 /* Barlow-Black.ttf */; };
 		C0D8FEF42AD0792A00FE5F41 /* OnboardingMainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D8FEF32AD0792A00FE5F41 /* OnboardingMainScreen.swift */; };
 		C0D91C462A4CCC8D00080072 /* TicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D91C452A4CCC8D00080072 /* TicketViewModel.swift */; };
 		C0D91C482A4CCCA100080072 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D91C472A4CCCA100080072 /* AuthenticationViewModel.swift */; };
@@ -154,6 +156,8 @@
 		C0D834CF2B093F2900A43175 /* Stamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stamp.swift; sourceTree = "<group>"; };
 		C0D834D02B093F2900A43175 /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		C0D834D12B093F2900A43175 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		C0D8D8982B1963AE00A5CC20 /* HechoAMano-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HechoAMano-Regular.ttf"; sourceTree = "<group>"; };
+		C0D8D89A2B19645400A5CC20 /* Barlow-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Black.ttf"; sourceTree = "<group>"; };
 		C0D8FEF32AD0792A00FE5F41 /* OnboardingMainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingMainScreen.swift; sourceTree = "<group>"; };
 		C0D91C452A4CCC8D00080072 /* TicketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViewModel.swift; sourceTree = "<group>"; };
 		C0D91C472A4CCCA100080072 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
@@ -214,7 +218,9 @@
 				C0E8BD972A9D644D008C4F57 /* Barlow-Regular.ttf */,
 				C0E8BD952A9D644C008C4F57 /* Barlow-SemiBold.ttf */,
 				C05C76BE2AE89AD900698C4F /* Barlow-SemiBoldItalic.ttf */,
+				C0D8D89A2B19645400A5CC20 /* Barlow-Black.ttf */,
 				C0D834C52B0929E000A43175 /* Bilbo-Regular.ttf */,
+				C0D8D8982B1963AE00A5CC20 /* HechoAMano-Regular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -577,6 +583,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0D8D8992B1963AE00A5CC20 /* HechoAMano-Regular.ttf in Resources */,
 				C02D093E2A3B979200B5FA54 /* Barlow-LightItalic.ttf in Resources */,
 				C0D834CE2B093B8500A43175 /* Barlow-Italic.ttf in Resources */,
 				C0A62CAC2A7D838300CDFA0F /* BasicSans-Black.otf in Resources */,
@@ -589,6 +596,7 @@
 				C0D834C62B0929E000A43175 /* Bilbo-Regular.ttf in Resources */,
 				C0B83F712A312B370096003B /* Assets.xcassets in Resources */,
 				C0DEA4AE2A79886B00C640BD /* BasicSans-Regular.otf in Resources */,
+				C0D8D89B2B19645400A5CC20 /* Barlow-Black.ttf in Resources */,
 				C05C76BF2AE89AD900698C4F /* Barlow-SemiBoldItalic.ttf in Resources */,
 				C0E8BD992A9D644D008C4F57 /* Barlow-Bold.ttf in Resources */,
 			);
