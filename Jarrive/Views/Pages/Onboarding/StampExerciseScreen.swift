@@ -39,7 +39,7 @@ struct StampExerciseScreen: View {
                 }
             }
         }
-        .background(Color("darkBlue"))
+        .background(Color("defaultDarkBlue"))
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
@@ -249,13 +249,14 @@ struct ExercicesView: View {
                         .fill(Color("mainGreen"))
                         .frame(width: geometry.size.width * progress)
                 }
-            }.frame(height: 20)
+            }.frame(height: 20).padding(.horizontal)
             
             HStack {
                 VStack(alignment: .leading) {
                     Text("Complete as frases:")
                         .font(.custom("Barlow-Bold", size: 20))
                         .foregroundColor(.white)
+                        .padding()
                 }
                 Spacer()
             }
@@ -270,19 +271,18 @@ struct ExercicesView: View {
             Spacer()
             
             Button {
-                // logic to change state
+                print("irraaaa")
             } label: {
                 Text("CORRIGIR")
                     .font(.custom("Barlow-SemiBold", size: 20))
                     .foregroundColor(shouldReviseExercice ? Color("darkBlue") : .white )
             }
-            .disabled(true) // change logic
+            .disabled(!shouldReviseExercice)
             .frame(width: 330, height: 50)
             .clipShape(Capsule())
             .background(
                 Capsule()
                     .foregroundColor(shouldReviseExercice ? Color("mainGreen") :  Color("darkPurple") ) )
-            .shadow(color: .black, radius: 1, x: 0, y: 1.5)
             .padding(.bottom)
         }
         .offset(x: animateWrongText ? -30 : 0)
@@ -309,18 +309,17 @@ struct ExercicesView: View {
                             Text(item.sentence[0])
                             
                             Text(item.value)
-                                .font(.system(size: item.fontSize))
                                 .padding(.vertical, 5)
                                 .padding(.horizontal, item.padding)
                                 .opacity(item.isShowing ? 1 : 0)
                                 .background {
                                     Capsule()
-                                        .fill(item.isShowing ? .clear : .gray.opacity(0.25))
+                                        .fill(item.isShowing ? Color("mainGreen") : .gray.opacity(0.25))
                                 }
                                 .background {
                                     // when item is dropped into correct place
                                     Capsule()
-                                        .stroke(.gray)
+                                        .stroke(.red)
                                         .opacity(item.isShowing ? 1 : 0)
                                 }
                                 .onDrop(of: [.url], isTargeted: .constant(false)) { providers in
@@ -332,15 +331,25 @@ struct ExercicesView: View {
                                             print(url)
                                             
                                             if item.id == "\(url)" {
-                                                withAnimation{
+                                                
+                                                droppedCount += 1
+                                                // it's going to be less than 1
+                                                let progress = (droppedCount/(CGFloat(characters.count)))
+                                                
+                                                withAnimation {
                                                     item.isShowing = true
                                                     updateShuffledArray(character: item)
+                                                    
+                                                    self.progress = progress
+                                                    
+                                                    if self.progress == 1 {
+                                                        shouldReviseExercice.toggle()
+                                                    }
                                                 }
                                             } else {
                                                 // animation of wrong answer
-                                                animateView()
+                                                animateView() // OBS: doesnt work??
                                             }
-                                            
                                         }
                                     }
                                     return false
@@ -348,6 +357,8 @@ struct ExercicesView: View {
                             
                             Text(item.sentence[1])
                         }
+                        .font(.custom("Barlow-SemiBold", size: 20))
+                        .foregroundColor(Color("defaultOffWhite"))
                     }
                 }
                 
@@ -370,20 +381,25 @@ struct ExercicesView: View {
                             .onDrag {   // return id to find which item is moving
                                 return .init(contentsOf: URL(string: item.id))!
                             }
-                            .background {
-                                Capsule().stroke(.gray)
-                            }
-                            .font(.system(size: item.fontSize))
+                            .clipShape(Capsule())
+                            .font(.custom("Barlow-SemiBold", size: 20))
+                            .foregroundColor(Color("mainBlue"))
                             .padding(.vertical, 5)
                             .padding(.horizontal, item.padding)
                             .opacity(item.isShowing ? 0 : 1)
                             .background {
                                 Capsule()
-                                    .fill(item.isShowing ? Color(.gray).opacity(0.25) : Color(.clear))
+                                    .foregroundColor(item.isShowing ? Color(.clear) : Color("defaultOffWhite"))
+                                    //.fill(item.isShowing ? Color(.gray).opacity(0.25) : Color(.clear))
                                     //.opacity(item.isShowing ? 0.25 : 0)
                             }
                     }
                 }
+                
+                //.background(
+                //    Capsule()
+                //        .foregroundColor( shouldShowExplicatifView ? Color("darkPurple") : //Color("mainDarkBlue") ))
+                
                 
                 if shuffledRows.last != row {
                     Divider()
