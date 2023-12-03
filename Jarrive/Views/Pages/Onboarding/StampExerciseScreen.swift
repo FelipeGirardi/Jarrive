@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StampExerciseScreen: View {
     
-    @State var shouldShowExplicatifView: Bool = false
+    @State var shouldShowExplicatifView: Bool = true
     @State var shouldShowExerciceStack: Bool = false
     @State var shouldReviseExercice: Bool = false
     
@@ -26,8 +26,8 @@ struct StampExerciseScreen: View {
                     
                     HeaderContent(shouldShowExplicatifView: $shouldShowExplicatifView)
                 }
-                .frame(maxWidth: geometry.size.width, maxHeight: 140)
-
+                .frame(maxWidth: geometry.size.width, maxHeight: 190)
+                
                 // if shouldShowExerciceStack {
                 //     ExerciceStack()
                 // }
@@ -39,7 +39,7 @@ struct StampExerciseScreen: View {
                 }
             }
         }
-        .background(Color("defaultDarkBlue"))
+        .background(shouldShowExplicatifView ? .white: Color("defaultDarkBlue"))
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
@@ -48,8 +48,9 @@ struct StampExerciseScreen: View {
                 } label: {
                     HStack {
                         Image(systemName: "chevron.backward")
-                        Text("Selos")
+                        Text("Carte Postale")
                     }
+                    .foregroundColor(Color("mainBlue"))
                 }
             }
         }
@@ -67,50 +68,70 @@ struct HeaderContent: View {
     
     var body: some View {
         
-        HStack(spacing: 20) {
-            Image("stampVerbEtre1")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 160, height: 160)
-            
-            
-            VStack(spacing: 20) {
-                Button {
-                    if !shouldShowExplicatifView {
-                        shouldShowExplicatifView.toggle()
+        VStack {
+            HStack(spacing: 20) {
+                VStack(alignment: .leading, spacing: 15) {
+                    VStack(alignment: .leading){
+                        Text("Verbes")
+                        Text("#001")
                     }
-                } label: {
-                    Text("Point Explicatif")
-                        .font(.custom("Barlow-Bold", size: 16))
-                        .padding()
-                        .foregroundColor(.white)
-                }
-                .frame(width: 165, height: 42)
-                .clipShape(Capsule())
-                .background(
-                    Capsule()
-                        .foregroundColor( shouldShowExplicatifView ? Color("mainDarkBlue") : Color("darkPurple") ))
-                .shadow(color: .black, radius: 1, x: 0, y: 1.5)
-                
-                
-                Button {
-                    if shouldShowExplicatifView {
-                        shouldShowExplicatifView.toggle()
+                    .font(.custom("Barlow-Bold", size: 16))
+                    .foregroundStyle(Color("mainBlue"))
+                    
+                    VStack(alignment: .leading) {
+                        Text("Être")
+                            .font(.custom("Barlow-Bold", size: 24))
+                            .foregroundStyle(Color("mainBlue"))
                     }
-                } label: {
-                    Text("Exercices")
-                        .font(.custom("Barlow-Bold", size: 16))
-                        .padding()
-                        .foregroundColor(.white)
+                    
+                    Button {
+                        print("aaaa")
+                    } label: {
+                        Image("stamp")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    }
+                    .frame(width: 35, height: 35)
                 }
-                .frame(width: 165, height: 42)
-                .clipShape(Capsule())
-                .background(
-                    Capsule()
-                        .foregroundColor( shouldShowExplicatifView ? Color("darkPurple") : Color("mainDarkBlue") ))
-                .shadow(color: .black, radius: 1, x: 0, y: 1.5)
                 
+                Spacer()
+                
+                VStack(spacing: 10) {
+                    Button {
+                        if !shouldShowExplicatifView {
+                            shouldShowExplicatifView.toggle()
+                        }
+                    } label: {
+                        Text("Point Explicatif")
+                            .font(.custom("Barlow-Bold", size: 16))
+                            .padding()
+                            .foregroundColor(shouldShowExplicatifView ? .white : Color("defaultDarkGray"))
+                    }
+                    .frame(width: 165, height: 35)
+                    .clipShape(Capsule())
+                    .background(
+                        Capsule()
+                            .foregroundColor( shouldShowExplicatifView ? Color("mainBlue") : Color("defaultOffWhite") ))
+                    
+                    Button {
+                        if shouldShowExplicatifView {
+                            shouldShowExplicatifView.toggle()
+                        }
+                    } label: {
+                        Text("Exercices")
+                            .font(.custom("Barlow-Bold", size: 16))
+                            .padding()
+                            .foregroundColor(shouldShowExplicatifView ? Color("defaultDarkGray") : .white)
+                    }
+                    .frame(width: 165, height: 35)
+                    .clipShape(Capsule())
+                    .background(
+                        Capsule()
+                            .foregroundColor( shouldShowExplicatifView ? Color("defaultOffWhite") : Color("mainBlue") ))
+                    
+                }.padding(.bottom, 40)
             }
+            .padding()
         }
     }
 }
@@ -119,103 +140,144 @@ struct ExplicatifView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                VStack(alignment: .leading) {
-                    Text("POINT EXPLICATIF")
-                        .font(.custom("Barlow-Bold", size: 20))
-                        .padding(.top)
-                        .padding(.bottom)
-                    
-                    HStack {
-                        Text("O verbo")
-                            .font(.custom("Barlow-Regular", size: 18))
-                        
-                        Text("ÊTRE:")
-                            .font(.custom("Barlow-SemiBoldItalic", size: 18))
-                    }
-                    
-                    HStack(spacing: 6) {
-                        Text("é o verbo")
-                            .font(.custom("Barlow-Regular", size: 18))
-                        
-                        Text("SER e ESTAR")
-                            .font(.custom("Barlow-SemiBoldItalic", size: 18))
-                        
-                        Text("em português.")
-                            .font(.custom("Barlow-Regular", size: 18))
-                    }
-                    
-                    Text("A sua conjugação é: ")
-                        .font(.custom("Barlow-Regular", size: 18))
-                        .padding(.top)
-                        .padding(.bottom)
-                }
                 
-                HStack(alignment: .center) {
-                    Spacer()
-                    VStack(alignment: .trailing) {
-                        Text("Je")
-                        Text("Tu")
-                        Text("Il")
-                        Text("Elle")
-                        Text("Nous")
-                        Text("Vous")
-                        Text("Ils")
-                        Text("Elles")
+                HStack {
+                    Button {
+                        print("aaaa")
+                    } label: {
+                        Image("stamp")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
                     }
-                    .font(.custom("Barlow-Regular", size: 20))
+                    .frame(width: 35, height: 35)
                     
-                    VStack(alignment: .leading) {
-                        Text("suis")
-                        Text("es")
-                        Text("est")
-                        Text("est")
-                        Text("sommes")
-                        Text("êtes")
-                        Text("sont")
-                        Text("sont")
-                    }
-                    .font(.custom("Barlow-SemiBoldItalic", size: 20))
-                    
-                    Spacer()
-                }
+                    Text("Conjugaison")
+                        .font(.custom("Barlow-SemiBold", size: 24))
+                        .padding(.top)
+                        .padding(.bottom)
+                }.foregroundColor(Color("mainBlue"))
                 
                 VStack {
-                    VStack(alignment: .leading) {
-                        Text("Par exemple:")
-                            .font(.custom("Barlow-Regular", size: 18))
-                            .padding(.top)
-                            .padding(.bottom, 8)
-                        
-                        HStack {
-                            Text("Je suis")
-                                .font(.custom("Barlow-SemiBoldItalic", size: 18))
+                    GeometryReader { geometry in
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Text("O verbo")
+                                    .font(.custom("Barlow-Regular", size: 18))
+                                
+                                Text("ÊTRE:")
+                                    .font(.custom("Barlow-SemiBoldItalic", size: 18))
+                            }
                             
-                            Text("un chat.")
-                                .font(.custom("Barlow-Regular", size: 18))
-                        }
-                        
-                        HStack {
-                            Text("Tu es")
-                                .font(.custom("Barlow-SemiBoldItalic", size: 18))
+                            HStack(spacing: 6) {
+                                Text("é o verbo")
+                                    .font(.custom("Barlow-Regular", size: 18))
+                                
+                                Text("SER e ESTAR")
+                                    .font(.custom("Barlow-SemiBoldItalic", size: 18))
+                                
+                                Text("em português.")
+                                    .font(.custom("Barlow-Regular", size: 18))
+                            }
                             
-                            Text("un human.")
+                            Text("A sua conjugação é: ")
                                 .font(.custom("Barlow-Regular", size: 18))
-                        }
-                        
-                        HStack {
-                            Text("Nous sommes")
-                                .font(.custom("Barlow-SemiBoldItalic", size: 18))
+                                .padding(.bottom)
                             
-                            Text("amis.")
-                                .font(.custom("Barlow-Regular", size: 18))
-                        }
+                            HStack(alignment: .center) {
+                                Spacer()
+                                VStack(alignment: .trailing) {
+                                    Text("Je")
+                                    Text("Tu")
+                                    Text("Il")
+                                    Text("Elle")
+                                    Text("Nous")
+                                    Text("Vous")
+                                    Text("Ils")
+                                    Text("Elles")
+                                }
+                                .font(.custom("Barlow-Regular", size: 20))
+                                
+                                VStack(alignment: .leading) {
+                                    Text("suis")
+                                    Text("es")
+                                    Text("est")
+                                    Text("est")
+                                    Text("sommes")
+                                    Text("êtes")
+                                    Text("sont")
+                                    Text("sont")
+                                }
+                                .font(.custom("Barlow-SemiBoldItalic", size: 20))
+                                
+                                Spacer()
+                            }
+                        }.padding()
                     }
                 }
+                .background(Color("defaultOffWhite"))
+                .foregroundColor(Color("defaultGray"))
+                .frame(width: 340, height: 320, alignment: .center)
+                
+                HStack {
+                    Button {
+                        print("aaaa")
+                    } label: {
+                        Image("stamp")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    }
+                    .frame(width: 35, height: 35)
+                    
+                    Text("Exemples")
+                        .font(.custom("Barlow-SemiBold", size: 24))
+                        .padding(.top)
+                        .padding(.bottom)
+                }.foregroundColor(Color("mainBlue"))
+                
+                VStack(alignment: .leading) {
+                    VStack {
+                        GeometryReader { geometry in
+                            HStack{
+                                Spacer()
+                                
+                                VStack(alignment: .leading) {
+                                    HStack(spacing: 4)  {
+                                        Text("Je suis")
+                                            .font(.custom("Barlow-SemiBoldItalic", size: 18))
+                                        
+                                        Text("un chat.")
+                                            .font(.custom("Barlow-Regular", size: 18))
+                                    }
+                                    
+                                    HStack(spacing: 4)  {
+                                        Text("Tu es")
+                                            .font(.custom("Barlow-SemiBoldItalic", size: 18))
+                                        
+                                        Text("un human.")
+                                            .font(.custom("Barlow-Regular", size: 18))
+                                    }
+                                    
+                                    HStack(spacing: 4)  {
+                                        Text("Nous sommes")
+                                            .font(.custom("Barlow-SemiBoldItalic", size: 18))
+                                        
+                                        Text("amis.")
+                                            .font(.custom("Barlow-Regular", size: 18))
+                                    }
+                                }
+                                .padding()
+                             Spacer()
+                            }
+                        }
+                    }
+                    .background(Color("defaultOffWhite"))
+                    .foregroundColor(Color("defaultGray"))
+                    .frame(width: 340, height: 90, alignment: .center)
+                }
             }
-            .foregroundColor(.white)
-            .padding(.leading)
         }
     }
+    
     
 }
 
@@ -390,8 +452,8 @@ struct ExercicesView: View {
                             .background {
                                 Capsule()
                                     .foregroundColor(item.isShowing ? Color(.clear) : Color("defaultOffWhite"))
-                                    //.fill(item.isShowing ? Color(.gray).opacity(0.25) : Color(.clear))
-                                    //.opacity(item.isShowing ? 0.25 : 0)
+                                //.fill(item.isShowing ? Color(.gray).opacity(0.25) : Color(.clear))
+                                //.opacity(item.isShowing ? 0.25 : 0)
                             }
                     }
                 }
