@@ -21,12 +21,13 @@ struct StampExerciseScreen: View {
                 ZStack {
                     Image("headerExercice")
                         .aspectRatio(contentMode: .fit)
-                        .edgesIgnoringSafeArea(.all)
+                        .edgesIgnoringSafeArea(.top)
+                        .padding(.bottom)
                     
                     HeaderContent(shouldShowExplicatifView: $shouldShowExplicatifView)
                 }
-                .frame(maxWidth: geometry.size.width, maxHeight: 240)
-                
+                .frame(maxWidth: geometry.size.width, maxHeight: 140)
+
                 // if shouldShowExerciceStack {
                 //     ExerciceStack()
                 // }
@@ -219,47 +220,251 @@ struct ExplicatifView: View {
 }
 
 struct ExercicesView: View {
+    
     @Binding var shouldReviseExercice: Bool
+    
+    // MARK: Properties
+    @State var progress: CGFloat = 0.0
+    @State var characters: [Character] = characters_Mock
+    
+    // MARK:
+    // For Drag Part
+    @State var shuffledRows: [[Character]] = []
+    
+    // For Drop Part
+    @State var rows: [[Character]] = []
+    
+    // Animation
+    @State var animateWrongText: Bool = false
+    @State var droppedCount: CGFloat = 0
     
     var body: some View {
         VStack {
+            GeometryReader { geometry in
+                ZStack(alignment: .leading) {
+                    Capsule()
+                        .fill(.gray.opacity(0.25))
+                    
+                    Capsule()
+                        .fill(Color("mainGreen"))
+                        .frame(width: geometry.size.width * progress)
+                }
+            }.frame(height: 20)
+            
             HStack {
                 VStack(alignment: .leading) {
-                    Text("EXERCICE")
-                        .padding(.top)
-                        .padding(.bottom)
-                    
-                    Text("Complete as frases")
-                    Text("com a conjugação correta:")
+                    Text("Complete as frases:")
+                        .font(.custom("Barlow-Bold", size: 20))
+                        .foregroundColor(.white)
                 }
-                .font(.custom("Barlow-Bold", size: 20))
-                .foregroundColor(.white)
-                
                 Spacer()
             }
             .padding(.leading)
             
             
+            DropArea()
+                .padding(.vertical, 30)
+            
+            DragArea()
+            
             Spacer()
             
-            
             Button {
-                
+                // logic to change state
             } label: {
-                Text(shouldReviseExercice ? "CONTINUAR" : "CORRIGIR")
+                Text("CORRIGIR")
                     .font(.custom("Barlow-SemiBold", size: 20))
                     .foregroundColor(shouldReviseExercice ? Color("darkBlue") : .white )
             }
-            .disabled(shouldReviseExercice)
-            .frame(width: 330, height:50)
+            .disabled(true) // change logic
+            .frame(width: 330, height: 50)
             .clipShape(Capsule())
             .background(
                 Capsule()
                     .foregroundColor(shouldReviseExercice ? Color("mainGreen") :  Color("darkPurple") ) )
             .shadow(color: .black, radius: 1, x: 0, y: 1.5)
-        
-            
+            .padding(.bottom)
         }
+        .offset(x: animateWrongText ? -30 : 0)
+        .onAppear {
+            // MARK: Build Grid
+            if rows.isEmpty {
+                characters = characters.shuffled()
+                shuffledRows = generateGrid()
+                characters = characters_Mock
+                rows = generateGrid()
+            }
+        }
+    }
+    
+    // MARK: Drop Area
+    @ViewBuilder
+    func DropArea() -> some View {
+        VStack(spacing: 12) {
+            
+            ForEach($rows, id: \.self) { $row in
+                VStack(spacing: 10) {
+                    ForEach($row) { $item in
+                        HStack {
+                            Text(item.sentence[0])
+                            
+                            Text(item.value)
+                                .font(.system(size: item.fontSize))
+                                .padding(.vertical, 5)
+                                .padding(.horizontal, item.padding)
+                                .opacity(item.isShowing ? 1 : 0)
+                                .background {
+                                    Capsule()
+                                        .fill(item.isShowing ? .clear : .gray.opacity(0.25))
+                                }
+                                .background {
+                                    // when item is dropped into correct place
+                                    Capsule()
+                                        .stroke(.gray)
+                                        .opacity(item.isShowing ? 1 : 0)
+                                }
+                                .onDrop(of: [.url], isTargeted: .constant(false)) { providers in
+                                    
+                                    if let first = providers.first {
+                                        let _ = first.loadObject(ofClass: URL.self) { value, error in
+                                            guard let url = value else { return }
+                                            
+                                            print(url)
+                                            
+                                            if item.id == "\(url)" {
+                                                withAnimation{
+                                                    item.isShowing = true
+                                                    updateShuffledArray(character: item)
+                                                }
+                                            } else {
+                                                // animation of wrong answer
+                                                animateView()
+                                            }
+                                            
+                                        }
+                                    }
+                                    return false
+                                }
+                            
+                            Text(item.sentence[1])
+                        }
+                    }
+                }
+                
+                if rows.last != row {
+                    Divider()
+                }
+            }
+        }
+    }
+    
+    // MARK: Drag Area
+    @ViewBuilder
+    func DragArea() -> some View {
+        HStack(spacing: 12) {
+            ForEach(shuffledRows, id: \.self) { row in
+                HStack(spacing: 10) {
+                    ForEach(row) { item in
+                        
+                        Text(item.value)
+                            .onDrag {   // return id to find which item is moving
+                                return .init(contentsOf: URL(string: item.id))!
+                            }
+                            .background {
+                                Capsule().stroke(.gray)
+                            }
+                            .font(.system(size: item.fontSize))
+                            .padding(.vertical, 5)
+                            .padding(.horizontal, item.padding)
+                            .opacity(item.isShowing ? 0 : 1)
+                            .background {
+                                Capsule()
+                                    .fill(item.isShowing ? Color(.gray).opacity(0.25) : Color(.clear))
+                                    //.opacity(item.isShowing ? 0.25 : 0)
+                            }
+                    }
+                }
+                
+                if shuffledRows.last != row {
+                    Divider()
+                }
+            }
+        }
+    }
+    
+    // MARK: Generating Custom Grid Columns
+    func generateGrid() -> [[Character]] {
+        // Identify each text width and update it into state variable
+        for item in characters.enumerated() {
+            let textSize = textSize(character: item.element)
+            characters[item.offset].textSize = textSize
+        }
+        
+        var gridArray: [[Character]] = []
+        var tempArray: [Character] = []
+        
+        var currentWidth: CGFloat = 0
+        let totalScreenWidth: CGFloat = UIScreen.main.bounds.width - 30
+        
+        // swap
+        for character in characters {
+            currentWidth += character.textSize
+            
+            if currentWidth < totalScreenWidth {
+                tempArray.append(character)
+                
+            } else {
+                gridArray.append(tempArray)
+                tempArray = []
+                currentWidth = character.textSize
+                tempArray.append(character)
+            }
+        }
+        
+        if !tempArray.isEmpty {
+            gridArray.append(tempArray)
+        }
+        
+        return gridArray
+    }
+    
+    
+    func textSize(character: Character) -> CGFloat {
+        let font = UIFont.systemFont(ofSize: character.fontSize)
+        let attributes = [NSAttributedString.Key.font : font]
+        let size = (character.value as NSString).size(withAttributes: attributes)
+        
+        return size.width + (character.padding * 2) + 15
+    }
+    
+    
+    func updateShuffledArray(character: Character) {
+        for index in shuffledRows.indices {
+            for subIndex in shuffledRows[index].indices {
+                if shuffledRows[index][subIndex].id == character.id {
+                    shuffledRows[index][subIndex].isShowing = true
+                }
+            }
+        }
+    }
+    
+    func animateView() {
+        withAnimation(
+            .spring(response: 0.2, dampingFraction: 0.3, blendDuration: 0.2)
+            .delay(1)
+        ) {
+            animateWrongText = true
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            withAnimation(
+                .spring(response: 0.2, dampingFraction: 0.3, blendDuration: 0.2)
+                .delay(1)
+            ) {
+                animateWrongText = false
+            }
+        }
+        
     }
 }
 
