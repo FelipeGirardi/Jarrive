@@ -157,7 +157,7 @@ struct PostcardScreen: View {
         Spacer()
       }
     }
-    .padding(.bottom, 30)
+//    .padding(.bottom, 30)
   }
   
   var body: some View {
@@ -197,46 +197,47 @@ struct PostcardScreen: View {
             
             postcardComponent(geometry: g)
               .padding(.horizontal, 30)
+              .padding(.top, 20)
+            
+            Spacer()
             
             PostcardButtonsView(shouldShowStampsList: $shouldShowStampsList, geometry: g)
               .padding(.horizontal, 30)
             
-            Spacer()
+//            Spacer()
             
             VStack {
               if shouldShowStampsList {
                 StampsListView(stamps: postcardData.stamps, geometry: g)
               } else {
-                PostcardMessageView()
+                PostcardMessageView(postcardData: postcardData, geometry: g)
               }
             }
-            
-            //          VStack(spacing: 50) {
-            //            HStack {
-            //              Text("Tradução")
-            //                .font(.custom("Barlow-SemiBold", size: 16))
-            //                .foregroundColor(Color("mainDarkBlue"))
-            //                .frame(alignment: .leading)
-            //
-            //              Spacer()
-            //            }
-            //
-            //            HStack {
-            //              Text(postcardData.translation)
-            //                .font(.custom("Barlow-Italic", size: 14))
-            //                .foregroundColor(Color("mainDarkBlue"))
-            //                .lineSpacing(5)
-            //                .padding(.leading, 20)
-            //                .frame(maxWidth: 230, alignment: .leading)
-            //
-            //              Spacer()
-            //            }
-            //          }
+            .frame(height: g.size.height * 0.31)
             
             Spacer()
-            //          Spacer()
+            
+            HStack {
+              Spacer()
+              Button {
+                print("Voltar para o chat")
+              } label: {
+                Text("VOLTAR PARA O CHAT")
+                  .font(.custom("Barlow-Bold", size: 20))
+                  .padding()
+                  .foregroundColor(Color("defaultLightGray"))
+              }
+              .frame(width: g.size.width * 0.86, height: 42)
+              .background(
+                Capsule()
+                  .foregroundColor(Color("defaultLighterGray"))
+                  .shadow(color: .gray, radius: 2, x: 0, y: 2))
+              Spacer()
+            }
+            .padding(.top, 10)
+            
+            Spacer()
           }
-//          .padding(.horizontal, 30)
         }
       }
       .accentColor(.white)
@@ -364,30 +365,49 @@ struct StampsListView: View {
         .frame(height: geometry.size.height * 0.22)
         .offset(x: 30)
       }
-      
-      HStack {
-        Spacer()
-        Button {
-          print("Voltar para o chat")
-        } label: {
-          Text("VOLTAR PARA O CHAT")
-            .font(.custom("Barlow-Bold", size: 20))
-            .padding()
-            .foregroundColor(Color("defaultLightGray"))
-        }
-        .frame(width: geometry.size.width * 0.86, height: 42)
-        .background(
-          Capsule()
-            .foregroundColor(Color("defaultLighterGray"))
-            .shadow(color: .gray, radius: 2, x: 0, y: 2))
-        Spacer()
-      }
     }
   }
 }
 
 struct PostcardMessageView: View {
+  var postcardData: PostcardData
+  var geometry: GeometryProxy
+  
   var body: some View {
-    return Group {}
+    return Group {
+      HStack {
+        VStack(alignment: .leading, spacing: 15) {
+            HStack(alignment: .center, spacing: 8) {
+              Image("audioButton")
+                .resizable()
+                .frame(width: 32, height: 32)
+                .onTapGesture {
+                  print("Play audio")
+                }
+              
+              Text("Escute a mensagem!")
+                .font(.custom("Barlow-SemiBold", size: 16))
+                .foregroundColor(Color("mainDarkBlue"))
+                .padding(.bottom, 5)
+            }
+            .padding(.top, 15)
+            
+            Text(postcardData.text)
+              .font(.custom("Barlow-italic", size: 16))
+              .foregroundColor(Color("defaultDarkerGray"))
+              .minimumScaleFactor(0.1)
+              .lineSpacing(5)
+              .padding(.leading, 5)
+          
+          Spacer()
+        }
+        Spacer()
+      }
+      .padding(.leading, 14)
+    }
+    .frame(width: geometry.size.width * 0.87, height: geometry.size.height * 0.31)
+    .background(Color("defaultLighterGray"))
+    .roundedCorner(20, corners: [.topRight, .bottomLeft, .bottomRight])
+
   }
 }
