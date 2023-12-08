@@ -65,7 +65,7 @@ struct TextBubbleView: View {
           .opacity(showTranslations ? 1 : 0)
           .padding(.leading, content.type == .cat ? 10 : 50)
           .padding(.trailing, content.type == .cat ? 0 : 10)
-          .offset(y: -bubbleHeight + 5)
+          .offset(y: -bubbleHeight)
           .onTapGesture {
             withAnimation(.easeOut(duration: 0.1)) {
               showTranslations.toggle()

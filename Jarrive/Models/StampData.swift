@@ -12,3 +12,8 @@ struct StampData: Hashable {
   var number: Int
   var title: String
 }
+
+enum StampType {
+  case small
+  case large
+}
