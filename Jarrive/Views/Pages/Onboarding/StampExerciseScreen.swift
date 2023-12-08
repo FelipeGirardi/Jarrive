@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StampExerciseScreen: View {
     
+    // MARK: - Logic properties
     @State var shouldShowExplicatifView: Bool = true
     @State var shouldShowExerciceStack: Bool = false
     @State var shouldReviseExercice: Bool = false
@@ -38,6 +39,7 @@ struct StampExerciseScreen: View {
                     ExercicesView(shouldReviseExercice: $shouldReviseExercice)
                 }
             }
+            
         }
         .background(shouldShowExplicatifView ? .white: Color("defaultDarkBlue"))
         .navigationBarBackButtonHidden()
@@ -63,15 +65,16 @@ struct StampExerciseViewPreview: PreviewProvider {
     }
 }
 
+// MARK: - Header Content
 struct HeaderContent: View {
     @Binding var shouldShowExplicatifView: Bool
     
     var body: some View {
         
         VStack {
-            HStack(spacing: 20) {
+            HStack {
                 VStack(alignment: .leading, spacing: 15) {
-                    VStack(alignment: .leading){
+                    VStack(alignment: .leading) {
                         Text("Verbes")
                         Text("#001")
                     }
@@ -92,7 +95,8 @@ struct HeaderContent: View {
                             .aspectRatio(contentMode: .fit)
                     }
                     .frame(width: 35, height: 35)
-                }
+                    .padding(.bottom)
+                }.padding(.leading, 10)
                 
                 Spacer()
                 
@@ -129,13 +133,14 @@ struct HeaderContent: View {
                         Capsule()
                             .foregroundColor( shouldShowExplicatifView ? Color("defaultOffWhite") : Color("mainBlue") ))
                     
-                }.padding(.bottom, 40)
+                }.padding(.bottom, 50)
             }
             .padding()
         }
     }
 }
 
+// MARK: - Explicative View
 struct ExplicatifView: View {
     var body: some View {
         ScrollView {
@@ -266,7 +271,7 @@ struct ExplicatifView: View {
                                     }
                                 }
                                 .padding()
-                             Spacer()
+                                Spacer()
                             }
                         }
                     }
@@ -276,11 +281,11 @@ struct ExplicatifView: View {
                 }
             }
         }
+        
     }
-    
-    
 }
 
+// MARK: - Exercice View
 struct ExercicesView: View {
     
     @Binding var shouldReviseExercice: Bool
@@ -311,7 +316,7 @@ struct ExercicesView: View {
                         .fill(Color("mainGreen"))
                         .frame(width: geometry.size.width * progress)
                 }
-            }.frame(height: 20).padding(.horizontal)
+            }.frame(height: 20).padding(.horizontal).padding(.top)
             
             HStack {
                 VStack(alignment: .leading) {
@@ -458,11 +463,6 @@ struct ExercicesView: View {
                     }
                 }
                 
-                //.background(
-                //    Capsule()
-                //        .foregroundColor( shouldShowExplicatifView ? Color("darkPurple") : //Color("mainDarkBlue") ))
-                
-                
                 if shuffledRows.last != row {
                     Divider()
                 }
@@ -546,6 +546,7 @@ struct ExercicesView: View {
     }
 }
 
+// TO-DO: - 
 struct ExerciceStack: View {
     var body: some View {
         ScrollView(.horizontal) {
