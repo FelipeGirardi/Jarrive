@@ -80,7 +80,7 @@ struct OnboardingMainScreen: View {
           .frame(width: 45, height: 45)
           .foregroundColor(Color("mainLightBlue"))
 
-        Image(systemName: "arrowtriangle.right.fill")
+        Image("paperPlane")
           .foregroundColor(.white)
           .onTapGesture {
             if isTextFieldActive() {

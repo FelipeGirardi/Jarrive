@@ -90,7 +90,7 @@ struct HeaderContent: View {
                     Button {
                         print("aaaa")
                     } label: {
-                        Image("stamp")
+                        Image("audioButton")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                     }
@@ -150,7 +150,7 @@ struct ExplicatifView: View {
                     Button {
                         print("aaaa")
                     } label: {
-                        Image("stamp")
+                        Image("audioButton")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                     }
@@ -227,7 +227,7 @@ struct ExplicatifView: View {
                     Button {
                         print("aaaa")
                     } label: {
-                        Image("stamp")
+                        Image("audioButton")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                     }
@@ -340,7 +340,7 @@ struct ExercicesView: View {
             Button {
                 print("irraaaa")
             } label: {
-                Text("CORRIGIR")
+                Text("CONTINUAR")
                     .font(.custom("Barlow-SemiBold", size: 20))
                     .foregroundColor(shouldReviseExercice ? Color("darkBlue") : .white )
             }
