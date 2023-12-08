@@ -9,64 +9,64 @@ import SwiftUI
 
 struct UnderlinedWordsBlurView: View {
   @Binding var isBlurViewOn: Bool
+  let onboardingData = OnboardingData()
   
   var body: some View {
-    VStack {
-      Spacer()
+    ZStack {
+      VStack {
+        Spacer()
+        
+        HStack(spacing: 40) {
+          VStack(alignment: .leading, spacing: 40) {
+            Text("Palavras sublinhadas\nindicam novas palavras!")
+              .font(.custom("Barlow-SemiBold", size: 24))
+              .foregroundColor(.white)
+            
+            Text("Pressione para\naparecer a tradução.")
+              .font(.custom("Barlow-SemiBold", size: 16))
+              .foregroundColor(.white)
+          }
+        }
+        .frame(height: 200)
+        
+        Spacer()
+        Spacer()
+      }
       
-      HStack(spacing: 40) {
-        VStack(alignment: .leading, spacing: 40) {
-          Text("Palavras sublinhadas\nindicam novas palavras!")
-            .font(.custom("Barlow-SemiBoldItalic", size: 15))
-            .foregroundColor(.white)
-          
-          Text("Pressione para\naparecer a tradução.")
-            .font(.custom("Barlow-SemiBoldItalic", size: 15))
-            .foregroundColor(.white)
-          
+      VStack {
+        ForEach(1...5, id: \.self) { _ in
           Spacer()
         }
         
-        VStack {
-          Text("Oi?")
+        Group {
+          VStack(alignment: .leading) {
+            MainChatBubbleView(content: onboardingData.catChatMessages[0], onboardingData: .constant(onboardingData), currentMessage: .constant(0), optionsClickedIndexes: .constant([]), currentIndex: 0)
+              .offset(y: 20)
+            
+            Image("grayPaw")
+              .resizable()
+              .frame(width: 60, height: 60)
+              .offset(x: 20, y: -20)
+          }
+          
+          Text("OK !")
             .font(.custom("Barlow-SemiBold", size: 16))
             .multilineTextAlignment(.leading)
             .foregroundColor(.black)
-            .frame(maxHeight: 40)
-            .padding(.horizontal, 20)
-            .background(.white)
+            .frame(maxWidth: 300, maxHeight: 50)
+            .padding(.horizontal, 30)
+            .background(Color("mainLightBlue"))
             .cornerRadius(30)
-          
-          Text("Salut?")
-            .font(.custom("Barlow-SemiBold", size: 16))
-            .underline()
-            .multilineTextAlignment(.leading)
-            .foregroundColor(.white)
-            .frame(maxHeight: 30)
-          
-          Image("WhitePaw")
-            .resizable()
-            .frame(width: 60, height: 60)
-            .offset(x: 20, y: -20)
-          
-          Spacer()
+          //            .padding(.trailing, 30)
+          //            .offset(y: 50)
+            .onTapGesture {
+              isBlurViewOn = false
+            }
         }
+        .offset(y: 20)
+        
+        Spacer()
       }
-      .frame(height: 200)
-      
-      Spacer()
-      
-      Text("Ok")
-        .font(.custom("Barlow-SemiBold", size: 16))
-        .multilineTextAlignment(.leading)
-        .foregroundColor(.black)
-        .frame(maxHeight: 40)
-        .padding(.horizontal, 30)
-        .background(.white)
-        .cornerRadius(30)
-        .onTapGesture {
-          isBlurViewOn = false
-        }
       
       Spacer()
     }

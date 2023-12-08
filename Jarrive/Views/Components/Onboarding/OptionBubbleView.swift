@@ -119,7 +119,7 @@ struct OptionBubbleView: View {
         
         Spacer()
       }
-      .offset(y: -bubbleHeight + 5)
+      .offset(y: -bubbleHeight)
     }
   }
 }

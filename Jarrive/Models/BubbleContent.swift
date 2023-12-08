@@ -38,6 +38,7 @@ struct AudioBubble: Hashable {
 
 struct ImageBubble: Hashable {
   var image: String
+  var largeImage: String
 }
 
 enum BubbleContent: Equatable, Hashable {

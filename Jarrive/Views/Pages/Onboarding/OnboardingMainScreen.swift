@@ -71,7 +71,8 @@ struct OnboardingMainScreen: View {
   
   var userTextField: some View {
     HStack {
-      TextField(isTextFieldActive() ? "Digite..." : "", text: $textFieldText)
+      TextField("", text: $textFieldText, prompt: isTextFieldActive() ? Text("Digite...").foregroundColor(Color("defaultDarkerGray")) : Text(""))
+        .foregroundColor(Color("defaultDarkerGray"))
         .disabled(!isTextFieldActive())
       
       ZStack {
@@ -95,42 +96,48 @@ struct OnboardingMainScreen: View {
       
     }
     .textFieldStyle(OvalTextFieldStyle())
+    .ignoresSafeArea(.keyboard)
     .padding(.horizontal, 10)
   }
   
   var body: some View {
+    NavigationStack {
       ZStack {
-        Group {
+        ZStack {
           Image("OnboardingBG")
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(minWidth: 0, maxWidth: .infinity)
             .edgesIgnoringSafeArea(.all)
           
-              VStack {
-                Spacer()
-                
-                ScrollView {
-                  VStack(spacing: 10) {
-                    ForEach(onboardingData.catChatMessages[0 ... currentMessage].indices.reversed(), id: \.self) { index in
-                      MainChatBubbleView(content: onboardingData.catChatMessages[0 ... currentMessage][index], onboardingData: $onboardingData, currentMessage: $currentMessage, optionsClickedIndexes: $optionsClickedIndexes, currentIndex: index)
-                        .rotationEffect(Angle(radians: .pi)) // rotate each item
-                        .scaleEffect(x: -1, y: 1, anchor: .center)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .zIndex(Double(index))
-                    }
-                  }
+          VStack {
+            Spacer()
+            
+            ScrollView {
+              VStack(spacing: 10) {
+                ForEach(onboardingData.catChatMessages[0 ... currentMessage].indices.reversed(), id: \.self) { index in
+                  MainChatBubbleView(content: onboardingData.catChatMessages[0 ... currentMessage][index], onboardingData: $onboardingData, currentMessage: $currentMessage, optionsClickedIndexes: $optionsClickedIndexes, currentIndex: index)
+                    .rotationEffect(Angle(radians: .pi)) // rotate each item
+                    .scaleEffect(x: -1, y: 1, anchor: .center)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .zIndex(Double(index))
                 }
-                .rotationEffect(Angle(radians: .pi)) // rotate the whole ScrollView 180º
-                .scaleEffect(x: -1, y: 1, anchor: .center)
-                .padding(.bottom, 15)
-                .padding(.top, 80)
-                
-                userTextField
               }
-              .padding(.bottom, 50)
+            }
+            .rotationEffect(Angle(radians: .pi)) // rotate the whole ScrollView 180º
+            .scaleEffect(x: -1, y: 1, anchor: .center)
+            .padding(.bottom, 15)
+            .padding(.top, 80)
+            
+            Spacer()
+            userTextField
+            Spacer()
+          }
+          .padding(.bottom, 50)
+          .ignoresSafeArea(.keyboard)
           
           navigationBarView()
+//            .ignoresSafeArea(.keyboard)
         }
         .brightness(isBlurViewOn ? -0.2 : 0)
         .blur(radius: isBlurViewOn ? 20 : 0)
@@ -168,6 +175,7 @@ struct OnboardingMainScreen: View {
         timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
       }
       .navigate(to: PostcardScreen(postcardData: onboardingData.postcardData), when: $changeScreenToPostcard, navBarHidden: true)
+    }
   }
 }
 
