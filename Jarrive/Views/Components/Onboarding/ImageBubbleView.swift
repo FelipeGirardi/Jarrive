@@ -12,7 +12,6 @@ struct ImageBubbleView: View {
   @State var changeToFullscreenImage = false
   
   var body: some View {
-//    NavigationView {
       HStack {
           Image(content.image)
             .resizable()
@@ -42,6 +41,7 @@ struct ImageBubbleView_Previews: PreviewProvider {
 
 struct FullScreenImageScreen: View {
   var imageString: String
+  @State var showImageDownloadAlert = false
   @Environment(\.dismiss) var dismiss
   
   var imgView: Image {
@@ -54,7 +54,7 @@ struct FullScreenImageScreen: View {
           .resizable()
           .aspectRatio(contentMode: .fit)
           .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-          .offset(y: 25)
+//          .offset(y: 25)
     }
     .navigationBarBackButtonHidden()
     .toolbar {
@@ -72,6 +72,7 @@ struct FullScreenImageScreen: View {
             Button {
               let image = imgView.asUiImage()
               UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+              showImageDownloadAlert.toggle()
             } label: {
                 Image("DownloadButton")
                   .frame(width: 32, height: 32)
@@ -80,25 +81,10 @@ struct FullScreenImageScreen: View {
             }
         }
     }
-//    .edgesIgnoringSafeArea(.all)
-  }
-}
-
-extension View {
-    func asUiImage() -> UIImage {
-        var uiImage = UIImage(systemName: "exclamationmark.triangle.fill")!
-        let controller = UIHostingController(rootView: self)
-       
-        if let view = controller.view {
-            let contentSize = view.intrinsicContentSize
-            view.bounds = CGRect(origin: .zero, size: contentSize)
-            view.backgroundColor = .clear
-
-            let renderer = UIGraphicsImageRenderer(size: contentSize)
-            uiImage = renderer.image { _ in
-                view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
+    .toolbarBackground(.visible, for: .navigationBar)
+    .toolbarBackground(.white, for: .navigationBar)
+    .alert("Imagem baixada com sucesso!", isPresented: $showImageDownloadAlert) {
+                Button("OK", role: .cancel) { }
             }
-        }
-        return uiImage
-    }
+  }
 }

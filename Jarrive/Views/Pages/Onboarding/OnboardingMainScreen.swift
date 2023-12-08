@@ -71,7 +71,8 @@ struct OnboardingMainScreen: View {
   
   var userTextField: some View {
     HStack {
-      TextField(isTextFieldActive() ? "Digite..." : "", text: $textFieldText)
+      TextField("", text: $textFieldText, prompt: isTextFieldActive() ? Text("Digite...").foregroundColor(Color("defaultDarkerGray")) : Text(""))
+        .foregroundColor(Color("defaultDarkerGray"))
         .disabled(!isTextFieldActive())
       
       ZStack {
@@ -95,13 +96,14 @@ struct OnboardingMainScreen: View {
       
     }
     .textFieldStyle(OvalTextFieldStyle())
+    .ignoresSafeArea(.keyboard)
     .padding(.horizontal, 10)
   }
   
   var body: some View {
     NavigationStack {
       ZStack {
-        Group {
+        ZStack {
           Image("OnboardingBG")
             .resizable()
             .aspectRatio(contentMode: .fill)
@@ -127,11 +129,15 @@ struct OnboardingMainScreen: View {
             .padding(.bottom, 15)
             .padding(.top, 80)
             
+            Spacer()
             userTextField
+            Spacer()
           }
           .padding(.bottom, 50)
+          .ignoresSafeArea(.keyboard)
           
           navigationBarView()
+//            .ignoresSafeArea(.keyboard)
         }
         .brightness(isBlurViewOn ? -0.2 : 0)
         .blur(radius: isBlurViewOn ? 20 : 0)
