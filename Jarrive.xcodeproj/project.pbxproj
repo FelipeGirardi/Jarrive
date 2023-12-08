@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		96939EB92B1179A800D06BFC /* StampExerciseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96939EB82B1179A800D06BFC /* StampExerciseScreen.swift */; };
+		96EBD8582B1BCBA90027025A /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EBD8572B1BCBA90027025A /* Character.swift */; };
 		C02AC4302AD88E61006C4422 /* OnboardingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02AC42F2AD88E61006C4422 /* OnboardingData.swift */; };
 		C02D093E2A3B979200B5FA54 /* Barlow-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C02D093D2A3B979200B5FA54 /* Barlow-LightItalic.ttf */; };
 		C02D09422A3BA23100B5FA54 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D09412A3BA23100B5FA54 /* LoginScreen.swift */; };
@@ -104,6 +105,7 @@
 
 /* Begin PBXFileReference section */
 		96939EB82B1179A800D06BFC /* StampExerciseScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampExerciseScreen.swift; sourceTree = "<group>"; };
+		96EBD8572B1BCBA90027025A /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		C02AC42F2AD88E61006C4422 /* OnboardingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingData.swift; sourceTree = "<group>"; };
 		C02D093D2A3B979200B5FA54 /* Barlow-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-LightItalic.ttf"; sourceTree = "<group>"; };
 		C02D09412A3BA23100B5FA54 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 				C02AC42F2AD88E61006C4422 /* OnboardingData.swift */,
 				C0D834C72B092C9D00A43175 /* PostcardData.swift */,
 				C0D834C92B092D3C00A43175 /* StampData.swift */,
+				96EBD8572B1BCBA90027025A /* Character.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -667,6 +670,7 @@
 				C0D834CA2B092D3C00A43175 /* StampData.swift in Sources */,
 				C0A560572AD2005700EF99A9 /* BubbleContent.swift in Sources */,
 				C0EBBAE22A3A5E0F00001FCF /* ArrowButton.swift in Sources */,
+				96EBD8582B1BCBA90027025A /* Character.swift in Sources */,
 				C0D91C462A4CCC8D00080072 /* TicketViewModel.swift in Sources */,
 				C05C76BD2AE8989400698C4F /* UnderlinedWordsBlurView.swift in Sources */,
 				C04274BE2AD475A900261C74 /* OptionBubbleView.swift in Sources */,
