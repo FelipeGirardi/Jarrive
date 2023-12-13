@@ -18,6 +18,8 @@
 		C04274C02AD475B700261C74 /* ResponseBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04274BF2AD475B700261C74 /* ResponseBubbleView.swift */; };
 		C04274C22AD475C700261C74 /* AudioBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04274C12AD475C700261C74 /* AudioBubbleView.swift */; };
 		C04896112B0D7AAC00C26E39 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04896102B0D7AAC00C26E39 /* ViewExtensions.swift */; };
+		C05129492B28CE02008A4888 /* FirstStampScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05129482B28CE02008A4888 /* FirstStampScreen.swift */; };
+		C051294B2B28D2A1008A4888 /* Barlow-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C051294A2B28D2A1008A4888 /* Barlow-ExtraBold.ttf */; };
 		C054804A2B16BDE400AA5D5D /* CatMeow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C05480492B16BDE300AA5D5D /* CatMeow.mp3 */; };
 		C057F88C2ACF2D2400AC0814 /* TitleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C057F88B2ACF2D2400AC0814 /* TitleScreen.swift */; };
 		C05C76BB2AE890DA00698C4F /* ImageBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C76BA2AE890DA00698C4F /* ImageBubbleView.swift */; };
@@ -115,6 +117,8 @@
 		C04274BF2AD475B700261C74 /* ResponseBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBubbleView.swift; sourceTree = "<group>"; };
 		C04274C12AD475C700261C74 /* AudioBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioBubbleView.swift; sourceTree = "<group>"; };
 		C04896102B0D7AAC00C26E39 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		C05129482B28CE02008A4888 /* FirstStampScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStampScreen.swift; sourceTree = "<group>"; };
+		C051294A2B28D2A1008A4888 /* Barlow-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-ExtraBold.ttf"; sourceTree = "<group>"; };
 		C05480492B16BDE300AA5D5D /* CatMeow.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CatMeow.mp3; sourceTree = "<group>"; };
 		C057F88B2ACF2D2400AC0814 /* TitleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleScreen.swift; sourceTree = "<group>"; };
 		C05C76BA2AE890DA00698C4F /* ImageBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBubbleView.swift; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 				C02D093D2A3B979200B5FA54 /* Barlow-LightItalic.ttf */,
 				C0A62CAB2A7D838300CDFA0F /* BasicSans-Black.otf */,
 				C0E8BD962A9D644D008C4F57 /* Barlow-Bold.ttf */,
+				C051294A2B28D2A1008A4888 /* Barlow-ExtraBold.ttf */,
 				C0A560512AD1EBD400EF99A9 /* Barlow-Medium.ttf */,
 				C0E8BD972A9D644D008C4F57 /* Barlow-Regular.ttf */,
 				C0E8BD952A9D644C008C4F57 /* Barlow-SemiBold.ttf */,
@@ -471,6 +476,7 @@
 				C0D8FEF32AD0792A00FE5F41 /* OnboardingMainScreen.swift */,
 				C0D834C32B0927F000A43175 /* PostcardScreen.swift */,
 				96939EB82B1179A800D06BFC /* StampExerciseScreen.swift */,
+				C05129482B28CE02008A4888 /* FirstStampScreen.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -600,6 +606,7 @@
 				C0D8D8992B1963AE00A5CC20 /* HechoAMano-Regular.ttf in Resources */,
 				C02D093E2A3B979200B5FA54 /* Barlow-LightItalic.ttf in Resources */,
 				C0D834CE2B093B8500A43175 /* Barlow-Italic.ttf in Resources */,
+				C051294B2B28D2A1008A4888 /* Barlow-ExtraBold.ttf in Resources */,
 				C0A62CAC2A7D838300CDFA0F /* BasicSans-Black.otf in Resources */,
 				C0E8BD9A2A9D644D008C4F57 /* Barlow-Regular.ttf in Resources */,
 				C0E8BD982A9D644D008C4F57 /* Barlow-SemiBold.ttf in Resources */,
@@ -642,6 +649,7 @@
 			files = (
 				C0B83FA82A3131CE0096003B /* PostcardView.swift in Sources */,
 				C0D91C512A4CD84900080072 /* ContentView.swift in Sources */,
+				C05129492B28CE02008A4888 /* FirstStampScreen.swift in Sources */,
 				C0A62CAA2A7D82B100CDFA0F /* ChatTextInput.swift in Sources */,
 				C0F9B13C2A379A6D0046A21D /* MainTabView.swift in Sources */,
 				C0B83FA62A3131B60096003B /* LevelView.swift in Sources */,
