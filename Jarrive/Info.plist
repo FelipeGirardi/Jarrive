@@ -38,6 +38,7 @@
 		<string>HechoAMano-Regular.ttf</string>
 		<string>Barlow-Black.ttf</string>
 		<string>Barlow-ExtraBold.ttf</string>
+		<string>Barlow-BoldItalic.ttf</string>
 	</array>
 	<key>UILaunchScreen</key>
 	<dict/>

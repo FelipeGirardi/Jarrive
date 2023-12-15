@@ -26,6 +26,7 @@
 		C05C76BD2AE8989400698C4F /* UnderlinedWordsBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C76BC2AE8989400698C4F /* UnderlinedWordsBlurView.swift */; };
 		C05C76BF2AE89AD900698C4F /* Barlow-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C05C76BE2AE89AD900698C4F /* Barlow-SemiBoldItalic.ttf */; };
 		C06EA4202A38DF3C00DF427E /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06EA41F2A38DF3C00DF427E /* RoundedCorner.swift */; };
+		C06EE7142B2BD9300084D463 /* Barlow-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C06EE7132B2BD9300084D463 /* Barlow-BoldItalic.ttf */; };
 		C08AE7352ADE01DF0009B42F /* TranslationBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08AE7342ADE01DF0009B42F /* TranslationBubbleView.swift */; };
 		C0A560522AD1EBD500EF99A9 /* Barlow-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0A560512AD1EBD400EF99A9 /* Barlow-Medium.ttf */; };
 		C0A560552AD1F35800EF99A9 /* MainChatBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A560542AD1F35800EF99A9 /* MainChatBubbleView.swift */; };
@@ -125,6 +126,7 @@
 		C05C76BC2AE8989400698C4F /* UnderlinedWordsBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedWordsBlurView.swift; sourceTree = "<group>"; };
 		C05C76BE2AE89AD900698C4F /* Barlow-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		C06EA41F2A38DF3C00DF427E /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		C06EE7132B2BD9300084D463 /* Barlow-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-BoldItalic.ttf"; sourceTree = "<group>"; };
 		C08AE7342ADE01DF0009B42F /* TranslationBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationBubbleView.swift; sourceTree = "<group>"; };
 		C0A560512AD1EBD400EF99A9 /* Barlow-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Medium.ttf"; sourceTree = "<group>"; };
 		C0A560542AD1F35800EF99A9 /* MainChatBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainChatBubbleView.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				C02D093D2A3B979200B5FA54 /* Barlow-LightItalic.ttf */,
 				C0A62CAB2A7D838300CDFA0F /* BasicSans-Black.otf */,
 				C0E8BD962A9D644D008C4F57 /* Barlow-Bold.ttf */,
+				C06EE7132B2BD9300084D463 /* Barlow-BoldItalic.ttf */,
 				C051294A2B28D2A1008A4888 /* Barlow-ExtraBold.ttf */,
 				C0A560512AD1EBD400EF99A9 /* Barlow-Medium.ttf */,
 				C0E8BD972A9D644D008C4F57 /* Barlow-Regular.ttf */,
@@ -609,6 +612,7 @@
 				C051294B2B28D2A1008A4888 /* Barlow-ExtraBold.ttf in Resources */,
 				C0A62CAC2A7D838300CDFA0F /* BasicSans-Black.otf in Resources */,
 				C0E8BD9A2A9D644D008C4F57 /* Barlow-Regular.ttf in Resources */,
+				C06EE7142B2BD9300084D463 /* Barlow-BoldItalic.ttf in Resources */,
 				C0E8BD982A9D644D008C4F57 /* Barlow-SemiBold.ttf in Resources */,
 				C0A560522AD1EBD500EF99A9 /* Barlow-Medium.ttf in Resources */,
 				C0C1C74A2A4CC5FE00E1A54F /* GoogleService-Info.plist in Resources */,
