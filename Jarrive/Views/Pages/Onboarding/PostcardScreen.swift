@@ -12,8 +12,8 @@ struct PostcardScreen: View {
   @State private var isShowingImage = true
   @State private var animationAmount = 0.0
   let halfAnimationTime = 0.2
-  @State private var shouldGoToExerciceView = false
-  @State var shouldShowStampsList = true
+  @State private var shouldShowStampsList = true
+  @State private var shouldGoToExerciseView = false
   
   func postcardComponent(geometry: GeometryProxy) -> some View {
     VStack(spacing: 0) {
@@ -72,37 +72,19 @@ struct PostcardScreen: View {
               
               VStack {
                 HStack {
-                  Button {
-                    print("go to exercice about verbs 1")
-                  } label: {
-                    NavigationLink(destination: StampExerciseScreen()) {
-                      StampComponent(stamp: postcardData.stamps[0], stampType: .small, geometry: geometry)
-                        .frame(width: 50, height: 40)
-                    }
-                  }
+                  StampComponent(stamp: postcardData.stamps[0], stampType: .small, geometry: geometry)
+                    .frame(width: 50, height: 40)
                   
-                  Button {
-                    print("go to exercice about verbs 2")
-                  } label: {
-                    StampComponent(stamp: postcardData.stamps[1], stampType: .small, geometry: geometry)
-                      .frame(width: 50, height: 40)
-                  }
+                  StampComponent(stamp: postcardData.stamps[1], stampType: .small, geometry: geometry)
+                    .frame(width: 50, height: 40)
                 }
                 
                 HStack {
-                  Button {
-                    print("go to exercice about substantive")
-                  } label: {
-                    StampComponent(stamp: postcardData.stamps[2], stampType: .small, geometry: geometry)
-                      .frame(width: 50, height: 40)
-                  }
+                  StampComponent(stamp: postcardData.stamps[2], stampType: .small, geometry: geometry)
+                    .frame(width: 50, height: 40)
                   
-                  Button {
-                    print("go to exercice about numbers")
-                  } label: {
-                    StampComponent(stamp: postcardData.stamps[3], stampType: .small, geometry: geometry)
-                      .frame(width: 50, height: 40)
-                  }
+                  StampComponent(stamp: postcardData.stamps[3], stampType: .small, geometry: geometry)
+                    .frame(width: 50, height: 40)
                 }
               }
               .padding(.top, 10)
@@ -140,8 +122,8 @@ struct PostcardScreen: View {
         .padding(.horizontal, 5)
         .background(
           RoundedRectangle(cornerRadius: 25)
-              .fill(Color.white)
-              .shadow(color: .gray, radius: 2, x: 0, y: 2)
+            .fill(Color.white)
+            .shadow(color: .gray, radius: 2, x: 0, y: 2)
         )
         .frame(height: 32)
         .padding(.top, 15)
@@ -157,12 +139,11 @@ struct PostcardScreen: View {
         Spacer()
       }
     }
-//    .padding(.bottom, 30)
   }
   
   var body: some View {
-    GeometryReader { g in
-      NavigationView {
+    NavigationStack {
+      GeometryReader { g in
         ZStack {
           VStack {
             Image("OnboardingBG")
@@ -177,15 +158,10 @@ struct PostcardScreen: View {
           
           VStack {
             HStack {
-//              VStack(alignment: .leading, spacing: 10) {
-//                Text("Cartão postal")
-//                  .font(.custom("Barlow-Black", size: 16))
-//                  .foregroundColor(.white)
-                
-                Text(postcardData.author)
-                  .font(.custom("Barlow-Black", size: 24))
-                  .foregroundColor(.white)
-
+              Text(postcardData.author)
+                .font(.custom("Barlow-Black", size: 24))
+                .foregroundColor(.white)
+              
               Spacer()
             }
             .padding(.horizontal, 30)
@@ -204,11 +180,9 @@ struct PostcardScreen: View {
             PostcardButtonsView(shouldShowStampsList: $shouldShowStampsList, geometry: g)
               .padding(.horizontal, 30)
             
-//            Spacer()
-            
             VStack {
               if shouldShowStampsList {
-                StampsListView(stamps: postcardData.stamps, geometry: g)
+                StampsListView(stamps: postcardData.stamps, geometry: g, shouldGoToExerciseView: $shouldGoToExerciseView)
               } else {
                 PostcardMessageView(postcardData: postcardData, geometry: g)
               }
@@ -239,175 +213,18 @@ struct PostcardScreen: View {
             Spacer()
           }
         }
+        .accentColor(.white)
       }
-      .accentColor(.white)
+      .navigationBarHidden(true)
+      .navigationDestination(isPresented: $shouldGoToExerciseView) {
+        StampExerciseScreen()
+      }
     }
   }
 }
-
+  
 struct PostcardScreen_Previews: PreviewProvider {
   static var previews: some View {
     PostcardScreen(postcardData: OnboardingData().postcardData)
-  }
-}
-
-struct StampComponent: View {
-  var stamp: StampData
-  var stampType: StampType
-  var geometry: GeometryProxy
-  
-  func isStampSmall() -> Bool {
-    return stampType == .small
-  }
-  
-  func isCurrentStamp() -> Bool {
-    return stamp.title == "Être"
-  }
-  
-  var body: some View {
-    return ZStack {
-      Image(isCurrentStamp() ? "Stamp4" : "Stamp2")
-        .resizable()
-        .frame(width: isStampSmall() ? 50 : geometry.size.width * 0.51, height: isStampSmall() ? 40 : geometry.size.height * 0.21)
-        .shadow(color: isCurrentStamp() ? Color("defaultDarkerGray") : .white, radius: 2)
-      
-      HStack {
-        VStack(alignment: .leading) {
-          VStack(alignment: .leading, spacing: 0) {
-            Text(stamp.group)
-              .font(.custom("Barlow-Regular", size: isStampSmall() ? 5 : 20))
-              .minimumScaleFactor(0.5)
-              .foregroundColor(isCurrentStamp() ? Color("mainDarkBlue") : Color("defaultDarkGray"))
-            
-            Text("#00" + String(stamp.number))
-              .font(.custom("Barlow-Regular", size: isStampSmall() ? 5 : 20))
-              .foregroundColor(isCurrentStamp() ? Color("mainDarkBlue") : Color("defaultDarkGray"))
-          }
-          .padding(.top, isStampSmall() ? 5 : 20)
-          
-          Spacer()
-          
-          
-          Text(stamp.title)
-            .font(.custom(isStampSmall() ? "Barlow-Bold" : "Barlow-Black", size: isStampSmall() ? 8 : 24))
-            .foregroundColor(isCurrentStamp() ? Color("mainDarkBlue") : Color("defaultDarkGray"))
-            .padding(.bottom, isStampSmall() ? 5 : 26)
-        }
-        .padding(.leading, isStampSmall() ? 7 : 26)
-        
-        Spacer()
-      }
-    }
-  }
-}
-
-struct PostcardButtonsView: View {
-  @Binding var shouldShowStampsList: Bool
-  var geometry: GeometryProxy
-  
-  var body: some View {
-    HStack(spacing: 10) {
-      Button {
-          if !shouldShowStampsList {
-            shouldShowStampsList.toggle()
-          }
-      } label: {
-          Text("Selos")
-              .font(.custom("Barlow-Bold", size: 12))
-              .padding()
-              .foregroundColor( shouldShowStampsList ? .white : Color("mainDarkBlue"))
-      }
-      .frame(width: geometry.size.width * 0.4, height: 32)
-      .background(
-          Capsule()
-            .foregroundColor( shouldShowStampsList ? Color("mainDarkBlue") : .white )
-              .shadow(color: .gray, radius: 2, x: 0, y: 2) )
-        
-      Button {
-          if shouldShowStampsList {
-            shouldShowStampsList.toggle()
-          }
-      } label: {
-          Text("Mensagem")
-              .font(.custom("Barlow-Bold", size: 12))
-              .padding()
-              .foregroundColor( shouldShowStampsList ? Color("mainDarkBlue") : .white )
-      }
-      .frame(width: geometry.size.width * 0.4, height: 32)
-      .background(
-          Capsule()
-              .foregroundColor( shouldShowStampsList ? .white : Color("mainDarkBlue"))
-              .shadow(color: .gray, radius: 2, x: 0, y: 2) )
-    }
-    .padding(.all, 10)
-    .frame(width: 315)
-  }
-}
-
-struct StampsListView: View {
-  var stamps: [StampData]
-  var geometry: GeometryProxy
-
-  var body: some View {
-    return VStack(alignment: .leading, spacing: 23) {
-      Text("Faltam 3 selos para enviar o cartão postal!")
-        .font(.custom("Barlow-SemiBold", size: 16))
-        .foregroundColor(Color("mainDarkBlue"))
-        .padding(.horizontal, 30)
-      
-      ScrollView(.horizontal, showsIndicators: false) {
-        HStack(spacing: 30) {
-          ForEach(stamps.indices, id: \.self) { index in
-            StampComponent(stamp: stamps[index], stampType: .large, geometry: geometry)
-              .padding(.trailing, (index == stamps.count-1) ? 60 : 0)
-          }
-        }
-        .frame(height: geometry.size.height * 0.22)
-        .offset(x: 30)
-      }
-    }
-  }
-}
-
-struct PostcardMessageView: View {
-  var postcardData: PostcardData
-  var geometry: GeometryProxy
-  
-  var body: some View {
-    return Group {
-      HStack {
-        VStack(alignment: .leading, spacing: 15) {
-            HStack(alignment: .center, spacing: 8) {
-              Image("audioButton")
-                .resizable()
-                .frame(width: 32, height: 32)
-                .onTapGesture {
-                  print("Play audio")
-                }
-              
-              Text("Escute a mensagem!")
-                .font(.custom("Barlow-SemiBold", size: 16))
-                .foregroundColor(Color("mainDarkBlue"))
-                .padding(.bottom, 5)
-            }
-            .padding(.top, 15)
-            
-            Text(postcardData.text)
-              .font(.custom("Barlow-italic", size: 16))
-              .foregroundColor(Color("defaultDarkerGray"))
-              .minimumScaleFactor(0.1)
-              .lineSpacing(5)
-              .padding(.leading, 5)
-          
-          Spacer()
-        }
-        Spacer()
-      }
-      .padding(.leading, 14)
-    }
-    .frame(width: geometry.size.width * 0.87, height: geometry.size.height * 0.31)
-    .background(Color("defaultLighterGray"))
-    .roundedCorner(20, corners: [.topRight, .bottomLeft, .bottomRight])
-
   }
 }
