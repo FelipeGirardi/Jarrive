@@ -16,6 +16,7 @@ struct OnboardingMainScreen: View {
   @State var textFieldText = ""
   @State var optionsClickedIndexes: [Int] = []
   @State var changeScreenToPostcard = false
+  @FocusState private var isFocused: Bool
   
   func isChatFlowStopped() -> Bool {
     return onboardingData.pauseMessageFluxIndexes.contains(currentMessage) ||
@@ -72,16 +73,18 @@ struct OnboardingMainScreen: View {
   var userTextField: some View {
     HStack {
       TextField("", text: $textFieldText, prompt: isTextFieldActive() ? Text("Digite...").foregroundColor(Color("defaultDarkerGray")) : Text(""))
+        .focused($isFocused)
         .foregroundColor(Color("defaultDarkerGray"))
         .disabled(!isTextFieldActive())
       
-      ZStack {
+      ZStack(alignment: .center) {
         RoundedRectangle(cornerRadius: 30)
           .frame(width: 45, height: 45)
           .foregroundColor(Color("mainLightBlue"))
 
         Image("paperPlane")
           .foregroundColor(.white)
+          .padding(.trailing, 2)
           .onTapGesture {
             if isTextFieldActive() {
               onboardingData.catChatMessages[currentMessage+1] = BubbleContent.text(TextBubble(textArray: [BubbleString(text: textFieldText)], type: .user))
@@ -128,19 +131,49 @@ struct OnboardingMainScreen: View {
             .scaleEffect(x: -1, y: 1, anchor: .center)
             .padding(.bottom, 15)
             .padding(.top, 80)
+            .edgesIgnoringSafeArea(.top)
             
             Spacer()
             userTextField
             Spacer()
           }
-          .padding(.bottom, 50)
           .ignoresSafeArea(.keyboard)
+          .padding(.bottom, 50)
+          .offset(y: isFocused ? -175 : 0)
           
-          navigationBarView()
+//          navigationBarView()
 //            .ignoresSafeArea(.keyboard)
         }
         .brightness(isBlurViewOn ? -0.2 : 0)
         .blur(radius: isBlurViewOn ? 20 : 0)
+        .edgesIgnoringSafeArea(.top)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+          ToolbarItem(placement: .topBarLeading) {
+              HStack {
+                Image("ThomasCatIcon")
+                  .resizable()
+                  .frame(width: 40, height: 40)
+                  .padding(.horizontal, 7)
+
+                VStack {
+                  Text("Tutor do Thomas")
+                    .font(.custom("Barlow-Medium", size: 16))
+                    .foregroundColor(Color("mainDarkBlue"))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                  
+                  if !isChatFlowStopped() {
+                    Text("escrevendo...")
+                      .font(.custom("Barlow-Medium", size: 12))
+                      .foregroundColor(Color("mainDarkBlue"))
+                      .frame(maxWidth: .infinity, alignment: .leading)
+                  }
+                }
+              }
+            }
+        }
+        .toolbarBackground(.white, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
         
         if isBlurViewOn {
           UnderlinedWordsBlurView(isBlurViewOn: $isBlurViewOn)
@@ -174,7 +207,7 @@ struct OnboardingMainScreen: View {
       .onChange(of: onboardingData) { _ in
         timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
       }
-      .navigate(to: PostcardScreen(postcardData: onboardingData.postcardData), when: $changeScreenToPostcard, navBarHidden: true)
+      .navigate(to: PostcardScreen(postcardData: onboardingData.postcardData), when: $changeScreenToPostcard, navBarHidden: false)
     }
   }
 }
