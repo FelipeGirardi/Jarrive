@@ -10,7 +10,7 @@ import SwiftUI
 struct StampExerciseScreen: View {
     
     // MARK: - Logic properties
-    @State var shouldShowExplicatifView: Bool = false
+    @State var shouldShowExplicatifView: Bool = true
     @State var shouldShowExerciceStack: Bool = false
     @State var shouldReviseExercice: Bool = false
     
@@ -29,17 +29,12 @@ struct StampExerciseScreen: View {
                 }
                 .frame(maxWidth: geometry.size.width, maxHeight: 190)
                 
-                // if shouldShowExerciceStack {
-                //     ExerciceStack()
-                // }
-                
                 if shouldShowExplicatifView {
                     ExplicatifView()
                 } else {
                     ExercicesView(shouldReviseExercice: $shouldReviseExercice)
                 }
             }
-            
         }
         .background(shouldShowExplicatifView ? .white: Color("defaultDarkBlue"))
         .navigationBarBackButtonHidden()
@@ -70,7 +65,6 @@ struct HeaderContent: View {
     @Binding var shouldShowExplicatifView: Bool
     
     var body: some View {
-        
         VStack {
             HStack {
                 VStack(alignment: .leading, spacing: 15) {
@@ -85,6 +79,7 @@ struct HeaderContent: View {
                         Text("Être")
                             .font(.custom("Barlow-Bold", size: 24))
                             .foregroundStyle(Color("mainBlue"))
+                        
                     }
                     
                     Button {
@@ -116,7 +111,8 @@ struct HeaderContent: View {
                     .clipShape(Capsule())
                     .background(
                         Capsule()
-                            .foregroundColor( shouldShowExplicatifView ? Color("mainBlue") : Color("defaultOffWhite") ))
+                            .foregroundColor( shouldShowExplicatifView ? Color("mainBlue") : Color("defaultOffWhite"))
+                            .shadow(color: .gray, radius: 2, x: 0, y: 2))
                     
                     Button {
                         if shouldShowExplicatifView {
@@ -132,8 +128,8 @@ struct HeaderContent: View {
                     .clipShape(Capsule())
                     .background(
                         Capsule()
-                            .foregroundColor( shouldShowExplicatifView ? Color("defaultOffWhite") : Color("mainBlue") ))
-                    
+                            .foregroundColor( shouldShowExplicatifView ? Color("defaultOffWhite") : Color("mainBlue") )
+                            .shadow(color: .gray, radius: 2, x: 0, y: 2))
                 }.padding(.bottom, 50)
             }
             .padding()
@@ -170,7 +166,7 @@ struct ExplicatifView: View {
                                 Text("O verbo")
                                     .font(.custom("Barlow-Regular", size: 18))
                                 
-                                Text("ÊTRE:")
+                                Text("ÊTRE:") // Change to Barlow-BoldItalic
                                     .font(.custom("Barlow-SemiBoldItalic", size: 18))
                             }
                             
@@ -178,7 +174,7 @@ struct ExplicatifView: View {
                                 Text("é o verbo")
                                     .font(.custom("Barlow-Regular", size: 18))
                                 
-                                Text("SER e ESTAR")
+                                Text("SER e ESTAR") // Change to Barlow-BoldItalic
                                     .font(.custom("Barlow-SemiBoldItalic", size: 18))
                                 
                                 Text("em português.")
@@ -212,7 +208,7 @@ struct ExplicatifView: View {
                                     Text("êtes")
                                     Text("sont")
                                     Text("sont")
-                                }
+                                } // Change to Barlow-BoldItalic
                                 .font(.custom("Barlow-SemiBoldItalic", size: 20))
                                 
                                 Spacer()
