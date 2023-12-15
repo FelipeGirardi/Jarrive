@@ -12,18 +12,17 @@ struct LoginScreen: View {
     GeometryReader { g in
         VStack {
           Spacer()
-            .frame(height: g.size.height * 0.1)
           
           Image("JarriveLogo1")
             .resizable()
             .frame(width: 245, height: 95)
           
-          Spacer(minLength: 50)
+          Spacer()
           
           ZStack {
             LoginInputView()
           }
-          .frame(maxWidth: .infinity, maxHeight: g.size.height * 0.8)
+          .frame(width: .infinity, height: g.size.height * 0.75)
           .background(Color("mainBlue"))
           .roundedCorner(30, corners: [.topLeft, .topRight])
           .offset(y: 35)

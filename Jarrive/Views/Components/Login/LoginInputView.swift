@@ -34,13 +34,13 @@ struct LoginInputView: View {
               .frame(width: g.size.width * 0.65, height: 25)
               .padding(10)
               .background(.white)
-              .cornerRadius(10)
+              .cornerRadius(30)
             
             SecureField("Senha", text: $password)
               .frame(width: g.size.width * 0.65, height: 25)
               .padding(10)
               .background(.white)
-              .cornerRadius(10)
+              .cornerRadius(30)
             
 //            HStack {
 //              Spacer()
@@ -55,12 +55,12 @@ struct LoginInputView: View {
             }) {
               Text("Entrar")
                 .font(.custom("Barlow-Bold", size: 20))
-                .frame(width: g.size.width * 0.65, height: 30)
+                .frame(width: g.size.width * 0.65, height: 25)
                 .padding(10)
                 .foregroundColor(.white)
                 .background(
                   RoundedRectangle(
-                    cornerRadius: 10,
+                    cornerRadius: 30,
                     style: .continuous
                   )
                   .fill(Color("mainDarkBlue"))
@@ -73,21 +73,22 @@ struct LoginInputView: View {
           
           GoogleAppleSignInButtons()
           
-          HStack {
-            Text("Não tem conta?")
-              .font(.custom("Barlow-Regular", size: 16))
-              .foregroundColor(.white)
-            
-            Text("Cadastre-se aqui.")
-              .font(.custom("Barlow-Bold", size: 16))
-              .foregroundColor(.white)
-              .underline()
-              .onTapGesture {
-                print("Go to sign up page")
-              }
-          }
-          .padding(.bottom, 50)
+//          HStack {
+//            Text("Não tem conta?")
+//              .font(.custom("Barlow-Regular", size: 16))
+//              .foregroundColor(.white)
+//            
+//            Text("Cadastre-se aqui.")
+//              .font(.custom("Barlow-Bold", size: 16))
+//              .foregroundColor(.white)
+//              .underline()
+//              .onTapGesture {
+//                print("Go to sign up page")
+//              }
+//          }
+//          .padding(.bottom, 50)
           
+          Spacer()
           Spacer()
         }
         .padding(.top, 50)

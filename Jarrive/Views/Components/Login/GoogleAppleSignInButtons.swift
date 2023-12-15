@@ -15,27 +15,57 @@ struct GoogleAppleSignInButtons: View {
           VStack {
             Divider()
               .background(.white)
+              .frame(width: 100)
           }
           
-          Text("Ou")
+          Text("Ou entre com")
             .foregroundColor(.white)
-            .font(.custom("Barlow-Regular", size: 20))
+            .font(.custom("Barlow-Regular", size: 14))
+            .lineLimit(1)
             .padding(.horizontal, 10)
           
           VStack {
             Divider()
               .background(.white)
+              .frame(width: 100)
           }
         }
-        .padding(.horizontal, 50)
+        .padding(.horizontal, 30)
         .padding(.vertical, 15)
         
-        GoogleSignInButton()
-        .padding(.horizontal, 50)
-          .onTapGesture {
-            authViewModel.signIn()
+        HStack(spacing: 70) {
+          Spacer()
+          
+          VStack(spacing: 8) {
+            Button {
+              authViewModel.signIn()
+            } label: {
+              Image("GoogleButton")
+                .resizable()
+                .frame(width: 50, height: 50)
+            }
+            
+            Text("Google")
+              .foregroundColor(.white)
+              .font(.custom("Barlow-Bold", size: 16))
           }
-        
+          
+          VStack(spacing: 8) {
+            Button {
+              // Sign in with Apple
+            } label: {
+              Image("AppleButton")
+                .resizable()
+                .frame(width: 50, height: 50)
+            }
+            
+            Text("Apple")
+              .foregroundColor(.white)
+              .font(.custom("Barlow-Bold", size: 16))
+          }
+          
+          Spacer()
+        }
 //        Button(action: {
 //          print("Login")
 //        }) {
