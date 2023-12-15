@@ -10,7 +10,7 @@ import SwiftUI
 struct StampExerciseScreen: View {
     
     // MARK: - Logic properties
-    @State var shouldShowExplicatifView: Bool = true
+    @State var shouldShowExplicatifView: Bool = false
     @State var shouldShowExerciceStack: Bool = false
     @State var shouldReviseExercice: Bool = false
     
@@ -93,6 +93,7 @@ struct HeaderContent: View {
                         Image("audioButton")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
+                            .tint(Color("mainBlue"))
                     }
                     .frame(width: 35, height: 35)
                     .padding(.bottom)
@@ -341,15 +342,15 @@ struct ExercicesView: View {
                 print("irraaaa")
             } label: {
                 Text("CONTINUAR")
-                    .font(.custom("Barlow-SemiBold", size: 20))
-                    .foregroundColor(shouldReviseExercice ? Color("darkBlue") : .white )
+                    .font(.custom("Barlow-Bold", size: 20))
+                    .foregroundColor(shouldReviseExercice ? Color(.white) : Color("defaultDarkBlue") )
             }
             .disabled(!shouldReviseExercice)
             .frame(width: 330, height: 50)
             .clipShape(Capsule())
             .background(
                 Capsule()
-                    .foregroundColor(shouldReviseExercice ? Color("mainGreen") :  Color("darkPurple") ) )
+                    .foregroundColor(shouldReviseExercice ? Color("mainGreen") :  Color("darkGray") ) )
             .padding(.bottom)
         }
         .offset(x: animateWrongText ? -30 : 0)
@@ -370,12 +371,13 @@ struct ExercicesView: View {
         VStack(spacing: 12) {
             
             ForEach($rows, id: \.self) { $row in
-                VStack(spacing: 10) {
+                VStack(alignment: .center, spacing: 10) {
                     ForEach($row) { $item in
                         HStack {
                             Text(item.sentence[0])
                             
                             Text(item.value)
+                                .frame(minWidth: 40)
                                 .padding(.vertical, 5)
                                 .padding(.horizontal, item.padding)
                                 .opacity(item.isShowing ? 1 : 0)
@@ -383,10 +385,11 @@ struct ExercicesView: View {
                                     Capsule()
                                         .fill(item.isShowing ? Color("mainGreen") : .gray.opacity(0.25))
                                 }
+                                .overlay(Capsule().stroke(Color("defaultLightGray"), lineWidth: 1.5))
                                 .background {
                                     // when item is dropped into correct place
                                     Capsule()
-                                        .stroke(.red)
+                                        .stroke(.white)
                                         .opacity(item.isShowing ? 1 : 0)
                                 }
                                 .onDrop(of: [.url], isTargeted: .constant(false)) { providers in
@@ -415,6 +418,7 @@ struct ExercicesView: View {
                                                 }
                                             } else {
                                                 // animation of wrong answer
+                                                // MARK: - TO-DO:
                                                 animateView() // OBS: doesnt work??
                                             }
                                         }
@@ -448,6 +452,7 @@ struct ExercicesView: View {
                             .onDrag {   // return id to find which item is moving
                                 return .init(contentsOf: URL(string: item.id))!
                             }
+                            //.frame(minWidth: 40)
                             .clipShape(Capsule())
                             .font(.custom("Barlow-SemiBold", size: 20))
                             .foregroundColor(Color("mainBlue"))
@@ -457,8 +462,6 @@ struct ExercicesView: View {
                             .background {
                                 Capsule()
                                     .foregroundColor(item.isShowing ? Color(.clear) : Color("defaultOffWhite"))
-                                //.fill(item.isShowing ? Color(.gray).opacity(0.25) : Color(.clear))
-                                //.opacity(item.isShowing ? 0.25 : 0)
                             }
                     }
                 }
