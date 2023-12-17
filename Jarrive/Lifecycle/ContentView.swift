@@ -11,17 +11,17 @@ struct ContentView: View {
   @EnvironmentObject var viewModel: AuthenticationViewModel
   
   var body: some View {
-    TitleScreen()
+//    TitleScreen()
     
 // MARK: code below checks if user is signed in 
-//    viewModel.isLogging ? AnyView(ProgressView()) :
-//    AnyView(Group {
-//      switch viewModel.authState {
-//      case .signedIn: TitleScreen()
-//      case .signedOut: LoginScreen().onAppear { viewModel.checkIfSignedInGoogle() }
-//      }
-//    }
-//    )
+    viewModel.isLogging ? AnyView(ProgressView()) :
+    AnyView(Group {
+      switch viewModel.authState {
+      case .signedIn: TitleScreen()
+      case .signedOut: LoginScreen().onAppear { viewModel.checkIfSignedInGoogle() }
+      }
+    }
+    )
   }
 }
 

@@ -155,6 +155,7 @@
 		C0B83FA72A3131CE0096003B /* PostcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostcardView.swift; sourceTree = "<group>"; };
 		C0B83FA92A3131E00096003B /* StampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampView.swift; sourceTree = "<group>"; };
 		C0C1C7492A4CC5FE00E1A54F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C0D334572B2FA16800808A6B /* Jarrive.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Jarrive.entitlements; sourceTree = "<group>"; };
 		C0D543542B2D16AB006EA021 /* StampComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampComponent.swift; sourceTree = "<group>"; };
 		C0D543562B2D16E7006EA021 /* StampsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampsListView.swift; sourceTree = "<group>"; };
 		C0D543582B2D172C006EA021 /* PostcardMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostcardMessageView.swift; sourceTree = "<group>"; };
@@ -330,6 +331,7 @@
 		C0B83F6B2A312B340096003B /* Jarrive */ = {
 			isa = PBXGroup;
 			children = (
+				C0D334572B2FA16800808A6B /* Jarrive.entitlements */,
 				C0B83F9A2A312F410096003B /* Info.plist */,
 				C0C1C7492A4CC5FE00E1A54F /* GoogleService-Info.plist */,
 				C0D834D92B09538A00A43175 /* Old */,
@@ -864,6 +866,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Jarrive/Jarrive.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Jarrive/Preview Content\"";
@@ -895,6 +898,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Jarrive/Jarrive.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Jarrive/Preview Content\"";

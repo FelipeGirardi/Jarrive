@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import _AuthenticationServices_SwiftUI
 
 struct GoogleAppleSignInButtons: View {
   @EnvironmentObject var authViewModel: AuthenticationViewModel
+  @State var currentNonce: String?
+
     var body: some View {
       VStack {
         HStack {
@@ -34,36 +37,40 @@ struct GoogleAppleSignInButtons: View {
         .padding(.horizontal, 30)
         .padding(.vertical, 15)
         
-        HStack(spacing: 70) {
+        VStack(alignment: .center, spacing: 20) {
           Spacer()
           
           Button {
             authViewModel.googleSignIn()
           } label: {
-            VStack(spacing: 8) {
-              Image("GoogleButton")
-                .resizable()
-                .frame(width: 50, height: 50)
-              
-              Text("Google")
-                .foregroundColor(.white)
-                .font(.custom("Barlow-Bold", size: 16))
-            }
+            GoogleSignInButton()
           }
+          .frame(width: 50, height: 50)
+          .padding(.trailing, 70)
           
-          Button {
-            // Sign in with Apple
-          } label: {
-            VStack(spacing: 8) {
-              Image("AppleButton")
-                .resizable()
-                .frame(width: 50, height: 50)
-              
-              Text("Apple")
-                .foregroundColor(.white)
-                .font(.custom("Barlow-Bold", size: 16))
+          SignInWithAppleButton(
+            onRequest: { request in
+              authViewModel.setRequestNonce(request: request)
+            },
+            onCompletion: { result in
+              authViewModel.executeAppleSignIn(result: result)
             }
-          }
+          )
+          .frame(width: 50, height: 50)
+          
+//          Button {
+//            // Sign in with Apple
+//          } label: {
+//            VStack(spacing: 8) {
+//              Image("AppleButton")
+//                .resizable()
+//                .frame(width: 50, height: 50)
+//              
+//              Text("Apple")
+//                .foregroundColor(.white)
+//                .font(.custom("Barlow-Bold", size: 16))
+//            }
+//          }
           
           Spacer()
         }
