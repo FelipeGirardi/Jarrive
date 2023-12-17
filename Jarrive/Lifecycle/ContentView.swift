@@ -12,15 +12,21 @@ struct ContentView: View {
   
   var body: some View {
     TitleScreen()
-//    switch viewModel.authState {
-//      case .signedIn: MainTabView()
-//      case .signedOut: LoginScreen()
+    
+// MARK: code below checks if user is signed in 
+//    viewModel.isLogging ? AnyView(ProgressView()) :
+//    AnyView(Group {
+//      switch viewModel.authState {
+//      case .signedIn: TitleScreen()
+//      case .signedOut: LoginScreen().onAppear { viewModel.checkIfSignedInGoogle() }
+//      }
 //    }
+//    )
   }
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+  static var previews: some View {
+    ContentView()
+  }
 }

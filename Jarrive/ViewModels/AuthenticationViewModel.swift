@@ -16,13 +16,18 @@ class AuthenticationViewModel: ObservableObject {
   }
 
   @Published var authState: SignInState = .signedOut
+  @Published var isLogging: Bool = false
   
-  func signIn() {
+  func checkIfSignedInGoogle() {
     if GIDSignIn.sharedInstance.hasPreviousSignIn() {
       GIDSignIn.sharedInstance.restorePreviousSignIn { [unowned self] user, error in
-          authenticateUser(for: user, with: error)
+        isLogging = true
+        authenticateUser(for: user, with: error)
       }
-    } else {
+    }
+  }
+  
+  func googleSignIn() {
       guard let clientID = FirebaseApp.app()?.options.clientID else { return }
       
       let configuration = GIDConfiguration(clientID: clientID)
@@ -33,14 +38,15 @@ class AuthenticationViewModel: ObservableObject {
       
       GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController) { [unowned self] user, error in
         guard let gidUser = user?.user else { return }
+        isLogging = true
         authenticateUser(for: gidUser, with: error)
       }
-    }
   }
   
   private func authenticateUser(for user: GIDGoogleUser?, with error: Error?) {
     if let error = error {
       print(error.localizedDescription)
+      isLogging = false
       return
     }
     
@@ -52,8 +58,10 @@ class AuthenticationViewModel: ObservableObject {
     Auth.auth().signIn(with: credential) { [unowned self] (_, error) in
       if let error = error {
         print(error.localizedDescription)
+        isLogging = false
       } else {
         self.authState = .signedIn
+        isLogging = false
       }
     }
   }

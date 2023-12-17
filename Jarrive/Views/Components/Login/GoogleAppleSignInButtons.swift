@@ -15,19 +15,20 @@ struct GoogleAppleSignInButtons: View {
           VStack {
             Divider()
               .background(.white)
-              .frame(width: 100)
+              .frame(width: 90)
           }
           
           Text("Ou entre com")
             .foregroundColor(.white)
             .font(.custom("Barlow-Regular", size: 14))
             .lineLimit(1)
+            .minimumScaleFactor(0.5)
             .padding(.horizontal, 10)
           
           VStack {
             Divider()
               .background(.white)
-              .frame(width: 100)
+              .frame(width: 90)
           }
         }
         .padding(.horizontal, 30)
@@ -36,52 +37,36 @@ struct GoogleAppleSignInButtons: View {
         HStack(spacing: 70) {
           Spacer()
           
-          VStack(spacing: 8) {
-            Button {
-              authViewModel.signIn()
-            } label: {
+          Button {
+            authViewModel.googleSignIn()
+          } label: {
+            VStack(spacing: 8) {
               Image("GoogleButton")
                 .resizable()
                 .frame(width: 50, height: 50)
+              
+              Text("Google")
+                .foregroundColor(.white)
+                .font(.custom("Barlow-Bold", size: 16))
             }
-            
-            Text("Google")
-              .foregroundColor(.white)
-              .font(.custom("Barlow-Bold", size: 16))
           }
           
-          VStack(spacing: 8) {
-            Button {
-              // Sign in with Apple
-            } label: {
+          Button {
+            // Sign in with Apple
+          } label: {
+            VStack(spacing: 8) {
               Image("AppleButton")
                 .resizable()
                 .frame(width: 50, height: 50)
+              
+              Text("Apple")
+                .foregroundColor(.white)
+                .font(.custom("Barlow-Bold", size: 16))
             }
-            
-            Text("Apple")
-              .foregroundColor(.white)
-              .font(.custom("Barlow-Bold", size: 16))
           }
           
           Spacer()
         }
-//        Button(action: {
-//          print("Login")
-//        }) {
-//          Text("Apple")
-//            .padding(10)
-//            .foregroundColor(.black)
-//            .overlay(
-//              RoundedRectangle(
-//                cornerRadius: 5,
-//                style: .continuous
-//              )
-//              .stroke(.gray, lineWidth: 2)
-//            )
-//        }
-        
-//        Spacer()
       }
     }
 }

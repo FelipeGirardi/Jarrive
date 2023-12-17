@@ -22,7 +22,7 @@ struct LoginScreen: View {
           ZStack {
             LoginInputView()
           }
-          .frame(width: .infinity, height: g.size.height * 0.75)
+          .frame(height: g.size.height * 0.75)
           .background(Color("mainBlue"))
           .roundedCorner(30, corners: [.topLeft, .topRight])
           .offset(y: 35)
