@@ -111,7 +111,7 @@ struct HeaderContent: View {
                     .clipShape(Capsule())
                     .background(
                         Capsule()
-                            .foregroundColor( shouldShowExplicatifView ? Color("mainBlue") : Color("defaultOffWhite"))
+                            .foregroundColor(shouldShowExplicatifView ? Color("mainBlue") : Color("defaultOffWhite"))
                             .shadow(color: .gray, radius: 2, x: 0, y: 2))
                     
                     Button {
@@ -208,7 +208,7 @@ struct ExplicatifView: View {
                                     Text("êtes")
                                     Text("sont")
                                     Text("sont")
-                                } // Change to Barlow-BoldItalic
+                                } // TO-DO: Change to Barlow-BoldItalic
                                 .font(.custom("Barlow-SemiBoldItalic", size: 20))
                                 
                                 Spacer()
@@ -285,13 +285,15 @@ struct ExplicatifView: View {
 // MARK: - Exercice View
 struct ExercicesView: View {
     
-    @Binding var shouldReviseExercice: Bool
-    
-    // MARK: Properties
+    // MARK: Properties of the View
+    @Binding var shouldReviseDragDropExercice: Bool
     @State var progress: CGFloat = 0.0
     @State var characters: [Character] = characters_Mock
     
-    // MARK:
+    // Flow Control
+    @Binding var shouldShowEcouteModal: Bool
+    
+    // MARK: - Properties of Drag&Drop
     // For Drag Part
     @State var shuffledRows: [[Character]] = []
     
@@ -315,6 +317,7 @@ struct ExercicesView: View {
                 }
             }.frame(height: 20).padding(.horizontal).padding(.top)
             
+            // MARK: - Drag&Drop Exercice
             HStack {
                 VStack(alignment: .leading) {
                     Text("Complete as frases:")
@@ -335,23 +338,23 @@ struct ExercicesView: View {
             Spacer()
             
             Button {
-                print("irraaaa")
+                self.shouldShowEcouteModal = true
             } label: {
                 Text("CONTINUAR")
                     .font(.custom("Barlow-Bold", size: 20))
-                    .foregroundColor(shouldReviseExercice ? Color(.white) : Color("defaultDarkBlue") )
+                    .foregroundColor(shouldReviseDragDropExercice ? Color(.white) : Color("defaultDarkBlue") )
             }
-            .disabled(!shouldReviseExercice)
+            .disabled(!shouldReviseDragDropExercice)
             .frame(width: 330, height: 50)
             .clipShape(Capsule())
             .background(
                 Capsule()
-                    .foregroundColor(shouldReviseExercice ? Color("mainGreen") :  Color("darkGray") ) )
+                    .foregroundColor(shouldReviseDragDropExercice ? Color("mainGreen") :  Color("darkGray") ) )
             .padding(.bottom)
         }
         .offset(x: animateWrongText ? -30 : 0)
         .onAppear {
-            // MARK: Build Grid
+            // MARK: - Build Grid
             if rows.isEmpty {
                 characters = characters.shuffled()
                 shuffledRows = generateGrid()
@@ -409,7 +412,7 @@ struct ExercicesView: View {
                                                     self.progress = progress
                                                     
                                                     if self.progress == 1 {
-                                                        shouldReviseExercice.toggle()
+                                                        shouldReviseDragDropExercice.toggle()
                                                     }
                                                 }
                                             } else {
@@ -445,10 +448,7 @@ struct ExercicesView: View {
                     ForEach(row) { item in
                         
                         Text(item.value)
-                            .onDrag {   // return id to find which item is moving
-                                return .init(contentsOf: URL(string: item.id))!
-                            }
-                            //.frame(minWidth: 40)
+                            .frame(minWidth: 40)
                             .clipShape(Capsule())
                             .font(.custom("Barlow-SemiBold", size: 20))
                             .foregroundColor(Color("mainBlue"))
@@ -458,6 +458,9 @@ struct ExercicesView: View {
                             .background {
                                 Capsule()
                                     .foregroundColor(item.isShowing ? Color(.clear) : Color("defaultOffWhite"))
+                            }
+                            .onDrag {   // return id to find which item is moving
+                                return .init(contentsOf: URL(string: item.id))!
                             }
                     }
                 }
@@ -505,7 +508,6 @@ struct ExercicesView: View {
         return gridArray
     }
     
-    
     func textSize(character: Character) -> CGFloat {
         let font = UIFont.systemFont(ofSize: character.fontSize)
         let attributes = [NSAttributedString.Key.font : font]
@@ -513,7 +515,6 @@ struct ExercicesView: View {
         
         return size.width + (character.padding * 2) + 15
     }
-    
     
     func updateShuffledArray(character: Character) {
         for index in shuffledRows.indices {
