@@ -293,7 +293,6 @@ struct ExplicatifView: View {
                 }
             }
         }
-        
     }
 }
 
@@ -343,7 +342,6 @@ struct ExercicesView: View {
                 Spacer()
             }
             .padding(.leading)
-            
             
             DropArea()
                 .padding(.vertical, 30)
