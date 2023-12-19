@@ -37,16 +37,27 @@ struct GoogleAppleSignInButtons: View {
         .padding(.horizontal, 30)
         .padding(.vertical, 15)
         
-        VStack(alignment: .center, spacing: 20) {
+        VStack(alignment: .center) {
           Spacer()
           
           Button {
             authViewModel.googleSignIn()
           } label: {
             GoogleSignInButton()
+//            Text("Sign In")
+//              .font(.custom("Barlow-Bold", size: 20))
+//              .padding()
+//              .foregroundColor(Color("defaultLightGray"))
           }
-          .frame(width: 50, height: 50)
-          .padding(.trailing, 70)
+          .frame(width: 135, height: 40)
+          .padding(.all, 10)
+//          .background(
+//            RoundedRectangle(cornerRadius: 7)
+//              .foregroundColor(.white)
+//              .shadow(color: .gray, radius: 2, x: 0, y: 2)
+//          )
+//          .frame(width: 50, height: 50)
+//          .padding(.trailing, 70)
           
           SignInWithAppleButton(
             onRequest: { request in
@@ -56,7 +67,9 @@ struct GoogleAppleSignInButtons: View {
               authViewModel.executeAppleSignIn(result: result)
             }
           )
-          .frame(width: 50, height: 50)
+//          .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+          .frame(width: 130, height: 45)
+          .padding(.all, 10)
           
 //          Button {
 //            // Sign in with Apple
@@ -73,7 +86,9 @@ struct GoogleAppleSignInButtons: View {
 //          }
           
           Spacer()
+          Spacer()
         }
+        .frame(width: 130)
       }
     }
 }
