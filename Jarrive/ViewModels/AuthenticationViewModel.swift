@@ -124,18 +124,22 @@ class AuthenticationViewModel: ObservableObject {
   }
   
   func executeAppleSignIn(result: Result<ASAuthorization, Error>) {
+    isLogging = true
     switch result {
       case .success(let authResults):
           switch authResults.credential {
           case let appleIDCredential as ASAuthorizationAppleIDCredential:
               
               guard let nonce = currentNonce else {
+                  isLogging = false
                   fatalError("Invalid state: A login callback was received, but no login request was sent.")
               }
               guard let appleIDToken = appleIDCredential.identityToken else {
+                  isLogging = false
                   fatalError("Invalid state: A login callback was received, but no login request was sent.")
               }
               guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+                  isLogging = false
                   print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
                   return
               }
@@ -146,17 +150,18 @@ class AuthenticationViewModel: ObservableObject {
                       // Error. If error.code == .MissingOrInvalidNonce, make sure
                       // you're sending the SHA256-hashed nonce as a hex string with
                       // your request to Apple.
+                      self.isLogging = false
                       print(error?.localizedDescription as Any)
                       return
                   }
                   print("signed in")
                   self.authState = .signedIn
+                  self.isLogging = false
               }
               
               print("\(String(describing: Auth.auth().currentUser?.uid))")
           default:
               break
-              
           }
       default:
           break

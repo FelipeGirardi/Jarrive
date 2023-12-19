@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct ContentView: View {
   @EnvironmentObject var viewModel: AuthenticationViewModel
@@ -16,12 +17,8 @@ struct ContentView: View {
 // MARK: code below checks if user is signed in 
 //    viewModel.isLogging ? AnyView(ProgressView()) :
 //    AnyView(Group {
-//      switch viewModel.authState {
-//      case .signedIn: TitleScreen()
-//      case .signedOut: LoginScreen().onAppear { viewModel.checkIfSignedInGoogle() }
-//      }
-//    }
-//    )
+//      Auth.auth().currentUser != nil ? AnyView(TitleScreen()) : AnyView(LoginScreen())
+//      })
   }
 }
 
