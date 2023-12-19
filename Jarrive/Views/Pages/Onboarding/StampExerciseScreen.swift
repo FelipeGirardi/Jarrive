@@ -10,9 +10,12 @@ import SwiftUI
 struct StampExerciseScreen: View {
     
     // MARK: - Logic properties
-    @State var shouldShowExplicatifView: Bool = true
-    @State var shouldShowExerciceStack: Bool = false
-    @State var shouldReviseExercice: Bool = false
+    // meu deus do ceu pra que tanto bool
+    @State var shouldShowExplicatifView: Bool = false /* false CHANGE TO CODE OTHER VIEWS */
+    @State var shouldShowEcouteModal: Bool = false
+    @State var shouldShowEcouteExerciceView: Bool = false /* true CHANGE TO CODE OTHER VIEWS */
+    @State var shouldReviseDragDropExercice: Bool = false
+    @State var shouldReviseEcouteExercice: Bool = false
     
     @Environment(\.dismiss) var dismiss
     
@@ -32,22 +35,34 @@ struct StampExerciseScreen: View {
                 if shouldShowExplicatifView {
                     ExplicatifView()
                 } else {
-                    ExercicesView(shouldReviseExercice: $shouldReviseExercice)
+                    if !shouldShowEcouteExerciceView {
+                        ExercicesView(shouldReviseDragDropExercice: $shouldReviseDragDropExercice,
+                                      shouldShowEcouteModal: $shouldShowEcouteModal)
+                    } else {
+                        EcoutePhrasesExerciceView(shouldReviseEcouteExercice: shouldReviseEcouteExercice)
+                    }
                 }
             }
+            
+            // MARK: - Ecoute Phrases Modal
+            if shouldShowEcouteModal {
+                EcoutePhasesModal(shouldShowEcouteModal: $shouldShowEcouteModal, shouldShowEcouteView: $shouldShowEcouteExerciceView)
+            }
         }
-        .background(shouldShowExplicatifView ? .white: Color("defaultDarkBlue"))
+        .background(shouldShowExplicatifView ? .white : Color("defaultDarkBlue"))
         .navigationBarBackButtonHidden()
         .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    dismiss()
-                } label: {
-                    HStack {
-                        Image(systemName: "chevron.backward")
-                        Text("Carte Postale")
+            if !shouldShowEcouteModal {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        HStack {
+                            Image(systemName: "chevron.backward")
+                            Text("Carte Postale")
+                        }
+                        .foregroundColor(Color("mainBlue"))
                     }
-                    .foregroundColor(Color("mainBlue"))
                 }
             }
         }
