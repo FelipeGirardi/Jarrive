@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		96939EB92B1179A800D06BFC /* StampExerciseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96939EB82B1179A800D06BFC /* StampExerciseScreen.swift */; };
+		96DBFD3A2B2BD882005CE734 /* EcoutePhasesModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DBFD392B2BD882005CE734 /* EcoutePhasesModal.swift */; };
 		96EBD8582B1BCBA90027025A /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EBD8572B1BCBA90027025A /* Character.swift */; };
 		C02AC4302AD88E61006C4422 /* OnboardingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02AC42F2AD88E61006C4422 /* OnboardingData.swift */; };
 		C02D093E2A3B979200B5FA54 /* Barlow-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C02D093D2A3B979200B5FA54 /* Barlow-LightItalic.ttf */; };
@@ -105,6 +106,7 @@
 
 /* Begin PBXFileReference section */
 		96939EB82B1179A800D06BFC /* StampExerciseScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampExerciseScreen.swift; sourceTree = "<group>"; };
+		96DBFD392B2BD882005CE734 /* EcoutePhasesModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcoutePhasesModal.swift; sourceTree = "<group>"; };
 		96EBD8572B1BCBA90027025A /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		C02AC42F2AD88E61006C4422 /* OnboardingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingData.swift; sourceTree = "<group>"; };
 		C02D093D2A3B979200B5FA54 /* Barlow-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				C05C76BA2AE890DA00698C4F /* ImageBubbleView.swift */,
 				C08AE7342ADE01DF0009B42F /* TranslationBubbleView.swift */,
 				C05C76BC2AE8989400698C4F /* UnderlinedWordsBlurView.swift */,
+				96DBFD392B2BD882005CE734 /* EcoutePhasesModal.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -648,6 +651,7 @@
 				C0D91C4F2A4CD6DD00080072 /* GoogleSignInButton.swift in Sources */,
 				C05C76BB2AE890DA00698C4F /* ImageBubbleView.swift in Sources */,
 				C0A560552AD1F35800EF99A9 /* MainChatBubbleView.swift in Sources */,
+				96DBFD3A2B2BD882005CE734 /* EcoutePhasesModal.swift in Sources */,
 				C0D91C532A4CD95900080072 /* NetworkImage.swift in Sources */,
 				C04274C22AD475C700261C74 /* AudioBubbleView.swift in Sources */,
 				C04274C02AD475B700261C74 /* ResponseBubbleView.swift in Sources */,
