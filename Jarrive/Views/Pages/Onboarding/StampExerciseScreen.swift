@@ -541,32 +541,139 @@ struct ExercicesView: View {
                 animateWrongText = false
             }
         }
-        
     }
 }
 
-// TO-DO: - 
-struct ExerciceStack: View {
+struct EcoutePhrasesExerciceView: View {
+    // MARK: - Ecoute Phrases Exercice
+    @State var shouldReviseEcouteExercice: Bool
+    @State var progress: CGFloat = 0.0
+    
     var body: some View {
-        ScrollView(.horizontal) {
-            HStack {
-                ForEach(0..<4, id: \.self) { index in
+        GeometryReader { geometry in
+            ZStack(alignment: .leading) {
+                Capsule()
+                    .fill(.gray.opacity(0.25))
+                
+                Capsule()
+                    .fill(Color("mainGreen"))
+                    .frame(width: geometry.size.width * progress)
+            }
+        }.frame(height: 20).padding(.horizontal).padding(.top)
+        
+        VStack(alignment: .center) {
+            VStack(alignment: .leading) {
+                HStack(alignment: .center) {
                     Button {
-                        //
+                        // play audio
+                        // change color of the play
+                        print("aaaa")
                     } label: {
-                        Text("Exercice \(index+1)")
-                            .font(.custom("Barlow-SemiBold", size: 14))
-                            .padding()
-                            .foregroundColor(.white)
+                        Image("audioButton")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .tint(Color("mainBlue"))
                     }
-                    .frame(width: 100, height: 30)
-                    .clipShape(Capsule())
-                    .background(
-                        Capsule()
-                            .foregroundColor( Color("mainDarkBlue") ))
-                    .shadow(color: .black, radius: 1, x: 0, y: 1.5)
+                    .frame(width: 42, height: 42)
+                    
+                    Text("On écoute les phrases!")
+                        .font(.custom("Barlow-SemiBold", size: 20))
+                        .underline()
                 }
-            }.padding()
-        }
+                
+                VStack(alignment: .leading) {
+                    HStack(alignment: .center) {
+                        Button {
+                            // play audio
+                            // change color of the play
+                            print("aaaa")
+                        } label: {
+                            Image("audioButton")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .tint(Color("mainBlue"))
+                        }
+                        .frame(width: 35, height: 35)
+                        
+                        
+                        Text("Je suis un facteur. ✉️")
+                            .font(.custom("Barlow-Regular", size: 20))
+                    }
+                    
+                    HStack {
+                        Button {
+                            // play audio
+                            // change color of the play
+                            print("aaaa")
+                        } label: {
+                            Image("audioButton")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .tint(Color("mainBlue"))
+                        }
+                        .frame(width: 35, height: 35)
+                        
+                        
+                        Text("Tu es mon copain. ❤️")
+                            .font(.custom("Barlow-Regular", size: 20))
+                    }
+                    
+                    HStack {
+                        Button {
+                            // play audio
+                            // change color of the play
+                            print("aaaa")
+                        } label: {
+                            Image("audioButton")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .tint(Color("mainBlue"))
+                        }
+                        .frame(width: 35, height: 35)
+                        
+                        
+                        Text("Elle est dans un train. 🚂")
+                            .font(.custom("Barlow-Regular", size: 20))
+                    }
+                    
+                    HStack {
+                        Button {
+                            // play audio
+                            // change color of the play
+                            print("aaaa")
+                        } label: {
+                            Image("audioButton")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .tint(Color("mainBlue"))
+                        }
+                        .frame(width: 35, height: 35)
+                        
+                        
+                        Text("Nous sommes en voyage. ✈️")
+                            .font(.custom("Barlow-Regular", size: 20))
+                            .foregroundStyle(.white)
+                    }
+                    
+                }
+            }.foregroundStyle(.white)
+            
+            Spacer()
+            
+            Button {
+                print("aa")
+            } label: {
+                Text("CONTINUAR")
+                    .font(.custom("Barlow-Bold", size: 20))
+                    .foregroundColor(shouldReviseEcouteExercice ? Color(.white) : Color("defaultDarkBlue") )
+            }
+            .disabled(!shouldReviseEcouteExercice)
+            .frame(width: 330, height: 50)
+            .clipShape(Capsule())
+            .background(
+                Capsule()
+                    .foregroundColor(shouldReviseEcouteExercice ? Color("mainGreen") :  Color("darkGray") ) )
+            .padding(.bottom)
+        }.padding(.top, 50)
     }
 }
