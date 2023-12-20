@@ -50,7 +50,7 @@ struct EcoutePhraseView: View {
                 Button {
                     createAudioPlayer(audio: audio)
                     playOrPause()
-
+                    
                 } label: {
                     Image(wasPlayed ? "audioPlayed" : "audioPlayerExercices")
                         .resizable()
@@ -70,10 +70,11 @@ struct EcoutePhraseView: View {
                     if !wasPlayed {
                         createAudioPlayer(audio: audio)
                         playOrPause()
-                        self.progress = progress + 0.25
                         
-                        if self.progress == 1 {
-                                withAnimation {
+                        withAnimation {
+                            self.progress = progress + 0.25
+                            
+                            if self.progress == 1 {
                                 shouldReviseEcouteExercice.toggle()
                             }
                         }

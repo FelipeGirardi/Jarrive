@@ -12,9 +12,9 @@ struct StampExerciseScreen: View {
     
     // MARK: - Logic properties
     // meu deus do ceu pra que tanto bool
-    @State var shouldShowExplicatifView: Bool = false/*false to code other views*/
+    @State var shouldShowExplicatifView: Bool = true /*false to code other views*/
     @State var shouldShowEcouteModal: Bool = false
-    @State var shouldShowEcouteExerciceView: Bool = false/*true to code other views*/
+    @State var shouldShowEcouteExerciceView: Bool = false /*true to code other views*/
     @State var shouldReviseDragDropExercice: Bool = false
     @State var shouldReviseEcouteExercice: Bool = false
     
@@ -36,7 +36,7 @@ struct StampExerciseScreen: View {
                 if shouldShowExplicatifView {
                     ExplicatifView()
                 } else {
-                    if shouldShowEcouteExerciceView { /* remove '!' to see ecouteExercices */
+                    if !shouldShowEcouteExerciceView { /* remove '!' to see ecouteExercices */
                         ExercicesView(shouldReviseDragDropExercice: $shouldReviseDragDropExercice,
                                       shouldShowEcouteModal: $shouldShowEcouteModal)
                     } else {
