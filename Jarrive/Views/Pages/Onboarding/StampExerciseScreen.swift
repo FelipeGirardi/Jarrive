@@ -29,7 +29,9 @@ struct StampExerciseScreen: View {
                         .edgesIgnoringSafeArea(.top)
                         .padding(.bottom)
                     
-                    HeaderContent(shouldShowExplicatifView: $shouldShowExplicatifView)
+                    HeaderContent(shouldShowExplicatifView: $shouldShowExplicatifView,  
+                                  shouldReviseDragDropExercice: $shouldReviseDragDropExercice,
+                                  shouldReviseEcouteExercice: $shouldReviseEcouteExercice)
                 }
                 .frame(maxWidth: geometry.size.width, maxHeight: 190)
                 
@@ -79,6 +81,8 @@ struct StampExerciseViewPreview: PreviewProvider {
 // MARK: - Header Content
 struct HeaderContent: View {
     @Binding var shouldShowExplicatifView: Bool
+    @Binding var shouldReviseDragDropExercice: Bool
+    @Binding var shouldReviseEcouteExercice: Bool
     
     var body: some View {
         VStack {
@@ -116,6 +120,8 @@ struct HeaderContent: View {
                     Button {
                         if !shouldShowExplicatifView {
                             shouldShowExplicatifView.toggle()
+                            shouldReviseDragDropExercice = false
+                            shouldReviseEcouteExercice = false
                         }
                     } label: {
                         Text("Point Explicatif")
@@ -133,6 +139,8 @@ struct HeaderContent: View {
                     Button {
                         if shouldShowExplicatifView {
                             shouldShowExplicatifView.toggle()
+                            shouldReviseDragDropExercice = false
+                            shouldReviseEcouteExercice = false
                         }
                     } label: {
                         Text("Exercices")
@@ -382,7 +390,6 @@ struct ExercicesView: View {
     @ViewBuilder
     func DropArea() -> some View {
         VStack(spacing: 12) {
-            
             ForEach($rows, id: \.self) { $row in
                 VStack(alignment: .center, spacing: 10) {
                     ForEach($row) { $item in
@@ -609,8 +616,8 @@ struct EcoutePhrasesExerciceView: View {
         
         Spacer()
         
-        Button {
-            print("aa")
+        NavigationLink {
+            Map()
         } label: {
             Text("CONTINUAR")
                 .font(.custom("Barlow-Bold", size: 20))
