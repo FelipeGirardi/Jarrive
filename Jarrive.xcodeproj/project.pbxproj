@@ -11,6 +11,7 @@
 		9662F5FD2B33602100DA249D /* tu es mon copain.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9662F5FA2B33602100DA249D /* tu es mon copain.mp3 */; };
 		9662F5FE2B33602100DA249D /* elle est dans un train.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9662F5FB2B33602100DA249D /* elle est dans un train.mp3 */; };
 		9662F5FF2B33602100DA249D /* on ecoute les phrases.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9662F5FC2B33602100DA249D /* on ecoute les phrases.mp3 */; };
+		9662F6012B33882200DA249D /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9662F6002B33882200DA249D /* Map.swift */; };
 		96939EB92B1179A800D06BFC /* StampExerciseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96939EB82B1179A800D06BFC /* StampExerciseScreen.swift */; };
 		96DBFD3A2B2BD882005CE734 /* EcoutePhasesModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DBFD392B2BD882005CE734 /* EcoutePhasesModal.swift */; };
 		96EBD8582B1BCBA90027025A /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EBD8572B1BCBA90027025A /* Character.swift */; };
@@ -113,6 +114,7 @@
 		9662F5FA2B33602100DA249D /* tu es mon copain.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "tu es mon copain.mp3"; sourceTree = "<group>"; };
 		9662F5FB2B33602100DA249D /* elle est dans un train.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "elle est dans un train.mp3"; sourceTree = "<group>"; };
 		9662F5FC2B33602100DA249D /* on ecoute les phrases.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "on ecoute les phrases.mp3"; sourceTree = "<group>"; };
+		9662F6002B33882200DA249D /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		96939EB82B1179A800D06BFC /* StampExerciseScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampExerciseScreen.swift; sourceTree = "<group>"; };
 		96DBFD392B2BD882005CE734 /* EcoutePhasesModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcoutePhasesModal.swift; sourceTree = "<group>"; };
 		96EBD8572B1BCBA90027025A /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
@@ -420,6 +422,7 @@
 			children = (
 				C0E8BD9B2A9D7C11008C4F57 /* Login */,
 				C0A62CA82A7D826A00CDFA0F /* Onboarding */,
+				9662F6002B33882200DA249D /* Map.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -668,6 +671,7 @@
 				C05C76BB2AE890DA00698C4F /* ImageBubbleView.swift in Sources */,
 				C0A560552AD1F35800EF99A9 /* MainChatBubbleView.swift in Sources */,
 				96DBFD3A2B2BD882005CE734 /* EcoutePhasesModal.swift in Sources */,
+				9662F6012B33882200DA249D /* Map.swift in Sources */,
 				C0D91C532A4CD95900080072 /* NetworkImage.swift in Sources */,
 				C04274C22AD475C700261C74 /* AudioBubbleView.swift in Sources */,
 				C04274C02AD475B700261C74 /* ResponseBubbleView.swift in Sources */,
@@ -871,7 +875,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Jarrive/Preview Content\"";
-				DEVELOPMENT_TEAM = QU2M8UTH92;
+				DEVELOPMENT_TEAM = P7WV6D6894;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Jarrive/Info.plist;
@@ -886,7 +890,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.Jarrive;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.Jarrive11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -902,7 +906,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Jarrive/Preview Content\"";
-				DEVELOPMENT_TEAM = QU2M8UTH92;
+				DEVELOPMENT_TEAM = P7WV6D6894;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Jarrive/Info.plist;
@@ -917,7 +921,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.Jarrive;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.Jarrive11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
