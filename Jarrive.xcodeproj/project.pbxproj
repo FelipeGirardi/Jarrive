@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9661F6552B334E650037FC04 /* EcoutePhraseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661F6542B334E650037FC04 /* EcoutePhraseView.swift */; };
+		9662F5FD2B33602100DA249D /* tu es mon copain.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9662F5FA2B33602100DA249D /* tu es mon copain.mp3 */; };
+		9662F5FE2B33602100DA249D /* elle est dans un train.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9662F5FB2B33602100DA249D /* elle est dans un train.mp3 */; };
+		9662F5FF2B33602100DA249D /* on ecoute les phrases.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9662F5FC2B33602100DA249D /* on ecoute les phrases.mp3 */; };
 		96939EB92B1179A800D06BFC /* StampExerciseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96939EB82B1179A800D06BFC /* StampExerciseScreen.swift */; };
 		96DBFD3A2B2BD882005CE734 /* EcoutePhasesModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DBFD392B2BD882005CE734 /* EcoutePhasesModal.swift */; };
 		96EBD8582B1BCBA90027025A /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EBD8572B1BCBA90027025A /* Character.swift */; };
@@ -105,6 +109,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9661F6542B334E650037FC04 /* EcoutePhraseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcoutePhraseView.swift; sourceTree = "<group>"; };
+		9662F5FA2B33602100DA249D /* tu es mon copain.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "tu es mon copain.mp3"; sourceTree = "<group>"; };
+		9662F5FB2B33602100DA249D /* elle est dans un train.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "elle est dans un train.mp3"; sourceTree = "<group>"; };
+		9662F5FC2B33602100DA249D /* on ecoute les phrases.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "on ecoute les phrases.mp3"; sourceTree = "<group>"; };
 		96939EB82B1179A800D06BFC /* StampExerciseScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampExerciseScreen.swift; sourceTree = "<group>"; };
 		96DBFD392B2BD882005CE734 /* EcoutePhasesModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcoutePhasesModal.swift; sourceTree = "<group>"; };
 		96EBD8572B1BCBA90027025A /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
@@ -234,6 +242,9 @@
 		C05480482B16BDD200AA5D5D /* Audios */ = {
 			isa = PBXGroup;
 			children = (
+				9662F5FB2B33602100DA249D /* elle est dans un train.mp3 */,
+				9662F5FC2B33602100DA249D /* on ecoute les phrases.mp3 */,
+				9662F5FA2B33602100DA249D /* tu es mon copain.mp3 */,
 				C05480492B16BDE300AA5D5D /* CatMeow.mp3 */,
 			);
 			path = Audios;
@@ -293,6 +304,7 @@
 				C08AE7342ADE01DF0009B42F /* TranslationBubbleView.swift */,
 				C05C76BC2AE8989400698C4F /* UnderlinedWordsBlurView.swift */,
 				96DBFD392B2BD882005CE734 /* EcoutePhasesModal.swift */,
+				9661F6542B334E650037FC04 /* EcoutePhraseView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -605,6 +617,7 @@
 				C0D834CE2B093B8500A43175 /* Barlow-Italic.ttf in Resources */,
 				C0A62CAC2A7D838300CDFA0F /* BasicSans-Black.otf in Resources */,
 				C0E8BD9A2A9D644D008C4F57 /* Barlow-Regular.ttf in Resources */,
+				9662F5FF2B33602100DA249D /* on ecoute les phrases.mp3 in Resources */,
 				C0E8BD982A9D644D008C4F57 /* Barlow-SemiBold.ttf in Resources */,
 				C0A560522AD1EBD500EF99A9 /* Barlow-Medium.ttf in Resources */,
 				C0C1C74A2A4CC5FE00E1A54F /* GoogleService-Info.plist in Resources */,
@@ -617,6 +630,8 @@
 				C05C76BF2AE89AD900698C4F /* Barlow-SemiBoldItalic.ttf in Resources */,
 				C054804A2B16BDE400AA5D5D /* CatMeow.mp3 in Resources */,
 				C0E8BD992A9D644D008C4F57 /* Barlow-Bold.ttf in Resources */,
+				9662F5FD2B33602100DA249D /* tu es mon copain.mp3 in Resources */,
+				9662F5FE2B33602100DA249D /* elle est dans un train.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,6 +660,7 @@
 			files = (
 				C0B83FA82A3131CE0096003B /* PostcardView.swift in Sources */,
 				C0D91C512A4CD84900080072 /* ContentView.swift in Sources */,
+				9661F6552B334E650037FC04 /* EcoutePhraseView.swift in Sources */,
 				C0A62CAA2A7D82B100CDFA0F /* ChatTextInput.swift in Sources */,
 				C0F9B13C2A379A6D0046A21D /* MainTabView.swift in Sources */,
 				C0B83FA62A3131B60096003B /* LevelView.swift in Sources */,

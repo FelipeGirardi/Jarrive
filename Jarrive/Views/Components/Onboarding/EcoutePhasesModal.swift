@@ -30,7 +30,6 @@ struct EcoutePhasesModal: View {
                     Spacer ()
                 }
                 
-                
                 Button {
                     shouldShowEcouteModal = false
                     shouldShowEcouteView = true

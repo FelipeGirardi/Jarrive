@@ -5,6 +5,7 @@
 //  Created by Ronald on 18/11/23.
 //
 
+import AVFoundation
 import SwiftUI
 
 struct StampExerciseScreen: View {
@@ -39,7 +40,7 @@ struct StampExerciseScreen: View {
                         ExercicesView(shouldReviseDragDropExercice: $shouldReviseDragDropExercice,
                                       shouldShowEcouteModal: $shouldShowEcouteModal)
                     } else {
-                        EcoutePhrasesExerciceView(shouldReviseEcouteExercice: $shouldReviseEcouteExercice)
+                        EcoutePhrasesExerciceView(shouldReviseEcouteExercice: $shouldReviseEcouteExercice, titleWasPlayed: false)
                     }
                 }
             }
@@ -100,7 +101,7 @@ struct HeaderContent: View {
                     Button {
                         print("aaaa")
                     } label: {
-                        Image("audioButton")
+                        Image("audioPlayerExercices")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .tint(Color("mainBlue"))
@@ -143,7 +144,7 @@ struct HeaderContent: View {
                     .clipShape(Capsule())
                     .background(
                         Capsule()
-                            .foregroundColor( shouldShowExplicatifView ? Color("defaultOffWhite") : Color("mainBlue") )
+                            .foregroundColor(shouldShowExplicatifView ? Color("defaultOffWhite") : Color("mainBlue") )
                             .shadow(color: .gray, radius: 2, x: 0, y: 2))
                 }.padding(.bottom, 50)
             }
@@ -562,6 +563,7 @@ struct EcoutePhrasesExerciceView: View {
     // MARK: - Ecoute Phrases Exercice
     @Binding var shouldReviseEcouteExercice: Bool
     @State var progress: CGFloat = 0.0
+    @State var titleWasPlayed: Bool
     
     var body: some View {
         GeometryReader { geometry in
@@ -577,117 +579,50 @@ struct EcoutePhrasesExerciceView: View {
         
         VStack(alignment: .center) {
             VStack(alignment: .leading) {
-                HStack(alignment: .center) {
-                    Button {
-                        // play audio
-                        // change color of the play
-                        print("aaaa")
-                    } label: {
-                        Image("audioButton")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .tint(Color("mainBlue"))
-                    }
-                    .frame(width: 42, height: 42)
-                    
-                    Text("On écoute les phrases!")
-                        .font(.custom("Barlow-SemiBold", size: 20))
-                        .underline()
-                }
+                EcoutePhraseView(audio: "on ecoute les phrases", 
+                                 phrase: "On écoute les phrases!",
+                                 progress: $progress,
+                                 shouldReviseEcouteExercice: $shouldReviseEcouteExercice)
                 
-                VStack(alignment: .leading) {
-                    HStack(alignment: .center) {
-                        Button {
-                            // play audio
-                            // change color of the play
-                            print("aaaa")
-                        } label: {
-                            Image("audioButton")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .tint(Color("mainBlue"))
-                        }
-                        .frame(width: 35, height: 35)
-                        
-                        
-                        Text("Je suis un facteur. ✉️")
-                            .font(.custom("Barlow-Regular", size: 20))
-                    }
-                    
-                    HStack {
-                        Button {
-                            // play audio
-                            // change color of the play
-                            print("aaaa")
-                        } label: {
-                            Image("audioButton")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .tint(Color("mainBlue"))
-                        }
-                        .frame(width: 35, height: 35)
-                        
-                        
-                        Text("Tu es mon copain. ❤️")
-                            .font(.custom("Barlow-Regular", size: 20))
-                    }
-                    
-                    HStack {
-                        Button {
-                            // play audio
-                            // change color of the play
-                            print("aaaa")
-                        } label: {
-                            Image("audioButton")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .tint(Color("mainBlue"))
-                        }
-                        .frame(width: 35, height: 35)
-                        
-                        
-                        Text("Elle est dans un train. 🚂")
-                            .font(.custom("Barlow-Regular", size: 20))
-                    }
-                    
-                    HStack {
-                        Button {
-                            // play audio
-                            // change color of the play
-                            print("aaaa")
-                        } label: {
-                            Image("audioButton")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .tint(Color("mainBlue"))
-                        }
-                        .frame(width: 35, height: 35)
-                        
-                        
-                        Text("Nous sommes en voyage. ✈️")
-                            .font(.custom("Barlow-Regular", size: 20))
-                            .foregroundStyle(.white)
-                    }
-                    
-                }
+                EcoutePhraseView(audio: "CatMeow", 
+                                 phrase: "Je suis un facteur. ✉️",
+                                 progress: $progress,
+                                 shouldReviseEcouteExercice: $shouldReviseEcouteExercice)
+                
+                EcoutePhraseView(audio: "tu es mon copain", 
+                                 phrase: "Tu es mon copain. ❤️",
+                                 progress: $progress,
+                                 shouldReviseEcouteExercice: $shouldReviseEcouteExercice)
+                
+                EcoutePhraseView(audio: "elle est dans un train", 
+                                 phrase: "Elle est dans un train. 🚂",
+                                 progress: $progress,
+                                 shouldReviseEcouteExercice: $shouldReviseEcouteExercice)
+                
+                EcoutePhraseView(audio: "CatMeow", 
+                                 phrase: "Nous sommes en voyage. ✈️" ,
+                                 progress: $progress,
+                                 shouldReviseEcouteExercice: $shouldReviseEcouteExercice)
             }.foregroundStyle(.white)
-            
-            Spacer()
-            
-            Button {
-                print("aa")
-            } label: {
-                Text("CONTINUAR")
-                    .font(.custom("Barlow-Bold", size: 20))
-                    .foregroundColor(shouldReviseEcouteExercice ? Color(.white) : Color("defaultDarkBlue") )
-            }
-            .disabled(!shouldReviseEcouteExercice)
-            .frame(width: 330, height: 50)
-            .clipShape(Capsule())
-            .background(
-                Capsule()
-                    .foregroundColor(shouldReviseEcouteExercice ? Color("mainGreen") :  Color("darkGray") ) )
-            .padding(.bottom)
+
         }.padding(.top, 50)
+        
+        Spacer()
+        
+        Button {
+            print("aa")
+        } label: {
+            Text("CONTINUAR")
+                .font(.custom("Barlow-Bold", size: 20))
+                .foregroundColor(shouldReviseEcouteExercice ? Color(.white) : Color("defaultDarkBlue") )
+        }
+        .disabled(!shouldReviseEcouteExercice)
+        .frame(width: 330, height: 50)
+        .clipShape(Capsule())
+        .background(
+            Capsule()
+                .foregroundColor(shouldReviseEcouteExercice ? Color("mainGreen") :  Color("darkGray") ) )
+        .padding(.bottom)
     }
 }
+
