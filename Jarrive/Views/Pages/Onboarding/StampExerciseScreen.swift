@@ -617,7 +617,7 @@ struct EcoutePhrasesExerciceView: View {
         Spacer()
         
         NavigationLink {
-            FirstStampScreen()
+          FirstStampScreen().navigationBarBackButtonHidden()
         } label: {
             Text("CONTINUAR")
                 .font(.custom("Barlow-Bold", size: 20))

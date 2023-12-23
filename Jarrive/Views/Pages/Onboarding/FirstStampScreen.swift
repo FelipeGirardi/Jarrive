@@ -110,10 +110,7 @@ struct FirstStampScreen: View {
                   .multilineTextAlignment(.leading)
               }
               
-              Button(action: {
-                print("Ir para tela de login")
-              }) {
-                NavigationLink(destination: Map().navigationBarHidden(true)) {
+                NavigationLink(destination: LoginScreen().navigationBarHidden(true)) {
                   Text("FAZER LOGIN")
                     .font(.custom("Barlow-Bold", size: 20))
                     .frame(width: g.size.width * 0.86, height: 20)
@@ -126,9 +123,11 @@ struct FirstStampScreen: View {
                       )
                       .fill(Color("mainGreen"))
                     )
-                }.navigationBarBackButtonHidden(true)
-
-              }
+                }
+                .navigationBarBackButtonHidden(true)
+                .simultaneousGesture(TapGesture().onEnded{
+                  UserDefaults.standard.set(true, forKey: "isOnboardingDone")
+                })
               
               Spacer()
             }
