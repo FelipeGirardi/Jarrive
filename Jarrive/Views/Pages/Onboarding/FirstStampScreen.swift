@@ -113,7 +113,7 @@ struct FirstStampScreen: View {
               Button(action: {
                 print("Ir para tela de login")
               }) {
-                NavigationLink(destination: LoginScreen().navigationBarHidden(true)) {
+                NavigationLink(destination: Map().navigationBarHidden(true)) {
                   Text("FAZER LOGIN")
                     .font(.custom("Barlow-Bold", size: 20))
                     .frame(width: g.size.width * 0.86, height: 20)
@@ -126,7 +126,8 @@ struct FirstStampScreen: View {
                       )
                       .fill(Color("mainGreen"))
                     )
-                }
+                }.navigationBarBackButtonHidden(true)
+
               }
               
               Spacer()
