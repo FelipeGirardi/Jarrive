@@ -171,7 +171,7 @@ struct ExplicatifView: View {
                     Button {
                         print("aaaa")
                     } label: {
-                        Image("audioButton")
+                        Image("audioPlayerExercices")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                     }
@@ -248,7 +248,7 @@ struct ExplicatifView: View {
                     Button {
                         print("aaaa")
                     } label: {
-                        Image("audioButton")
+                        Image("audioPlayerExercices")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                     }
