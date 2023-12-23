@@ -6,21 +6,24 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct ContentView: View {
   @EnvironmentObject var viewModel: AuthenticationViewModel
   
   var body: some View {
     TitleScreen()
-//    switch viewModel.authState {
-//      case .signedIn: MainTabView()
-//      case .signedOut: LoginScreen()
-//    }
+    
+// MARK: code below checks if user is signed in 
+//    viewModel.isLogging ? AnyView(ProgressView()) :
+//    AnyView(Group {
+//      Auth.auth().currentUser != nil ? AnyView(TitleScreen()) : AnyView(LoginScreen())
+//      })
   }
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+  static var previews: some View {
+    ContentView()
+  }
 }

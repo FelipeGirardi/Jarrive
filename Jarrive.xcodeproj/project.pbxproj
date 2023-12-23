@@ -24,12 +24,15 @@
 		C04274C02AD475B700261C74 /* ResponseBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04274BF2AD475B700261C74 /* ResponseBubbleView.swift */; };
 		C04274C22AD475C700261C74 /* AudioBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04274C12AD475C700261C74 /* AudioBubbleView.swift */; };
 		C04896112B0D7AAC00C26E39 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04896102B0D7AAC00C26E39 /* ViewExtensions.swift */; };
+		C05129492B28CE02008A4888 /* FirstStampScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05129482B28CE02008A4888 /* FirstStampScreen.swift */; };
+		C051294B2B28D2A1008A4888 /* Barlow-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C051294A2B28D2A1008A4888 /* Barlow-ExtraBold.ttf */; };
 		C054804A2B16BDE400AA5D5D /* CatMeow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C05480492B16BDE300AA5D5D /* CatMeow.mp3 */; };
 		C057F88C2ACF2D2400AC0814 /* TitleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C057F88B2ACF2D2400AC0814 /* TitleScreen.swift */; };
 		C05C76BB2AE890DA00698C4F /* ImageBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C76BA2AE890DA00698C4F /* ImageBubbleView.swift */; };
 		C05C76BD2AE8989400698C4F /* UnderlinedWordsBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05C76BC2AE8989400698C4F /* UnderlinedWordsBlurView.swift */; };
 		C05C76BF2AE89AD900698C4F /* Barlow-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C05C76BE2AE89AD900698C4F /* Barlow-SemiBoldItalic.ttf */; };
 		C06EA4202A38DF3C00DF427E /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06EA41F2A38DF3C00DF427E /* RoundedCorner.swift */; };
+		C06EE7142B2BD9300084D463 /* Barlow-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C06EE7132B2BD9300084D463 /* Barlow-BoldItalic.ttf */; };
 		C08AE7352ADE01DF0009B42F /* TranslationBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08AE7342ADE01DF0009B42F /* TranslationBubbleView.swift */; };
 		C0A560522AD1EBD500EF99A9 /* Barlow-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0A560512AD1EBD400EF99A9 /* Barlow-Medium.ttf */; };
 		C0A560552AD1F35800EF99A9 /* MainChatBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A560542AD1F35800EF99A9 /* MainChatBubbleView.swift */; };
@@ -59,6 +62,10 @@
 		C0C1C74A2A4CC5FE00E1A54F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0C1C7492A4CC5FE00E1A54F /* GoogleService-Info.plist */; };
 		C0C1C74B2A4CC5FE00E1A54F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0C1C7492A4CC5FE00E1A54F /* GoogleService-Info.plist */; };
 		C0C1C74C2A4CC5FE00E1A54F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0C1C7492A4CC5FE00E1A54F /* GoogleService-Info.plist */; };
+		C0D543552B2D16AB006EA021 /* StampComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D543542B2D16AB006EA021 /* StampComponent.swift */; };
+		C0D543572B2D16E7006EA021 /* StampsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D543562B2D16E7006EA021 /* StampsListView.swift */; };
+		C0D543592B2D172C006EA021 /* PostcardMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D543582B2D172C006EA021 /* PostcardMessageView.swift */; };
+		C0D5435B2B2D1744006EA021 /* PostcardButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D5435A2B2D1744006EA021 /* PostcardButtonsView.swift */; };
 		C0D834C42B0927F000A43175 /* PostcardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D834C32B0927F000A43175 /* PostcardScreen.swift */; };
 		C0D834C62B0929E000A43175 /* Bilbo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0D834C52B0929E000A43175 /* Bilbo-Regular.ttf */; };
 		C0D834C82B092C9D00A43175 /* PostcardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D834C72B092C9D00A43175 /* PostcardData.swift */; };
@@ -127,12 +134,15 @@
 		C04274BF2AD475B700261C74 /* ResponseBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBubbleView.swift; sourceTree = "<group>"; };
 		C04274C12AD475C700261C74 /* AudioBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioBubbleView.swift; sourceTree = "<group>"; };
 		C04896102B0D7AAC00C26E39 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		C05129482B28CE02008A4888 /* FirstStampScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStampScreen.swift; sourceTree = "<group>"; };
+		C051294A2B28D2A1008A4888 /* Barlow-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-ExtraBold.ttf"; sourceTree = "<group>"; };
 		C05480492B16BDE300AA5D5D /* CatMeow.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CatMeow.mp3; sourceTree = "<group>"; };
 		C057F88B2ACF2D2400AC0814 /* TitleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleScreen.swift; sourceTree = "<group>"; };
 		C05C76BA2AE890DA00698C4F /* ImageBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBubbleView.swift; sourceTree = "<group>"; };
 		C05C76BC2AE8989400698C4F /* UnderlinedWordsBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedWordsBlurView.swift; sourceTree = "<group>"; };
 		C05C76BE2AE89AD900698C4F /* Barlow-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		C06EA41F2A38DF3C00DF427E /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		C06EE7132B2BD9300084D463 /* Barlow-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-BoldItalic.ttf"; sourceTree = "<group>"; };
 		C08AE7342ADE01DF0009B42F /* TranslationBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationBubbleView.swift; sourceTree = "<group>"; };
 		C0A560512AD1EBD400EF99A9 /* Barlow-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Medium.ttf"; sourceTree = "<group>"; };
 		C0A560542AD1F35800EF99A9 /* MainChatBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainChatBubbleView.swift; sourceTree = "<group>"; };
@@ -163,6 +173,11 @@
 		C0B83FA72A3131CE0096003B /* PostcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostcardView.swift; sourceTree = "<group>"; };
 		C0B83FA92A3131E00096003B /* StampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampView.swift; sourceTree = "<group>"; };
 		C0C1C7492A4CC5FE00E1A54F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C0D334572B2FA16800808A6B /* Jarrive.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Jarrive.entitlements; sourceTree = "<group>"; };
+		C0D543542B2D16AB006EA021 /* StampComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampComponent.swift; sourceTree = "<group>"; };
+		C0D543562B2D16E7006EA021 /* StampsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampsListView.swift; sourceTree = "<group>"; };
+		C0D543582B2D172C006EA021 /* PostcardMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostcardMessageView.swift; sourceTree = "<group>"; };
+		C0D5435A2B2D1744006EA021 /* PostcardButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostcardButtonsView.swift; sourceTree = "<group>"; };
 		C0D834C32B0927F000A43175 /* PostcardScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostcardScreen.swift; sourceTree = "<group>"; };
 		C0D834C52B0929E000A43175 /* Bilbo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bilbo-Regular.ttf"; sourceTree = "<group>"; };
 		C0D834C72B092C9D00A43175 /* PostcardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostcardData.swift; sourceTree = "<group>"; };
@@ -230,6 +245,8 @@
 				C02D093D2A3B979200B5FA54 /* Barlow-LightItalic.ttf */,
 				C0A62CAB2A7D838300CDFA0F /* BasicSans-Black.otf */,
 				C0E8BD962A9D644D008C4F57 /* Barlow-Bold.ttf */,
+				C06EE7132B2BD9300084D463 /* Barlow-BoldItalic.ttf */,
+				C051294A2B28D2A1008A4888 /* Barlow-ExtraBold.ttf */,
 				C0A560512AD1EBD400EF99A9 /* Barlow-Medium.ttf */,
 				C0E8BD972A9D644D008C4F57 /* Barlow-Regular.ttf */,
 				C0E8BD952A9D644C008C4F57 /* Barlow-SemiBold.ttf */,
@@ -305,6 +322,10 @@
 				C05C76BA2AE890DA00698C4F /* ImageBubbleView.swift */,
 				C08AE7342ADE01DF0009B42F /* TranslationBubbleView.swift */,
 				C05C76BC2AE8989400698C4F /* UnderlinedWordsBlurView.swift */,
+				C0D543542B2D16AB006EA021 /* StampComponent.swift */,
+				C0D543562B2D16E7006EA021 /* StampsListView.swift */,
+				C0D543582B2D172C006EA021 /* PostcardMessageView.swift */,
+				C0D5435A2B2D1744006EA021 /* PostcardButtonsView.swift */,
 				96DBFD392B2BD882005CE734 /* EcoutePhasesModal.swift */,
 				9661F6542B334E650037FC04 /* EcoutePhraseView.swift */,
 			);
@@ -335,6 +356,7 @@
 		C0B83F6B2A312B340096003B /* Jarrive */ = {
 			isa = PBXGroup;
 			children = (
+				C0D334572B2FA16800808A6B /* Jarrive.entitlements */,
 				C0B83F9A2A312F410096003B /* Info.plist */,
 				C0C1C7492A4CC5FE00E1A54F /* GoogleService-Info.plist */,
 				C0D834D92B09538A00A43175 /* Old */,
@@ -489,6 +511,7 @@
 				C0D8FEF32AD0792A00FE5F41 /* OnboardingMainScreen.swift */,
 				C0D834C32B0927F000A43175 /* PostcardScreen.swift */,
 				96939EB82B1179A800D06BFC /* StampExerciseScreen.swift */,
+				C05129482B28CE02008A4888 /* FirstStampScreen.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -618,8 +641,10 @@
 				C0D8D8992B1963AE00A5CC20 /* HechoAMano-Regular.ttf in Resources */,
 				C02D093E2A3B979200B5FA54 /* Barlow-LightItalic.ttf in Resources */,
 				C0D834CE2B093B8500A43175 /* Barlow-Italic.ttf in Resources */,
+				C051294B2B28D2A1008A4888 /* Barlow-ExtraBold.ttf in Resources */,
 				C0A62CAC2A7D838300CDFA0F /* BasicSans-Black.otf in Resources */,
 				C0E8BD9A2A9D644D008C4F57 /* Barlow-Regular.ttf in Resources */,
+				C06EE7142B2BD9300084D463 /* Barlow-BoldItalic.ttf in Resources */,
 				9662F5FF2B33602100DA249D /* on ecoute les phrases.mp3 in Resources */,
 				C0E8BD982A9D644D008C4F57 /* Barlow-SemiBold.ttf in Resources */,
 				C0A560522AD1EBD500EF99A9 /* Barlow-Medium.ttf in Resources */,
@@ -663,12 +688,14 @@
 			files = (
 				C0B83FA82A3131CE0096003B /* PostcardView.swift in Sources */,
 				C0D91C512A4CD84900080072 /* ContentView.swift in Sources */,
+				C05129492B28CE02008A4888 /* FirstStampScreen.swift in Sources */,
 				9661F6552B334E650037FC04 /* EcoutePhraseView.swift in Sources */,
 				C0A62CAA2A7D82B100CDFA0F /* ChatTextInput.swift in Sources */,
 				C0F9B13C2A379A6D0046A21D /* MainTabView.swift in Sources */,
 				C0B83FA62A3131B60096003B /* LevelView.swift in Sources */,
 				C0D91C4F2A4CD6DD00080072 /* GoogleSignInButton.swift in Sources */,
 				C05C76BB2AE890DA00698C4F /* ImageBubbleView.swift in Sources */,
+				C0D543552B2D16AB006EA021 /* StampComponent.swift in Sources */,
 				C0A560552AD1F35800EF99A9 /* MainChatBubbleView.swift in Sources */,
 				96DBFD3A2B2BD882005CE734 /* EcoutePhasesModal.swift in Sources */,
 				9662F6012B33882200DA249D /* Map.swift in Sources */,
@@ -696,6 +723,7 @@
 				C0EBBAE22A3A5E0F00001FCF /* ArrowButton.swift in Sources */,
 				96EBD8582B1BCBA90027025A /* Character.swift in Sources */,
 				C0D91C462A4CCC8D00080072 /* TicketViewModel.swift in Sources */,
+				C0D5435B2B2D1744006EA021 /* PostcardButtonsView.swift in Sources */,
 				C05C76BD2AE8989400698C4F /* UnderlinedWordsBlurView.swift in Sources */,
 				C04274BE2AD475A900261C74 /* OptionBubbleView.swift in Sources */,
 				C04274BC2AD4759000261C74 /* TextBubbleView.swift in Sources */,
@@ -707,7 +735,9 @@
 				C0B83F6F2A312B340096003B /* StampsView.swift in Sources */,
 				C08AE7352ADE01DF0009B42F /* TranslationBubbleView.swift in Sources */,
 				96939EB92B1179A800D06BFC /* StampExerciseScreen.swift in Sources */,
+				C0D543592B2D172C006EA021 /* PostcardMessageView.swift in Sources */,
 				C0EBBAE42A3A67E800001FCF /* Line.swift in Sources */,
+				C0D543572B2D16E7006EA021 /* StampsListView.swift in Sources */,
 				C0D834C82B092C9D00A43175 /* PostcardData.swift in Sources */,
 				C06EA4202A38DF3C00DF427E /* RoundedCorner.swift in Sources */,
 				C0A62CA72A7D810300CDFA0F /* CatChatBubble.swift in Sources */,
@@ -872,6 +902,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Jarrive/Jarrive.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Jarrive/Preview Content\"";
@@ -903,6 +934,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Jarrive/Jarrive.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Jarrive/Preview Content\"";
