@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PostcardData {
+struct PostcardData: Hashable {
   var author: String
   var image: String
   var text: String
