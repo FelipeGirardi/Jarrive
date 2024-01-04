@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct ImageBubbleView: View {
-  var content: ImageBubble
+  var messageData: MessageData
   @State var changeToFullscreenImage = false
   
   var body: some View {
       HStack {
-          Image(content.image)
+        Image(messageData.image!)
             .resizable()
             .frame(maxWidth: 145, maxHeight: 145)
             .padding(.leading, 10)
             .onTapGesture {
               // since it's the only image that user can download, condition is ok for now
-              if content.image == "catOnTrainSmall" {
+              if messageData.image == "catOnTrainSmall" {
                 changeToFullscreenImage.toggle()
               }
             }
@@ -28,14 +28,14 @@ struct ImageBubbleView: View {
         
       }
       .navigationDestination(isPresented: $changeToFullscreenImage) {
-        FullScreenImageScreen(imageString: content.largeImage)
+        FullScreenImageScreen(imageString: messageData.largeImage!)
       }
   }
 }
 
 struct ImageBubbleView_Previews: PreviewProvider {
     static var previews: some View {
-      ImageBubbleView(content: ImageBubble(image: "catOnTrainSmall", largeImage: "catOnTrainLarge"))
+      ImageBubbleView(messageData: MessageData(type: "image", image: "catOnTrainSmall", largeImage: "catOnTrainLarge"))
     }
 }
 

@@ -46,6 +46,7 @@ struct StampComponent: View {
           
           Text(stamp.title)
             .font(.custom(isStampSmall() ? "Barlow-Bold" : "Barlow-Black", size: isStampSmall() ? 8 : 24))
+            .minimumScaleFactor(0.5)
             .foregroundColor(isCurrentStamp() ? Color("mainDarkBlue") : Color("defaultDarkGray"))
             .padding(.bottom, isStampSmall() ? 5 : 26)
         }

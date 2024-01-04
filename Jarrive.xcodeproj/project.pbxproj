@@ -15,6 +15,7 @@
 		96939EB92B1179A800D06BFC /* StampExerciseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96939EB82B1179A800D06BFC /* StampExerciseScreen.swift */; };
 		96DBFD3A2B2BD882005CE734 /* EcoutePhasesModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DBFD392B2BD882005CE734 /* EcoutePhasesModal.swift */; };
 		96EBD8582B1BCBA90027025A /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EBD8572B1BCBA90027025A /* Character.swift */; };
+		C02728102B45A343000837CB /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C027280F2B45A343000837CB /* FirestoreManager.swift */; };
 		C02AC4302AD88E61006C4422 /* OnboardingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02AC42F2AD88E61006C4422 /* OnboardingData.swift */; };
 		C02D093E2A3B979200B5FA54 /* Barlow-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C02D093D2A3B979200B5FA54 /* Barlow-LightItalic.ttf */; };
 		C02D09422A3BA23100B5FA54 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D09412A3BA23100B5FA54 /* LoginScreen.swift */; };
@@ -62,6 +63,8 @@
 		C0C1C74A2A4CC5FE00E1A54F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0C1C7492A4CC5FE00E1A54F /* GoogleService-Info.plist */; };
 		C0C1C74B2A4CC5FE00E1A54F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0C1C7492A4CC5FE00E1A54F /* GoogleService-Info.plist */; };
 		C0C1C74C2A4CC5FE00E1A54F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0C1C7492A4CC5FE00E1A54F /* GoogleService-Info.plist */; };
+		C0C8A0CE2B45C38F0002056A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C0C8A0CD2B45C38F0002056A /* FirebaseFirestore */; };
+		C0C8A0D02B45C3970002056A /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C0C8A0CF2B45C3970002056A /* FirebaseFirestoreSwift */; };
 		C0D543552B2D16AB006EA021 /* StampComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D543542B2D16AB006EA021 /* StampComponent.swift */; };
 		C0D543572B2D16E7006EA021 /* StampsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D543562B2D16E7006EA021 /* StampsListView.swift */; };
 		C0D543592B2D172C006EA021 /* PostcardMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D543582B2D172C006EA021 /* PostcardMessageView.swift */; };
@@ -125,6 +128,7 @@
 		96939EB82B1179A800D06BFC /* StampExerciseScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampExerciseScreen.swift; sourceTree = "<group>"; };
 		96DBFD392B2BD882005CE734 /* EcoutePhasesModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcoutePhasesModal.swift; sourceTree = "<group>"; };
 		96EBD8572B1BCBA90027025A /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		C027280F2B45A343000837CB /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		C02AC42F2AD88E61006C4422 /* OnboardingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingData.swift; sourceTree = "<group>"; };
 		C02D093D2A3B979200B5FA54 /* Barlow-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-LightItalic.ttf"; sourceTree = "<group>"; };
 		C02D09412A3BA23100B5FA54 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
@@ -217,6 +221,8 @@
 			files = (
 				C0C1C7472A4CC32C00E1A54F /* FirebaseAuth in Frameworks */,
 				C0D91C4B2A4CCD2000080072 /* GoogleSignIn in Frameworks */,
+				C0C8A0CE2B45C38F0002056A /* FirebaseFirestore in Frameworks */,
+				C0C8A0D02B45C3970002056A /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +500,7 @@
 			isa = PBXGroup;
 			children = (
 				C0D91C472A4CCCA100080072 /* AuthenticationViewModel.swift */,
+				C027280F2B45A343000837CB /* FirestoreManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -545,6 +552,8 @@
 			packageProductDependencies = (
 				C0C1C7462A4CC32C00E1A54F /* FirebaseAuth */,
 				C0D91C4A2A4CCD2000080072 /* GoogleSignIn */,
+				C0C8A0CD2B45C38F0002056A /* FirebaseFirestore */,
+				C0C8A0CF2B45C3970002056A /* FirebaseFirestoreSwift */,
 			);
 			productName = Jarrive;
 			productReference = C0B83F692A312B340096003B /* Jarrive.app */;
@@ -703,6 +712,7 @@
 				C04274C22AD475C700261C74 /* AudioBubbleView.swift in Sources */,
 				C04274C02AD475B700261C74 /* ResponseBubbleView.swift in Sources */,
 				C0D834D22B093F2900A43175 /* Stamp.swift in Sources */,
+				C02728102B45A343000837CB /* FirestoreManager.swift in Sources */,
 				C0B83F9E2A3130F00096003B /* PostcardsView.swift in Sources */,
 				C0DEA4B62A79BA4A00C640BD /* ChatPage.swift in Sources */,
 				C0DEA4B02A798D2200C640BD /* PlayAudioButton.swift in Sources */,
@@ -1102,6 +1112,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C0C1C7452A4CC32C00E1A54F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		C0C8A0CD2B45C38F0002056A /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0C1C7452A4CC32C00E1A54F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		C0C8A0CF2B45C3970002056A /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0C1C7452A4CC32C00E1A54F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
 		};
 		C0D91C4A2A4CCD2000080072 /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;

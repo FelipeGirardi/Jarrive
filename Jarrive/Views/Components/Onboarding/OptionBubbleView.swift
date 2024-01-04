@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct OptionBubbleView: View {
-  var content: OptionBubble
+  var messageData: MessageData
   @State var showTranslations: Bool = false
   @State var bubbleHeight: Double = 0.0
-  @Binding var onboardingData: OnboardingData
+  @EnvironmentObject var firestoreManager: FirestoreManager
+  var onboardingData = OnboardingData()
   @Binding var currentMessage: Int
   @Binding var optionsClickedIndexes: [Int]
   var currentIndex: Int
@@ -19,7 +20,7 @@ struct OptionBubbleView: View {
   var getBubbleText: some View {
     var fullString = Text("")
     
-    for str in content.textArray {
+    for str in messageData.textArray! {
       fullString = fullString +
       Text(str.text)
         .underline(str.translation != nil)
@@ -31,16 +32,16 @@ struct OptionBubbleView: View {
   
   func getBubbleTextString() -> String {
     var fullString = ""
-    for str in content.textArray {
+    for str in messageData.textArray! {
       fullString = fullString + str.text
-      fullString = fullString + (str == content.textArray.last ? "" : " ")
+      fullString = fullString + (str == messageData.textArray!.last ? "" : " ")
     }
     return fullString
   }
   
   func nTextCharacters() -> Int {
     var nChars = 0
-    for str in content.textArray {
+    for str in messageData.textArray! {
       nChars += str.text.count
     }
     return nChars
@@ -66,8 +67,8 @@ struct OptionBubbleView: View {
             }
             
             HStack(spacing: 10) {
-              ForEach(content.options.indices, id: \.self) { index in
-                Text(content.options[index])
+              ForEach(messageData.options!.indices, id: \.self) { index in
+                Text(messageData.options![index])
                   .font(.custom("Barlow-Medium", size: 16))
                   .multilineTextAlignment(.center)
                   .minimumScaleFactor(0.5)
@@ -77,11 +78,12 @@ struct OptionBubbleView: View {
                   .background(Color("mainLightBlue"))
                   .cornerRadius(20)
                   .onTapGesture {
-                    if onboardingData.optionPauseIndexes.contains(currentMessage) && !optionsClickedIndexes.contains(currentIndex)
+                    if firestoreManager.onboardingOptionPauseIndexes.contains(currentMessage) && !optionsClickedIndexes.contains(currentIndex)
                     {
-                      onboardingData.catChatMessages[currentMessage+1] = BubbleContent.response(ResponseBubble(textArray: [BubbleString(text: content.options[index], translation: nil)], respondedText: getBubbleTextString()))
-                      if onboardingData.variableOptionMessageIndexes.contains(currentMessage) {
-                        onboardingData.catChatMessages[currentMessage+2] = onboardingData.variableOptionFollowingMessages[onboardingData.variableOptionMessageIndexes.firstIndex(of: currentMessage)!][index]
+                      firestoreManager.onboardingChatMessages[currentMessage+1] = MessageData(id: currentMessage+1, type: "response", textArray: [BubbleString(text: messageData.options![index], translation: nil)], respondedText: getBubbleTextString())
+                      // uses mocked onboardingData for variable option messages
+                      if firestoreManager.onboardingVariableOptionMessageIndexes.contains(currentMessage) {
+                        firestoreManager.onboardingChatMessages[currentMessage+2] = onboardingData.variableOptionFollowingMessages[firestoreManager.onboardingVariableOptionMessageIndexes.firstIndex(of: currentMessage)!][index]
                       }
                       optionsClickedIndexes.append(currentMessage)
                       withAnimation(.easeInOut(duration: 0.1)) {
@@ -94,7 +96,7 @@ struct OptionBubbleView: View {
               Spacer()
             }
           }
-          .frame(maxWidth: Double(content.options.count) * 115.0)
+          .frame(maxWidth: Double(messageData.options!.count) * 115.0)
           .frame(minHeight: 25)
           .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 0))
           .background(.white)
@@ -110,7 +112,7 @@ struct OptionBubbleView: View {
       
       HStack {
       if showTranslations {
-        TranslationBubbleView(translations: content.textArray.filter({$0.translation != nil}))
+        TranslationBubbleView(translations: messageData.textArray!.filter({$0.translation != nil}))
           .padding(.leading, 10)
           .onTapGesture {
               showTranslations.toggle()
@@ -126,6 +128,6 @@ struct OptionBubbleView: View {
 
 struct OptionBubbleView_Previews: PreviewProvider {
   static var previews: some View {
-    OptionBubbleView(content: OptionBubble(textArray: [BubbleString(text: "Salut? Quis est la?", translation: "Oi? Quem é?")], options: ["Train 🚂", "Croissant 🥐", "Carte postale ✉️"]), onboardingData: .constant(OnboardingData()), currentMessage: .constant(1), optionsClickedIndexes: .constant([]), currentIndex: 1)
+    OptionBubbleView(messageData: MessageData(type: "option", textArray: [BubbleString(text: "Bonjour ou bonsoir?", translation: "Bom dia ou boa noite?")], options: ["Bonjour", "Bonsoir"]), currentMessage: .constant(1), optionsClickedIndexes: .constant([]), currentIndex: 1)
   }
 }

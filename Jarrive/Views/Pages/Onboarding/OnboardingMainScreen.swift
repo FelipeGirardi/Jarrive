@@ -12,62 +12,23 @@ struct OnboardingMainScreen: View {
   @State var currentMessage: Int = 0
   @State var messagesTimer: Int = 2
   @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-  @State var onboardingData = OnboardingData()
   @State var textFieldText = ""
   @State var optionsClickedIndexes: [Int] = []
   @State var changeScreenToPostcard = false
   @FocusState private var isFocused: Bool
+  @EnvironmentObject var firestoreManager: FirestoreManager
   
   func isChatFlowStopped() -> Bool {
-    return onboardingData.pauseMessageFluxIndexes.contains(currentMessage) ||
-    currentMessage == onboardingData.catChatMessages.count - 1
+    return firestoreManager.onboardingPauseMessageFluxIndexes.contains(currentMessage) ||
+    currentMessage == firestoreManager.onboardingChatMessages.count - 1
   }
   
   func isTextFieldActive() -> Bool {
-    return onboardingData.userTextFieldPauseIndexes.contains(currentMessage)
+    return firestoreManager.onboardingUserTextFieldPauseIndexes.contains(currentMessage)
   }
   
   func shouldChangeScreenToPostcard() -> Bool {
-    return currentMessage == onboardingData.catChatMessages.count - 1
-  }
-  
-  func navigationBarView() -> some View {
-    VStack {
-      VStack {
-        Spacer()
-        HStack {
-          Image("ThomasCatIcon")
-            .resizable()
-            .frame(width: 40, height: 40)
-            .padding(.horizontal, 7)
-
-          
-          VStack {
-            Text("Tutor do Thomas")
-              .font(.custom("Barlow-Medium", size: 16))
-              .foregroundColor(Color("mainDarkBlue"))
-              .frame(maxWidth: .infinity, alignment: .leading)
-            
-            if !isChatFlowStopped() {
-              Text("escrevendo...")
-                .font(.custom("Barlow-Medium", size: 12))
-                .foregroundColor(Color("mainDarkBlue"))
-                .frame(maxWidth: .infinity, alignment: .leading)
-            }
-          }
-          
-          Spacer()
-        }
-      }
-      .frame(maxWidth: .infinity, maxHeight: 100)
-      .padding(.leading, 25)
-      .padding(.bottom, 10)
-      .background(.white)
-      .roundedCorner(10, corners: [.bottomLeft, .bottomRight])
-      .ignoresSafeArea()
-      
-      Spacer()
-    }
+    return currentMessage == firestoreManager.onboardingChatMessages.count - 1
   }
   
   var userTextField: some View {
@@ -87,7 +48,7 @@ struct OnboardingMainScreen: View {
           .padding(.trailing, 2)
           .onTapGesture {
             if isTextFieldActive() {
-              onboardingData.catChatMessages[currentMessage+1] = BubbleContent.text(TextBubble(textArray: [BubbleString(text: textFieldText)], type: .user))
+              firestoreManager.onboardingChatMessages[currentMessage+1] = MessageData(id: currentMessage+1, type: "text", user: "user", textArray: [BubbleString(text: textFieldText, translation: nil)])
               textFieldText = ""
               withAnimation(.easeInOut(duration: 0.1)) {
                 currentMessage += 1
@@ -116,22 +77,7 @@ struct OnboardingMainScreen: View {
           VStack {
             Spacer()
             
-            ScrollView {
-              VStack(spacing: 10) {
-                ForEach(onboardingData.catChatMessages[0 ... currentMessage].indices.reversed(), id: \.self) { index in
-                  MainChatBubbleView(content: onboardingData.catChatMessages[0 ... currentMessage][index], onboardingData: $onboardingData, currentMessage: $currentMessage, optionsClickedIndexes: $optionsClickedIndexes, currentIndex: index)
-                    .rotationEffect(Angle(radians: .pi)) // rotate each item
-                    .scaleEffect(x: -1, y: 1, anchor: .center)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .zIndex(Double(index))
-                }
-              }
-            }
-            .rotationEffect(Angle(radians: .pi)) // rotate the whole ScrollView 180º
-            .scaleEffect(x: -1, y: 1, anchor: .center)
-            .padding(.bottom, 15)
-            .padding(.top, 80)
-            .edgesIgnoringSafeArea(.top)
+            MainChatScrollView(currentMessage: $currentMessage, optionsClickedIndexes: $optionsClickedIndexes)
             
             Spacer()
             userTextField
@@ -140,9 +86,6 @@ struct OnboardingMainScreen: View {
           .ignoresSafeArea(.keyboard)
           .padding(.bottom, 50)
           .offset(y: isFocused ? -175 : 0)
-          
-//          navigationBarView()
-//            .ignoresSafeArea(.keyboard)
         }
         .brightness(isBlurViewOn ? -0.2 : 0)
         .blur(radius: isBlurViewOn ? 20 : 0)
@@ -150,27 +93,8 @@ struct OnboardingMainScreen: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
           ToolbarItem(placement: .topBarLeading) {
-              HStack {
-                Image("ThomasCatIcon")
-                  .resizable()
-                  .frame(width: 40, height: 40)
-                  .padding(.horizontal, 7)
-
-                VStack {
-                  Text("Tutor do Thomas")
-                    .font(.custom("Barlow-Medium", size: 16))
-                    .foregroundColor(Color("mainDarkBlue"))
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                  
-                  if !isChatFlowStopped() {
-                    Text("escrevendo...")
-                      .font(.custom("Barlow-Medium", size: 12))
-                      .foregroundColor(Color("mainDarkBlue"))
-                      .frame(maxWidth: .infinity, alignment: .leading)
-                  }
-                }
-              }
-            }
+            OnboardingToolbar(isChatFlowStopped: isChatFlowStopped)
+          }
         }
         .toolbarBackground(.white, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
@@ -204,13 +128,66 @@ struct OnboardingMainScreen: View {
           }
         }
       }
-      .onChange(of: onboardingData) { _ in
+      .onChange(of: firestoreManager.onboardingChatMessages) { _ in
         timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
       }
       .navigationDestination(isPresented: $changeScreenToPostcard) {
-        PostcardScreen(postcardData: onboardingData.postcardData)
+        PostcardScreen(postcardData: firestoreManager.firstPostcard)
       }
     }
+  }
+}
+
+struct MainChatScrollView: View {
+  @Binding var currentMessage: Int
+  @Binding var optionsClickedIndexes: [Int]
+  @EnvironmentObject var firestoreManager: FirestoreManager
+  
+  var body: some View {
+    ScrollView {
+      VStack(spacing: 10) {
+        ForEach(firestoreManager.onboardingChatMessages[0 ... currentMessage].indices.reversed(), id: \.self) { index in
+          MainChatBubbleView(messageData: firestoreManager.onboardingChatMessages[0 ... currentMessage][index], currentMessage: $currentMessage, optionsClickedIndexes: $optionsClickedIndexes, currentIndex: index)
+            .rotationEffect(Angle(radians: .pi)) // rotate each item
+            .scaleEffect(x: -1, y: 1, anchor: .center)
+            .fixedSize(horizontal: false, vertical: true)
+            .zIndex(Double(index))
+        }
+      }
+    }
+    .rotationEffect(Angle(radians: .pi)) // rotate the whole ScrollView 180º
+    .scaleEffect(x: -1, y: 1, anchor: .center)
+    .padding(.bottom, 15)
+    .padding(.top, 80)
+    .edgesIgnoringSafeArea(.top)
+  }
+}
+
+struct OnboardingToolbar: View {
+  var isChatFlowStopped: () -> Bool
+  
+  var body: some View {
+    HStack {
+      Image("ThomasCatIcon")
+        .resizable()
+        .frame(width: 40, height: 40)
+        .padding(.horizontal, 7)
+
+      VStack {
+        Text("Tutor do Thomas")
+          .font(.custom("Barlow-Medium", size: 16))
+          .foregroundColor(Color("mainDarkBlue"))
+          .frame(maxWidth: .infinity, alignment: .leading)
+        
+        if !isChatFlowStopped() {
+          Text("escrevendo...")
+            .font(.custom("Barlow-Medium", size: 12))
+            .foregroundColor(Color("mainDarkBlue"))
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+      }
+    }
+    .offset(y: -5)
   }
 }
 

@@ -18,7 +18,7 @@ struct PostcardScreen: View {
   func postcardComponent(geometry: GeometryProxy) -> some View {
     VStack(spacing: 0) {
       ZStack {
-        Image(postcardData.image)
+        Image(postcardData.image!)
           .resizable()
           .frame(width: geometry.size.width * 0.86, height: geometry.size.height * 0.3)
           .opacity(isShowingImage ? 1 : 0)
@@ -34,7 +34,7 @@ struct PostcardScreen: View {
             
             VStack {
               ZStack(alignment: .bottomTrailing) {
-                Text(postcardData.text)
+                Text(postcardData.text!.replacingOccurrences(of: "\\n", with: "\n"))
                   .font(.custom("HechoAMano-Regular", size: 16))
                   .foregroundColor(Color("mainBlue"))
                   .lineSpacing(5)
@@ -72,18 +72,18 @@ struct PostcardScreen: View {
               
               VStack {
                 HStack {
-                  StampComponent(stamp: postcardData.stamps[0], stampType: .small, geometry: geometry)
+                  StampComponent(stamp: postcardData.stamps![0], stampType: .small, geometry: geometry)
                     .frame(width: 50, height: 40)
                   
-                  StampComponent(stamp: postcardData.stamps[1], stampType: .small, geometry: geometry)
+                  StampComponent(stamp: postcardData.stamps![1], stampType: .small, geometry: geometry)
                     .frame(width: 50, height: 40)
                 }
                 
                 HStack {
-                  StampComponent(stamp: postcardData.stamps[2], stampType: .small, geometry: geometry)
+                  StampComponent(stamp: postcardData.stamps![2], stampType: .small, geometry: geometry)
                     .frame(width: 50, height: 40)
                   
-                  StampComponent(stamp: postcardData.stamps[3], stampType: .small, geometry: geometry)
+                  StampComponent(stamp: postcardData.stamps![3], stampType: .small, geometry: geometry)
                     .frame(width: 50, height: 40)
                 }
               }
@@ -158,7 +158,7 @@ struct PostcardScreen: View {
           
           VStack {
             HStack {
-              Text(postcardData.author)
+              Text(postcardData.author!)
                 .font(.custom("Barlow-Black", size: 24))
                 .foregroundColor(.white)
               
@@ -182,7 +182,7 @@ struct PostcardScreen: View {
             
             VStack {
               if shouldShowStampsList {
-                StampsListView(stamps: postcardData.stamps, geometry: g, shouldGoToExerciseView: $shouldGoToExerciseView)
+                StampsListView(stamps: postcardData.stamps!, geometry: g, shouldGoToExerciseView: $shouldGoToExerciseView)
               } else {
                 PostcardMessageView(postcardData: postcardData, geometry: g)
               }

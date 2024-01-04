@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct StampData: Hashable {
+struct StampData: Hashable, Codable {
   var group: String
   var number: Int
   var title: String

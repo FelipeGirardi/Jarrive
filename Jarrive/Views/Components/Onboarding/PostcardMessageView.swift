@@ -30,7 +30,7 @@ struct PostcardMessageView: View {
           }
           .padding(.top, 15)
           
-          Text(postcardData.text)
+          Text(postcardData.text!.replacingOccurrences(of: "\\n", with: "\n"))
             .font(.custom("Barlow-italic", size: 16))
             .foregroundColor(Color("defaultDarkerGray"))
             .minimumScaleFactor(0.1)

@@ -7,19 +7,36 @@
 
 import SwiftUI
 
+extension String {
+    subscript(_ range: CountableRange<Int>) -> String {
+        let start = index(startIndex, offsetBy: max(0, range.lowerBound))
+        let end = index(start, offsetBy: min(self.count - range.lowerBound,
+                                             range.upperBound - range.lowerBound))
+        return String(self[start..<end])
+    }
+
+    subscript(_ range: CountablePartialRangeFrom<Int>) -> String {
+        let start = index(startIndex, offsetBy: max(0, range.lowerBound))
+         return String(self[start...])
+    }
+}
+
 struct TextBubbleView: View {
-  var content: TextBubble
+  var messageData: MessageData
   @State var showTranslations: Bool = false
   @State var bubbleHeight: Double = 0.0
   
   var getBubbleText: some View {
     var fullString = Text("")
+    let punctuations = ",.!?:;()"
     
-    for str in content.textArray {
+    for (index, str) in messageData.textArray!.enumerated() {
+//      let shouldEraseSpace = punctuations.contains(str.text.first!)
       fullString = fullString +
-      Text(str.text)
+      Text(str.text.replacingOccurrences(of: "\\n", with: "\n"))
         .underline(str.translation != nil)
-      fullString = fullString + Text(" ")
+      // check if should remove space in case of punctuation
+      fullString = fullString + (messageData.textArray!.indices.contains(index+1) ? (punctuations.contains(messageData.textArray![index+1].text.first!) ? Text("") : Text(" ")) : Text(" "))
     }
     
     return fullString
@@ -28,7 +45,7 @@ struct TextBubbleView: View {
   var body: some View {
     ZStack(alignment: .center) {
         HStack {
-          if content.type == .user {
+          if messageData.user == "user" {
             Spacer()
           }
           
@@ -41,9 +58,9 @@ struct TextBubbleView: View {
             .frame(minHeight: 25)
             .padding(.all, 8)
             .background(.white)
-            .roundedCorner(20, corners: content.type == .cat ? [.topRight, .bottomLeft, .bottomRight] : [.topLeft, .topRight, .bottomLeft])
-            .padding(.leading, content.type == .cat ? 10 : 50)
-            .padding(.trailing, content.type == .cat ? 0 : 10)
+            .roundedCorner(20, corners: messageData.user == "cat" ? [.topRight, .bottomLeft, .bottomRight] : [.topLeft, .topRight, .bottomLeft])
+            .padding(.leading, messageData.user == "cat" ? 10 : 50)
+            .padding(.trailing, messageData.user == "cat" ? 0 : 10)
             .onTapGesture {
               withAnimation(.easeOut(duration: 0.1)) {
                 showTranslations.toggle()
@@ -51,20 +68,20 @@ struct TextBubbleView: View {
               bubbleHeight = 40
             }
           
-          if content.type == .cat {
+          if messageData.user == "cat" {
             Spacer()
           }
         }
       
       HStack {
-        if content.type == .user {
+        if messageData.user == "user" {
           Spacer()
         }
         
-        TranslationBubbleView(translations: content.textArray.filter({$0.translation != nil}))
+        TranslationBubbleView(translations: messageData.textArray!.filter({$0.translation != nil}))
           .opacity(showTranslations ? 1 : 0)
-          .padding(.leading, content.type == .cat ? 10 : 50)
-          .padding(.trailing, content.type == .cat ? 0 : 10)
+          .padding(.leading, messageData.user == "cat" ? 10 : 50)
+          .padding(.trailing, messageData.user == "cat" ? 0 : 10)
           .offset(y: -bubbleHeight)
           .onTapGesture {
             withAnimation(.easeOut(duration: 0.1)) {
@@ -72,7 +89,7 @@ struct TextBubbleView: View {
             }
           }
         
-        if content.type == .cat {
+        if messageData.user == "cat" {
           Spacer()
         }
       }
@@ -82,6 +99,6 @@ struct TextBubbleView: View {
 
 struct TextBubbleView_Previews: PreviewProvider {
   static var previews: some View {
-    TextBubbleView(content: TextBubble(textArray: [BubbleString(text: "Salut? Quis est la?", translation: "Oi? Quem é?")], type: .cat))
+    TextBubbleView(messageData: MessageData(type: "text", user: "cat", textArray: [BubbleString(text: "Bonjour!", translation: "Bom dia!")]))
   }
 }
