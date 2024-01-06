@@ -187,7 +187,7 @@ struct OnboardingToolbar: View {
         }
       }
     }
-    .offset(y: -5)
+    .offset(y: -2)
   }
 }
 
