@@ -31,7 +31,6 @@ struct TextBubbleView: View {
     let punctuations = ",.!?:;()"
     
     for (index, str) in messageData.textArray!.enumerated() {
-//      let shouldEraseSpace = punctuations.contains(str.text.first!)
       fullString = fullString +
       Text(str.text.replacingOccurrences(of: "\\n", with: "\n"))
         .underline(str.translation != nil)
@@ -72,6 +71,7 @@ struct TextBubbleView: View {
             Spacer()
           }
         }
+        .padding(.trailing, messageData.user == "cat" ? 50 : 0)
       
       HStack {
         if messageData.user == "user" {

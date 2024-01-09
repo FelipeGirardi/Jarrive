@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseFirestore
+import SwiftUI
 
 class FirestoreManager: ObservableObject {
   @Published var onboardingChatMessages = [MessageData]()
@@ -16,6 +17,9 @@ class FirestoreManager: ObservableObject {
   @Published var onboardingVariableOptionMessageIndexes = [Int]()
 //  @Published var onboardingVariableMessages = [String: [String: [String: Any]]]()
   @Published var firstPostcard = PostcardData()
+  @Published var postLoginOptionPauseIndexes = [Int]()
+  @Published var postLoginVariableOptionMessageIndexes = [Int]()
+  @Published var didFinishFetchOnboardingChat: Bool = false
   let onboardingMessagesRoute = "chats/onboardingChat/messages"
   let onboardingVariableMessagesRoute = "chats/onboardingChat/variableMessages"
   let firstPostcardsRoute = "postcards/charlottePostcard"
@@ -23,11 +27,8 @@ class FirestoreManager: ObservableObject {
   let db = Firestore.firestore()
   
   init() {
-    fetchChatMessages(route: onboardingMessagesRoute)
-    fetchSpecialIndexes()
+    fetchOnboardingChat()
     fetchFirstPostcard(route: firstPostcardsRoute)
-//    fetchChatMessages(route: postLoginMessagesRoute)
-    
 //    fetchChatVariableMessages(route: onboardingVariableMessagesRoute)
   }
   
@@ -46,12 +47,13 @@ class FirestoreManager: ObservableObject {
         return try? document.data(as: MessageData.self)
       })
       
-      print("*****")
-      print(self.onboardingChatMessages)
+      if route == self.onboardingMessagesRoute {
+        self.didFinishFetchOnboardingChat.toggle()
+      }
     }
   }
   
-  func fetchSpecialIndexes() {
+  func fetchOnboardingSpecialIndexes() {
     db.collection("chats").document("onboardingChat").getDocument { (document, error) in
       if let error = error as NSError? {
         print("Error getting document: \(error.localizedDescription)")
@@ -65,6 +67,11 @@ class FirestoreManager: ObservableObject {
         print("Document does not exist in cache")
       }
     }
+  }
+  
+  func fetchOnboardingChat() {
+    fetchChatMessages(route: onboardingMessagesRoute)
+    fetchOnboardingSpecialIndexes()
   }
   
   func fetchFirstPostcard(route: String) {
@@ -82,6 +89,25 @@ class FirestoreManager: ObservableObject {
         print("Document does not exist in cache")
       }
     }
+  }
+  
+  func fetchPostLoginSpecialIndexes() {
+    db.collection("chats").document("postLoginChat").getDocument { (document, error) in
+      if let error = error as NSError? {
+        print("Error getting document: \(error.localizedDescription)")
+      }
+      if let document = document {
+        self.postLoginOptionPauseIndexes = document.get("optionPauseIndexes") as? [Int] ?? []
+        self.postLoginVariableOptionMessageIndexes = document.get("variableOptionMessageIndexes") as? [Int] ?? []
+      } else {
+        print("Document does not exist in cache")
+      }
+    }
+  }
+  
+  func fetchPostLoginChat() {
+    fetchChatMessages(route: postLoginMessagesRoute)
+    fetchPostLoginSpecialIndexes()
   }
   
   //  func fetchChatVariableMessages(route: String) {

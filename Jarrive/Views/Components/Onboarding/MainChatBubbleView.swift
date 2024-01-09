@@ -25,15 +25,10 @@ struct MainChatBubbleView: View {
       AudioBubbleView(messageData: messageData)
     case "image":
       ImageBubbleView(messageData: messageData)
+    case "sticker":
+      StickerBubbleView(messageData: messageData)
     default:
-      // add sticker view later
-      ImageBubbleView(messageData: messageData)
+      EmptyView()
     }
   }
 }
-
-//struct MainChatBubbleView_Previews: PreviewProvider {
-//  static var previews: some View {
-//    MainChatBubbleView(content: BubbleContent.text(TextBubble(textArray: [BubbleString(text: "Salut? Quis est la?", translation: nil)], type: .cat)), onboardingData: .constant(OnboardingData()), currentMessage: .constant(1), optionsClickedIndexes: .constant([]), currentIndex: 1)
-//  }
-//}

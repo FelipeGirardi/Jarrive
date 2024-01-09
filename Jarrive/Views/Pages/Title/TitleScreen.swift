@@ -56,7 +56,6 @@ struct TitleScreenMenu: View {
         Text("Sim, quero pegar o trem!")
             .onTapGesture {
               goToOnboarding = !goToOnboarding
-              print(goToOnboarding)
             }
             .font(.custom("Barlow-Bold", size: 16))
             .frame(width: geometry.size.width * 0.6, height: 30)

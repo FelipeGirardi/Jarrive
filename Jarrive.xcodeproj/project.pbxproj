@@ -15,6 +15,7 @@
 		96939EB92B1179A800D06BFC /* StampExerciseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96939EB82B1179A800D06BFC /* StampExerciseScreen.swift */; };
 		96DBFD3A2B2BD882005CE734 /* EcoutePhasesModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DBFD392B2BD882005CE734 /* EcoutePhasesModal.swift */; };
 		96EBD8582B1BCBA90027025A /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EBD8572B1BCBA90027025A /* Character.swift */; };
+		C00048552B4DBDC100C52DF5 /* StickerBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00048542B4DBDC100C52DF5 /* StickerBubbleView.swift */; };
 		C02728102B45A343000837CB /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C027280F2B45A343000837CB /* FirestoreManager.swift */; };
 		C02AC4302AD88E61006C4422 /* OnboardingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02AC42F2AD88E61006C4422 /* OnboardingData.swift */; };
 		C02D093E2A3B979200B5FA54 /* Barlow-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C02D093D2A3B979200B5FA54 /* Barlow-LightItalic.ttf */; };
@@ -128,6 +129,7 @@
 		96939EB82B1179A800D06BFC /* StampExerciseScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampExerciseScreen.swift; sourceTree = "<group>"; };
 		96DBFD392B2BD882005CE734 /* EcoutePhasesModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcoutePhasesModal.swift; sourceTree = "<group>"; };
 		96EBD8572B1BCBA90027025A /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		C00048542B4DBDC100C52DF5 /* StickerBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerBubbleView.swift; sourceTree = "<group>"; };
 		C027280F2B45A343000837CB /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		C02AC42F2AD88E61006C4422 /* OnboardingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingData.swift; sourceTree = "<group>"; };
 		C02D093D2A3B979200B5FA54 /* Barlow-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				C0D5435A2B2D1744006EA021 /* PostcardButtonsView.swift */,
 				96DBFD392B2BD882005CE734 /* EcoutePhasesModal.swift */,
 				9661F6542B334E650037FC04 /* EcoutePhraseView.swift */,
+				C00048542B4DBDC100C52DF5 /* StickerBubbleView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -723,6 +726,7 @@
 				C057F88C2ACF2D2400AC0814 /* TitleScreen.swift in Sources */,
 				C0D91C482A4CCCA100080072 /* AuthenticationViewModel.swift in Sources */,
 				C0D8FEF42AD0792A00FE5F41 /* OnboardingMainScreen.swift in Sources */,
+				C00048552B4DBDC100C52DF5 /* StickerBubbleView.swift in Sources */,
 				C0B0BD462AF96E4B007CF121 /* OvalTextFieldStyle.swift in Sources */,
 				C0D834D42B093F2900A43175 /* Route.swift in Sources */,
 				C0E8BD9D2A9D7C4C008C4F57 /* GoogleAppleSignInButtons.swift in Sources */,
@@ -916,7 +920,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Jarrive/Preview Content\"";
-				DEVELOPMENT_TEAM = P7WV6D6894;
+				DEVELOPMENT_TEAM = QU2M8UTH92;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Jarrive/Info.plist;
@@ -931,7 +935,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.Jarrive11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.Jarrive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -948,7 +952,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Jarrive/Preview Content\"";
-				DEVELOPMENT_TEAM = P7WV6D6894;
+				DEVELOPMENT_TEAM = QU2M8UTH92;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Jarrive/Info.plist;
@@ -963,7 +967,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.Jarrive11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.Jarrive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

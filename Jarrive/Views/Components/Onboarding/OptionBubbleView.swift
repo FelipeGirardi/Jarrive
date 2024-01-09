@@ -16,15 +16,18 @@ struct OptionBubbleView: View {
   @Binding var currentMessage: Int
   @Binding var optionsClickedIndexes: [Int]
   var currentIndex: Int
+  @State private var isOnboardingDone = UserDefaults.standard.bool(forKey: "isOnboardingDone")
   
   var getBubbleText: some View {
     var fullString = Text("")
+    let punctuations = ",.!?:;()"
     
-    for str in messageData.textArray! {
+    for (index, str) in messageData.textArray!.enumerated() {
       fullString = fullString +
-      Text(str.text)
+      Text(str.text.replacingOccurrences(of: "\\n", with: "\n"))
         .underline(str.translation != nil)
-      fullString = fullString + Text(" ")
+      // check if should remove space in case of punctuation
+      fullString = fullString + (messageData.textArray!.indices.contains(index+1) ? (punctuations.contains(messageData.textArray![index+1].text.first!) ? Text("") : Text(" ")) : Text(" "))
     }
     
     return fullString
@@ -78,7 +81,7 @@ struct OptionBubbleView: View {
                   .background(Color("mainLightBlue"))
                   .cornerRadius(20)
                   .onTapGesture {
-                    if firestoreManager.onboardingOptionPauseIndexes.contains(currentMessage) && !optionsClickedIndexes.contains(currentIndex)
+                    if (isOnboardingDone ? firestoreManager.postLoginOptionPauseIndexes.contains(currentMessage) : firestoreManager.onboardingOptionPauseIndexes.contains(currentMessage)) && !optionsClickedIndexes.contains(currentIndex)
                     {
                       firestoreManager.onboardingChatMessages[currentMessage+1] = MessageData(id: currentMessage+1, type: "response", textArray: [BubbleString(text: messageData.options![index], translation: nil)], respondedText: getBubbleTextString())
                       // uses mocked onboardingData for variable option messages
@@ -111,13 +114,12 @@ struct OptionBubbleView: View {
         }
       
       HStack {
-      if showTranslations {
         TranslationBubbleView(translations: messageData.textArray!.filter({$0.translation != nil}))
+          .opacity(showTranslations ? 1 : 0)
           .padding(.leading, 10)
           .onTapGesture {
               showTranslations.toggle()
           }
-      }
         
         Spacer()
       }

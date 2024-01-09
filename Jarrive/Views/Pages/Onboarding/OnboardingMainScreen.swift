@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct OnboardingMainScreen: View {
   @State var isBlurViewOn: Bool = false
@@ -17,9 +18,11 @@ struct OnboardingMainScreen: View {
   @State var changeScreenToPostcard = false
   @FocusState private var isFocused: Bool
   @EnvironmentObject var firestoreManager: FirestoreManager
+  @State private var isOnboardingDone = UserDefaults.standard.bool(forKey: "isOnboardingDone")
+  @State private var didStartFromOnboarding = UserDefaults.standard.bool(forKey: "didStartFromOnboarding")
   
   func isChatFlowStopped() -> Bool {
-    return firestoreManager.onboardingPauseMessageFluxIndexes.contains(currentMessage) ||
+    return (isOnboardingDone ? firestoreManager.postLoginOptionPauseIndexes.contains(currentMessage) : firestoreManager.onboardingPauseMessageFluxIndexes.contains(currentMessage)) ||
     currentMessage == firestoreManager.onboardingChatMessages.count - 1
   }
   
@@ -102,7 +105,6 @@ struct OnboardingMainScreen: View {
         if isBlurViewOn {
           UnderlinedWordsBlurView(isBlurViewOn: $isBlurViewOn)
         }
-        
       }
       .onReceive(timer) { _ in
         if messagesTimer > 0 {
@@ -131,6 +133,27 @@ struct OnboardingMainScreen: View {
       .onChange(of: firestoreManager.onboardingChatMessages) { _ in
         timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
       }
+//      .onChange(of: Auth.auth().currentUser) { _ in
+//        currentMessage = firestoreManager.onboardingChatMessages.count - 1
+//        firestoreManager.fetchPostLoginChat()
+//      }
+      .onChange(of: firestoreManager.didFinishFetchOnboardingChat) { _ in
+        if isOnboardingDone {
+          currentMessage = firestoreManager.onboardingChatMessages.count - 1
+          firestoreManager.fetchPostLoginChat()
+        }
+      }
+      .onAppear {
+        if !isOnboardingDone {
+          UserDefaults.standard.set(true, forKey: "didStartFromOnboarding")
+        } else {
+          if didStartFromOnboarding {
+            UserDefaults.standard.set(false, forKey: "didStartFromOnboarding")
+            currentMessage = firestoreManager.onboardingChatMessages.count - 1
+            firestoreManager.fetchPostLoginChat()
+          }
+        }
+      }
       .navigationDestination(isPresented: $changeScreenToPostcard) {
         PostcardScreen(postcardData: firestoreManager.firstPostcard)
       }
@@ -145,14 +168,18 @@ struct MainChatScrollView: View {
   
   var body: some View {
     ScrollView {
-      VStack(spacing: 10) {
-        ForEach(firestoreManager.onboardingChatMessages[0 ... currentMessage].indices.reversed(), id: \.self) { index in
-          MainChatBubbleView(messageData: firestoreManager.onboardingChatMessages[0 ... currentMessage][index], currentMessage: $currentMessage, optionsClickedIndexes: $optionsClickedIndexes, currentIndex: index)
-            .rotationEffect(Angle(radians: .pi)) // rotate each item
-            .scaleEffect(x: -1, y: 1, anchor: .center)
-            .fixedSize(horizontal: false, vertical: true)
-            .zIndex(Double(index))
-        }
+      LazyVStack(spacing: 10) {
+        firestoreManager.onboardingChatMessages.isEmpty ?
+        AnyView(ProgressView()) :
+        AnyView(
+          ForEach(firestoreManager.onboardingChatMessages[0 ... currentMessage].indices.reversed(), id: \.self) { index in
+            MainChatBubbleView(messageData: firestoreManager.onboardingChatMessages[0 ... currentMessage][index], currentMessage: $currentMessage, optionsClickedIndexes: $optionsClickedIndexes, currentIndex: index)
+              .rotationEffect(Angle(radians: .pi)) // rotate each item
+              .scaleEffect(x: -1, y: 1, anchor: .center)
+              .fixedSize(horizontal: false, vertical: true)
+              .zIndex(Double(index))
+          }
+        )
       }
     }
     .rotationEffect(Angle(radians: .pi)) // rotate the whole ScrollView 180º

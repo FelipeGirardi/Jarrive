@@ -10,14 +10,14 @@ import SwiftUI
 import FirebaseAuth
 
 struct ContentView: View {
-  @EnvironmentObject var viewModel: AuthenticationViewModel
+  @EnvironmentObject var authViewModel: AuthenticationViewModel
   @State private var isOnboardingDone = UserDefaults.standard.bool(forKey: "isOnboardingDone")
   
   var body: some View {
 // MARK: code below checks if user is signed in 
-    viewModel.isLogging ? AnyView(ProgressView()) :
+    authViewModel.isLogging ? AnyView(ProgressView()) :
     AnyView(Group {
-      Auth.auth().currentUser != nil ? AnyView(Map()) :
+      Auth.auth().currentUser != nil ? AnyView(OnboardingMainScreen()) :
       isOnboardingDone ? AnyView(LoginScreen()) : AnyView(TitleScreen())
       })
   }
