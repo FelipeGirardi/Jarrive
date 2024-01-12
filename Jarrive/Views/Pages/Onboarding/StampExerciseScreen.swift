@@ -12,9 +12,9 @@ struct StampExerciseScreen: View {
     
     // MARK: - Logic properties
     // meu deus do ceu pra que tanto bool
-    @State var shouldShowExplicatifView: Bool = true /*false to code other views*/
+    @State var shouldShowExplicatifView: Bool = false /*false to code other views*/
     @State var shouldShowEcouteModal: Bool = false
-    @State var shouldShowEcouteExerciceView: Bool = false /*true to code other views*/
+    @State var shouldShowEcouteExerciceView: Bool = true /*true to code other views*/
     @State var shouldReviseDragDropExercice: Bool = false
     @State var shouldReviseEcouteExercice: Bool = false
     
@@ -608,9 +608,11 @@ struct ExercicesView: View {
 struct EcoutePhrasesExerciceView: View {
     // MARK: - Ecoute Phrases Exercice
     @Binding var shouldReviseEcouteExercice: Bool
+    @State var shouldShowFirstStampScreen: Bool = false
     @State var progress: CGFloat = 0.0
     @State var titleWasPlayed: Bool
-    
+    @State private var showFirstStampScreen = false
+
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .leading) {
@@ -630,7 +632,7 @@ struct EcoutePhrasesExerciceView: View {
                                  progress: $progress,
                                  shouldReviseEcouteExercice: $shouldReviseEcouteExercice)
                 
-                EcoutePhraseView(audio: "CatMeow",
+                EcoutePhraseView(audio: "je suis un facteur",
                                  phrase: "Je suis un facteur. ✉️",
                                  progress: $progress,
                                  shouldReviseEcouteExercice: $shouldReviseEcouteExercice)
@@ -645,30 +647,34 @@ struct EcoutePhrasesExerciceView: View {
                                  progress: $progress,
                                  shouldReviseEcouteExercice: $shouldReviseEcouteExercice)
                 
-                EcoutePhraseView(audio: "CatMeow",
+                EcoutePhraseView(audio: "nous sommes en voyage",
                                  phrase: "Nous sommes en voyage. ✈️" ,
                                  progress: $progress,
                                  shouldReviseEcouteExercice: $shouldReviseEcouteExercice)
             }.foregroundStyle(.white)
-            
         }.padding(.top, 50)
         
         Spacer()
         
-        NavigationLink {
-            FirstStampScreen().navigationBarBackButtonHidden()
+        Button {
+            if shouldReviseEcouteExercice {
+                shouldShowFirstStampScreen = true
+            }
         } label: {
             Text("CONTINUAR")
                 .font(.custom("Barlow-Bold", size: 20))
                 .foregroundColor(shouldReviseEcouteExercice ? Color(.white) : Color("defaultDarkBlue") )
         }
-        .disabled(!shouldReviseEcouteExercice)
         .frame(width: 330, height: 50)
         .clipShape(Capsule())
         .background(
             Capsule()
                 .foregroundColor(shouldReviseEcouteExercice ? Color("mainGreen") :  Color("darkGray") ) )
         .padding(.bottom)
+        .disabled(!shouldReviseEcouteExercice)
+        .fullScreenCover(isPresented: $shouldShowFirstStampScreen) {
+            FirstStampScreen()
+        }
     }
 }
 
