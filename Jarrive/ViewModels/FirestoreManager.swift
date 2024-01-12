@@ -18,7 +18,9 @@ class FirestoreManager: ObservableObject {
 //  @Published var onboardingVariableMessages = [String: [String: [String: Any]]]()
   @Published var firstPostcard = PostcardData()
   @Published var postLoginOptionPauseIndexes = [Int]()
-  @Published var postLoginVariableOptionMessageIndexes = [Int]()
+  @Published var postLoginOptionExtraMessagesIndexes = [Int]()
+  @Published var postLoginOptionTryAgainIndexes = [Int]()
+//  @Published var postLoginVariableOptionMessageIndexes = [Int]()
   @Published var didFinishFetchOnboardingChat: Bool = false
   let onboardingMessagesRoute = "chats/onboardingChat/messages"
   let onboardingVariableMessagesRoute = "chats/onboardingChat/variableMessages"
@@ -98,7 +100,9 @@ class FirestoreManager: ObservableObject {
       }
       if let document = document {
         self.postLoginOptionPauseIndexes = document.get("optionPauseIndexes") as? [Int] ?? []
-        self.postLoginVariableOptionMessageIndexes = document.get("variableOptionMessageIndexes") as? [Int] ?? []
+        self.postLoginOptionExtraMessagesIndexes = document.get("optionExtraMessagesIndexes") as? [Int] ?? []
+        self.postLoginOptionTryAgainIndexes = document.get("optionTryAgainIndexes") as? [Int] ?? []
+//        self.postLoginVariableOptionMessageIndexes = document.get("variableOptionMessageIndexes") as? [Int] ?? []
       } else {
         print("Document does not exist in cache")
       }

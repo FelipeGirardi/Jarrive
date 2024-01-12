@@ -15,7 +15,7 @@ struct OptionBubbleView: View {
   var onboardingData = OnboardingData()
   @Binding var currentMessage: Int
   @Binding var optionsClickedIndexes: [Int]
-  var currentIndex: Int
+  var currentOptionIndex: Int
   @State private var isOnboardingDone = UserDefaults.standard.bool(forKey: "isOnboardingDone")
   
   var getBubbleText: some View {
@@ -50,6 +50,51 @@ struct OptionBubbleView: View {
     return nChars
   }
   
+  func optionSelectedLogic(index: Int) {
+    if (isOnboardingDone ? firestoreManager.postLoginOptionPauseIndexes.contains(currentMessage) : firestoreManager.onboardingOptionPauseIndexes.contains(currentMessage)) && !optionsClickedIndexes.contains(currentOptionIndex)
+    {
+      // add response message in chat (always happens after option is selected by user)
+      firestoreManager.onboardingChatMessages[currentMessage+1] = MessageData(id: currentMessage+1, type: "response", textArray: [BubbleString(text: messageData.options![index], translation: nil)], respondedText: getBubbleTextString())
+      optionsClickedIndexes.append(currentMessage)
+      // !isOnboardingDone = onboarding chat option logic, isOnboardingDone = post login chat option logic
+      if !isOnboardingDone {
+        // uses mocked onboardingData for variable option messages
+        if firestoreManager.onboardingVariableOptionMessageIndexes.contains(currentMessage) {
+          if let variableMessageIndex = firestoreManager.onboardingVariableOptionMessageIndexes.firstIndex(of: currentMessage) {
+            firestoreManager.onboardingChatMessages[currentMessage+2] = onboardingData.variableOptionFollowingMessages[variableMessageIndex][index]
+          }
+        }
+      } else {
+        // skips 2 messages if user presses "Oui", updates arrays of indexes
+        if firestoreManager.postLoginOptionExtraMessagesIndexes.contains(currentMessage) {
+          if index == 0 {
+            firestoreManager.onboardingChatMessages.remove(at: currentMessage + 2)
+            firestoreManager.onboardingChatMessages.remove(at: currentMessage + 3)
+            firestoreManager.postLoginOptionPauseIndexes = firestoreManager.postLoginOptionPauseIndexes.map { $0 + 2 }
+            firestoreManager.postLoginOptionExtraMessagesIndexes = firestoreManager.postLoginOptionExtraMessagesIndexes.map { $0 + 2 }
+            firestoreManager.postLoginOptionTryAgainIndexes = firestoreManager.postLoginOptionTryAgainIndexes.map { $0 + 2 }
+          }
+        // repeats messages if user chooses wrong option, continues if user chooses correct option
+        } else if firestoreManager.postLoginOptionTryAgainIndexes.contains(currentMessage) {
+          if let tryAgainMessageIndex = firestoreManager.postLoginOptionTryAgainIndexes.firstIndex(of: currentMessage) {
+            firestoreManager.onboardingChatMessages[currentMessage+2] = onboardingData.tryAgainFollowingMessages[tryAgainMessageIndex][index]
+            let correctAnswerIndex = onboardingData.tryAgainIndexesCorrectAnswers[tryAgainMessageIndex]
+            if index == correctAnswerIndex {
+              let messagesToRepeat = firestoreManager.onboardingChatMessages[currentMessage..<currentMessage+3]
+              firestoreManager.onboardingChatMessages.insert(contentsOf: messagesToRepeat, at: currentMessage+3)
+              firestoreManager.postLoginOptionPauseIndexes = firestoreManager.postLoginOptionPauseIndexes.map { $0 + 3 }
+              firestoreManager.postLoginOptionExtraMessagesIndexes = firestoreManager.postLoginOptionExtraMessagesIndexes.map { $0 + 3 }
+              firestoreManager.postLoginOptionTryAgainIndexes = firestoreManager.postLoginOptionTryAgainIndexes.map { $0 + 3 }
+            }
+          }
+        }
+      }
+      withAnimation(.easeInOut(duration: 0.1)) {
+        currentMessage += 1
+      }
+    }
+  }
+  
 //  func maxBubbleHeight() -> Double {
 //    return 60.0 + (30.0 * floor(Double(nTextCharacters())/40.0))
 //  }
@@ -81,18 +126,7 @@ struct OptionBubbleView: View {
                   .background(Color("mainLightBlue"))
                   .cornerRadius(20)
                   .onTapGesture {
-                    if (isOnboardingDone ? firestoreManager.postLoginOptionPauseIndexes.contains(currentMessage) : firestoreManager.onboardingOptionPauseIndexes.contains(currentMessage)) && !optionsClickedIndexes.contains(currentIndex)
-                    {
-                      firestoreManager.onboardingChatMessages[currentMessage+1] = MessageData(id: currentMessage+1, type: "response", textArray: [BubbleString(text: messageData.options![index], translation: nil)], respondedText: getBubbleTextString())
-                      // uses mocked onboardingData for variable option messages
-                      if firestoreManager.onboardingVariableOptionMessageIndexes.contains(currentMessage) {
-                        firestoreManager.onboardingChatMessages[currentMessage+2] = onboardingData.variableOptionFollowingMessages[firestoreManager.onboardingVariableOptionMessageIndexes.firstIndex(of: currentMessage)!][index]
-                      }
-                      optionsClickedIndexes.append(currentMessage)
-                      withAnimation(.easeInOut(duration: 0.1)) {
-                        currentMessage += 1
-                      }
-                    }
+                    optionSelectedLogic(index: index)
                   }
               }
               
@@ -130,6 +164,6 @@ struct OptionBubbleView: View {
 
 struct OptionBubbleView_Previews: PreviewProvider {
   static var previews: some View {
-    OptionBubbleView(messageData: MessageData(type: "option", textArray: [BubbleString(text: "Bonjour ou bonsoir?", translation: "Bom dia ou boa noite?")], options: ["Bonjour", "Bonsoir"]), currentMessage: .constant(1), optionsClickedIndexes: .constant([]), currentIndex: 1)
+    OptionBubbleView(messageData: MessageData(type: "option", textArray: [BubbleString(text: "Bonjour ou bonsoir?", translation: "Bom dia ou boa noite?")], options: ["Bonjour", "Bonsoir"]), currentMessage: .constant(1), optionsClickedIndexes: .constant([]), currentOptionIndex: 1)
   }
 }

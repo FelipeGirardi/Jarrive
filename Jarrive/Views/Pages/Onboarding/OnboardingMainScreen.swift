@@ -16,6 +16,7 @@ struct OnboardingMainScreen: View {
   @State var textFieldText = ""
   @State var optionsClickedIndexes: [Int] = []
   @State var changeScreenToPostcard = false
+  @State var changeScreenToMap = false
   @FocusState private var isFocused: Bool
   @EnvironmentObject var firestoreManager: FirestoreManager
   @State private var isOnboardingDone = UserDefaults.standard.bool(forKey: "isOnboardingDone")
@@ -31,7 +32,11 @@ struct OnboardingMainScreen: View {
   }
   
   func shouldChangeScreenToPostcard() -> Bool {
-    return currentMessage == firestoreManager.onboardingChatMessages.count - 1
+    return currentMessage == firestoreManager.onboardingChatMessages.count - 1 && !isOnboardingDone
+  }
+  
+  func shouldChangeScreenToMap() -> Bool {
+    return currentMessage == firestoreManager.onboardingChatMessages.count - 1 && isOnboardingDone
   }
   
   var userTextField: some View {
@@ -128,15 +133,17 @@ struct OnboardingMainScreen: View {
               changeScreenToPostcard.toggle()
             }
           }
+          
+          if shouldChangeScreenToMap() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+              changeScreenToMap.toggle()
+            }
+          }
         }
       }
       .onChange(of: firestoreManager.onboardingChatMessages) { _ in
         timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
       }
-//      .onChange(of: Auth.auth().currentUser) { _ in
-//        currentMessage = firestoreManager.onboardingChatMessages.count - 1
-//        firestoreManager.fetchPostLoginChat()
-//      }
       .onChange(of: firestoreManager.didFinishFetchOnboardingChat) { _ in
         if isOnboardingDone {
           currentMessage = firestoreManager.onboardingChatMessages.count - 1
@@ -156,6 +163,12 @@ struct OnboardingMainScreen: View {
       }
       .navigationDestination(isPresented: $changeScreenToPostcard) {
         PostcardScreen(postcardData: firestoreManager.firstPostcard)
+      }
+      .navigationDestination(isPresented: $changeScreenToMap) {
+        Map()
+          .alert("Teste da aplicação completo!", isPresented: .constant(true)) {
+            Button("OK", role: .cancel) { }
+          }
       }
     }
   }
