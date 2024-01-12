@@ -19,6 +19,7 @@ struct OnboardingMainScreen: View {
   @State var changeScreenToMap = false
   @FocusState private var isFocused: Bool
   @EnvironmentObject var firestoreManager: FirestoreManager
+  let onboardingData = OnboardingData()
   @State private var isOnboardingDone = UserDefaults.standard.bool(forKey: "isOnboardingDone")
   @State private var didStartFromOnboarding = UserDefaults.standard.bool(forKey: "didStartFromOnboarding")
   
@@ -36,7 +37,7 @@ struct OnboardingMainScreen: View {
   }
   
   func shouldChangeScreenToMap() -> Bool {
-    return currentMessage == firestoreManager.onboardingChatMessages.count - 1 && isOnboardingDone
+    return currentMessage == firestoreManager.onboardingChatMessages.count - 1 && isOnboardingDone && firestoreManager.didFinishFetchOnboardingChat
   }
   
   var userTextField: some View {
@@ -85,7 +86,7 @@ struct OnboardingMainScreen: View {
           VStack {
             Spacer()
             
-            MainChatScrollView(currentMessage: $currentMessage, optionsClickedIndexes: $optionsClickedIndexes)
+            MainChatScrollView(currentMessage: $currentMessage, optionsClickedIndexes: $optionsClickedIndexes, isOnboardingDone: $isOnboardingDone, didStartFromOnboarding: $didStartFromOnboarding, onboardingData: onboardingData)
             
             Spacer()
             userTextField
@@ -145,18 +146,16 @@ struct OnboardingMainScreen: View {
           }
         }
       }
-      .onChange(of: firestoreManager.didFinishFetchOnboardingChat) { _ in
-        if isOnboardingDone {
-          currentMessage = firestoreManager.onboardingChatMessages.count - 1
-          firestoreManager.fetchPostLoginChat()
-        }
-      }
       .onAppear {
         if !isOnboardingDone {
           UserDefaults.standard.set(true, forKey: "didStartFromOnboarding")
         } else {
           if didStartFromOnboarding {
             UserDefaults.standard.set(false, forKey: "didStartFromOnboarding")
+            currentMessage = firestoreManager.onboardingChatMessages.count - 1
+            firestoreManager.fetchPostLoginChat()
+          } else {
+            firestoreManager.onboardingChatMessages.append(contentsOf: onboardingData.dummyChatMessages)
             currentMessage = firestoreManager.onboardingChatMessages.count - 1
             firestoreManager.fetchPostLoginChat()
           }
@@ -179,7 +178,14 @@ struct OnboardingMainScreen: View {
 struct MainChatScrollView: View {
   @Binding var currentMessage: Int
   @Binding var optionsClickedIndexes: [Int]
+  @Binding var isOnboardingDone: Bool
+  @Binding var didStartFromOnboarding: Bool
   @EnvironmentObject var firestoreManager: FirestoreManager
+  let onboardingData: OnboardingData
+  
+  func shouldHidePreviousMessages(index: Int) -> Bool {
+    return isOnboardingDone && !didStartFromOnboarding && index <= onboardingData.dummyChatMessages.count - 1
+  }
   
   var body: some View {
     ScrollView {
@@ -193,6 +199,7 @@ struct MainChatScrollView: View {
               .scaleEffect(x: -1, y: 1, anchor: .center)
               .fixedSize(horizontal: false, vertical: true)
               .zIndex(Double(index))
+              .opacity(shouldHidePreviousMessages(index: index) ? 0 : 1)
           }
         )
       }

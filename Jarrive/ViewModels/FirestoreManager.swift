@@ -15,13 +15,12 @@ class FirestoreManager: ObservableObject {
   @Published var onboardingPauseMessageFluxIndexes = [Int]()
   @Published var onboardingUserTextFieldPauseIndexes = [Int]()
   @Published var onboardingVariableOptionMessageIndexes = [Int]()
-//  @Published var onboardingVariableMessages = [String: [String: [String: Any]]]()
   @Published var firstPostcard = PostcardData()
   @Published var postLoginOptionPauseIndexes = [Int]()
   @Published var postLoginOptionExtraMessagesIndexes = [Int]()
   @Published var postLoginOptionTryAgainIndexes = [Int]()
-//  @Published var postLoginVariableOptionMessageIndexes = [Int]()
   @Published var didFinishFetchOnboardingChat: Bool = false
+  private var isOnboardingDone = UserDefaults.standard.bool(forKey: "isOnboardingDone")
   let onboardingMessagesRoute = "chats/onboardingChat/messages"
   let onboardingVariableMessagesRoute = "chats/onboardingChat/variableMessages"
   let firstPostcardsRoute = "postcards/charlottePostcard"
@@ -29,9 +28,10 @@ class FirestoreManager: ObservableObject {
   let db = Firestore.firestore()
   
   init() {
-    fetchOnboardingChat()
-    fetchFirstPostcard(route: firstPostcardsRoute)
-//    fetchChatVariableMessages(route: onboardingVariableMessagesRoute)
+    if !isOnboardingDone {
+      fetchOnboardingChat()
+      fetchFirstPostcard(route: firstPostcardsRoute)
+    }
   }
   
   func fetchChatMessages(route: String) {
@@ -102,7 +102,6 @@ class FirestoreManager: ObservableObject {
         self.postLoginOptionPauseIndexes = document.get("optionPauseIndexes") as? [Int] ?? []
         self.postLoginOptionExtraMessagesIndexes = document.get("optionExtraMessagesIndexes") as? [Int] ?? []
         self.postLoginOptionTryAgainIndexes = document.get("optionTryAgainIndexes") as? [Int] ?? []
-//        self.postLoginVariableOptionMessageIndexes = document.get("variableOptionMessageIndexes") as? [Int] ?? []
       } else {
         print("Document does not exist in cache")
       }
@@ -113,17 +112,4 @@ class FirestoreManager: ObservableObject {
     fetchChatMessages(route: postLoginMessagesRoute)
     fetchPostLoginSpecialIndexes()
   }
-  
-  //  func fetchChatVariableMessages(route: String) {
-  //    db.collection(route).addSnapshotListener { (querySnapshot, error) in
-  //      guard var documents = querySnapshot?.documents else {
-  //        print("No documents")
-  //        return
-  //      }
-  //
-  //      self.onboardingChatMessages = documents.compactMap { document -> MessageData? in
-  //        return try? document.data(as: MessageData.self)
-  //      }
-  //    }
-  //  }
 }

@@ -12,7 +12,7 @@ struct OptionBubbleView: View {
   @State var showTranslations: Bool = false
   @State var bubbleHeight: Double = 0.0
   @EnvironmentObject var firestoreManager: FirestoreManager
-  var onboardingData = OnboardingData()
+  let onboardingData = OnboardingData()
   @Binding var currentMessage: Int
   @Binding var optionsClickedIndexes: [Int]
   var currentOptionIndex: Int
