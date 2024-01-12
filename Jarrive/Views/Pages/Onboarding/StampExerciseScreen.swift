@@ -29,7 +29,7 @@ struct StampExerciseScreen: View {
                         .edgesIgnoringSafeArea(.top)
                         .padding(.bottom)
                     
-                    HeaderContent(shouldShowExplicatifView: $shouldShowExplicatifView,  
+                    HeaderContent(shouldShowExplicatifView: $shouldShowExplicatifView,
                                   shouldReviseDragDropExercice: $shouldReviseDragDropExercice,
                                   shouldReviseEcouteExercice: $shouldReviseEcouteExercice)
                 }
@@ -163,25 +163,44 @@ struct HeaderContent: View {
 
 // MARK: - Explicative View
 struct ExplicatifView: View {
+    @State var audioPlayer: AVAudioPlayer?
+    @State var isPlayingAudio: Bool = false
+    @State var wasPlayed: Bool = false
+    
+    private func createAudioPlayer(audio: String) {
+        if let sound = Bundle.main.path(forResource: audio, ofType: "mp3") {
+            do {
+                self.audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound))
+            } catch {
+                print("AVAudioPlayer could not be instantiated.")
+            }
+        } else {
+            print("Audio file could not be found.")
+        }
+    }
+    
+    private func playOrPause() {
+        guard let player = audioPlayer else { return }
+        
+        if player.isPlaying {
+            player.pause()
+            isPlayingAudio = false
+        } else {
+            player.play()
+            isPlayingAudio = true
+            wasPlayed = true
+        }
+    }
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
                 
-                HStack {
-                    Button {
-                        print("aaaa")
-                    } label: {
-                        Image("audioPlayerExercices")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                    }
-                    .frame(width: 35, height: 35)
-                    
-                    Text("Conjugaison")
-                        .font(.custom("Barlow-SemiBold", size: 24))
-                        .padding(.top)
-                        .padding(.bottom)
-                }.foregroundColor(Color("mainBlue"))
+                Text("Conjugaison")
+                    .font(.custom("Barlow-SemiBold", size: 24))
+                    .padding(.top)
+                    .padding(.bottom)
+                    .foregroundColor(Color("mainBlue"))
                 
                 VStack {
                     GeometryReader { geometry in
@@ -210,30 +229,45 @@ struct ExplicatifView: View {
                                 .padding(.bottom)
                             
                             HStack(alignment: .center) {
-                                Spacer()
-                                VStack(alignment: .trailing) {
-                                    Text("Je")
-                                    Text("Tu")
-                                    Text("Il")
-                                    Text("Elle")
-                                    Text("Nous")
-                                    Text("Vous")
-                                    Text("Ils")
-                                    Text("Elles")
-                                }
-                                .font(.custom("Barlow-Regular", size: 20))
                                 
-                                VStack(alignment: .leading) {
-                                    Text("suis")
-                                    Text("es")
-                                    Text("est")
-                                    Text("est")
-                                    Text("sommes")
-                                    Text("êtes")
-                                    Text("sont")
-                                    Text("sont")
-                                } // TO-DO: Change to Barlow-BoldItalic
-                                .font(.custom("Barlow-SemiBoldItalic", size: 20))
+                                HStack(alignment: .center) {
+                                    Button {
+                                        createAudioPlayer(audio: "conjugation-etre")
+                                        playOrPause()
+                                    } label: {
+                                        Image("audioButton")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                    }
+                                    .frame(width: 32, height: 32)
+                                }
+                                
+                                Spacer()
+                                
+                                HStack(alignment: .center) {
+                                    VStack(alignment: .trailing) {
+                                        Text("Je")
+                                        Text("Tu")
+                                        Text("Il")
+                                        Text("Elle")
+                                        Text("Nous")
+                                        Text("Vous")
+                                        Text("Ils")
+                                        Text("Elles")
+                                    }.font(.custom("Barlow-Regular", size: 20))
+
+                                    VStack(alignment: .leading) {
+                                        Text("suis")
+                                        Text("es")
+                                        Text("est")
+                                        Text("est")
+                                        Text("sommes")
+                                        Text("êtes")
+                                        Text("sont")
+                                        Text("sont")
+                                    }
+                                    .font(.custom("Barlow-BoldItalic", size: 20))
+                                }
                                 
                                 Spacer()
                             }
@@ -244,32 +278,37 @@ struct ExplicatifView: View {
                 .foregroundColor(Color("defaultGray"))
                 .frame(width: 340, height: 320, alignment: .center)
                 
-                HStack {
-                    Button {
-                        print("aaaa")
-                    } label: {
-                        Image("audioPlayerExercices")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                    }
-                    .frame(width: 35, height: 35)
-                    
-                    Text("Exemples")
-                        .font(.custom("Barlow-SemiBold", size: 24))
-                        .padding(.top)
-                        .padding(.bottom)
-                }.foregroundColor(Color("mainBlue"))
+
+                Text("Exemples")
+                    .font(.custom("Barlow-SemiBold", size: 24))
+                    .padding(.top)
+                    .padding(.bottom)
+                    .foregroundColor(Color("mainBlue"))
                 
                 VStack(alignment: .leading) {
                     VStack {
                         GeometryReader { geometry in
                             HStack{
+
+                                Spacer()
+                                
+                                HStack {
+                                    Button {
+                                        print("aaaa")
+                                    } label: {
+                                        Image("audioButton")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                    }
+                                    .frame(width: 32, height: 32)
+                                }
+                                
                                 Spacer()
                                 
                                 VStack(alignment: .leading) {
                                     HStack(spacing: 4)  {
                                         Text("Je suis")
-                                            .font(.custom("Barlow-SemiBoldItalic", size: 18))
+                                            .font(.custom("Barlow-BoldItalic", size: 18))
                                         
                                         Text("un chat.")
                                             .font(.custom("Barlow-Regular", size: 18))
@@ -277,7 +316,7 @@ struct ExplicatifView: View {
                                     
                                     HStack(spacing: 4)  {
                                         Text("Tu es")
-                                            .font(.custom("Barlow-SemiBoldItalic", size: 18))
+                                            .font(.custom("Barlow-BoldItalic", size: 18))
                                         
                                         Text("un human.")
                                             .font(.custom("Barlow-Regular", size: 18))
@@ -285,7 +324,7 @@ struct ExplicatifView: View {
                                     
                                     HStack(spacing: 4)  {
                                         Text("Nous sommes")
-                                            .font(.custom("Barlow-SemiBoldItalic", size: 18))
+                                            .font(.custom("Barlow-BoldItalic", size: 18))
                                         
                                         Text("amis.")
                                             .font(.custom("Barlow-Regular", size: 18))
@@ -586,38 +625,38 @@ struct EcoutePhrasesExerciceView: View {
         
         VStack(alignment: .center) {
             VStack(alignment: .leading) {
-                EcoutePhraseView(audio: "on ecoute les phrases", 
+                EcoutePhraseView(audio: "on ecoute les phrases",
                                  phrase: "On écoute les phrases!",
                                  progress: $progress,
                                  shouldReviseEcouteExercice: $shouldReviseEcouteExercice)
                 
-                EcoutePhraseView(audio: "CatMeow", 
+                EcoutePhraseView(audio: "CatMeow",
                                  phrase: "Je suis un facteur. ✉️",
                                  progress: $progress,
                                  shouldReviseEcouteExercice: $shouldReviseEcouteExercice)
                 
-                EcoutePhraseView(audio: "tu es mon copain", 
+                EcoutePhraseView(audio: "tu es mon copain",
                                  phrase: "Tu es mon copain. ❤️",
                                  progress: $progress,
                                  shouldReviseEcouteExercice: $shouldReviseEcouteExercice)
                 
-                EcoutePhraseView(audio: "elle est dans un train", 
+                EcoutePhraseView(audio: "elle est dans un train",
                                  phrase: "Elle est dans un train. 🚂",
                                  progress: $progress,
                                  shouldReviseEcouteExercice: $shouldReviseEcouteExercice)
                 
-                EcoutePhraseView(audio: "CatMeow", 
+                EcoutePhraseView(audio: "CatMeow",
                                  phrase: "Nous sommes en voyage. ✈️" ,
                                  progress: $progress,
                                  shouldReviseEcouteExercice: $shouldReviseEcouteExercice)
             }.foregroundStyle(.white)
-
+            
         }.padding(.top, 50)
         
         Spacer()
         
         NavigationLink {
-          FirstStampScreen().navigationBarBackButtonHidden()
+            FirstStampScreen().navigationBarBackButtonHidden()
         } label: {
             Text("CONTINUAR")
                 .font(.custom("Barlow-Bold", size: 20))
