@@ -69,19 +69,21 @@ struct OptionBubbleView: View {
         if firestoreManager.postLoginOptionExtraMessagesIndexes.contains(currentMessage) {
           if index == 0 {
             firestoreManager.onboardingChatMessages.remove(at: currentMessage + 2)
-            firestoreManager.onboardingChatMessages.remove(at: currentMessage + 3)
-            firestoreManager.postLoginOptionPauseIndexes = firestoreManager.postLoginOptionPauseIndexes.map { $0 + 2 }
-            firestoreManager.postLoginOptionExtraMessagesIndexes = firestoreManager.postLoginOptionExtraMessagesIndexes.map { $0 + 2 }
-            firestoreManager.postLoginOptionTryAgainIndexes = firestoreManager.postLoginOptionTryAgainIndexes.map { $0 + 2 }
+            firestoreManager.onboardingChatMessages.remove(at: currentMessage + 2)
+            firestoreManager.postLoginOptionPauseIndexes.removeAll { $0 <= currentMessage }
+            firestoreManager.postLoginOptionPauseIndexes = firestoreManager.postLoginOptionPauseIndexes
+              .map { $0 - 2 }
+            firestoreManager.postLoginOptionExtraMessagesIndexes = firestoreManager.postLoginOptionExtraMessagesIndexes.map { $0 - 2 }
+            firestoreManager.postLoginOptionTryAgainIndexes = firestoreManager.postLoginOptionTryAgainIndexes.map { $0 - 2 }
           }
         // repeats messages if user chooses wrong option, continues if user chooses correct option
         } else if firestoreManager.postLoginOptionTryAgainIndexes.contains(currentMessage) {
           if let tryAgainMessageIndex = firestoreManager.postLoginOptionTryAgainIndexes.firstIndex(of: currentMessage) {
             firestoreManager.onboardingChatMessages[currentMessage+2] = onboardingData.tryAgainFollowingMessages[tryAgainMessageIndex][index]
             let correctAnswerIndex = onboardingData.tryAgainIndexesCorrectAnswers[tryAgainMessageIndex]
-            if index == correctAnswerIndex {
-              let messagesToRepeat = firestoreManager.onboardingChatMessages[currentMessage..<currentMessage+3]
-              firestoreManager.onboardingChatMessages.insert(contentsOf: messagesToRepeat, at: currentMessage+3)
+            if index != correctAnswerIndex {
+              let messagesToRepeatArray = Array(firestoreManager.onboardingChatMessages[currentMessage ..< currentMessage+3])
+              firestoreManager.onboardingChatMessages.insert(contentsOf: messagesToRepeatArray, at: currentMessage+3)
               firestoreManager.postLoginOptionPauseIndexes = firestoreManager.postLoginOptionPauseIndexes.map { $0 + 3 }
               firestoreManager.postLoginOptionExtraMessagesIndexes = firestoreManager.postLoginOptionExtraMessagesIndexes.map { $0 + 3 }
               firestoreManager.postLoginOptionTryAgainIndexes = firestoreManager.postLoginOptionTryAgainIndexes.map { $0 + 3 }

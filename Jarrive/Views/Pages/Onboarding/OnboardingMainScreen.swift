@@ -133,16 +133,17 @@ struct OnboardingMainScreen: View {
               changeScreenToPostcard.toggle()
             }
           }
-          
-          if shouldChangeScreenToMap() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-              changeScreenToMap.toggle()
-            }
-          }
         }
       }
       .onChange(of: firestoreManager.onboardingChatMessages) { _ in
         timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
+        if shouldChangeScreenToMap() {
+          DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            timer.upstream.connect().cancel()
+            changeScreenToMap.toggle()
+          }
+        }
       }
       .onChange(of: firestoreManager.didFinishFetchOnboardingChat) { _ in
         if isOnboardingDone {
@@ -166,6 +167,7 @@ struct OnboardingMainScreen: View {
       }
       .navigationDestination(isPresented: $changeScreenToMap) {
         Map()
+          .navigationBarBackButtonHidden()
           .alert("Teste da aplicação completo!", isPresented: .constant(true)) {
             Button("OK", role: .cancel) { }
           }
@@ -186,7 +188,7 @@ struct MainChatScrollView: View {
         AnyView(ProgressView()) :
         AnyView(
           ForEach(firestoreManager.onboardingChatMessages[0 ... currentMessage].indices.reversed(), id: \.self) { index in
-            MainChatBubbleView(messageData: firestoreManager.onboardingChatMessages[0 ... currentMessage][index], currentMessage: $currentMessage, optionsClickedIndexes: $optionsClickedIndexes, currentIndex: index)
+            MainChatBubbleView(messageData: firestoreManager.onboardingChatMessages[0 ... currentMessage][index], currentMessage: $currentMessage, optionsClickedIndexes: $optionsClickedIndexes, currentOptionIndex: index)
               .rotationEffect(Angle(radians: .pi)) // rotate each item
               .scaleEffect(x: -1, y: 1, anchor: .center)
               .fixedSize(horizontal: false, vertical: true)

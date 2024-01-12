@@ -40,7 +40,7 @@ struct UnderlinedWordsBlurView: View {
         
         Group {
           VStack(alignment: .leading) {
-            MainChatBubbleView(messageData: firestoreManager.onboardingChatMessages[0], currentMessage: .constant(0), optionsClickedIndexes: .constant([]), currentIndex: 0)
+            MainChatBubbleView(messageData: firestoreManager.onboardingChatMessages[0], currentMessage: .constant(0), optionsClickedIndexes: .constant([]), currentOptionIndex: 0)
               .offset(y: 20)
             
             Image("grayPaw")

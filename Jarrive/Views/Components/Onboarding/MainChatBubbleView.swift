@@ -11,14 +11,14 @@ struct MainChatBubbleView: View {
   var messageData: MessageData
   @Binding var currentMessage: Int
   @Binding var optionsClickedIndexes: [Int]
-  var currentIndex: Int
+  var currentOptionIndex: Int
   
   var body: some View {
     switch messageData.type! {
     case "text":
       TextBubbleView(messageData: messageData)
     case "option":
-      OptionBubbleView(messageData: messageData, currentMessage: $currentMessage, optionsClickedIndexes: $optionsClickedIndexes, currentIndex: currentIndex)
+      OptionBubbleView(messageData: messageData, currentMessage: $currentMessage, optionsClickedIndexes: $optionsClickedIndexes, currentOptionIndex: currentOptionIndex)
     case "response":
       ResponseBubbleView(messageData: messageData)
     case "audio":
