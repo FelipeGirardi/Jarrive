@@ -63,6 +63,10 @@ struct PlayerContentView: View {
                     viewModel.player.pause()
                     viewModel.player.seek(to: .zero)
                 }
+                .onTapGesture {
+                    viewModel.videoDone = true
+                    
+                }
         }
         .background(Color(.black))
         .edgesIgnoringSafeArea(.all)
