@@ -17,7 +17,7 @@ struct ContentView: View {
 // MARK: code below checks if user is signed in 
     authViewModel.isLogging ? AnyView(ProgressView()) :
     AnyView(Group {
-      Auth.auth().currentUser != nil ? AnyView(OnboardingMainScreen()) :
+      Auth.auth().currentUser != nil ? AnyView(BienvenueView()) :
       isOnboardingDone ? AnyView(LoginScreen()) : AnyView(TitleScreen())
       })
   }

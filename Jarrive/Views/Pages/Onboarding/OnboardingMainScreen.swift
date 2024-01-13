@@ -165,6 +165,7 @@ struct OnboardingMainScreen: View {
             Button("OK", role: .cancel) { }
           }
       }
+      .navigationBarBackButtonHidden()
     }
   }
 }

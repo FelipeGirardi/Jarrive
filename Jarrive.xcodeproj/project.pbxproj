@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		963F89C82B51CA0B0006D5BC /* conjugation-etre.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 963F89C72B51CA0B0006D5BC /* conjugation-etre.mp3 */; };
+		963F89CB2B51D1DC0006D5BC /* nous sommes en voyage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 963F89C92B51D1DC0006D5BC /* nous sommes en voyage.mp3 */; };
+		963F89CC2B51D1DC0006D5BC /* je suis un facteur.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 963F89CA2B51D1DC0006D5BC /* je suis un facteur.mp3 */; };
+		965AB48F2B51EAED00B50033 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965AB48E2B51EAED00B50033 /* PlayerView.swift */; };
+		965AB4912B51EDAF00B50033 /* intro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 965AB4902B51ECA800B50033 /* intro.mp4 */; };
+		965AB4932B52090C00B50033 /* musica ambiente.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 965AB4922B52090C00B50033 /* musica ambiente.mp3 */; };
+		965AB4952B520D9100B50033 /* BienvenueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965AB4942B520D9100B50033 /* BienvenueView.swift */; };
 		9661F6552B334E650037FC04 /* EcoutePhraseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661F6542B334E650037FC04 /* EcoutePhraseView.swift */; };
 		9662F5FD2B33602100DA249D /* tu es mon copain.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9662F5FA2B33602100DA249D /* tu es mon copain.mp3 */; };
 		9662F5FE2B33602100DA249D /* elle est dans un train.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9662F5FB2B33602100DA249D /* elle est dans un train.mp3 */; };
@@ -121,6 +128,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		963F89C72B51CA0B0006D5BC /* conjugation-etre.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "conjugation-etre.mp3"; sourceTree = "<group>"; };
+		963F89C92B51D1DC0006D5BC /* nous sommes en voyage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "nous sommes en voyage.mp3"; sourceTree = "<group>"; };
+		963F89CA2B51D1DC0006D5BC /* je suis un facteur.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "je suis un facteur.mp3"; sourceTree = "<group>"; };
+		965AB48E2B51EAED00B50033 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		965AB4902B51ECA800B50033 /* intro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = intro.mp4; sourceTree = "<group>"; };
+		965AB4922B52090C00B50033 /* musica ambiente.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "musica ambiente.mp3"; sourceTree = "<group>"; };
+		965AB4942B520D9100B50033 /* BienvenueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BienvenueView.swift; sourceTree = "<group>"; };
 		9661F6542B334E650037FC04 /* EcoutePhraseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcoutePhraseView.swift; sourceTree = "<group>"; };
 		9662F5FA2B33602100DA249D /* tu es mon copain.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "tu es mon copain.mp3"; sourceTree = "<group>"; };
 		9662F5FB2B33602100DA249D /* elle est dans un train.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "elle est dans un train.mp3"; sourceTree = "<group>"; };
@@ -273,6 +287,11 @@
 				9662F5FC2B33602100DA249D /* on ecoute les phrases.mp3 */,
 				9662F5FA2B33602100DA249D /* tu es mon copain.mp3 */,
 				C05480492B16BDE300AA5D5D /* CatMeow.mp3 */,
+				963F89CA2B51D1DC0006D5BC /* je suis un facteur.mp3 */,
+				963F89C92B51D1DC0006D5BC /* nous sommes en voyage.mp3 */,
+				963F89C72B51CA0B0006D5BC /* conjugation-etre.mp3 */,
+				965AB4922B52090C00B50033 /* musica ambiente.mp3 */,
+				965AB4902B51ECA800B50033 /* intro.mp4 */,
 			);
 			path = Audios;
 			sourceTree = "<group>";
@@ -300,6 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				C02D09412A3BA23100B5FA54 /* LoginScreen.swift */,
+				965AB4942B520D9100B50033 /* BienvenueView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -411,6 +431,7 @@
 			children = (
 				C0B83F6C2A312B340096003B /* JarriveApp.swift */,
 				C0D91C502A4CD84900080072 /* ContentView.swift */,
+				965AB48E2B51EAED00B50033 /* PlayerView.swift */,
 			);
 			path = Lifecycle;
 			sourceTree = "<group>";
@@ -651,6 +672,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0D8D8992B1963AE00A5CC20 /* HechoAMano-Regular.ttf in Resources */,
+				965AB4932B52090C00B50033 /* musica ambiente.mp3 in Resources */,
 				C02D093E2A3B979200B5FA54 /* Barlow-LightItalic.ttf in Resources */,
 				C0D834CE2B093B8500A43175 /* Barlow-Italic.ttf in Resources */,
 				C051294B2B28D2A1008A4888 /* Barlow-ExtraBold.ttf in Resources */,
@@ -664,13 +686,17 @@
 				C0B83F742A312B370096003B /* Preview Assets.xcassets in Resources */,
 				C0B5E8D32A92A18F0026FBB1 /* LaunchScreen.storyboard in Resources */,
 				C0D834C62B0929E000A43175 /* Bilbo-Regular.ttf in Resources */,
+				965AB4912B51EDAF00B50033 /* intro.mp4 in Resources */,
+				963F89CB2B51D1DC0006D5BC /* nous sommes en voyage.mp3 in Resources */,
 				C0B83F712A312B370096003B /* Assets.xcassets in Resources */,
 				C0DEA4AE2A79886B00C640BD /* BasicSans-Regular.otf in Resources */,
 				C0D8D89B2B19645400A5CC20 /* Barlow-Black.ttf in Resources */,
+				963F89C82B51CA0B0006D5BC /* conjugation-etre.mp3 in Resources */,
 				C05C76BF2AE89AD900698C4F /* Barlow-SemiBoldItalic.ttf in Resources */,
 				C054804A2B16BDE400AA5D5D /* CatMeow.mp3 in Resources */,
 				C0E8BD992A9D644D008C4F57 /* Barlow-Bold.ttf in Resources */,
 				9662F5FD2B33602100DA249D /* tu es mon copain.mp3 in Resources */,
+				963F89CC2B51D1DC0006D5BC /* je suis un facteur.mp3 in Resources */,
 				9662F5FE2B33602100DA249D /* elle est dans un train.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -720,6 +746,7 @@
 				C0DEA4B62A79BA4A00C640BD /* ChatPage.swift in Sources */,
 				C0DEA4B02A798D2200C640BD /* PlayAudioButton.swift in Sources */,
 				C0D834C42B0927F000A43175 /* PostcardScreen.swift in Sources */,
+				965AB48F2B51EAED00B50033 /* PlayerView.swift in Sources */,
 				C02D09442A3BA87000B5FA54 /* LoginInputView.swift in Sources */,
 				C0B83FA22A3131230096003B /* TicketView.swift in Sources */,
 				C0EBBAE02A3A57F100001FCF /* BackButton.swift in Sources */,
@@ -761,6 +788,7 @@
 				C0B83F6D2A312B340096003B /* JarriveApp.swift in Sources */,
 				C0D834CC2B0931D600A43175 /* Postcard.swift in Sources */,
 				C0D834D32B093F2900A43175 /* Station.swift in Sources */,
+				965AB4952B520D9100B50033 /* BienvenueView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -917,6 +945,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Jarrive/Jarrive.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Jarrive/Preview Content\"";
@@ -937,6 +966,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Jarrive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -949,6 +979,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Jarrive/Jarrive.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Jarrive/Preview Content\"";
@@ -969,6 +1000,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.Jarrive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -982,7 +1014,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QU2M8UTH92;
+				DEVELOPMENT_TEAM = P7WV6D6894;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
@@ -1002,7 +1034,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QU2M8UTH92;
+				DEVELOPMENT_TEAM = P7WV6D6894;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;

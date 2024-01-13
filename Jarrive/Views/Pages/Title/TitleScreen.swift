@@ -11,7 +11,7 @@ struct TitleScreen: View {
   @State var goToOnboarding: Bool = false
   
   var body: some View {
-    goToOnboarding ? AnyView(OnboardingMainScreen()) :
+    goToOnboarding ? AnyView(PlayerContentView()) :
     AnyView(GeometryReader { g in
       ZStack {
         Image("TitleScreen")
