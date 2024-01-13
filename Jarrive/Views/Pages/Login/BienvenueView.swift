@@ -13,13 +13,24 @@ struct BienvenueView: View {
     @State private var showTranslation = false
     @State private var shouldGoToPosLoginChat = false
     
+    @State private var isPostLoginChatDone = UserDefaults.standard.bool(forKey: "isPostLoginChatDone")
+    
     var body: some View {
+        if shouldGoToPosLoginChat {
+            OnboardingMainScreen()
+        } else {
             ZStack {
                 Image("jarrive train")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .edgesIgnoringSafeArea(.all)
+                
+                Image("JarriveLogo1")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 245, height: 92)
+                    .padding(.bottom, 500)
                 
                 VStack {
                     VStack(spacing: 0){
@@ -64,8 +75,9 @@ struct BienvenueView: View {
                 }
                 .padding(.bottom, 150)
             }.onTapGesture {
-                self.shouldGoToPosLoginChat = true
-            }.navigate(to: OnboardingMainScreen(), when: $shouldGoToPosLoginChat, navBarHidden: false)
+                shouldGoToPosLoginChat = true
+            }
+        }
     }
 }
     
