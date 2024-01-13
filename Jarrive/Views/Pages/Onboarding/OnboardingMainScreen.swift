@@ -210,6 +210,7 @@ struct OnboardingMainScreen: View {
       .navigationDestination(isPresented: $changeScreenToPostcard) {
         PostcardScreen(postcardData: onboardingData.postcardData)
       }
+      .navigationBarBackButtonHidden()
     }
   }
 }

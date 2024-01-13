@@ -13,6 +13,7 @@
 		965AB48F2B51EAED00B50033 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965AB48E2B51EAED00B50033 /* PlayerView.swift */; };
 		965AB4912B51EDAF00B50033 /* intro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 965AB4902B51ECA800B50033 /* intro.mp4 */; };
 		965AB4932B52090C00B50033 /* musica ambiente.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 965AB4922B52090C00B50033 /* musica ambiente.mp3 */; };
+		965AB4952B520D9100B50033 /* BienvenueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965AB4942B520D9100B50033 /* BienvenueView.swift */; };
 		9661F6552B334E650037FC04 /* EcoutePhraseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661F6542B334E650037FC04 /* EcoutePhraseView.swift */; };
 		9662F5FD2B33602100DA249D /* tu es mon copain.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9662F5FA2B33602100DA249D /* tu es mon copain.mp3 */; };
 		9662F5FE2B33602100DA249D /* elle est dans un train.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9662F5FB2B33602100DA249D /* elle est dans un train.mp3 */; };
@@ -129,6 +130,7 @@
 		965AB48E2B51EAED00B50033 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		965AB4902B51ECA800B50033 /* intro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = intro.mp4; sourceTree = "<group>"; };
 		965AB4922B52090C00B50033 /* musica ambiente.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "musica ambiente.mp3"; sourceTree = "<group>"; };
+		965AB4942B520D9100B50033 /* BienvenueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BienvenueView.swift; sourceTree = "<group>"; };
 		9661F6542B334E650037FC04 /* EcoutePhraseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcoutePhraseView.swift; sourceTree = "<group>"; };
 		9662F5FA2B33602100DA249D /* tu es mon copain.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "tu es mon copain.mp3"; sourceTree = "<group>"; };
 		9662F5FB2B33602100DA249D /* elle est dans un train.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "elle est dans un train.mp3"; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				C02D09412A3BA23100B5FA54 /* LoginScreen.swift */,
+				965AB4942B520D9100B50033 /* BienvenueView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -771,6 +774,7 @@
 				C0B83F6D2A312B340096003B /* JarriveApp.swift in Sources */,
 				C0D834CC2B0931D600A43175 /* Postcard.swift in Sources */,
 				C0D834D32B093F2900A43175 /* Station.swift in Sources */,
+				965AB4952B520D9100B50033 /* BienvenueView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

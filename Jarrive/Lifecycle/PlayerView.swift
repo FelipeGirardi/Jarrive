@@ -75,7 +75,7 @@ struct PlayerContentView: View {
                 isVideoPlayed = true
             }
         }
-        .navigate(to: OnboardingMainScreen(), when: $isVideoPlayed, navBarHidden: true)
+        .navigate(to: OnboardingMainScreen(), when: $isVideoPlayed, navBarHidden: false)
     }
 }
 
