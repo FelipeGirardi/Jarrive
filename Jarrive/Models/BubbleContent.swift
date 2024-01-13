@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
 enum BubbleUser {
   case cat
   case user
 }
 
-struct BubbleString: Hashable {
+struct BubbleString: Hashable, Codable {
   var text: String
   var translation: String?
 }
@@ -41,10 +42,28 @@ struct ImageBubble: Hashable {
   var largeImage: String
 }
 
+struct StickerBubble: Hashable {
+  var sticker: String
+}
+
 enum BubbleContent: Equatable, Hashable {
   case text(TextBubble?)
   case option(OptionBubble?)
   case response(ResponseBubble?)
   case audio(AudioBubble?)
   case image(ImageBubble?)
+}
+
+// Main chat message struct
+struct MessageData: Equatable, Hashable, Codable {
+  var id: Int?
+  var type: String?
+  var user: String?
+  var textArray: [BubbleString]?
+  var options: [String]?
+  var respondedText: String?
+  var audio: String?
+  var image: String?
+  var largeImage: String?
+  var sticker: String?
 }

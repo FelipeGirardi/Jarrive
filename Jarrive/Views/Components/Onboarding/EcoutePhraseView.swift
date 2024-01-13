@@ -75,7 +75,7 @@ struct EcoutePhraseView: View {
                             self.progress = progress + 0.25
                             
                             if self.progress == 1 {
-                                shouldReviseEcouteExercice.toggle()
+                                shouldReviseEcouteExercice = true
                             }
                         }
                     }
@@ -94,6 +94,6 @@ struct EcoutePhraseView: View {
 }
 struct EcoutePhraseView_Preview: PreviewProvider {
     static var previews: some View {
-        EcoutePhraseView(audio: "CatMeow", phrase: "", progress: .constant(0.0), shouldReviseEcouteExercice: .constant(false))
+        EcoutePhraseView(audio: "CatMeow", phrase: "", progress: .constant(0.0), shouldReviseEcouteExercice: .constant(true))
     }
 }

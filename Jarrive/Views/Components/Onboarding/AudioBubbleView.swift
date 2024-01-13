@@ -9,12 +9,12 @@ import AVFoundation
 import SwiftUI
 
 struct AudioBubbleView: View {
-  var content: AudioBubble
+  var messageData: MessageData
   @State var audioPlayer: AVAudioPlayer?
   @State var isPlayingAudio: Bool = false
   
   func createAudioPlayer() {
-    if let sound = Bundle.main.path(forResource: "CatMeow", ofType: "mp3") {
+    if let sound = Bundle.main.path(forResource: messageData.audio, ofType: "mp3") {
       do {
         self.audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound))
       } catch {
@@ -66,7 +66,7 @@ struct AudioBubbleView: View {
   
   struct AudioBubbleView_Previews: PreviewProvider {
     static var previews: some View {
-      AudioBubbleView(content: AudioBubble(audio: "CatMeow"))
+      AudioBubbleView(messageData: MessageData(type: "audio", audio: "CatMeow"))
     }
   }
 }

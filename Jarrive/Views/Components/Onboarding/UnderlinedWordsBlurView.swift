@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UnderlinedWordsBlurView: View {
   @Binding var isBlurViewOn: Bool
-  let onboardingData = OnboardingData()
+  @EnvironmentObject var firestoreManager: FirestoreManager
   
   var body: some View {
     ZStack {
@@ -40,7 +40,7 @@ struct UnderlinedWordsBlurView: View {
         
         Group {
           VStack(alignment: .leading) {
-            MainChatBubbleView(content: onboardingData.catChatMessages[0], onboardingData: .constant(onboardingData), currentMessage: .constant(0), optionsClickedIndexes: .constant([]), currentIndex: 0)
+            MainChatBubbleView(messageData: firestoreManager.onboardingChatMessages[0], currentMessage: .constant(0), optionsClickedIndexes: .constant([]), currentOptionIndex: 0)
               .offset(y: 20)
             
             Image("grayPaw")

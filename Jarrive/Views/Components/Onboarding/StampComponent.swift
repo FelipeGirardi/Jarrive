@@ -31,8 +31,8 @@ struct StampComponent: View {
         VStack(alignment: .leading) {
           VStack(alignment: .leading, spacing: 0) {
             Text(stamp.group)
-              .font(.custom("Barlow-Regular", size: isStampSmall() ? 5 : 20))
               .minimumScaleFactor(0.5)
+              .font(.custom("Barlow-Regular", size: isStampSmall() ? 5 : 20))
               .foregroundColor(isCurrentStamp() ? Color("mainDarkBlue") : Color("defaultDarkGray"))
             
             Text("#00" + String(stamp.number))
@@ -45,6 +45,7 @@ struct StampComponent: View {
           
           
           Text(stamp.title)
+            .minimumScaleFactor(0.5)
             .font(.custom(isStampSmall() ? "Barlow-Bold" : "Barlow-Black", size: isStampSmall() ? 8 : 24))
             .foregroundColor(isCurrentStamp() ? Color("mainDarkBlue") : Color("defaultDarkGray"))
             .padding(.bottom, isStampSmall() ? 5 : 26)

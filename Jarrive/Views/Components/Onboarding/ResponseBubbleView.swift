@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct ResponseBubbleView: View {
-  var content: ResponseBubble
+  var messageData: MessageData
   
   var getBubbleText: some View {
     var fullString = Text("")
     
-    for str in content.textArray {
+    for str in messageData.textArray! {
       fullString = fullString +
       Text(str.text)
         .underline(str.translation != nil)
@@ -25,7 +25,7 @@ struct ResponseBubbleView: View {
   
   func nTextCharacters() -> Int {
     var nChars = 0
-    for str in content.textArray {
+    for str in messageData.textArray! {
       nChars += str.text.count
     }
     return nChars
@@ -39,13 +39,14 @@ struct ResponseBubbleView: View {
         HStack {
           Spacer()
           
-          Text(content.respondedText)
+          Text(messageData.respondedText!)
+            .minimumScaleFactor(0.3)
             .font(.custom("Barlow-Medium", size: 16))
             .multilineTextAlignment(.leading)
-            .minimumScaleFactor(0.5)
             .foregroundColor(Color("defaultDarkerGray"))
             .frame(maxHeight: 25)
-//            .frame(maxHeight: 20.0 * ceil(Double(content.respondedText.count)/20.0))
+            .frame(minWidth: 100)
+//            .frame(maxHeight: 20.0 * ceil(Double(messageData.respondedText.count)/20.0))
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
             .background(Color("defaultLightGray"))
             .cornerRadius(20)
@@ -60,8 +61,8 @@ struct ResponseBubbleView: View {
             .foregroundColor(Color("mainDarkBlue"))
         }
       }
-//      .frame(maxWidth: Double(content.respondedText.count * 120))
-//      .frame(maxWidth: content.respondedText.count <= 40 ? 10.0 * Double(content.respondedText.count) : 250)
+//      .frame(maxWidth: Double(messageData.respondedText.count * 120))
+//      .frame(maxWidth: messageData.respondedText.count <= 40 ? 10.0 * Double(messageData.respondedText.count) : 250)
       .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 10))
       .frame(maxWidth: 180)
       .frame(minHeight: 25)
@@ -75,6 +76,6 @@ struct ResponseBubbleView: View {
 
 struct ResponseBubbleView_Previews: PreviewProvider {
   static var previews: some View {
-    ResponseBubbleView(content: ResponseBubble(textArray: [BubbleString(text: "Chat 😸", translation: nil)], respondedText: "Human ou chat? "))
+    ResponseBubbleView(messageData: MessageData(type: "response", textArray: [BubbleString(text: "Chat 😸", translation: nil)], respondedText: "Human ou chat?"))
   }
 }

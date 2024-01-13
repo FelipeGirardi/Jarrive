@@ -11,7 +11,7 @@ struct TitleScreen: View {
   @State var goToOnboarding: Bool = false
   
   var body: some View {
-    goToOnboarding ? AnyView(OnboardingMainScreen()) :
+    goToOnboarding ? AnyView(PlayerContentView()) :
     AnyView(GeometryReader { g in
       ZStack {
         Image("TitleScreen")
@@ -56,7 +56,6 @@ struct TitleScreenMenu: View {
         Text("Sim, quero pegar o trem!")
             .onTapGesture {
               goToOnboarding = !goToOnboarding
-              print(goToOnboarding)
             }
             .font(.custom("Barlow-Bold", size: 16))
             .frame(width: geometry.size.width * 0.6, height: 30)

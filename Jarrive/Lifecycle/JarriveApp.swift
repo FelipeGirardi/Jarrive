@@ -11,6 +11,7 @@ import SwiftUI
 @main
 struct JarriveApp: App {
   @StateObject var authViewModel = AuthenticationViewModel()
+  @StateObject var firestoreManager = FirestoreManager()
 
   init() {
     setupAuthentication()
@@ -20,6 +21,7 @@ struct JarriveApp: App {
     WindowGroup {
       ContentView()
         .environmentObject(authViewModel)
+        .environmentObject(firestoreManager)
     }
   }
 }
