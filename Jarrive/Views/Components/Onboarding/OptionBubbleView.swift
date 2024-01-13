@@ -135,7 +135,7 @@ struct OptionBubbleView: View {
               Spacer()
             }
           }
-          .frame(maxWidth: Double(messageData.options!.count) * 115.0)
+          .frame(maxWidth: messageData.options!.count < 2 ? 230 : Double(messageData.options!.count) * 115.0)
           .frame(minHeight: 25)
           .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 0))
           .background(.white)
