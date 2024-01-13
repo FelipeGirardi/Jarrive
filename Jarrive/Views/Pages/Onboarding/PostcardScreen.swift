@@ -142,7 +142,7 @@ struct PostcardScreen: View {
   }
   
   var body: some View {
-    NavigationStack {
+//    NavigationStack {
       GeometryReader { g in
         ZStack {
           VStack {
@@ -219,7 +219,7 @@ struct PostcardScreen: View {
       .navigationDestination(isPresented: $shouldGoToExerciseView) {
         StampExerciseScreen()
       }
-    }
+//    }
   }
 }
   

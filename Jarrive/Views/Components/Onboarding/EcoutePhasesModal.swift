@@ -41,6 +41,7 @@ struct EcoutePhasesModal: View {
                 .frame(width: 330, height: 50)
                 .clipShape(Capsule())
                 .background(Capsule().foregroundColor(Color("mainGreen")))
+                .contentShape(Rectangle())
                 .padding(.bottom, 50)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)

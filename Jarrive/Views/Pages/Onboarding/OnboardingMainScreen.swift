@@ -10,7 +10,7 @@ import FirebaseAuth
 
 struct OnboardingMainScreen: View {
   @State var isBlurViewOn: Bool = false
-  @State var currentMessage: Int = 0
+  @State var currentMessage: Int = 19
   @State var messagesTimer: Int = 2
   @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
   @State var textFieldText = ""
@@ -21,7 +21,6 @@ struct OnboardingMainScreen: View {
   @EnvironmentObject var firestoreManager: FirestoreManager
   let onboardingData = OnboardingData()
   @State private var isOnboardingDone = UserDefaults.standard.bool(forKey: "isOnboardingDone")
-  @State private var didStartFromOnboarding = UserDefaults.standard.bool(forKey: "didStartFromOnboarding")
   
   func isChatFlowStopped() -> Bool {
     return (isOnboardingDone ? firestoreManager.postLoginOptionPauseIndexes.contains(currentMessage) : firestoreManager.onboardingPauseMessageFluxIndexes.contains(currentMessage)) ||
@@ -37,7 +36,7 @@ struct OnboardingMainScreen: View {
   }
   
   func shouldChangeScreenToMap() -> Bool {
-    return currentMessage == firestoreManager.onboardingChatMessages.count - 1 && isOnboardingDone && firestoreManager.didFinishFetchOnboardingChat
+    return  isOnboardingDone && currentMessage == firestoreManager.onboardingChatMessages.count - 1 && currentMessage != onboardingData.dummyChatMessages.count - 1
   }
   
   var userTextField: some View {
@@ -54,7 +53,7 @@ struct OnboardingMainScreen: View {
 
         Image("paperPlane")
           .foregroundColor(.white)
-          .padding(.trailing, 2)
+          .padding(.trailing, 3)
           .onTapGesture {
             if isTextFieldActive() {
               firestoreManager.onboardingChatMessages[currentMessage+1] = MessageData(id: currentMessage+1, type: "text", user: "user", textArray: [BubbleString(text: textFieldText, translation: nil)])
@@ -86,7 +85,7 @@ struct OnboardingMainScreen: View {
           VStack {
             Spacer()
             
-            MainChatScrollView(currentMessage: $currentMessage, optionsClickedIndexes: $optionsClickedIndexes, isOnboardingDone: $isOnboardingDone, didStartFromOnboarding: $didStartFromOnboarding, onboardingData: onboardingData)
+            MainChatScrollView(currentMessage: $currentMessage, optionsClickedIndexes: $optionsClickedIndexes, isOnboardingDone: $isOnboardingDone, onboardingData: onboardingData)
             
             Spacer()
             userTextField
@@ -117,6 +116,7 @@ struct OnboardingMainScreen: View {
           messagesTimer -= 1
         } else {
           messagesTimer = 3
+          
           withAnimation(.easeInOut(duration: 0.1)) {
             currentMessage += 1
           }
@@ -147,18 +147,12 @@ struct OnboardingMainScreen: View {
         }
       }
       .onAppear {
-        if !isOnboardingDone {
-          UserDefaults.standard.set(true, forKey: "didStartFromOnboarding")
-        } else {
-          if didStartFromOnboarding {
-            UserDefaults.standard.set(false, forKey: "didStartFromOnboarding")
-            currentMessage = firestoreManager.onboardingChatMessages.count - 1
-            firestoreManager.fetchPostLoginChat()
-          } else {
-            firestoreManager.onboardingChatMessages.append(contentsOf: onboardingData.dummyChatMessages)
-            currentMessage = firestoreManager.onboardingChatMessages.count - 1
-            firestoreManager.fetchPostLoginChat()
-          }
+        if isOnboardingDone {
+          // remove old messages and add dummy messages which will keep the ids but will be hidden
+          firestoreManager.onboardingChatMessages.removeAll { $0.id! <= onboardingData.dummyChatMessages.count - 1 }
+          firestoreManager.onboardingChatMessages.append(contentsOf: onboardingData.dummyChatMessages)
+          currentMessage = firestoreManager.onboardingChatMessages.count - 1
+          firestoreManager.fetchPostLoginChat()
         }
       }
       .navigationDestination(isPresented: $changeScreenToPostcard) {
@@ -179,12 +173,11 @@ struct MainChatScrollView: View {
   @Binding var currentMessage: Int
   @Binding var optionsClickedIndexes: [Int]
   @Binding var isOnboardingDone: Bool
-  @Binding var didStartFromOnboarding: Bool
   @EnvironmentObject var firestoreManager: FirestoreManager
   let onboardingData: OnboardingData
   
   func shouldHidePreviousMessages(index: Int) -> Bool {
-    return isOnboardingDone && !didStartFromOnboarding && index <= onboardingData.dummyChatMessages.count - 1
+    return isOnboardingDone && index <= onboardingData.dummyChatMessages.count - 1
   }
   
   var body: some View {

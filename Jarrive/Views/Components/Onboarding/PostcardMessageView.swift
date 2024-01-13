@@ -31,9 +31,9 @@ struct PostcardMessageView: View {
           .padding(.top, 15)
           
           Text(postcardData.text!.replacingOccurrences(of: "\\n", with: "\n"))
+            .minimumScaleFactor(0.1)
             .font(.custom("Barlow-italic", size: 16))
             .foregroundColor(Color("defaultDarkerGray"))
-            .minimumScaleFactor(0.1)
             .lineSpacing(5)
             .padding(.leading, 5)
           

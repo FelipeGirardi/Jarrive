@@ -40,11 +40,12 @@ struct ResponseBubbleView: View {
           Spacer()
           
           Text(messageData.respondedText!)
+            .minimumScaleFactor(0.3)
             .font(.custom("Barlow-Medium", size: 16))
             .multilineTextAlignment(.leading)
-            .minimumScaleFactor(0.5)
             .foregroundColor(Color("defaultDarkerGray"))
             .frame(maxHeight: 25)
+            .frame(minWidth: 100)
 //            .frame(maxHeight: 20.0 * ceil(Double(messageData.respondedText.count)/20.0))
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
             .background(Color("defaultLightGray"))

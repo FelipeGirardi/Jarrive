@@ -19,7 +19,6 @@ class FirestoreManager: ObservableObject {
   @Published var postLoginOptionPauseIndexes = [Int]()
   @Published var postLoginOptionExtraMessagesIndexes = [Int]()
   @Published var postLoginOptionTryAgainIndexes = [Int]()
-  @Published var didFinishFetchOnboardingChat: Bool = false
   private var isOnboardingDone = UserDefaults.standard.bool(forKey: "isOnboardingDone")
   let onboardingMessagesRoute = "chats/onboardingChat/messages"
   let onboardingVariableMessagesRoute = "chats/onboardingChat/variableMessages"
@@ -48,10 +47,6 @@ class FirestoreManager: ObservableObject {
       self.onboardingChatMessages.append(contentsOf: documents.compactMap { document -> MessageData? in
         return try? document.data(as: MessageData.self)
       })
-      
-      if route == self.onboardingMessagesRoute {
-        self.didFinishFetchOnboardingChat.toggle()
-      }
     }
   }
   

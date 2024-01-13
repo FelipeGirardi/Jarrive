@@ -46,9 +46,9 @@ struct ImageBubbleView: View {
             
             if messageData.textArray != nil {
               getBubbleText
+                .minimumScaleFactor(0.5)
                 .font(.custom("Barlow-Medium", size: 16))
                 .multilineTextAlignment(.leading)
-                .minimumScaleFactor(0.5)
                 .baselineOffset(2)
                 .foregroundColor(Color("mainDarkBlue"))
                 .padding(.all, 8)

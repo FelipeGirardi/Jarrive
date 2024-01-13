@@ -107,9 +107,9 @@ struct OptionBubbleView: View {
           VStack {
             HStack {
               getBubbleText
+                .minimumScaleFactor(0.1)
                 .font(.custom("Barlow-Medium", size: 16))
                 .multilineTextAlignment(.leading)
-                .minimumScaleFactor(0.1)
                 .baselineOffset(2)
                 .foregroundColor(Color("mainDarkBlue"))
               
@@ -119,9 +119,9 @@ struct OptionBubbleView: View {
             HStack(spacing: 10) {
               ForEach(messageData.options!.indices, id: \.self) { index in
                 Text(messageData.options![index])
+                  .minimumScaleFactor(0.5)
                   .font(.custom("Barlow-Medium", size: 16))
                   .multilineTextAlignment(.center)
-                  .minimumScaleFactor(0.5)
                   .foregroundColor(Color("mainDarkBlue"))
                   .frame(maxHeight: 30)
                   .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))

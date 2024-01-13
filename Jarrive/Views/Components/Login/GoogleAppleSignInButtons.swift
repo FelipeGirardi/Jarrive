@@ -23,9 +23,9 @@ struct GoogleAppleSignInButtons: View {
           
           Text("Ou entre com")
             .foregroundColor(.white)
+            .minimumScaleFactor(0.5)
             .font(.custom("Barlow-Regular", size: 14))
             .lineLimit(1)
-            .minimumScaleFactor(0.5)
             .padding(.horizontal, 10)
           
           VStack {

@@ -372,6 +372,7 @@ struct ExercicesView: View {
             .background(
                 Capsule()
                     .foregroundColor(shouldReviseDragDropExercice ? Color("mainGreen") :  Color("darkGray") ) )
+            .contentShape(Rectangle())
             .padding(.bottom)
         }
         .offset(x: animateWrongText ? -30 : 0)
@@ -629,6 +630,7 @@ struct EcoutePhrasesExerciceView: View {
         .background(
             Capsule()
                 .foregroundColor(shouldReviseEcouteExercice ? Color("mainGreen") :  Color("darkGray") ) )
+        .contentShape(Rectangle())
         .padding(.bottom)
     }
 }

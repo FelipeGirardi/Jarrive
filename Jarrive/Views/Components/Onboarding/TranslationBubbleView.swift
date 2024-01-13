@@ -38,8 +38,8 @@ struct TranslationBubbleView: View {
   
   var body: some View {
     getTranslationsText
-      .font(.custom("Barlow-Medium", size: 16))
       .minimumScaleFactor(0.1)
+      .font(.custom("Barlow-Medium", size: 16))
       .multilineTextAlignment(.leading)
       .baselineOffset(2)
       .foregroundColor(.black)
