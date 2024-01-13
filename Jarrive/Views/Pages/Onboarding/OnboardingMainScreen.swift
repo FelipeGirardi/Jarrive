@@ -10,7 +10,7 @@ import FirebaseAuth
 
 struct OnboardingMainScreen: View {
   @State var isBlurViewOn: Bool = false
-  @State var currentMessage: Int = 19
+  @State var currentMessage: Int = 0
   @State var messagesTimer: Int = 2
   @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
   @State var textFieldText = ""
